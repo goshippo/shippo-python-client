@@ -1,0 +1,14 @@
+/build
+/dist
+/MANIFEST
+/shippo.egg-info
+*.pyc
+*.egg
+*.class
+
+# Unit test / coverage reports
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
