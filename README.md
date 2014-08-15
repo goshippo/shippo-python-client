@@ -2,17 +2,11 @@
 
 This document helps you setup and get started with using the Shippo API in your python project.
 
-### What is this repository for? ###
-
-* This repository hold source code for Shippo python wrapper. You do not need to use this source code to import the wrapper.
-* Version 1.0
-
 
 ### How do I get set up? ###
 
 * To install from the source file:
 
-- Navigate to the folder containing the setup.py file and run:
 ```
 #!shell
 
@@ -22,8 +16,6 @@ This document helps you setup and get started with using the Shippo API in your 
    
 * To Install from pip or easy_install:
 
-- You actually don't need the source files to install the python package. You can use one of python's package management systems 
- 
 easy_install (https://pythonhosted.org/setuptools/easy_install.html):
 
 ```
