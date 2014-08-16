@@ -13,16 +13,6 @@ This document helps you setup and get started with using the Shippo API in your 
  python setup.py install
 
 ```
-   
-* To Install from pip or easy_install:
-
-easy_install (https://pythonhosted.org/setuptools/easy_install.html):
-
-```
-#!shell
-
-    sudo easy_install shippo
-```
 
 or pip (https://pip.pypa.io/en/latest/index.html):
 ```
