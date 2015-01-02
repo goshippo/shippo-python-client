@@ -1,8 +1,9 @@
 import urllib
 import warnings
 import sys
+import time
 
-from shippo import api_requestor, error, util
+from shippo import api_requestor, error, util, rates_req_timeout, transaction_req_timeout
 
 def convert_to_shippo_object(resp, auth):
     types = {'address': Address, 'parcel': Parcel, 'shipment': Shipment,
@@ -287,9 +288,9 @@ class Shipment(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
             Given a valid shipment object_id, all possible rates are calculated and returned.
         '''
         if params.has_key('sync') and params['sync']:
-            attempt = 0 
-            while cls.retrieve(object_id).object_status in ("QUEUED","WAITING") and attempt <10:
-                attempt +=1
+            timeout = time.time() + rates_req_timeout
+            while cls.retrieve(object_id).object_status in ("QUEUED","WAITING") and time.time() < timeout:
+                continue
 
         shipmentid = urllib.quote_plus(object_id)
         url = cls.class_url()+ shipmentid+ '/rates/'
@@ -315,17 +316,16 @@ class Transaction(CreateableAPIResource,ListableAPIResource,FetchableAPIResource
         '''
             Creates a new transaction object, given a valid rate ID.
             Takes the parameters as a dictionary instead of key word arguments.
-            The default number of attempts to create a transaction is 10
         '''
         url = cls.class_url()
         requestor = api_requestor.APIRequestor(None)
         response, content = requestor.request('post', url, params)
         transaction = convert_to_shippo_object(response, content)
         if params.has_key('sync') and params['sync']:
-            attempt = 0 
-            while transaction.object_status in ("QUEUED","WAITING") and attempt <10:
+            timeout = time.time() + transaction_req_timeout
+            while transaction.object_status in ("QUEUED","WAITING") and time.time() < timeout:
                 transaction = cls.retrieve(transaction.object_id)
-                attempt +=1
+                continue
 
         return transaction
     
