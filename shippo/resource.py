@@ -5,13 +5,13 @@ import time
 
 from shippo import api_requestor, error, util, rates_req_timeout, transaction_req_timeout
 
-def convert_to_shippo_object(resp, auth):
+def convert_to_shippo_object(resp, api_key):
     types = {'address': Address, 'parcel': Parcel, 'shipment': Shipment,
             'customsItem': CustomsItem, 'customsDeclaration':CustomsDeclaration,  
             'manifest': Manifest, 'rate': Rate, 'transaction': Transaction}
 
     if isinstance(resp, list):
-        return [convert_to_shippo_object(i, auth) for i in resp]
+        return [convert_to_shippo_object(i, api_key) for i in resp]
     elif isinstance(resp, dict) and not isinstance(resp, ShippoObject):
         resp = resp.copy()
         klass_name = resp.get('object')
@@ -19,13 +19,13 @@ def convert_to_shippo_object(resp, auth):
             klass = types.get(klass_name, ShippoObject)
         else:
             klass = ShippoObject
-        return klass.construct_from(resp, auth)
+        return klass.construct_from(resp, api_key)
     else:
         return resp
 
 
 class ShippoObject(dict):
-    def __init__(self, id=None, auth=None, **params):
+    def __init__(self, id=None, api_key=None, **params):
         super(ShippoObject, self).__init__()
 
         self._unsaved_values = set()
@@ -34,7 +34,7 @@ class ShippoObject(dict):
         self._retrieve_params = params
         self._previous_metadata = None
 
-        object.__setattr__(self, 'auth', auth)
+        object.__setattr__(self, 'api_key', api_key)
 
         if id:
             self['object_id'] = id
@@ -91,13 +91,13 @@ class ShippoObject(dict):
             "To unset a property, set it to None.")
 
     @classmethod
-    def construct_from(cls, values, auth):
-        instance = cls(values.get('object_id'), auth)
-        instance.refresh_from(values, auth)
+    def construct_from(cls, values, api_key):
+        instance = cls(values.get('object_id'), api_key)
+        instance.refresh_from(values, api_key)
         return instance
 
-    def refresh_from(self, values, auth=None, partial=False):
-        self.auth = auth or getattr(values, 'auth', None)
+    def refresh_from(self, values, api_key=None, partial=False):
+        self.api_key = api_key or getattr(values, 'api_key', None)
 
         # Wipe old state before setting new.
         if partial:
@@ -113,7 +113,7 @@ class ShippoObject(dict):
 
         for k, v in values.iteritems():
             super(ShippoObject, self).__setitem__(
-                k, convert_to_shippo_object(v, auth))
+                k, convert_to_shippo_object(v, api_key))
 
         self._previous_metadata = values.get('metadata')
 
@@ -121,10 +121,10 @@ class ShippoObject(dict):
         if params is None:
             params = self._retrieve_params
 
-        requestor = api_requestor.APIRequestor(self.auth)
-        response, auth = requestor.request(method, url, params)
+        requestor = api_requestor.APIRequestor(self.api_key)
+        response, api_key = requestor.request(method, url, params)
 
-        return convert_to_shippo_object(response, auth)
+        return convert_to_shippo_object(response, api_key)
 
     def __repr__(self):
         ident_parts = [type(self).__name__]
@@ -185,8 +185,8 @@ class APIResource(ShippoObject):
 class CreateableAPIResource(APIResource):
 
     @classmethod
-    def create(cls, auth=None, **params):
-        requestor = api_requestor.APIRequestor(auth)
+    def create(cls, api_key=None, **params):
+        requestor = api_requestor.APIRequestor(api_key)
         url = cls.class_url()
         response, content = requestor.request('post', url, params)
         return convert_to_shippo_object(response, content)
@@ -194,7 +194,7 @@ class CreateableAPIResource(APIResource):
 class ListableAPIResource(APIResource):
 
     @classmethod
-    def all(cls, size=None,page=None, api_key=None, **params):
+    def all(cls, api_key, size=None,page=None, **params):
         '''
         To retrieve a list of all the objects in a class. The size of page and 
             the page number can be specified respectively cls.all(<size>,<page>)
@@ -225,10 +225,10 @@ class FetchableAPIResource(APIResource):
 
 class Address(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
     @classmethod
-    def validate(cls, objectid):
+    def validate(cls, objectid, api_key):
         extn = urllib.quote_plus(objectid)
         url = cls.class_url()+ extn+ '/validate'
-        requestor = api_requestor.APIRequestor(None)
+        requestor = api_requestor.APIRequestor(api_key)
         response, content = requestor.request('get', url)
         return convert_to_shippo_object(response, content)
 
@@ -283,7 +283,7 @@ class Shipment(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
         and the Parcel to be shipped. Shipments can be created, retrieved and listed.
     '''
     @classmethod
-    def get_rates(cls, object_id,  currency=None, **params):
+    def get_rates(cls, object_id, api_key=None, currency=None, **params):
         '''
             Given a valid shipment object_id, all possible rates are calculated and returned.
         '''
@@ -296,7 +296,7 @@ class Shipment(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
         url = cls.class_url()+ shipmentid+ '/rates/'
         if currency:
             url = url+''+urllib.quote_plus(currency)
-        requestor = api_requestor.APIRequestor(None)
+        requestor = api_requestor.APIRequestor(api_key)
         response, content = requestor.request('get', url)
         return convert_to_shippo_object(response, content)
         
@@ -312,13 +312,13 @@ class Transaction(CreateableAPIResource,ListableAPIResource,FetchableAPIResource
     '''
     
     @classmethod
-    def create(cls, **params):
+    def create(cls, api_key=None, **params):
         '''
             Creates a new transaction object, given a valid rate ID.
             Takes the parameters as a dictionary instead of key word arguments.
         '''
         url = cls.class_url()
-        requestor = api_requestor.APIRequestor(None)
+        requestor = api_requestor.APIRequestor(api_key)
         response, content = requestor.request('post', url, params)
         transaction = convert_to_shippo_object(response, content)
         if params.has_key('sync') and params['sync']:

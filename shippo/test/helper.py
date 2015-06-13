@@ -1,9 +1,6 @@
 import datetime
 import os
-import random
 import re
-import string
-import sys
 import unittest
 
 from mock import patch, Mock
@@ -228,7 +225,7 @@ class ShippoTestCase(unittest.TestCase):
         api_base = os.environ.get('SHIPPO_API_BASE')
         if api_base:
             shippo.api_base = api_base
-        shippo.auth = ('unittest', 'unittest')
+        shippo.api_key = "<API-KEY>"
 
     def tearDown(self):
         super(ShippoTestCase, self).tearDown()

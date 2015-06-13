@@ -56,8 +56,8 @@ class APIRequestor(object):
 
     _CERTIFICATE_VERIFIED = False
 
-    def __init__(self, auth=None, client=None):
-        self.auth = auth
+    def __init__(self, api_key, client=None):
+        self.api_key = api_key
 
         from shippo import verify_ssl_certs
 
@@ -66,11 +66,11 @@ class APIRequestor(object):
 
     def request(self, method, url, params=None):
         self._check_ssl_cert()
-        rbody, rcode, my_auth = self.request_raw(
+        rbody, rcode, my_api_key = self.request_raw(
             method.lower(), url, params)
 
         resp = self.interpret_response(rbody, rcode)
-        return resp, my_auth
+        return resp, my_api_key
 
     def handle_api_error(self, rbody, rcode, resp):
 
@@ -89,16 +89,16 @@ class APIRequestor(object):
         """
         from shippo import api_version
 
-        if self.auth:
-            my_auth = self.auth
+        if self.api_key:
+            my_api_key = self.api_key
         else:
-            from shippo import auth
-            my_auth = auth
+            from shippo import api_key
+            my_api_key = api_key
 
-        if my_auth is None:
+        if my_api_key is None:
             raise error.AuthenticationError(
                 'No API key provided. (HINT: set your API key using '
-                '"shippo.auth = (<username>, <password>)"). You can generate API keys '
+                '"shippo.api_key = <API-KEY>"). You can generate API keys '
                 'from the Shippo web interface.  See https://goshippo.com/api '
                 'for details, or email support@goshippo.comom if you have any '
                 'questions.')
@@ -137,7 +137,7 @@ class APIRequestor(object):
             'Content-Type': 'application/json',
             'X-Shippo-Client-User-Agent': util.json.dumps(ua),
             'User-Agent': 'Shippo/v1 PythonBindings/%s' % (version.VERSION,),
-            'Authorization': 'Bearer %s' % (my_auth,)
+            'Authorization': 'ShippoToken %s' % (my_api_key,)
         }
 
         if api_version is not None:
@@ -149,7 +149,7 @@ class APIRequestor(object):
             'API request to %s returned (response code, response body) of '
             '(%d, %r)',
             abs_url, rcode, rbody)
-        return rbody, rcode, my_auth
+        return rbody, rcode, my_api_key
 
     def interpret_response(self, rbody, rcode):
         try:

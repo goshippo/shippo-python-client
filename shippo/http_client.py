@@ -1,10 +1,8 @@
 import os
 import sys
 import textwrap
-import warnings
-import shippo
 
-from shippo import error, util
+from shippo import error
 
 
 # - Requests is the preferred HTTP library
@@ -79,7 +77,6 @@ class RequestsClient(HTTPClient):
                 result = requests.request(method,
                                           url,
                                           headers=headers,
-					                      auth=shippo.auth,
                                           data=post_data,
                                           timeout=80,
                                           **kwargs)
