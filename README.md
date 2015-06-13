@@ -1,55 +1,47 @@
-# Shippo Python Wrapper #
+#Shippo Python API wrapper
 
-This document helps you setup and get started with using the Shippo API in your python project.
+Shippo is a shipping API that connects you with multiple shipping providers such as USPS, UPS, and Fedex through one interface and offers you great discounts.
+
+Don't have an account? Sign up at https://goshippo.com/
 
 
 ### How do I get set up? ###
 
-* To install from the source file:
+####To install from the source file:
 
 ```
 #!shell
-
- python setup.py install
-
+python setup.py install
 ```
 
 or pip (https://pip.pypa.io/en/latest/index.html):
 ```
 #!shell
-
-    sudo pip install shippo
+sudo pip install shippo
 ``` 
 
-* Dependencies :
+#### Dependencies:
 
-- requests & mock
+##### requests & mock
+
 ```
 #!shell
-   sudo easy_install requests
-   sudo easy_install mock
+sudo easy_install requests
+sudo easy_install mock
 ``` 
 
-* Using the API :
+#### Using the API:
 
-- Start a new python file, import the shippo package, and enter your shippo credentials
 ```
-#!python
-
 import shippo
-shippo.auth = ('username', 'password')
+shippo.api_key = "<API-KEY>"
 
-```
-- Then use the shippo API to create Addresses, Shipments, Rates and much more. Here is a code snippet for creating an address:
-```
-#!python
 address1 = shippo.Address.create(
     object_purpose='PURCHASE',
     name='John Smith',
-    street1='Greene Rd.',
+    street1='6512 Greene Rd.',
     street2='',
     company='Initech',
-    street_no='6512',
     phone='+1 234 346 7333',
     city='Woodridge',
     state='IL',
