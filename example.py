@@ -1,7 +1,8 @@
 import shippo
 
-#replace <USERNAME> and <PASSWORD> with your credentials
-shippo.auth = ('<USERNAME>', '<PASSWORD>')
+#replace <API-KEY> with your key
+shippo.api_key = "<API-KEY>"
+
 
 #example address_from object dict
 address_from = {
