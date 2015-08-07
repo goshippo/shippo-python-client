@@ -227,7 +227,6 @@ class UpdateableAPIResource(APIResource):
         objectid = util.utf8(objectid)
         extn = urllib.quote_plus(objectid)
         requestor = api_requestor.APIRequestor(api_key)
-        print api_key
         url = cls.class_url()+ extn
         response, api_key = requestor.request('put', url, params)
         return convert_to_shippo_object(response, api_key)
