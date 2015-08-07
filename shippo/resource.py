@@ -5,20 +5,11 @@ import time
 from shippo import api_requestor, error, util, rates_req_timeout, transaction_req_timeout
 
 def convert_to_shippo_object(resp, api_key):
-    types = {'address': Address, 'parcel': Parcel, 'shipment': Shipment,
-            'customsItem': CustomsItem, 'customsDeclaration':CustomsDeclaration,  
-            'manifest': Manifest, 'rate': Rate, 'transaction': Transaction}
-
     if isinstance(resp, list):
         return [convert_to_shippo_object(i, api_key) for i in resp]
     elif isinstance(resp, dict) and not isinstance(resp, ShippoObject):
         resp = resp.copy()
-        klass_name = resp.get('object')
-        if isinstance(klass_name, basestring):
-            klass = types.get(klass_name, ShippoObject)
-        else:
-            klass = ShippoObject
-        return klass.construct_from(resp, api_key)
+        return ShippoObject.construct_from(resp, api_key)
     else:
         return resp
 
@@ -219,6 +210,17 @@ class FetchableAPIResource(APIResource):
         response, api_key = requestor.request('get', url)
         return convert_to_shippo_object(response, api_key)
 
+class UpdateableAPIResource(APIResource):
+
+    @classmethod
+    def update(cls, object_id, api_key=None, **params):
+        object_id = util.utf8(object_id)
+        extn = urllib.quote_plus(object_id)
+        requestor = api_requestor.APIRequestor(api_key)
+        url = cls.class_url()+ extn
+        response, api_key = requestor.request('put', url, params)
+        return convert_to_shippo_object(response, api_key)
+
 # ---- API objects ---- 
 
 
@@ -341,3 +343,9 @@ class Rate(ListableAPIResource,FetchableAPIResource):
     def class_url(cls):
         cls_name = cls.class_name()
         return "v1/%ss/" % (cls_name,)
+
+class CarrierAccount(CreateableAPIResource,ListableAPIResource,FetchableAPIResource,UpdateableAPIResource):
+
+    @classmethod
+    def class_url(cls):
+        return "v1/carrier_accounts/"
