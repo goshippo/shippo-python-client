@@ -213,9 +213,9 @@ class FetchableAPIResource(APIResource):
 class UpdateableAPIResource(APIResource):
 
     @classmethod
-    def update(cls, objectid, api_key=None, **params):
-        objectid = util.utf8(objectid)
-        extn = urllib.quote_plus(objectid)
+    def update(cls, object_id, api_key=None, **params):
+        object_id = util.utf8(object_id)
+        extn = urllib.quote_plus(object_id)
         requestor = api_requestor.APIRequestor(api_key)
         url = cls.class_url()+ extn
         response, api_key = requestor.request('put', url, params)
