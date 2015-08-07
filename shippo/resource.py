@@ -1,5 +1,4 @@
 import urllib
-import warnings
 import sys
 import time
 
@@ -171,14 +170,14 @@ class APIResource(ShippoObject):
         return "/v1/%ss" % (cls_name,)
 
     def instance_url(self):
-        id = self.get('object_id')
-        if not id:
+        object_id = self.get('object_id')
+        if not object_id:
             raise error.InvalidRequestError(
                 'Could not determine which URL to request: %s instance '
                 'has invalid ID: %r' % (type(self).__name__, object_id), 'object_id')
-        id = util.utf8(id)
+        object_id = util.utf8(object_id)
         base = self.class_url()
-        extn = urllib.quote_plus(id)
+        extn = urllib.quote_plus(object_id)
         return "%s/%s" % (base, extn)
 
 
@@ -241,14 +240,12 @@ class CustomsItem(CreateableAPIResource,ListableAPIResource,FetchableAPIResource
 
     @classmethod
     def class_url(cls):
-        cls_name = cls.class_name()
         return "v1/customs/items/"
         
 class CustomsDeclaration(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
 
     @classmethod
     def class_url(cls):
-        cls_name = cls.class_name()
         return "v1/customs/declarations/"        
 class Parcel(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
 
