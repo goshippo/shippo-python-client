@@ -5,21 +5,11 @@ import time
 from shippo import api_requestor, error, util, rates_req_timeout, transaction_req_timeout
 
 def convert_to_shippo_object(resp, api_key):
-    types = {'address': Address, 'parcel': Parcel, 'shipment': Shipment,
-            'customsItem': CustomsItem, 'customsDeclaration':CustomsDeclaration,  
-            'manifest': Manifest, 'rate': Rate, 'transaction': Transaction,
-            'carrierAccount':CarrierAccount}
-
     if isinstance(resp, list):
         return [convert_to_shippo_object(i, api_key) for i in resp]
     elif isinstance(resp, dict) and not isinstance(resp, ShippoObject):
         resp = resp.copy()
-        klass_name = resp.get('object')
-        if isinstance(klass_name, basestring):
-            klass = types.get(klass_name, ShippoObject)
-        else:
-            klass = ShippoObject
-        return klass.construct_from(resp, api_key)
+        return ShippoObject.construct_from(resp, api_key)
     else:
         return resp
 
