@@ -212,7 +212,7 @@ INVALID_TRANSACTION = {
     "metadata": "Customer ID 123456"
 }
 class ShippoTestCase(unittest.TestCase):
-    RESTORE_ATTRIBUTES = ('api_version', 'auth')
+    RESTORE_ATTRIBUTES = ('api_version', 'api_key')
 
     def setUp(self):
         super(ShippoTestCase, self).setUp()

@@ -187,6 +187,7 @@ class CreateableAPIResource(APIResource):
 class ListableAPIResource(APIResource):
 
     @classmethod
+    def all(cls, api_key=None, size=None, page=None, **params):
         """
         To retrieve a list of all the objects in a class. The size of page and 
             the page number can be specified respectively cls.all(<size>,<page>)

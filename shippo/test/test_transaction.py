@@ -64,7 +64,7 @@ class TransactionTests(ShippoTestCase):
         
     def test_list_page_size(self):
         pagesize = 1
-        transaction_list = shippo.Transaction.all(pagesize)
+        transaction_list = shippo.Transaction.all(size=pagesize)
         self.assertEquals(len(transaction_list.results), pagesize)
 
 

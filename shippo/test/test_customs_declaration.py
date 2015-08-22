@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-import datetime
 import os
 import sys
-import time
 import unittest
 
 from mock import patch
@@ -10,10 +8,9 @@ from mock import patch
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import shippo
 
-from shippo.test.helper import (
-    ShippoTestCase,
-    NOW, DUMMY_CUSTOMS_DECLARATION, INVALID_CUSTOMS_DECLARATION, DUMMY_CUSTOMS_ITEM
-    )
+from shippo.test.helper import ShippoTestCase, DUMMY_CUSTOMS_DECLARATION,\
+    INVALID_CUSTOMS_DECLARATION, DUMMY_CUSTOMS_ITEM
+
 
 class CustomsDeclarationTests(ShippoTestCase):
     request_client = shippo.http_client.RequestsClient
@@ -60,14 +57,14 @@ class CustomsDeclarationTests(ShippoTestCase):
             'EXAMPLE_OF_INVALID_ID')
 
     def test_list_all(self):
-        CustomsDeclaration_list = shippo.CustomsDeclaration.all()
-        self.assertTrue('count' in CustomsDeclaration_list)
-        self.assertTrue('results' in CustomsDeclaration_list)
+        customs_declaration_list = shippo.CustomsDeclaration.all()
+        self.assertTrue('count' in customs_declaration_list)
+        self.assertTrue('results' in customs_declaration_list)
 
     def test_list_page_size(self):
         pagesize = 1
-        CustomsDeclaration_list = shippo.CustomsDeclaration.all(pagesize)
-        self.assertEquals(len(CustomsDeclaration_list.results),pagesize)
+        customs_declaration_list = shippo.CustomsDeclaration.all(size=pagesize)
+        self.assertEquals(len(customs_declaration_list.results), pagesize)
 
 if __name__ == '__main__':
     unittest.main()

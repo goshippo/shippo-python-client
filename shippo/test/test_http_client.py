@@ -1,8 +1,6 @@
-import sys
 import unittest
 
-from mock import Mock, patch
-
+from mock import Mock
 import shippo
 
 from shippo.test.helper import ShippoUnitTestCase
@@ -32,14 +30,10 @@ class HttpClientTests(ShippoUnitTestCase):
         self.assertTrue(isinstance(inst, expected))
 
     def test_new_default_http_client_urlfetch(self):
-        self.check_default((),
-                           shippo.http_client.UrlFetchClient)
+        self.check_default((), shippo.http_client.UrlFetchClient)
 
     def test_new_default_http_client_requests(self):
-        self.check_default(('urlfetch',),
-                           shippo.http_client.RequestsClient)
-
-
+        self.check_default(('urlfetch',), shippo.http_client.RequestsClient)
 
 
 class ClientTestBase():

@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-import datetime
 import os
 import sys
-import time
 import unittest
 
 from mock import patch
@@ -10,10 +8,8 @@ from mock import patch
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import shippo
 
-from shippo.test.helper import (
-    ShippoTestCase,
-    NOW, DUMMY_CUSTOMS_ITEM, INVALID_CUSTOMS_ITEM
-    )
+from shippo.test.helper import ShippoTestCase, DUMMY_CUSTOMS_ITEM, INVALID_CUSTOMS_ITEM
+
 
 class CustomsItemTest(ShippoTestCase):
     request_client = shippo.http_client.RequestsClient
@@ -48,8 +44,7 @@ class CustomsItemTest(ShippoTestCase):
         self.assertItemsEqual(customs_item, retrieve)
 
     def test_invalid_retrieve(self):
-        self.assertRaises(shippo.error.APIError, shippo.CustomsItem.retrieve, 
-            'EXAMPLE_OF_INVALID_ID')
+        self.assertRaises(shippo.error.APIError, shippo.CustomsItem.retrieve, 'EXAMPLE_OF_INVALID_ID')
 
     def test_list_all(self):
         customs_items_list = shippo.CustomsItem.all()
@@ -58,8 +53,8 @@ class CustomsItemTest(ShippoTestCase):
 
     def test_list_page_size(self):
         pagesize = 1
-        customs_items_list = shippo.CustomsItem.all(pagesize)
-        self.assertEquals(len(customs_items_list.results),pagesize)
+        customs_items_list = shippo.CustomsItem.all(size=pagesize)
+        self.assertEquals(len(customs_items_list.results), pagesize)
 
 
 if __name__ == '__main__':
