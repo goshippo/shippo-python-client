@@ -226,7 +226,7 @@ class UpdateableAPIResource(APIResource):
 
 class Address(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
     @classmethod
-    def validate(cls, objectid, api_key):
+    def validate(cls, objectid, api_key=None):
         extn = urllib.quote_plus(objectid)
         url = cls.class_url()+ extn+ '/validate'
         requestor = api_requestor.APIRequestor(api_key)
