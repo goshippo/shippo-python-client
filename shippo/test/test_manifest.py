@@ -36,7 +36,7 @@ class ManifestTests(ShippoTestCase):
                           
     def test_create(self):
         manifest = shippo.Manifest.create(**self.create_valid_manifest())
-        self.assertEqual(manifest.object_status, 'SUCCESS')
+        self.assertEqual(manifest.object_status, 'NOTRANSACTIONS')
                           
     def test_no_transaction_create(self):
         manifest = shippo.Manifest.create(**self.create_mock_manifest())

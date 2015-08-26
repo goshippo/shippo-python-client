@@ -56,8 +56,8 @@ class APIRequestor(object):
 
     _CERTIFICATE_VERIFIED = False
 
-    def __init__(self, api_key, client=None):
-        self.api_key = api_key
+    def __init__(self, key=None, client=None):
+        self.api_key = key
 
         from shippo import verify_ssl_certs
 
