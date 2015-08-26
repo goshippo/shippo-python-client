@@ -20,6 +20,18 @@ or pip (https://pip.pypa.io/en/latest/index.html):
 sudo pip install shippo
 ``` 
 
+#### To test:
+
+Add your `<API-KEY>` in `/test/helper.py`
+
+Run the test with the following command:
+
+```
+#!shell
+python setup.py test --test-suite=shippo
+```
+
+
 #### Dependencies:
 
 ##### requests & mock
