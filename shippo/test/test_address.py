@@ -33,7 +33,7 @@ class AddressTests(ShippoTestCase):
         
     def test_invalid_create(self):
         self.assertRaises(shippo.error.InvalidRequestError, shippo.Address.create,
-                          INVALID_ADDRESS)
+                          **INVALID_ADDRESS)
                           
     def test_create(self):
         address = shippo.Address.create(**DUMMY_ADDRESS)

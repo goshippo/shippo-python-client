@@ -53,8 +53,7 @@ class FunctionalTests(ShippoTestCase):
         self.assertEqual(address.foo, 'bar')
 
     def test_raise(self):
-        self.assertRaises(shippo.error.InvalidRequestError, shippo.Address.create,
-                          INVALID_ADDRESS)
+        self.assertRaises(shippo.error.InvalidRequestError, shippo.Address.create, **INVALID_ADDRESS)
 
     def test_unicode(self):
         # Make sure unicode requests can be sent

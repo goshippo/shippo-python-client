@@ -32,8 +32,7 @@ class ManifestTests(ShippoTestCase):
         self.client_patcher.stop()
         
     def test_invalid_create(self):
-        self.assertRaises(shippo.error.InvalidRequestError, shippo.Manifest.create,
-                          INVALID_MANIFEST)
+        self.assertRaises(shippo.error.InvalidRequestError, shippo.Manifest.create, **INVALID_MANIFEST)
                           
     def test_create(self):
         manifest = shippo.Manifest.create(**self.create_valid_manifest())

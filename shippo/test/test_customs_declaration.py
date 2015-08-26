@@ -34,7 +34,7 @@ class CustomsDeclarationTests(ShippoTestCase):
         
     def test_invalid_create(self):
         self.assertRaises(shippo.error.InvalidRequestError, shippo.CustomsDeclaration.create,
-            INVALID_CUSTOMS_DECLARATION)
+                          **INVALID_CUSTOMS_DECLARATION)
 
     def test_create(self):
         customs_item = shippo.CustomsItem.create(**DUMMY_CUSTOMS_ITEM)

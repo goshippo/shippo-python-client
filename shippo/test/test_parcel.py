@@ -32,8 +32,7 @@ class ParcelTests(ShippoTestCase):
         self.client_patcher.stop()
         
     def test_invalid_create(self):
-        self.assertRaises(shippo.error.InvalidRequestError, shippo.Parcel.create,
-                          INVALID_PARCEL)
+        self.assertRaises(shippo.error.InvalidRequestError, shippo.Parcel.create, **INVALID_PARCEL)
                           
     def test_create(self):
         parcel = shippo.Parcel.create(**DUMMY_PARCEL)

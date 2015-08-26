@@ -31,8 +31,8 @@ class CustomsItemTest(ShippoTestCase):
         self.client_patcher.stop()
    
     def test_invalid_create(self):
-        self.assertRaises(shippo.error.InvalidRequestError, shippo.CustomsItem.create, 
-            INVALID_CUSTOMS_ITEM)
+        self.assertRaises(shippo.error.InvalidRequestError, shippo.CustomsItem.create,
+                          **INVALID_CUSTOMS_ITEM)
                           
     def test_create(self):
         customs_item = shippo.CustomsItem.create(**DUMMY_CUSTOMS_ITEM)

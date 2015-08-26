@@ -25,7 +25,7 @@ DUMMY_ADDRESS = {
     "metadata": "Customer ID 123456"
 }
 INVALID_ADDRESS = {
-    "object_purpose": "QUOTE",
+    "object_purpose": "PURCHASE",
     "name": "Laura Behrens Wu",
     "company": "Shippo",
     "street2": "",
@@ -130,12 +130,11 @@ INVALID_CUSTOMS_DECLARATION = {
     "eel_pfc": "NOEEI_30_37_a",
     "aes_itn": "",
     "non_delivery_option": "ABANDON",
-    "certify": True,
+    "cerfy": True,
     "certify_signer": "Laura Behrens Wu",
     "disclaimer": "",
     "incoterm": "",
     "metadata": "Order ID #123123"
-    
 }
 TO_ADDRESS = {
     "object_purpose": "PURCHASE",
@@ -211,6 +210,8 @@ INVALID_TRANSACTION = {
     "notification_email_other": "max@goshippo.com",
     "metadata": "Customer ID 123456"
 }
+
+
 class ShippoTestCase(unittest.TestCase):
     RESTORE_ATTRIBUTES = ('api_version', 'api_key')
 
