@@ -1,7 +1,6 @@
-import datetime
+# -*- coding: utf-8 -*-
 import os
 import sys
-import time
 import unittest
 
 from mock import patch
@@ -9,10 +8,8 @@ from mock import patch
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import shippo
 
-from shippo.test.helper import (
-    ShippoTestCase,
-    NOW, DUMMY_MANIFEST, DUMMY_ADDRESS, INVALID_MANIFEST, TO_ADDRESS
-    )
+from shippo.test.helper import ShippoTestCase, DUMMY_MANIFEST, DUMMY_ADDRESS, INVALID_MANIFEST
+
 
 class ManifestTests(ShippoTestCase):
     request_client = shippo.http_client.RequestsClient
@@ -35,12 +32,11 @@ class ManifestTests(ShippoTestCase):
         self.client_patcher.stop()
         
     def test_invalid_create(self):
-        self.assertRaises(shippo.error.InvalidRequestError, shippo.Manifest.create,
-                          INVALID_MANIFEST)
+        self.assertRaises(shippo.error.InvalidRequestError, shippo.Manifest.create, **INVALID_MANIFEST)
                           
     def test_create(self):
         manifest = shippo.Manifest.create(**self.create_valid_manifest())
-        self.assertEqual(manifest.object_status, 'SUCCESS')
+        self.assertEqual(manifest.object_status, 'NOTRANSACTIONS')
                           
     def test_no_transaction_create(self):
         manifest = shippo.Manifest.create(**self.create_mock_manifest())
@@ -62,13 +58,13 @@ class ManifestTests(ShippoTestCase):
         
     def test_list_page_size(self):
         pagesize = 1
-        manifest_list = shippo.Manifest.all(pagesize)
-        self.assertEquals(len(manifest_list.results),pagesize)
+        manifest_list = shippo.Manifest.all(size=pagesize)
+        self.assertEquals(len(manifest_list.results), pagesize)
     
     def create_mock_manifest(self):
         address = shippo.Address.create(**DUMMY_ADDRESS)
         MANIFEST = DUMMY_MANIFEST.copy()
-        MANIFEST['address_from']=address.object_id
+        MANIFEST['address_from'] = address.object_id
         return MANIFEST
         
     def create_valid_manifest(self):
@@ -76,7 +72,7 @@ class ManifestTests(ShippoTestCase):
         rate = shippo.Rate.retrieve(transactions.results[0].rate)
         shipment = shippo.Shipment.retrieve(rate.shipment)
         MANIFEST = DUMMY_MANIFEST.copy()
-        MANIFEST['address_from']=shipment.address_to
+        MANIFEST['address_from'] = shipment.address_to
         return MANIFEST
         
 

@@ -1,6 +1,7 @@
 import os
 import sys
 import textwrap
+import warnings
 
 from shippo import error
 

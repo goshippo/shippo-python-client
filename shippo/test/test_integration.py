@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-import datetime
 import os
 import sys
-import time
 import unittest
 
 from mock import patch
@@ -10,11 +8,9 @@ from mock import patch
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import shippo
 
-from shippo.test.helper import (
-    ShippoTestCase,
-    NOW, DUMMY_ADDRESS, INVALID_ADDRESS
-    )
-    
+from shippo.test.helper import ShippoTestCase, DUMMY_ADDRESS, INVALID_ADDRESS
+
+
 class FunctionalTests(ShippoTestCase):
     request_client = shippo.http_client.RequestsClient
 
@@ -47,7 +43,7 @@ class FunctionalTests(ShippoTestCase):
     def test_run(self):
         address = shippo.Address.create(**DUMMY_ADDRESS)
         self.assertEqual(address.object_state, 'VALID')
-        address= shippo.Address.validate(address.object_id)
+        address = shippo.Address.validate(address.object_id)
         self.assertEqual(address.object_source, 'VALIDATOR')
 
     def test_list_accessors(self):
@@ -57,8 +53,7 @@ class FunctionalTests(ShippoTestCase):
         self.assertEqual(address.foo, 'bar')
 
     def test_raise(self):
-        self.assertRaises(shippo.error.InvalidRequestError, shippo.Address.create,
-                          INVALID_ADDRESS)
+        self.assertRaises(shippo.error.InvalidRequestError, shippo.Address.create, **INVALID_ADDRESS)
 
     def test_unicode(self):
         # Make sure unicode requests can be sent
@@ -66,13 +61,10 @@ class FunctionalTests(ShippoTestCase):
                           shippo.Address.retrieve,
                           u'☃')
 
-
     # --- if dynamic object typing is implemented, this will be a useful test
     # def test_missing_id(self):
     #     address = shippo.Address()
     #     self.assertRaises(shippo.error.APIError, address.refresh)
         
-
-
 if __name__ == '__main__':
     unittest.main()

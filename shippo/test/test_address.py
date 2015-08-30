@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-import datetime
 import os
 import sys
-import time
 import unittest
 
 from mock import patch
@@ -10,10 +8,8 @@ from mock import patch
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import shippo
 
-from shippo.test.helper import (
-    ShippoTestCase,
-    NOW, DUMMY_ADDRESS, INVALID_ADDRESS, NOT_POSSIBLE_ADDRESS
-    )
+from shippo.test.helper import ShippoTestCase, DUMMY_ADDRESS, INVALID_ADDRESS, NOT_POSSIBLE_ADDRESS
+
 
 class AddressTests(ShippoTestCase):
     request_client = shippo.http_client.RequestsClient
@@ -37,7 +33,7 @@ class AddressTests(ShippoTestCase):
         
     def test_invalid_create(self):
         self.assertRaises(shippo.error.InvalidRequestError, shippo.Address.create,
-                          INVALID_ADDRESS)
+                          **INVALID_ADDRESS)
                           
     def test_create(self):
         address = shippo.Address.create(**DUMMY_ADDRESS)
@@ -59,8 +55,8 @@ class AddressTests(ShippoTestCase):
         
     def test_list_page_size(self):
         pagesize = 1
-        address_list = shippo.Address.all(pagesize)
-        self.assertEquals(len(address_list.results),pagesize)
+        address_list = shippo.Address.all(size=pagesize)
+        self.assertEquals(len(address_list.results), pagesize)
         
     def test_invalid_validate(self):
         address = shippo.Address.create(**NOT_POSSIBLE_ADDRESS)
