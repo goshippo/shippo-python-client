@@ -44,7 +44,7 @@ setup(
     name='shippo',
     cmdclass={'build_py': build_py},
     version=VERSION,
-    description='Shippo python bindings',
+    description='Shipping API Python library (USPS, FedEx, UPS and more)',
     author='Shippo',
     author_email='support@goshippo.com',
     url='https://goshippo.com/',
