@@ -219,6 +219,7 @@ def create_mock_shipment():
     SHIPMENT['address_from'] = from_address.object_id
     SHIPMENT['address_to'] = to_address.object_id
     SHIPMENT['parcel'] = parcel.object_id
+    SHIPMENT['async'] = False
     shipment = shippo.Shipment.create(**SHIPMENT)
     return shipment
 

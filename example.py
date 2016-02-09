@@ -79,16 +79,16 @@ shipment = shippo.Shipment.create(
     customs_declaration=customs_declaration.object_id
 )
 
-# Get all rates for shipment. sync=True indicates that the function will wait until all
+# Get all rates for shipment. async=False indicates that the function will wait until all
 # rates are generated before it returns
-rates = shippo.Shipment.get_rates(shipment.object_id, sync=True)
+rates = shippo.Shipment.get_rates(shipment.object_id, async=False)
 
 # Get the first rate in the rates results for demo purposes.
 rate = rates.results[0]
 
-# Purchase the desired rate. sync=True indicates that the function will wait until the
+# Purchase the desired rate. async=False indicates that the function will wait until the
 # carrier returns a shipping label before it returns
-transaction = shippo.Transaction.create(rate=rate.object_id, sync=True)
+transaction = shippo.Transaction.create(rate=rate.object_id, async=False)
 
 # print label_url and tracking_number
 if transaction.object_status == "SUCCESS":

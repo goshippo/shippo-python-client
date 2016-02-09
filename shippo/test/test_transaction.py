@@ -35,7 +35,7 @@ class TransactionTests(ShippoTestCase):
 
     def test_create(self):
         shipment = create_mock_shipment()
-        rates = shippo.Shipment.get_rates(shipment.object_id, sync=True)
+        rates = shippo.Shipment.get_rates(shipment.object_id, async=False)
         rate = rates.results[0]
         TRANSACTION = DUMMY_TRANSACTION.copy()
         TRANSACTION['rate'] = rate.object_id
@@ -44,7 +44,7 @@ class TransactionTests(ShippoTestCase):
 
     def test_retrieve(self):
         shipment = create_mock_shipment()
-        rates = shippo.Shipment.get_rates(shipment.object_id, sync=True)
+        rates = shippo.Shipment.get_rates(shipment.object_id, async=False)
         rate = rates.results[0]
         TRANSACTION = DUMMY_TRANSACTION.copy()
         TRANSACTION['rate'] = rate.object_id

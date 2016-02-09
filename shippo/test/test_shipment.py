@@ -66,7 +66,7 @@ class ShipmentTests(ShippoTestCase):
 
     def test_get_rates_blocking(self):
         shipment = create_mock_shipment()
-        rates = shippo.Shipment.get_rates(shipment.object_id, sync=True)
+        rates = shippo.Shipment.get_rates(shipment.object_id, async=False)
         self.assertTrue('count' in rates)
         self.assertTrue('results' in rates)
 
