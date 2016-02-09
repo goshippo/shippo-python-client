@@ -7,9 +7,14 @@ from mock import patch
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import shippo
-
-from shippo.test.helper import ShippoTestCase, DUMMY_SHIPMENT, INVALID_SHIPMENT,\
-    TO_ADDRESS, FROM_ADDRESS, DUMMY_PARCEL
+from shippo.test.helper import (
+    DUMMY_PARCEL,
+    DUMMY_SHIPMENT,
+    FROM_ADDRESS,
+    INVALID_SHIPMENT,
+    ShippoTestCase,
+    TO_ADDRESS,
+)
 
 
 class ShipmentTests(ShippoTestCase):
@@ -31,7 +36,7 @@ class ShipmentTests(ShippoTestCase):
         super(ShipmentTests, self).tearDown()
 
         self.client_patcher.stop()
-        
+
     def test_invalid_create(self):
         self.assertRaises(shippo.error.InvalidRequestError, shippo.Shipment.create,
                           **INVALID_SHIPMENT)

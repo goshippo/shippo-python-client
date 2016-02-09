@@ -12,7 +12,7 @@ try:
 except ImportError:
     from distutils.command.build_py import build_py
 
-from version import VERSION
+from shippo.version import VERSION
 
 path, script = os.path.split(sys.argv[0])
 os.chdir(os.path.abspath(path))
@@ -69,4 +69,5 @@ setup(
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: Implementation :: PyPy",
         "Topic :: Software Development :: Libraries :: Python Modules",
-    ])
+    ]
+)

@@ -34,7 +34,7 @@ INVALID_ADDRESS = {
     "country": "US",
     "phone": "+1 555 341 9393",
     "email": "laura@goshippo.com",
-    "metadata": "Customer ID 123456" 
+    "metadata": "Customer ID 123456"
 }
 NOT_POSSIBLE_ADDRESS = {
     "object_purpose": "QUOTE",
@@ -51,7 +51,6 @@ NOT_POSSIBLE_ADDRESS = {
     "email": "laura@goshippo.com",
     "metadata": "Customer ID 123456"
 }
-
 DUMMY_PARCEL = {
     "length": "5",
     "width": "5",
@@ -116,7 +115,7 @@ DUMMY_CUSTOMS_DECLARATION = {
     "items": [
         "0c1a723687164307bb2175972fbcd9ef"
     ],
-    "metadata": "Order ID #123123"   
+    "metadata": "Order ID #123123"
 }
 INVALID_CUSTOMS_DECLARATION = {
     "exporter_reference": "",
@@ -250,7 +249,8 @@ class ShippoTestCase(unittest.TestCase):
         else:
             raise self.failureException(
                 '%s was not raised' % (exception.__name__,))
-                
+
+
 class ShippoUnitTestCase(ShippoTestCase):
     REQUEST_LIBRARIES = ['urlfetch', 'requests']
 
@@ -270,8 +270,8 @@ class ShippoUnitTestCase(ShippoTestCase):
 
         for patcher in self.request_patchers.itervalues():
             patcher.stop()
-            
-            
+
+
 class ShippoApiTestCase(ShippoTestCase):
 
     def setUp(self):
@@ -287,4 +287,4 @@ class ShippoApiTestCase(ShippoTestCase):
         self.requestor_patcher.stop()
 
     def mock_response(self, res):
-        self.requestor_mock.request = Mock(return_value=(res, 'reskey'))            
+        self.requestor_mock.request = Mock(return_value=(res, 'reskey'))

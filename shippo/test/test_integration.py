@@ -7,8 +7,11 @@ from mock import patch
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import shippo
-
-from shippo.test.helper import ShippoTestCase, DUMMY_ADDRESS, INVALID_ADDRESS
+from shippo.test.helper import (
+    DUMMY_ADDRESS,
+    INVALID_ADDRESS,
+    ShippoTestCase,
+)
 
 
 class FunctionalTests(ShippoTestCase):
@@ -65,6 +68,6 @@ class FunctionalTests(ShippoTestCase):
     # def test_missing_id(self):
     #     address = shippo.Address()
     #     self.assertRaises(shippo.error.APIError, address.refresh)
-        
+
 if __name__ == '__main__':
     unittest.main()

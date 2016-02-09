@@ -7,8 +7,12 @@ from mock import patch
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import shippo
-
-from shippo.test.helper import ShippoTestCase, DUMMY_ADDRESS, INVALID_ADDRESS, NOT_POSSIBLE_ADDRESS
+from shippo.test.helper import (
+    DUMMY_ADDRESS,
+    INVALID_ADDRESS,
+    NOT_POSSIBLE_ADDRESS,
+    ShippoTestCase,
+)
 
 
 class AddressTests(ShippoTestCase):
@@ -30,45 +34,45 @@ class AddressTests(ShippoTestCase):
         super(AddressTests, self).tearDown()
 
         self.client_patcher.stop()
-        
+
     def test_invalid_create(self):
         self.assertRaises(shippo.error.InvalidRequestError, shippo.Address.create,
                           **INVALID_ADDRESS)
-                          
+
     def test_create(self):
         address = shippo.Address.create(**DUMMY_ADDRESS)
         self.assertEqual(address.object_state, 'VALID')
-    
+
     def test_retrieve(self):
         address = shippo.Address.create(**DUMMY_ADDRESS)
         retrieve = shippo.Address.retrieve(address.object_id)
         self.assertItemsEqual(address, retrieve)
-        
+
     def test_invalid_retrieve(self):
         self.assertRaises(shippo.error.APIError, shippo.Address.retrieve,
                           'EXAMPLE_OF_INVALID_ID')
-        
+
     def test_list_all(self):
         address_list = shippo.Address.all()
         self.assertTrue('count' in address_list)
         self.assertTrue('results' in address_list)
-        
+
     def test_list_page_size(self):
         pagesize = 1
         address_list = shippo.Address.all(size=pagesize)
         self.assertEquals(len(address_list.results), pagesize)
-        
+
     def test_invalid_validate(self):
         address = shippo.Address.create(**NOT_POSSIBLE_ADDRESS)
         self.assertEqual(address.object_state, 'VALID')
-        address= shippo.Address.validate(address.object_id)
+        address = shippo.Address.validate(address.object_id)
         self.assertEqual(address.object_source, 'VALIDATOR')
         self.assertEqual(address.object_state, 'INVALID')
-    
+
     def test_validate(self):
         address = shippo.Address.create(**DUMMY_ADDRESS)
         self.assertEqual(address.object_state, 'VALID')
-        address= shippo.Address.validate(address.object_id)
+        address = shippo.Address.validate(address.object_id)
         self.assertEqual(address.object_source, 'VALIDATOR')
 
 if __name__ == '__main__':
