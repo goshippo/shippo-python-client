@@ -189,7 +189,7 @@ class ListableAPIResource(APIResource):
     @classmethod
     def all(cls, api_key=None, size=None, page=None, **params):
         """
-        To retrieve a list of all the objects in a class. The size of page and 
+        To retrieve a list of all the objects in a class. The size of page and
             the page number can be specified respectively cls.all(<size>,<page>)
             **NOTE: To specify a page number, the page size must also be provided
         """
@@ -226,8 +226,8 @@ class UpdateableAPIResource(APIResource):
         response, api_key = requestor.request('put', url, params)
         return convert_to_shippo_object(response, api_key)
 
-# ---- API objects ---- 
 
+# ---- API objects ----
 
 class Address(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
 
@@ -256,7 +256,7 @@ class CustomsDeclaration(CreateableAPIResource, ListableAPIResource, FetchableAP
 
     @classmethod
     def class_url(cls):
-        return "v1/customs/declarations/"        
+        return "v1/customs/declarations/"
 
 
 class Parcel(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
@@ -269,7 +269,7 @@ class Parcel(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
 
 class Manifest(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
     """
-     Manifests are close-outs of shipping labels of a certain day. Some carriers 
+     Manifests are close-outs of shipping labels of a certain day. Some carriers
         require Manifests to properly process the shipments
     """
 
@@ -279,20 +279,20 @@ class Manifest(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
         return "v1/%ss/" % (cls_name,)
 
 
-class Refund(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
+class Refund(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
     """
         Refunds are reimbursements for successfully created but unused Transaction.
     """
-    
+
     @classmethod
     def class_url(cls):
         cls_name = cls.class_name()
         return "v1/%ss/" % (cls_name,)
 
 
-class Shipment(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
+class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
     """
-        The heart of the Shippo API, a Shipment is made up of "to" and "from" Addresses 
+        The heart of the Shippo API, a Shipment is made up of "to" and "from" Addresses
         and the Parcel to be shipped. Shipments can be created, retrieved and listed.
     """
 
@@ -313,7 +313,7 @@ class Shipment(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
         requestor = api_requestor.APIRequestor(api_key)
         response, content = requestor.request('get', url)
         return convert_to_shippo_object(response, content)
-        
+
     @classmethod
     def class_url(cls):
         cls_name = cls.class_name()
@@ -322,10 +322,10 @@ class Shipment(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
 
 class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
     """
-        A Transaction is the purchase of a Shipment Label for a given Shipment Rate. 
+        A Transaction is the purchase of a Shipment Label for a given Shipment Rate.
         Transactions can be as simple as posting a Rate ID.
     """
-    
+
     @classmethod
     def create(cls, api_key=None, **params):
         """
@@ -343,7 +343,7 @@ class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResour
                 continue
 
         return transaction
-    
+
     @classmethod
     def class_url(cls):
         cls_name = cls.class_name()
@@ -352,10 +352,10 @@ class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResour
 
 class Rate(ListableAPIResource, FetchableAPIResource):
     """
-     Each valid Shipment object will automatically trigger the calculation of all available 
+     Each valid Shipment object will automatically trigger the calculation of all available
      Rates. Depending on your Addresses and Parcel, there may be none, one or multiple Rates
     """
-    
+
     @classmethod
     def class_url(cls):
         cls_name = cls.class_name()
