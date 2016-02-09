@@ -22,7 +22,10 @@ sudo pip install shippo
 
 #### To test:
 
-Add your `<API-KEY>` in `/test/helper.py`
+Set your `SHIPPO_API_KEY` as an environment variable.
+e.g. on OSX:
+
+`export SHIPPO_API_KEY="<MY-API-KEY>"`
 
 Run the test with the following command:
 
