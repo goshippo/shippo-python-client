@@ -9,8 +9,6 @@ import shippo
 from shippo.test.helper import ShippoTestCase
 import test_shipment
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
-
 
 class RateTests(ShippoTestCase):
     request_client = shippo.http_client.RequestsClient

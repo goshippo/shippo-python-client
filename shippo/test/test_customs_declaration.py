@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
-import os
-import sys
 import unittest
 
 from mock import patch
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import shippo
 from shippo.test.helper import (
     DUMMY_CUSTOMS_DECLARATION,

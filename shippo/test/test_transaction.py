@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-import os
-import sys
 import unittest
 
 from mock import patch
@@ -8,7 +6,6 @@ import test_shipment
 
 import shippo
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 from shippo.test.helper import ShippoTestCase, DUMMY_TRANSACTION
 
 
