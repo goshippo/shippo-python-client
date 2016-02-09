@@ -2,11 +2,13 @@
 import unittest
 
 from mock import patch
-import test_shipment
 
 import shippo
-
-from shippo.test.helper import ShippoTestCase, DUMMY_TRANSACTION
+from shippo.test.helper import (
+    create_mock_shipment,
+    ShippoTestCase,
+    DUMMY_TRANSACTION
+)
 
 
 class TransactionTests(ShippoTestCase):
@@ -32,7 +34,7 @@ class TransactionTests(ShippoTestCase):
         self.assertRaises(shippo.error.InvalidRequestError, shippo.Transaction.create)
 
     def test_create(self):
-        shipment = test_shipment.create_mock_shipment()
+        shipment = create_mock_shipment()
         rates = shippo.Shipment.get_rates(shipment.object_id, sync=True)
         rate = rates.results[0]
         TRANSACTION = DUMMY_TRANSACTION.copy()
@@ -41,7 +43,7 @@ class TransactionTests(ShippoTestCase):
         self.assertEqual(transaction.object_state, 'VALID')
 
     def test_retrieve(self):
-        shipment = test_shipment.create_mock_shipment()
+        shipment = create_mock_shipment()
         rates = shippo.Shipment.get_rates(shipment.object_id, sync=True)
         rate = rates.results[0]
         TRANSACTION = DUMMY_TRANSACTION.copy()

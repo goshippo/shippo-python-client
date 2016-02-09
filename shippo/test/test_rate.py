@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
-import os
-import sys
 import unittest
 
 from mock import patch
 
 import shippo
-from shippo.test.helper import ShippoTestCase
-import test_shipment
+from shippo.test.helper import create_mock_shipment, ShippoTestCase
 
 
 class RateTests(ShippoTestCase):
@@ -31,7 +28,7 @@ class RateTests(ShippoTestCase):
         self.client_patcher.stop()
 
     def test_retrieve(self):
-        shipment = test_shipment.create_mock_shipment()
+        shipment = create_mock_shipment()
         rates = shippo.Shipment.get_rates(shipment.object_id, sync=True)
         rate = rates.results[0]
         retrieve = shippo.Rate.retrieve(rate.object_id)

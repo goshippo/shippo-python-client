@@ -211,6 +211,29 @@ INVALID_TRANSACTION = {
 }
 
 
+def create_mock_shipment():
+    to_address = shippo.Address.create(**TO_ADDRESS)
+    from_address = shippo.Address.create(**FROM_ADDRESS)
+    parcel = shippo.Parcel.create(**DUMMY_PARCEL)
+    SHIPMENT = DUMMY_SHIPMENT.copy()
+    SHIPMENT['address_from'] = from_address.object_id
+    SHIPMENT['address_to'] = to_address.object_id
+    SHIPMENT['parcel'] = parcel.object_id
+    shipment = shippo.Shipment.create(**SHIPMENT)
+    return shipment
+
+
+def create_mock_international_shipment():
+    SHIPMENT = create_mock_shipment()
+    customs_item = shippo.CustomsItem.create(**DUMMY_CUSTOMS_ITEM)
+    customs_declaration_parameters = DUMMY_CUSTOMS_DECLARATION.copy()
+    customs_declaration_parameters["items"][0] = customs_item.object_id
+    customs_declaration = shippo.CustomsDeclaration.create(**customs_declaration_parameters)
+    SHIPMENT['customs_declaration'] = customs_declaration.object_id
+    shipment = shippo.Shipment.create(**SHIPMENT)
+    return shipment
+
+
 class ShippoTestCase(unittest.TestCase):
     RESTORE_ATTRIBUTES = ('api_version', 'api_key')
 
@@ -225,7 +248,11 @@ class ShippoTestCase(unittest.TestCase):
         api_base = os.environ.get('SHIPPO_API_BASE')
         if api_base:
             shippo.api_base = api_base
-        shippo.api_key = "<API-KEY>"
+
+        api_key = os.environ.get('SHIPPO_API_KEY', None)
+        if not api_key:
+            raise Exception('Set your SHIPPO_API_KEY in your os.envrion')
+        shippo.api_key = api_key
 
     def tearDown(self):
         super(ShippoTestCase, self).tearDown()
