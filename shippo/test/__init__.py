@@ -3,12 +3,8 @@ import unittest
 
 
 def all():
-    try:
-        path = os.path.dirname(os.path.realpath(__file__))
-        return unittest.defaultTestLoader.discover(path)
-    except Exception as err:
-        import pdb; pdb.set_trace()
-        print err
+    path = os.path.dirname(os.path.realpath(__file__))
+    return unittest.defaultTestLoader.discover(path)
 
 
 def integration():
