@@ -136,7 +136,7 @@ class APIRequestor(object):
         headers = {
             'Content-Type': 'application/json',
             'X-Shippo-Client-User-Agent': util.json.dumps(ua),
-            'User-Agent': 'Shippo/v1 PythonBindings/%s' % (version.VERSION,),
+            'User-Agent': 'Shippo/v%s PythonBindings/%s' % (api_version, version.VERSION),
             'Authorization': 'ShippoToken %s' % (my_api_key,)
         }
 

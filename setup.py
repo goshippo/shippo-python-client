@@ -12,8 +12,6 @@ try:
 except ImportError:
     from distutils.command.build_py import build_py
 
-from version import VERSION
-
 path, script = os.path.split(sys.argv[0])
 os.chdir(os.path.abspath(path))
 
@@ -33,7 +31,7 @@ else:
 
 # Don't import shippo module here, since deps may not be installed
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'shippo'))
-
+from version import VERSION
 
 # Get simplejson if we don't already have json
 if sys.version_info < (3, 0):

@@ -43,8 +43,9 @@ class ClientTestBase():
         return self.request_mocks[self.request_client.name]
 
     @property
-    def valid_url(self, path='/v1/echo'):
-        return 'https://api.goshippo.com%s' % (path,)
+    def valid_url(self):
+        path = 'v%s/echo' % shippo.api_version
+        return 'https://api.goshippo.com%s' % path
 
     def make_request(self, method, url, headers, post_data):
         client = self.request_client(verify_ssl_certs=True)

@@ -1,18 +1,13 @@
 import urllib
 import sys
-import time
 
-from shippo import api_requestor, error, util, rates_req_timeout, transaction_req_timeout
-
-
-def convert_to_shippo_object(resp, api_key):
-    if isinstance(resp, list):
-        return [convert_to_shippo_object(i, api_key) for i in resp]
-    elif isinstance(resp, dict) and not isinstance(resp, ShippoObject):
-        resp = resp.copy()
-        return ShippoObject.construct_from(resp, api_key)
-    else:
-        return resp
+from shippo import (
+    api_requestor,
+    api_version,
+    error,
+    util,
+    rates_req_timeout
+)
 
 
 class ShippoObject(dict):
@@ -82,6 +77,26 @@ class ShippoObject(dict):
             "You cannot delete attributes on a ShippoObject. "
             "To unset a property, set it to None.")
 
+    def __repr__(self):
+        ident_parts = [type(self).__name__]
+
+        if isinstance(self.get('object'), basestring):
+            ident_parts.append(self.get('object'))
+
+        if isinstance(self.get('object_id'), basestring):
+            ident_parts.append('object_id=%s' % self.get('object_id'))
+
+        unicode_repr = '<%s at %s> JSON: %s' % (
+            ' '.join(ident_parts), hex(id(self)), str(self))
+
+        if sys.version_info[0] < 3:
+            return unicode_repr.encode('utf-8')
+        else:
+            return unicode_repr
+
+    def __str__(self):
+        return util.json.dumps(self, sort_keys=True, indent=2)
+
     @classmethod
     def construct_from(cls, values, api_key):
         instance = cls(values.get('object_id'), api_key)
@@ -103,9 +118,9 @@ class ShippoObject(dict):
 
         self._transient_values = self._transient_values - set(values)
 
-        for k, v in values.iteritems():
+        for key, val in values.iteritems():
             super(ShippoObject, self).__setitem__(
-                k, convert_to_shippo_object(v, api_key))
+                key, self.__class__.convert_to_shippo_object(val, api_key))
 
         self._previous_metadata = values.get('metadata')
 
@@ -115,28 +130,13 @@ class ShippoObject(dict):
 
         requestor = api_requestor.APIRequestor(self.api_key)
         response, api_key = requestor.request(method, url, params)
+        return self.__class__.convert_to_shippo_object(response, api_key)
 
-        return convert_to_shippo_object(response, api_key)
-
-    def __repr__(self):
-        ident_parts = [type(self).__name__]
-
-        if isinstance(self.get('object'), basestring):
-            ident_parts.append(self.get('object'))
-
-        if isinstance(self.get('object_id'), basestring):
-            ident_parts.append('object_id=%s' % (self.get('object_id'),))
-
-        unicode_repr = '<%s at %s> JSON: %s' % (
-            ' '.join(ident_parts), hex(id(self)), str(self))
-
-        if sys.version_info[0] < 3:
-            return unicode_repr.encode('utf-8')
-        else:
-            return unicode_repr
-
-    def __str__(self):
-        return util.json.dumps(self, sort_keys=True, indent=2)
+    def refresh(self):
+        object_id = self.get('object_id')
+        instance_url = self.__class__.instance_url(object_id)
+        self.refresh_from(self.request('get', instance_url))
+        return self
 
     @property
     def shippo_id(self):
@@ -144,10 +144,6 @@ class ShippoObject(dict):
 
 
 class APIResource(ShippoObject):
-
-    def refresh(self):
-        self.refresh_from(self.request('get', self.instance_url()))
-        return self
 
     @classmethod
     def class_name(cls):
@@ -158,30 +154,47 @@ class APIResource(ShippoObject):
         return str(urllib.quote_plus(cls.__name__.lower()))
 
     @classmethod
-    def class_url(cls):
+    def class_path(cls):
         cls_name = cls.class_name()
-        return "/v1/%ss" % (cls_name,)
+        return "%ss" % cls_name
 
-    def instance_url(self):
-        object_id = self.get('object_id')
+    @classmethod
+    def class_url(cls):
+        return 'v%s/%s' % (api_version, cls.class_path())
+
+    @classmethod
+    def instance_url(cls, object_id):
         if not object_id:
             raise error.InvalidRequestError(
                 'Could not determine which URL to request: %s instance '
-                'has invalid ID: %r' % (type(self).__name__, object_id), 'object_id')
+                'has invalid ID: %r' % (cls, object_id), 'object_id')
         object_id = util.utf8(object_id)
-        base = self.class_url()
+        base = cls.class_url()
         extn = urllib.quote_plus(object_id)
         return "%s/%s" % (base, extn)
+
+    @classmethod
+    def handle_request(cls, method, url, api_key=None, **params):
+        requestor = api_requestor.APIRequestor(api_key)
+        response, api_key = requestor.request(method, url, params)
+        return cls.convert_to_shippo_object(response, api_key)
+
+    @classmethod
+    def convert_to_shippo_object(cls, resp, api_key):
+        if isinstance(resp, list):
+            return [cls.convert_to_shippo_object(i, api_key) for i in resp]
+        elif isinstance(resp, dict) and not isinstance(resp, ShippoObject):
+            resp = resp.copy()
+            return cls.construct_from(resp, api_key)
+        else:
+            return resp
 
 
 class CreateableAPIResource(APIResource):
 
     @classmethod
     def create(cls, api_key=None, **params):
-        requestor = api_requestor.APIRequestor(api_key)
-        url = cls.class_url()
-        response, api_key = requestor.request('post', url, params)
-        return convert_to_shippo_object(response, api_key)
+        return cls.handle_request('post', cls.class_url(), api_key, **params)
 
 
 class ListableAPIResource(APIResource):
@@ -193,38 +206,33 @@ class ListableAPIResource(APIResource):
             the page number can be specified respectively cls.all(<size>,<page>)
             **NOTE: To specify a page number, the page size must also be provided
         """
-        requestor = api_requestor.APIRequestor(api_key)
+        if page and not size:
+            raise error.APIError('Must supply page size to specify page')
+
         url = cls.class_url()
         if size:
-            url = url+'?results='+urllib.quote_plus(str(size))
-        if page:
-            url = url+'&page='+urllib.quote_plus(str(page))
-        response, api_key = requestor.request('get', url, params)
-        return convert_to_shippo_object(response, api_key)
+            extra = '?results=%s' % urllib.quote_plus(str(size))
+            if page:
+                extra = '%s&page=%s' % (extra, urllib.quote_plus(str(page)))
+            url = '%s%s' % (url, extra)
+
+        return cls.handle_request('get', url, api_key, **params)
 
 
 class FetchableAPIResource(APIResource):
 
     @classmethod
-    def retrieve(cls, object_id, api_key=None):
-        object_id = util.utf8(object_id)
-        extn = urllib.quote_plus(object_id)
-        requestor = api_requestor.APIRequestor(api_key)
-        url = cls.class_url() + extn
-        response, api_key = requestor.request('get', url)
-        return convert_to_shippo_object(response, api_key)
+    def retrieve(cls, object_id, api_key=None, **params):
+        url = cls.instance_url(object_id)
+        return cls.handle_request('get', url, api_key, **params)
 
 
 class UpdateableAPIResource(APIResource):
 
     @classmethod
     def update(cls, object_id, api_key=None, **params):
-        object_id = util.utf8(object_id)
-        extn = urllib.quote_plus(object_id)
-        requestor = api_requestor.APIRequestor(api_key)
-        url = cls.class_url() + extn
-        response, api_key = requestor.request('put', url, params)
-        return convert_to_shippo_object(response, api_key)
+        url = cls.instance_url(object_id)
+        return cls.handle_request('put', url, api_key, **params)
 
 
 # ---- API objects ----
@@ -232,39 +240,31 @@ class UpdateableAPIResource(APIResource):
 class Address(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
 
     @classmethod
-    def validate(cls, object_id, api_key=None):
-        extn = urllib.quote_plus(object_id)
-        url = cls.class_url() + extn + '/validate'
-        requestor = api_requestor.APIRequestor(api_key)
-        response, content = requestor.request('get', url)
-        return convert_to_shippo_object(response, content)
+    def validate(cls, object_id, api_key=None, **params):
+        url = '%s/%s' % (cls.instance_url(object_id), 'validate')
+        return cls.handle_request('get', url, api_key, **params)
 
     @classmethod
-    def class_url(cls):
-        cls_name = cls.class_name()
-        return "v1/%ses/" % (cls_name,)
+    def class_path(cls):
+        return "addresses"
 
 
 class CustomsItem(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
 
     @classmethod
-    def class_url(cls):
-        return "v1/customs/items/"
+    def class_path(cls):
+        return "customs/items"
 
 
 class CustomsDeclaration(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
 
     @classmethod
-    def class_url(cls):
-        return "v1/customs/declarations/"
+    def class_path(cls):
+        return "customs/declarations"
 
 
 class Parcel(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
-
-    @classmethod
-    def class_url(cls):
-        cls_name = cls.class_name()
-        return "v1/%ss/" % (cls_name,)
+    pass
 
 
 class Manifest(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
@@ -273,21 +273,11 @@ class Manifest(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
         require Manifests to properly process the shipments
     """
 
-    @classmethod
-    def class_url(cls):
-        cls_name = cls.class_name()
-        return "v1/%ss/" % (cls_name,)
-
 
 class Refund(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
     """
         Refunds are reimbursements for successfully created but unused Transaction.
     """
-
-    @classmethod
-    def class_url(cls):
-        cls_name = cls.class_name()
-        return "v1/%ss/" % (cls_name,)
 
 
 class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
@@ -296,28 +286,12 @@ class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
         and the Parcel to be shipped. Shipments can be created, retrieved and listed.
     """
 
-    @classmethod
-    def get_rates(cls, object_id, api_key=None, currency=None, **params):
-        """
-            Given a valid shipment object_id, all possible rates are calculated and returned.
-        """
-        if 'sync' in params and params['sync']:
-            timeout = time.time() + rates_req_timeout
-            while cls.retrieve(object_id).object_status in ("QUEUED", "WAITING") and time.time() < timeout:
-                continue
-
-        shipment_id = urllib.quote_plus(object_id)
-        url = cls.class_url() + shipment_id + '/rates/'
+    def get_rates(self, currency=None, **params):
+        cls = self.__class__
+        url = '%s/%s' % (cls.instance_url(self.get('object_id')), 'rates')
         if currency:
-            url = url + '' + urllib.quote_plus(currency)
-        requestor = api_requestor.APIRequestor(api_key)
-        response, content = requestor.request('get', url)
-        return convert_to_shippo_object(response, content)
-
-    @classmethod
-    def class_url(cls):
-        cls_name = cls.class_name()
-        return "v1/%ss/" % (cls_name,)
+            url = '%s/%s' % (url, urllib.quote_plus(currency))
+        return Rate.handle_request('get', url, self.get('api_key'), **params)
 
 
 class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
@@ -332,22 +306,7 @@ class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResour
             Creates a new transaction object, given a valid rate ID.
             Takes the parameters as a dictionary instead of key word arguments.
         """
-        url = cls.class_url()
-        requestor = api_requestor.APIRequestor(api_key)
-        response, content = requestor.request('post', url, params)
-        transaction = convert_to_shippo_object(response, content)
-        if 'sync' in params and params['sync']:
-            timeout = time.time() + transaction_req_timeout
-            while transaction.object_status in ("QUEUED", "WAITING") and time.time() < timeout:
-                transaction = cls.retrieve(transaction.object_id)
-                continue
-
-        return transaction
-
-    @classmethod
-    def class_url(cls):
-        cls_name = cls.class_name()
-        return "v1/%ss/" % (cls_name,)
+        return cls.handle_request('post', cls.class_url(), api_key, **params)
 
 
 class Rate(ListableAPIResource, FetchableAPIResource):
@@ -356,14 +315,9 @@ class Rate(ListableAPIResource, FetchableAPIResource):
      Rates. Depending on your Addresses and Parcel, there may be none, one or multiple Rates
     """
 
-    @classmethod
-    def class_url(cls):
-        cls_name = cls.class_name()
-        return "v1/%ss/" % (cls_name,)
-
 
 class CarrierAccount(CreateableAPIResource, ListableAPIResource, FetchableAPIResource, UpdateableAPIResource):
 
     @classmethod
-    def class_url(cls):
-        return "v1/carrier_accounts/"
+    def class_path(cls):
+        return "carrier_accounts"
