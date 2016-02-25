@@ -1,7 +1,6 @@
 import os
 import sys
 import textwrap
-import warnings
 
 from shippo import error
 
@@ -15,7 +14,6 @@ try:
     import requests
 except ImportError:
     requests = None
-    print "there was an error trying to import requests"
 else:
     try:
         # Require version 0.8.8, but don't want to depend on distutils
@@ -93,7 +91,7 @@ class RequestsClient(HTTPClient):
             # This causes the content to actually be read, which could cause
             # e.g. a socket timeout. TODO: The other fetch methods probably
             # are succeptible to the same and should be updated.
-            
+
             content = result.content
             status_code = result.status_code
         except Exception, e:
@@ -120,7 +118,8 @@ class RequestsClient(HTTPClient):
                 err += " with no error message"
         msg = textwrap.fill(msg) + "\n\n(Network error: %s)" % (err,)
         raise error.APIConnectionError(msg)
-        
+
+
 class UrlFetchClient(HTTPClient):
     name = 'urlfetch'
 
