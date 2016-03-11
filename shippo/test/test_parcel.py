@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-import os
-import sys
 import unittest
 
 from mock import patch
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import shippo
-
-from shippo.test.helper import ShippoTestCase, DUMMY_PARCEL, INVALID_PARCEL
+from shippo.test.helper import (
+    DUMMY_PARCEL,
+    INVALID_PARCEL,
+    ShippoTestCase,
+)
 
 
 class ParcelTests(ShippoTestCase):
@@ -30,27 +30,27 @@ class ParcelTests(ShippoTestCase):
         super(ParcelTests, self).tearDown()
 
         self.client_patcher.stop()
-        
+
     def test_invalid_create(self):
         self.assertRaises(shippo.error.InvalidRequestError, shippo.Parcel.create, **INVALID_PARCEL)
-                          
+
     def test_create(self):
         parcel = shippo.Parcel.create(**DUMMY_PARCEL)
         self.assertEqual(parcel.object_state, 'VALID')
-    
+
     def test_retrieve(self):
         parcel = shippo.Parcel.create(**DUMMY_PARCEL)
         retrieve = shippo.Parcel.retrieve(parcel.object_id)
         self.assertItemsEqual(parcel, retrieve)
-        
+
     def test_invalid_retrieve(self):
         self.assertRaises(shippo.error.APIError, shippo.Parcel.retrieve, 'EXAMPLE_OF_INVALID_ID')
-        
+
     def test_list_all(self):
         parcel_list = shippo.Parcel.all()
         self.assertTrue('count' in parcel_list)
         self.assertTrue('results' in parcel_list)
-        
+
     def test_list_page_size(self):
         pagesize = 1
         parcel_list = shippo.Parcel.all(size=pagesize)

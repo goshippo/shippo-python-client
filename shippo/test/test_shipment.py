@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
-import os
-import sys
 import unittest
 
 from mock import patch
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import shippo
-
-from shippo.test.helper import ShippoTestCase, DUMMY_SHIPMENT, INVALID_SHIPMENT,\
-    TO_ADDRESS, FROM_ADDRESS, DUMMY_PARCEL
+from shippo.test.helper import (
+    create_mock_shipment,
+    INVALID_SHIPMENT,
+    ShippoTestCase,
+)
 
 
 class ShipmentTests(ShippoTestCase):
@@ -31,7 +30,7 @@ class ShipmentTests(ShippoTestCase):
         super(ShipmentTests, self).tearDown()
 
         self.client_patcher.stop()
-        
+
     def test_invalid_create(self):
         self.assertRaises(shippo.error.InvalidRequestError, shippo.Shipment.create,
                           **INVALID_SHIPMENT)
@@ -67,36 +66,13 @@ class ShipmentTests(ShippoTestCase):
 
     def test_get_rates_blocking(self):
         shipment = create_mock_shipment()
-        rates = shippo.Shipment.get_rates(shipment.object_id, sync=True)
+        rates = shippo.Shipment.get_rates(shipment.object_id, async=False)
         self.assertTrue('count' in rates)
         self.assertTrue('results' in rates)
 
     def test_invalid_get_rate(self):
         self.assertRaises(shippo.error.APIError, shippo.Shipment.get_rates,
                           'EXAMPLE_OF_INVALID_ID')
-
-
-def create_mock_shipment():
-    to_address = shippo.Address.create(**TO_ADDRESS)
-    from_address = shippo.Address.create(**FROM_ADDRESS)
-    parcel = shippo.Parcel.create(**DUMMY_PARCEL)
-    SHIPMENT = DUMMY_SHIPMENT.copy()
-    SHIPMENT['address_from'] = from_address.object_id
-    SHIPMENT['address_to'] = to_address.object_id
-    SHIPMENT['parcel'] = parcel.object_id
-    shipment = shippo.Shipment.create(**SHIPMENT)
-    return shipment
-
-
-def create_mock_international_shipment():
-    SHIPMENT = self.create_mock_shipment()
-    customs_item = shippo.CustomsItem.create(**DUMMY_CUSTOMS_ITEM)
-    customs_declaration_parameters = DUMMY_CUSTOMS_DECLARATION.copy()
-    customs_declaration_parameters["items"][0] = customs_item.object_id
-    customs_declaration = shippo.CustomsDeclaration.create(**customs_declaration_parameters)
-    SHIPMENT['customs_declaration'] = customs_declaration.object_id
-    shipment = shippo.Shipment.create(**SHIPMENT)
-    return shipment
 
 
 if __name__ == '__main__':

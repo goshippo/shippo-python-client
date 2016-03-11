@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-import os
-import sys
 import unittest
 
 from mock import patch
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import shippo
-
-from shippo.test.helper import ShippoTestCase, DUMMY_CUSTOMS_ITEM, INVALID_CUSTOMS_ITEM
+from shippo.test.helper import (
+    DUMMY_CUSTOMS_ITEM,
+    INVALID_CUSTOMS_ITEM,
+    ShippoTestCase,
+)
 
 
 class CustomsItemTest(ShippoTestCase):
@@ -29,11 +29,11 @@ class CustomsItemTest(ShippoTestCase):
     def tearDown(self):
         super(CustomsItemTest, self).tearDown()
         self.client_patcher.stop()
-   
+
     def test_invalid_create(self):
         self.assertRaises(shippo.error.InvalidRequestError, shippo.CustomsItem.create,
                           **INVALID_CUSTOMS_ITEM)
-                          
+
     def test_create(self):
         customs_item = shippo.CustomsItem.create(**DUMMY_CUSTOMS_ITEM)
         self.assertEqual(customs_item.object_state, 'VALID')

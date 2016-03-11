@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-import os
-import sys
 import unittest
 
 from mock import patch
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import shippo
-
-from shippo.test.helper import ShippoTestCase, DUMMY_CUSTOMS_DECLARATION,\
-    INVALID_CUSTOMS_DECLARATION, DUMMY_CUSTOMS_ITEM
+from shippo.test.helper import (
+    DUMMY_CUSTOMS_DECLARATION,
+    INVALID_CUSTOMS_DECLARATION,
+    DUMMY_CUSTOMS_ITEM,
+    ShippoTestCase,
+)
 
 
 class CustomsDeclarationTests(ShippoTestCase):
@@ -31,7 +31,7 @@ class CustomsDeclarationTests(ShippoTestCase):
         super(CustomsDeclarationTests, self).tearDown()
 
         self.client_patcher.stop()
-        
+
     def test_invalid_create(self):
         self.assertRaises(shippo.error.InvalidRequestError, shippo.CustomsDeclaration.create,
                           **INVALID_CUSTOMS_DECLARATION)
@@ -51,10 +51,13 @@ class CustomsDeclarationTests(ShippoTestCase):
         # Test Retrieving Object
         retrieve = shippo.CustomsDeclaration.retrieve(CustomsDeclaration.object_id)
         self.assertItemsEqual(CustomsDeclaration, retrieve)
-        
+
     def test_invalid_retrieve(self):
-        self.assertRaises(shippo.error.APIError, shippo.CustomsDeclaration.retrieve, 
-            'EXAMPLE_OF_INVALID_ID')
+        self.assertRaises(
+            shippo.error.APIError,
+            shippo.CustomsDeclaration.retrieve,
+            'EXAMPLE_OF_INVALID_ID'
+        )
 
     def test_list_all(self):
         customs_declaration_list = shippo.CustomsDeclaration.all()

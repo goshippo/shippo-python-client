@@ -34,7 +34,7 @@ INVALID_ADDRESS = {
     "country": "US",
     "phone": "+1 555 341 9393",
     "email": "laura@goshippo.com",
-    "metadata": "Customer ID 123456" 
+    "metadata": "Customer ID 123456"
 }
 NOT_POSSIBLE_ADDRESS = {
     "object_purpose": "QUOTE",
@@ -51,7 +51,6 @@ NOT_POSSIBLE_ADDRESS = {
     "email": "laura@goshippo.com",
     "metadata": "Customer ID 123456"
 }
-
 DUMMY_PARCEL = {
     "length": "5",
     "width": "5",
@@ -116,7 +115,7 @@ DUMMY_CUSTOMS_DECLARATION = {
     "items": [
         "0c1a723687164307bb2175972fbcd9ef"
     ],
-    "metadata": "Order ID #123123"   
+    "metadata": "Order ID #123123"
 }
 INVALID_CUSTOMS_DECLARATION = {
     "exporter_reference": "",
@@ -212,6 +211,30 @@ INVALID_TRANSACTION = {
 }
 
 
+def create_mock_shipment():
+    to_address = shippo.Address.create(**TO_ADDRESS)
+    from_address = shippo.Address.create(**FROM_ADDRESS)
+    parcel = shippo.Parcel.create(**DUMMY_PARCEL)
+    SHIPMENT = DUMMY_SHIPMENT.copy()
+    SHIPMENT['address_from'] = from_address.object_id
+    SHIPMENT['address_to'] = to_address.object_id
+    SHIPMENT['parcel'] = parcel.object_id
+    SHIPMENT['async'] = False
+    shipment = shippo.Shipment.create(**SHIPMENT)
+    return shipment
+
+
+def create_mock_international_shipment():
+    SHIPMENT = create_mock_shipment()
+    customs_item = shippo.CustomsItem.create(**DUMMY_CUSTOMS_ITEM)
+    customs_declaration_parameters = DUMMY_CUSTOMS_DECLARATION.copy()
+    customs_declaration_parameters["items"][0] = customs_item.object_id
+    customs_declaration = shippo.CustomsDeclaration.create(**customs_declaration_parameters)
+    SHIPMENT['customs_declaration'] = customs_declaration.object_id
+    shipment = shippo.Shipment.create(**SHIPMENT)
+    return shipment
+
+
 class ShippoTestCase(unittest.TestCase):
     RESTORE_ATTRIBUTES = ('api_version', 'api_key')
 
@@ -226,7 +249,11 @@ class ShippoTestCase(unittest.TestCase):
         api_base = os.environ.get('SHIPPO_API_BASE')
         if api_base:
             shippo.api_base = api_base
-        shippo.api_key = "<API-KEY>"
+
+        api_key = os.environ.get('SHIPPO_API_KEY', None)
+        if not api_key:
+            raise Exception('Set your SHIPPO_API_KEY in your os.envrion')
+        shippo.api_key = api_key
 
     def tearDown(self):
         super(ShippoTestCase, self).tearDown()
@@ -250,7 +277,8 @@ class ShippoTestCase(unittest.TestCase):
         else:
             raise self.failureException(
                 '%s was not raised' % (exception.__name__,))
-                
+
+
 class ShippoUnitTestCase(ShippoTestCase):
     REQUEST_LIBRARIES = ['urlfetch', 'requests']
 
@@ -270,8 +298,8 @@ class ShippoUnitTestCase(ShippoTestCase):
 
         for patcher in self.request_patchers.itervalues():
             patcher.stop()
-            
-            
+
+
 class ShippoApiTestCase(ShippoTestCase):
 
     def setUp(self):
@@ -287,4 +315,4 @@ class ShippoApiTestCase(ShippoTestCase):
         self.requestor_patcher.stop()
 
     def mock_response(self, res):
-        self.requestor_mock.request = Mock(return_value=(res, 'reskey'))            
+        self.requestor_mock.request = Mock(return_value=(res, 'reskey'))

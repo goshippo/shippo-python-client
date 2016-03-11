@@ -1,8 +1,6 @@
 import urllib
 import sys
-import time
-
-from shippo import api_requestor, error, util, rates_req_timeout, transaction_req_timeout
+from shippo import api_requestor, error, util
 
 
 def convert_to_shippo_object(resp, api_key):
@@ -301,11 +299,6 @@ class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
         """
             Given a valid shipment object_id, all possible rates are calculated and returned.
         """
-        if 'sync' in params and params['sync']:
-            timeout = time.time() + rates_req_timeout
-            while cls.retrieve(object_id).object_status in ("QUEUED", "WAITING") and time.time() < timeout:
-                continue
-
         shipment_id = urllib.quote_plus(object_id)
         url = cls.class_url() + shipment_id + '/rates/'
         if currency:
@@ -335,14 +328,7 @@ class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResour
         url = cls.class_url()
         requestor = api_requestor.APIRequestor(api_key)
         response, content = requestor.request('post', url, params)
-        transaction = convert_to_shippo_object(response, content)
-        if 'sync' in params and params['sync']:
-            timeout = time.time() + transaction_req_timeout
-            while transaction.object_status in ("QUEUED", "WAITING") and time.time() < timeout:
-                transaction = cls.retrieve(transaction.object_id)
-                continue
-
-        return transaction
+        return convert_to_shippo_object(response, content)
 
     @classmethod
     def class_url(cls):

@@ -22,7 +22,10 @@ sudo pip install shippo
 
 #### To test:
 
-Add your `<API-KEY>` in `/test/helper.py`
+Set your `SHIPPO_API_KEY` as an environment variable.
+e.g. on OSX:
+
+`export SHIPPO_API_KEY="<MY-API-KEY>"`
 
 Run the test with the following command:
 
@@ -66,7 +69,9 @@ address1 = shippo.Address.create(
 print 'Success with Address 1 : %r' % (address1, )
 ```
 
-and you will have created an address. 
+and you will have created an address.
+
+Some resources are asynchronous by default. Creating these resources will return the resource object, but the `object_status` property will be set to `QUEUED` until you retrieve it again. Pass in the param `async=False` to these resources' methods to wait for a response.
 
 Explore example.py for more examples on using the python wrapper.
 
