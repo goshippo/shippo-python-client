@@ -1,0 +1,44 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate, compress']
+      Content-Type: [application/json]
+      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
+          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
+          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
+          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
+          "bindings_version": "1.2.0"}']
+    method: GET
+    uri: https://api.goshippo.com/v1/customs/declarations/
+  response:
+    body:
+      string: !!binary |
+        H4sIAPF27FYC/+2WXWscNxSG/8oyuY139TmSFkLr1IYYEhua0EJCGDTSkVdlvpA0TkzIf4+0401c
+        4lL3puyFYW6Ozqv3SEcPGn2pzDgPqdquMKHPV9UAn0tQ7VKa4naz0ZNfX49x56dpXJux39zgjZlj
+        Gvu4sWA6HXTy4xA3v0z6Gl6QKntMAW78OMfsM8xdl0cCxLlLZeDDl2ps/wKTGhNAJ7ClGEG4PkH0
+        BMt3BG8Z3xK0Zoi/L2Z36nmy/0Ht90KtW0dqiwxrKSMWS+WUkJgZWreYInZvwvhpgFDm9DqlnYf5
+        1/ubvieMKS+jCP84fX1xVhIGQvLuton++s7jtZ6DXr2EXYAhrv6c76lyOoUZ8oBP0O8bUhlpGCJU
+        SaQIaxWVCLThBGPXEicUrT6WcxmHxkLnbyDcNuNUel5Knb48vTy7utxXGIcEQ4pNup32K3xz/vtv
+        r3L64u353/Lweer0oA8W707e7nxIq2kOZqcjFG2WjCFBaAI4yLswe8OS8f0/Zoab0S/hs8xS/paq
+        fQ/BeN01PwROd7H0oMvhEL87LD3y5q7D1X7bCeIhAOiayZkSXl6dn180FDVUNLrkNMTGp+EgtT5m
+        Nn2/HMiyPJO9Qn+Ie0g6I6VLfBUshNXF2eqw8K/PV//OKeVbTNZIqEdx+qB64ZS2XCNqayqIY0ha
+        RWqHGAZKrVDMHgunWiDupNOYsJpJapSUTFpJHdaoBWOfOD1STtmWiTVWj+T0IfXCKbbMArGO58uJ
+        EVm3lCKHEeKatYBqfCScEnC1JRZRZAXTyGoqakrAcu2o1Mo9cXqcnGJVyMs33qM4fVC9cKqkY65l
+        WHCrmHBYUsEN5a0Rkiqm6JFwypVCIKXVrUAM1VLl1wp3zoBBjHFLnjg9Xk75GovHc/qTeuGUY2ap
+        sVK0tGVW1ppyTYQlTnIHRB3Lfx8Dlvl+N6iuBds/ThlnkH8FCACp/Dx54vR/5/Tj128xZD6auQ0A
+        AA==
+    headers:
+      allow: ['GET, POST, HEAD, OPTIONS']
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-length: ['742']
+      content-type: [application/json]
+      date: ['Fri, 18 Mar 2016 21:45:21 GMT']
+      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
+      server: [nginx/1.8.0]
+      vary: ['Host, Cookie, Accept-Encoding']
+    status: {code: 200, message: OK}
+version: 1

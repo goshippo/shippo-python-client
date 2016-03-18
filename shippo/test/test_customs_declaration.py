@@ -11,6 +11,8 @@ from shippo.test.helper import (
     ShippoTestCase,
 )
 
+from shippo.util import shippo_vcr
+
 
 class CustomsDeclarationTests(ShippoTestCase):
     request_client = shippo.http_client.RequestsClient
@@ -32,10 +34,12 @@ class CustomsDeclarationTests(ShippoTestCase):
 
         self.client_patcher.stop()
 
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/customs-declaration')
     def test_invalid_create(self):
         self.assertRaises(shippo.error.InvalidRequestError, shippo.CustomsDeclaration.create,
                           **INVALID_CUSTOMS_DECLARATION)
 
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/customs-declaration')
     def test_create(self):
         customs_item = shippo.CustomsItem.create(**DUMMY_CUSTOMS_ITEM)
         customs_declaration_parameters = DUMMY_CUSTOMS_DECLARATION.copy()
@@ -43,6 +47,7 @@ class CustomsDeclarationTests(ShippoTestCase):
         CustomsDeclaration = shippo.CustomsDeclaration.create(**customs_declaration_parameters)
         self.assertEqual(CustomsDeclaration.object_state, 'VALID')
 
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/customs-declaration')
     def test_retrieve(self):
         customs_item = shippo.CustomsItem.create(**DUMMY_CUSTOMS_ITEM)
         customs_declaration_parameters = DUMMY_CUSTOMS_DECLARATION.copy()
@@ -52,6 +57,7 @@ class CustomsDeclarationTests(ShippoTestCase):
         retrieve = shippo.CustomsDeclaration.retrieve(CustomsDeclaration.object_id)
         self.assertItemsEqual(CustomsDeclaration, retrieve)
 
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/customs-declaration')
     def test_invalid_retrieve(self):
         self.assertRaises(
             shippo.error.APIError,
@@ -59,11 +65,13 @@ class CustomsDeclarationTests(ShippoTestCase):
             'EXAMPLE_OF_INVALID_ID'
         )
 
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/customs-declaration')
     def test_list_all(self):
         customs_declaration_list = shippo.CustomsDeclaration.all()
         self.assertTrue('count' in customs_declaration_list)
         self.assertTrue('results' in customs_declaration_list)
 
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/customs-declaration')
     def test_list_page_size(self):
         pagesize = 1
         customs_declaration_list = shippo.CustomsDeclaration.all(size=pagesize)

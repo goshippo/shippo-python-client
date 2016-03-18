@@ -1,0 +1,36 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate, compress']
+      Content-Type: [application/json]
+      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
+          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
+          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
+          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
+          "bindings_version": "1.2.0"}']
+    method: GET
+    uri: https://api.goshippo.com/v1/manifests/?results=1
+  response:
+    body:
+      string: !!binary |
+        H4sIAPt27FYC/5WRy2rDMBBFfyVo0VUdW7IsO4bQLpoPKCSblmD0cqISS0KPtBDy75WcFLItaCEu
+        Z2bunbkAbqIOoF9A8rwAWv7kPziGYH1fltSq5cH4o7LWLLmZyjMsJ6rVKH3w5YuTPp6CX8MnSw9y
+        jUBqYZ08KxN9aqPj6ZSUO5WEzwsw7EvyMHAnaZAiz0IVbIqqKxDZVqiHqG/aZd3gj9zsTkcr/kGr
+        GWw5YrAREtaMYoZEV6GubiHp0Igp5OShwHxr6XLNREM4KhlfHzM/gD7QMCcD77vNbvN2y2vOStzq
+        o7c+az6ySXmvjB6y8btvXFRNAckW1X2zSm/2TIVI+/HD6NKkbBs3ZNVKQQkdcSUhRR3uWM1azjqC
+        5WxbGB4nqW8r3SeBU+eUdAPlf9cEmQuOak95SD5u6HV//QXdbmn78QEAAA==
+    headers:
+      allow: ['GET, POST, HEAD, OPTIONS']
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-length: ['328']
+      content-type: [application/json]
+      date: ['Fri, 18 Mar 2016 21:45:31 GMT']
+      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
+      server: [nginx/1.8.0]
+      vary: ['Host, Cookie, Accept-Encoding']
+    status: {code: 200, message: OK}
+version: 1

@@ -1,5 +1,6 @@
 import logging
 import sys
+import vcr
 
 logger = logging.getLogger('shippo')
 
@@ -49,3 +50,8 @@ def utf8(value):
         return value.encode('utf-8')
     else:
         return value
+
+
+shippo_vcr = vcr.VCR(
+    filter_headers=['Authorization']
+)

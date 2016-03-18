@@ -4,6 +4,7 @@
 /shippo.egg-info
 *.pyc
 *.egg
+.eggs/
 *.class
 
 # Unit test / coverage reports
@@ -12,3 +13,5 @@
 .cache
 nosetests.xml
 coverage.xml
+
+venv/

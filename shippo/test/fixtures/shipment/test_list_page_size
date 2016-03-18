@@ -1,0 +1,63 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate, compress']
+      Content-Type: [application/json]
+      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
+          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
+          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
+          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
+          "bindings_version": "1.2.0"}']
+    method: GET
+    uri: https://api.goshippo.com/v1/shipments/?results=1
+  response:
+    body:
+      string: !!binary |
+        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
+    headers:
+      allow: ['GET, POST, HEAD, OPTIONS']
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-length: ['1864']
+      content-type: [application/json]
+      date: ['Fri, 18 Mar 2016 21:46:02 GMT']
+      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
+      server: [nginx/1.8.0]
+      vary: ['Host, Cookie, Accept-Encoding']
+    status: {code: 200, message: OK}
+version: 1
