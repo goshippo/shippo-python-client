@@ -71,7 +71,7 @@ INVALID_PARCEL = {
 }
 DUMMY_MANIFEST = {
     "provider": "USPS",
-    "submission_date": "2014-05-16T23:59:59Z",
+    "submission_date": "2016-03-18T23:59:59Z",
     "address_from": "28828839a2b04e208ac2aa4945fbca9a"
 }
 INVALID_MANIFEST = {
@@ -171,7 +171,7 @@ DUMMY_SHIPMENT = {
     "address_to": "4c7185d353764d0985a6a7825aed8ffb",
     "parcel": "ec952343dd4843c39b42aca620471fd5",
     "submission_type": "PICKUP",
-    "submission_date": "2013-12-03T12:00:00.000Z",
+    "submission_date": "2016-03-18T23:59:59Z",
     "insurance_amount": "200",
     "insurance_currency": "USD",
     "extra": {
@@ -211,7 +211,7 @@ INVALID_TRANSACTION = {
 }
 
 
-def create_mock_shipment():
+def create_mock_shipment(async=False):
     to_address = shippo.Address.create(**TO_ADDRESS)
     from_address = shippo.Address.create(**FROM_ADDRESS)
     parcel = shippo.Parcel.create(**DUMMY_PARCEL)
@@ -219,9 +219,32 @@ def create_mock_shipment():
     SHIPMENT['address_from'] = from_address.object_id
     SHIPMENT['address_to'] = to_address.object_id
     SHIPMENT['parcel'] = parcel.object_id
-    SHIPMENT['async'] = False
+    SHIPMENT['async'] = async
     shipment = shippo.Shipment.create(**SHIPMENT)
     return shipment
+
+
+def create_mock_manifest(transaction=None):
+    if not transaction:
+        transaction = create_mock_transaction()
+    rate = shippo.Rate.retrieve(transaction.rate)
+    shipment = shippo.Shipment.retrieve(rate.shipment)
+    MANIFEST = DUMMY_MANIFEST.copy()
+    MANIFEST['address_from'] = shipment.address_from
+    MANIFEST['async'] = False
+    manifest = shippo.Manifest.create(**MANIFEST)
+    return manifest
+
+
+def create_mock_transaction(async=False):
+    shipment = create_mock_shipment(async)
+    rates_list = shipment.rates_list
+    usps_rate = filter(lambda x: x.servicelevel_token == 'usps_priority', rates_list)[0]
+    t = DUMMY_TRANSACTION.copy()
+    t['rate'] = usps_rate.object_id
+    t['async'] = async
+    txn = shippo.Transaction.create(**t)
+    return txn
 
 
 def create_mock_international_shipment():

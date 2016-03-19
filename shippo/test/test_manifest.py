@@ -9,6 +9,9 @@ from shippo.test.helper import (
     DUMMY_MANIFEST,
     INVALID_MANIFEST,
     ShippoTestCase,
+    create_mock_transaction,
+    create_mock_manifest,
+    create_mock_shipment
 )
 
 from shippo.util import shippo_vcr
@@ -40,17 +43,14 @@ class ManifestTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
     def test_create(self):
-        manifest = shippo.Manifest.create(**self.create_valid_manifest())
-        self.assertEqual(manifest.object_status, 'NOTRANSACTIONS')
-
-    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
-    def test_no_transaction_create(self):
-        manifest = shippo.Manifest.create(**self.create_mock_manifest())
-        self.assertEqual(manifest.object_status, 'NOTRANSACTIONS')
+        transaction = create_mock_transaction()
+        manifest = create_mock_manifest(transaction)
+        self.assertEqual(manifest.object_status, 'SUCCESS')
+        self.assertEqual(manifest.transactions[0], transaction.object_id)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
     def test_retrieve(self):
-        manifest = shippo.Manifest.create(**self.create_mock_manifest())
+        manifest = create_mock_manifest()
         retrieve = shippo.Manifest.retrieve(manifest.object_id)
         self.assertItemsEqual(manifest, retrieve)
 
@@ -70,22 +70,6 @@ class ManifestTests(ShippoTestCase):
         pagesize = 1
         manifest_list = shippo.Manifest.all(size=pagesize)
         self.assertEquals(len(manifest_list.results), pagesize)
-
-    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
-    def create_mock_manifest(self):
-        address = shippo.Address.create(**DUMMY_ADDRESS)
-        MANIFEST = DUMMY_MANIFEST.copy()
-        MANIFEST['address_from'] = address.object_id
-        return MANIFEST
-
-    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
-    def create_valid_manifest(self):
-        transactions = shippo.Transaction.all()
-        rate = shippo.Rate.retrieve(transactions.results[0].rate)
-        shipment = shippo.Shipment.retrieve(rate.shipment)
-        MANIFEST = DUMMY_MANIFEST.copy()
-        MANIFEST['address_from'] = shipment.address_to
-        return MANIFEST
 
 
 if __name__ == '__main__':
