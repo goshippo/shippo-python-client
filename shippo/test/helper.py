@@ -1,11 +1,10 @@
 import datetime
 import os
 import re
-import unittest
+import shippo
 
 from mock import patch, Mock
-
-import shippo
+from unittest2 import TestCase
 
 NOW = datetime.datetime.now()
 
@@ -258,7 +257,7 @@ def create_mock_international_shipment():
     return shipment
 
 
-class ShippoTestCase(unittest.TestCase):
+class ShippoTestCase(TestCase):
     RESTORE_ATTRIBUTES = ('api_version', 'api_key')
 
     def setUp(self):
@@ -273,10 +272,7 @@ class ShippoTestCase(unittest.TestCase):
         if api_base:
             shippo.api_base = api_base
 
-        api_key = os.environ.get('SHIPPO_API_KEY', None)
-        if not api_key:
-            raise Exception('Set your SHIPPO_API_KEY in your os.envrion')
-        shippo.api_key = api_key
+        shippo.api_key = os.environ.get('SHIPPO_API_KEY', '51895b669caa45038110fd4074e61e0d')
 
     def tearDown(self):
         super(ShippoTestCase, self).tearDown()

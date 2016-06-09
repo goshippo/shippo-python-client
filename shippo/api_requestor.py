@@ -1,16 +1,17 @@
 import calendar
 import datetime
-import platform
-import time
 import os
-import ssl
+import platform
 import socket
+import ssl
+import time
 import urllib
 import urlparse
 import warnings
 
 import shippo
-from shippo import error, http_client, version, util, certificate_blacklist
+import version
+from shippo import error, http_client, util, certificate_blacklist
 
 
 def _encode_datetime(dttime):

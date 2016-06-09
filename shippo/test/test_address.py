@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import unittest
+import unittest2
 
 from mock import patch
 
@@ -83,4 +83,4 @@ class AddressTests(ShippoTestCase):
         self.assertEqual(address.object_source, 'VALIDATOR')
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest2.main()

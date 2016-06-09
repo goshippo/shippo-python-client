@@ -1,14 +1,14 @@
 import os
-import unittest
+import unittest2
 
 
 def all():
     path = os.path.dirname(os.path.realpath(__file__))
-    return unittest.defaultTestLoader.discover(path)
+    return unittest2.defaultTestLoader.discover(path)
 
 
 def integration():
     path = os.path.dirname(os.path.realpath(__file__))
-    return unittest.defaultTestLoader.discover(
+    return unittest2.defaultTestLoader.discover(
         os.path.join(path, "integration")
     )

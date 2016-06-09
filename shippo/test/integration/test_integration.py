@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import unittest
+import unittest2
 
 from mock import patch
 
@@ -41,19 +41,36 @@ class FunctionalTests(ShippoTestCase):
             shippo.api_base = api_base
 
     def test_run(self):
-        address = shippo.Address.create(**DUMMY_ADDRESS)
-        self.assertEqual(address.object_state, 'VALID')
-        address = shippo.Address.validate(address.object_id)
-        self.assertEqual(address.object_source, 'VALIDATOR')
+        try:
+            address = shippo.Address.create(**DUMMY_ADDRESS)
+            self.assertEqual(address.object_state, 'VALID')
+            address_validated = shippo.Address.validate(address.object_id)
+            self.assertEqual(address_validated.object_source, 'VALIDATOR')
+        except shippo.error.AuthenticationError:
+                self.fail('Set your SHIPPO_API_KEY in your os.envrion')
+        except Exception as inst:
+            self.fail("Test failed with exception %s" % inst)
 
     def test_list_accessors(self):
-        address = shippo.Address.create(**DUMMY_ADDRESS)
+        try:
+            address = shippo.Address.create(**DUMMY_ADDRESS)
+        except shippo.error.AuthenticationError:
+            self.fail('Set your SHIPPO_API_KEY in your os.envrion')
+
         self.assertEqual(address['object_created'], address.object_created)
         address['foo'] = 'bar'
         self.assertEqual(address.foo, 'bar')
 
     def test_raise(self):
-        self.assertRaises(shippo.error.InvalidRequestError, shippo.Address.create, **INVALID_ADDRESS)
+        try:
+            shippo.Address.create(**INVALID_ADDRESS)
+            self.fail("Invalid address should have triggered a InvalidRequestError")
+        except shippo.error.InvalidRequestError:
+            pass
+        except shippo.error.AuthenticationError:
+            self.fail('Set your SHIPPO_API_KEY in your os.envrion')
+        except Exception as inst:
+            self.fail("Test failed with exception %s" % inst)
 
     def test_unicode(self):
         # Make sure unicode requests can be sent
@@ -67,4 +84,4 @@ class FunctionalTests(ShippoTestCase):
     #     self.assertRaises(shippo.error.APIError, address.refresh)
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest2.main()

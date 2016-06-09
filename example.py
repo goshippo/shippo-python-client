@@ -1,7 +1,6 @@
 import shippo
 
-# replace <API-KEY> with your key
-shippo.api_key = "<API-KEY>"
+shippo.api_key = "51895b669caa45038110fd4074e61e0d"
 
 
 # example address_from object dict

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import unittest
+import unittest2
 
 from mock import patch
 
@@ -58,4 +58,4 @@ class RateTests(ShippoTestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest2.main()
