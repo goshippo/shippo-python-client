@@ -13,5 +13,3 @@
 .cache
 nosetests.xml
 coverage.xml
-
-venv/
