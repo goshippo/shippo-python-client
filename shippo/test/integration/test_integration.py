@@ -47,7 +47,7 @@ class FunctionalTests(ShippoTestCase):
             address_validated = shippo.Address.validate(address.object_id)
             self.assertEqual(address_validated.object_source, 'VALIDATOR')
         except shippo.error.AuthenticationError:
-                self.fail('Set your SHIPPO_API_KEY in your os.envrion')
+                self.fail('Set your SHIPPO_API_KEY in your os.environ')
         except Exception as inst:
             self.fail("Test failed with exception %s" % inst)
 
@@ -55,7 +55,7 @@ class FunctionalTests(ShippoTestCase):
         try:
             address = shippo.Address.create(**DUMMY_ADDRESS)
         except shippo.error.AuthenticationError:
-            self.fail('Set your SHIPPO_API_KEY in your os.envrion')
+            self.fail('Set your SHIPPO_API_KEY in your os.environ')
 
         self.assertEqual(address['object_created'], address.object_created)
         address['foo'] = 'bar'
@@ -68,7 +68,7 @@ class FunctionalTests(ShippoTestCase):
         except shippo.error.InvalidRequestError:
             pass
         except shippo.error.AuthenticationError:
-            self.fail('Set your SHIPPO_API_KEY in your os.envrion')
+            self.fail('Set your SHIPPO_API_KEY in your os.environ')
         except Exception as inst:
             self.fail("Test failed with exception %s" % inst)
 
