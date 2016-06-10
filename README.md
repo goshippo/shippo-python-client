@@ -1,4 +1,6 @@
 #Shippo Python API wrapper
+[![PyPI version](https://badge.fury.io/py/shippo.svg)](https://badge.fury.io/py/shippo)
+[![Build Status](https://travis-ci.org/goshippo/shippo-python-client.svg?branch=helper-merge-steveByerly-fork-2)](https://travis-ci.org/goshippo/shippo-python-client)
 
 Shippo is a shipping API that connects you with multiple shipping providers such as USPS, UPS, and Fedex through one interface and offers you great discounts.
 
