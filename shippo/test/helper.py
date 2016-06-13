@@ -2,6 +2,7 @@ import datetime
 import os
 import re
 import shippo
+import vcr
 
 from mock import patch, Mock
 from unittest2 import TestCase
@@ -335,3 +336,8 @@ class ShippoApiTestCase(ShippoTestCase):
 
     def mock_response(self, res):
         self.requestor_mock.request = Mock(return_value=(res, 'reskey'))
+
+
+shippo_vcr = vcr.VCR(
+    filter_headers=['Authorization']
+)

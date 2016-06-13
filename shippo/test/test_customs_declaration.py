@@ -11,7 +11,7 @@ from shippo.test.helper import (
     ShippoTestCase,
 )
 
-from shippo.util import shippo_vcr
+from shippo.test.helper import shippo_vcr
 
 
 class CustomsDeclarationTests(ShippoTestCase):

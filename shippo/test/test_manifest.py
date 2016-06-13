@@ -14,7 +14,7 @@ from shippo.test.helper import (
     create_mock_shipment
 )
 
-from shippo.util import shippo_vcr
+from shippo.test.helper import shippo_vcr
 
 
 class ManifestTests(ShippoTestCase):

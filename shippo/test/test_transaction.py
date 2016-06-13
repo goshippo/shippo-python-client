@@ -10,7 +10,7 @@ from shippo.test.helper import (
     DUMMY_TRANSACTION
 )
 
-from shippo.util import shippo_vcr
+from shippo.test.helper import shippo_vcr
 
 
 class TransactionTests(ShippoTestCase):
