@@ -1,4 +1,5 @@
-import unittest
+import warnings
+import unittest2
 
 from mock import Mock
 import shippo
@@ -13,11 +14,11 @@ class HttpClientTests(ShippoUnitTestCase):
     def setUp(self):
         super(HttpClientTests, self).setUp()
 
-        self.original_filters = shippo.http_client.warnings.filters[:]
-        shippo.http_client.warnings.simplefilter('ignore')
+        self.original_filters = warnings.filters[:]
+        warnings.simplefilter('ignore')
 
     def tearDown(self):
-        shippo.http_client.warnings.filters = self.original_filters
+        warnings.filters = self.original_filters
 
         super(HttpClientTests, self).tearDown()
 
@@ -144,4 +145,4 @@ class UrlFetchClientTests(ShippoUnitTestCase, ClientTestBase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest2.main()

@@ -1,0 +1,180 @@
+interactions:
+- request:
+    body: '{"city": "Woodridge", "object_purpose": "PURCHASE", "name": "John Smith",
+      "zip": "60517", "street1": "Clayton St.", "company": "Initech", "street_no":
+      "6512", "phone": "+1 630 333 7333", "state": "IL", "country": "US", "street2":
+      "", "email": "jmerc@gmail.com", "metadata": "Customer ID 123456"}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate, compress']
+      Content-Length: [!!python/unicode '295']
+      Content-Type: [application/json]
+      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
+          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
+          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
+          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
+          "bindings_version": "1.2.0"}']
+    method: POST
+    uri: https://api.goshippo.com/v1/addresses/
+  response:
+    body:
+      string: !!binary |
+        H4sIAAl37FYC/5WRa0vDMBSG/0rpZzd63+XTxlaxUkR2UVSkpOlpm9EmIUmRKf53k0xZvwoJ5LzP
+        e15yki+XlSfAqpAKKXCXjvu0zrOte+P8AT4IzqRFj8fd5m69T0dUskFgC2+Pef5SpA+HdJeO+7EA
+        nVwZS+D5ycQLJ/78EPjLKNZr6ofJ68g98OofbmKNeO6FoQcJeNUiCiK0KDEs6rqMyjoKS1yPGtgH
+        BWF6eqRUS2BYNUy2hHM2xaw3Rop6O849a6mz74lqjaohR/RsQEaJAmxVqQSAKigzehL7wVX0jbTp
+        0FkxHaOmVxIYYjOJsoHPjFWCVA1cPL/fkOWm/CTcZnuxP7vcY6BK2Lbj3gi8ZdT6Pf1aoX6HcKa3
+        IdAj0hly6kHgVWPKvyGJLARIUgFVBBkTHbrO6Px67kFK1IDUytu7rRXSf4PsYINUTMc62dbxgzCK
+        E/f7B1SwBddKAgAA
+    headers:
+      allow: ['GET, POST, HEAD, OPTIONS']
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-length: ['354']
+      content-type: [application/json]
+      date: ['Fri, 18 Mar 2016 21:45:45 GMT']
+      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
+      server: [nginx/1.8.0]
+      vary: ['Host, Cookie, Accept-Encoding']
+    status: {code: 201, message: CREATED}
+- request:
+    body: '{"city": "San Francisco", "object_purpose": "PURCHASE", "name": "Laura
+      Behrens Wu", "zip": "94117", "street1": "Clayton St.", "company": "Shippo",
+      "street_no": "215", "phone": "+1 555 341 9393", "state": "CA", "country": "US",
+      "street2": "", "email": "laura@goshippo.com", "metadata": "Customer ID 123456"}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate, compress']
+      Content-Length: [!!python/unicode '306']
+      Content-Type: [application/json]
+      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
+          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
+          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
+          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
+          "bindings_version": "1.2.0"}']
+    method: POST
+    uri: https://api.goshippo.com/v1/addresses/
+  response:
+    body:
+      string: !!binary |
+        H4sIAAl37FYC/5WRX0vDMBTFv0rpsxtNm6zLnpxbh4Mism6KipTYZmukTUL+IFP87jbZZAWfhDzk
+        nt85l3u5X6F4e6eVKbUhhoazIHyY5+tleBX8AmmVFNqj+91mcTsvsgHVwqrKw9Uuz5/K7G6bbbJh
+        vlK071w7SxyByShKRmC6jcEMov6NUZo+D9xW1v9wM28ke5imGCIYVRWMwR5PAQYA11E9qXFcp4OA
+        +OBUuUxHjGkYtdcHoRsmpRhXonNGTjq/Tk6sIsENbRTlOni0jvUWSfjR4cKHnKiNotSUXPiZAbpo
+        wCmLlhyN4EFhxhcSO+I7MnNqR3iwUoRXTFfnrudzLOau/GTSFRgCkJ4msdwoH90VTpCN4N4fRQAh
+        lECAE5w4QjvCWkdat9GffZkuFdWsptww4nzctq3T5eXfUa3JgepeeXn1tSH9mYifz2ojOqqC9TIA
+        cQLRJPz+AZuO6BNVAgAA
+    headers:
+      allow: ['GET, POST, HEAD, OPTIONS']
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-length: ['357']
+      content-type: [application/json]
+      date: ['Fri, 18 Mar 2016 21:45:45 GMT']
+      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
+      server: [nginx/1.8.0]
+      vary: ['Host, Cookie, Accept-Encoding']
+    status: {code: 201, message: CREATED}
+- request:
+    body: '{"weight": "2", "distance_unit": "cm", "mass_unit": "lb", "height": "5",
+      "width": "5", "length": "5", "template": "", "metadata": "Customer ID 123456"}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate, compress']
+      Content-Length: [!!python/unicode '151']
+      Content-Type: [application/json]
+      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
+          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
+          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
+          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
+          "bindings_version": "1.2.0"}']
+    method: POST
+    uri: https://api.goshippo.com/v1/parcels/
+  response:
+    body:
+      string: !!binary |
+        H4sIAAp37FYC/5WQS0/DMBCE/0qUM63i2O7rBKKXShwRBy7R1t4mRn5EyZoIIf47dirSXpF8mZlv
+        duX9LsP5AxU1IwFheSjKt6eX07F8KP4CNWBKdI7qim1WFV+x3WvNDkKmt97vt+93dOz1P2gzg0qA
+        lvzC2Y6jEMihErhlWjGQTEIadiuEyeOQOw6IOoPxsQ1jZ/o+rFVwGSR0vb1+xUdrk2PRt9TlkszA
+        ZPSd6tC0HS1Sm3QHr7CJ3syumodOC1Vn6WAcF8Kes/UJNmIDLkRPt9VXV8VhQK++br5DgnQnyP3n
+        OFJwOBSnY8FqLuSm/PkFyUNpa5YBAAA=
+    headers:
+      allow: ['GET, POST, HEAD, OPTIONS']
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-length: ['251']
+      content-type: [application/json]
+      date: ['Fri, 18 Mar 2016 21:45:46 GMT']
+      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
+      server: [nginx/1.8.0]
+      vary: ['Host, Cookie, Accept-Encoding']
+    status: {code: 201, message: CREATED}
+- request:
+    body: '{"submission_date": "2013-12-03T12:00:00.000Z", "address_from": "af47794540cc421f9819119d0d6d92d7",
+      "insurance_currency": "USD", "parcel": "c4ad53f3183e44e3a04e71dc1a515aed", "insurance_amount":
+      "200", "extra": {"signature_confirmation": true}, "reference_1": "", "address_to":
+      "c80330e6e0d9424a9bce9ffb4bf43bcf", "reference_2": "", "async": false, "object_purpose":
+      "PURCHASE", "submission_type": "PICKUP", "metadata": "Customer ID 123456"}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate, compress']
+      Content-Length: [!!python/unicode '441']
+      Content-Type: [application/json]
+      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
+          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
+          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
+          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
+          "bindings_version": "1.2.0"}']
+    method: POST
+    uri: https://api.goshippo.com/v1/shipments/
+  response:
+    body:
+      string: !!binary |
+        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
+    headers:
+      allow: ['GET, POST, HEAD, OPTIONS']
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-length: ['1822']
+      content-type: [application/json]
+      date: ['Fri, 18 Mar 2016 21:45:51 GMT']
+      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
+      server: [nginx/1.8.0]
+      vary: ['Host, Cookie, Accept-Encoding']
+    status: {code: 201, message: CREATED}
+version: 1

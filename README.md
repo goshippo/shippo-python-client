@@ -1,4 +1,6 @@
 #Shippo API Python wrapper
+[![PyPI version](https://badge.fury.io/py/shippo.svg)](https://badge.fury.io/py/shippo)
+[![Build Status](https://travis-ci.org/goshippo/shippo-python-client.svg?branch=helper-merge-steveByerly-fork-2)](https://travis-ci.org/goshippo/shippo-python-client)
 
 Shippo is a shipping API that connects you with multiple shipping carriers (such as USPS, UPS, DHL, Canada Post, Australia Post, UberRUSH and many [others](https://goshippo.com/shipping-carriers/)) through one interface.
 
@@ -49,7 +51,10 @@ sudo pip install shippo
 
 #### To test:
 
-Add your `<API-KEY>` in `/test/helper.py`
+Set your `SHIPPO_API_KEY` as an environment variable.
+e.g. on OSX:
+
+`export SHIPPO_API_KEY="<MY-API-KEY>"`
 
 Run the test with the following command:
 
@@ -93,7 +98,9 @@ address1 = shippo.Address.create(
 print 'Success with Address 1 : %r' % (address1, )
 ```
 
-and you will have created an address. 
+and you will have created an address.
+
+Some resources are asynchronous by default. Creating these resources will return the resource object, but the `object_status` property will be set to `QUEUED` until you retrieve it again. Pass in the param `async=False` to these resources' methods to wait for a response.
 
 Explore example.py for more examples on using the python wrapper.
 

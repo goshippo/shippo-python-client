@@ -2,6 +2,8 @@ import os
 import sys
 import warnings
 
+from version import VERSION
+
 try:
     from setuptools import setup
 except ImportError:
@@ -11,8 +13,6 @@ try:
     from distutils.command.build_py import build_py_2to3 as build_py
 except ImportError:
     from distutils.command.build_py import build_py
-
-from version import VERSION
 
 path, script = os.path.split(sys.argv[0])
 os.chdir(os.path.abspath(path))
@@ -34,7 +34,6 @@ else:
 # Don't import shippo module here, since deps may not be installed
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'shippo'))
 
-
 # Get simplejson if we don't already have json
 if sys.version_info < (3, 0):
     try:
@@ -50,10 +49,11 @@ setup(
     author='Shippo',
     author_email='support@goshippo.com',
     url='https://goshippo.com/',
-    packages=['shippo', 'shippo.test'],
+    packages=['shippo', 'shippo.test', 'shippo.test.integration'],
     package_data={'shippo': ['data/ca-certificates.crt', '../VERSION']},
     install_requires=install_requires,
     test_suite='shippo.test.all',
+    tests_require=['unittest2', 'mock', 'vcrpy'],
     use_2to3=True,
     classifiers=[
         "Development Status :: 5 - Production/Stable",
@@ -69,4 +69,5 @@ setup(
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: Implementation :: PyPy",
         "Topic :: Software Development :: Libraries :: Python Modules",
-    ])
+    ]
+)

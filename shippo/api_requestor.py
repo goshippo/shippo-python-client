@@ -1,16 +1,18 @@
 import calendar
 import datetime
-import platform
-import time
 import os
-import ssl
+import platform
 import socket
+import ssl
+import time
 import urllib
 import urlparse
 import warnings
-
 import shippo
-from shippo import error, http_client, version, util, certificate_blacklist
+
+from shippo import error, http_client, util, certificate_blacklist
+
+from version import VERSION
 
 
 def _encode_datetime(dttime):
@@ -119,7 +121,7 @@ class APIRequestor(object):
                 'assistance.' % (method,))
 
         ua = {
-            'bindings_version': version.VERSION,
+            'bindings_version': VERSION,
             'lang': 'python',
             'publisher': 'shippo',
             'httplib': self._client.name,
@@ -136,7 +138,7 @@ class APIRequestor(object):
         headers = {
             'Content-Type': 'application/json',
             'X-Shippo-Client-User-Agent': util.json.dumps(ua),
-            'User-Agent': 'Shippo/v1 PythonBindings/%s' % (version.VERSION,),
+            'User-Agent': 'Shippo/v1 PythonBindings/%s' % (VERSION, ),
             'Authorization': 'ShippoToken %s' % (my_api_key,)
         }
 

@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
-import os
-import sys
-import unittest
+import unittest2
 
 from mock import patch
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import shippo
+from shippo.test.helper import (
+    DUMMY_ADDRESS,
+    DUMMY_MANIFEST,
+    INVALID_MANIFEST,
+    ShippoTestCase,
+    create_mock_transaction,
+    create_mock_manifest,
+    create_mock_shipment
+)
 
-from shippo.test.helper import ShippoTestCase, DUMMY_MANIFEST, DUMMY_ADDRESS, INVALID_MANIFEST
+from shippo.test.helper import shippo_vcr
 
 
 class ManifestTests(ShippoTestCase):
@@ -30,51 +36,41 @@ class ManifestTests(ShippoTestCase):
         super(ManifestTests, self).tearDown()
 
         self.client_patcher.stop()
-        
+
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
     def test_invalid_create(self):
         self.assertRaises(shippo.error.InvalidRequestError, shippo.Manifest.create, **INVALID_MANIFEST)
-                          
+
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
     def test_create(self):
-        manifest = shippo.Manifest.create(**self.create_valid_manifest())
-        self.assertEqual(manifest.object_status, 'NOTRANSACTIONS')
-                          
-    def test_no_transaction_create(self):
-        manifest = shippo.Manifest.create(**self.create_mock_manifest())
-        self.assertEqual(manifest.object_status, 'NOTRANSACTIONS')
-    
+        transaction = create_mock_transaction()
+        manifest = create_mock_manifest(transaction)
+        self.assertEqual(manifest.object_status, 'SUCCESS')
+        self.assertEqual(manifest.transactions[0], transaction.object_id)
+
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
     def test_retrieve(self):
-        manifest = shippo.Manifest.create(**self.create_mock_manifest())
+        manifest = create_mock_manifest()
         retrieve = shippo.Manifest.retrieve(manifest.object_id)
         self.assertItemsEqual(manifest, retrieve)
-        
+
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
     def test_invalid_retrieve(self):
         self.assertRaises(shippo.error.APIError, shippo.Manifest.retrieve,
                           'EXAMPLE_OF_INVALID_ID')
-        
+
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
     def test_list_all(self):
         manifest_list = shippo.Manifest.all()
         self.assertTrue('count' in manifest_list)
         self.assertTrue('results' in manifest_list)
-        
+
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
     def test_list_page_size(self):
         pagesize = 1
         manifest_list = shippo.Manifest.all(size=pagesize)
         self.assertEquals(len(manifest_list.results), pagesize)
-    
-    def create_mock_manifest(self):
-        address = shippo.Address.create(**DUMMY_ADDRESS)
-        MANIFEST = DUMMY_MANIFEST.copy()
-        MANIFEST['address_from'] = address.object_id
-        return MANIFEST
-        
-    def create_valid_manifest(self):
-        transactions = shippo.Transaction.all()
-        rate = shippo.Rate.retrieve(transactions.results[0].rate)
-        shipment = shippo.Shipment.retrieve(rate.shipment)
-        MANIFEST = DUMMY_MANIFEST.copy()
-        MANIFEST['address_from'] = shipment.address_to
-        return MANIFEST
-        
+
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest2.main()
