@@ -308,7 +308,8 @@ class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
             warnings.warn('The `sync` parameter is deprecated. '
                           'Use `async` while creating a shipment instead.', DeprecationWarning)
             # will be removed in the next major version
-            params['async'] = False if params.get('sync') is None else (not params['sync'])
+            if params.get('sync') is not None:
+                async = not params['sync']
 
         if not async:
             timeout = time.time() + rates_req_timeout
