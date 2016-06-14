@@ -3,7 +3,8 @@ interactions:
     body: null
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
       Content-Type: [application/json]
       User-Agent: [Shippo/v1 PythonBindings/1.2.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
@@ -24,7 +25,7 @@ interactions:
       content-encoding: [gzip]
       content-length: ['127']
       content-type: [text/html]
-      date: ['Fri, 18 Mar 2016 21:46:00 GMT']
+      date: ['Tue, 14 Jun 2016 01:08:48 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie']
