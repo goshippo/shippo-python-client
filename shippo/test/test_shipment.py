@@ -82,8 +82,9 @@ class ShipmentTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/shipment')
     def test_invalid_get_rate(self):
+        # we are testing async=True in order to test the 2nd API call of the function
         self.assertRaises(shippo.error.APIError, shippo.Shipment.get_rates,
-                          'EXAMPLE_OF_INVALID_ID')
+                          'EXAMPLE_OF_INVALID_ID', async=True)
 
 
 if __name__ == '__main__':

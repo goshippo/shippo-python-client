@@ -66,7 +66,8 @@ customs_declaration = shippo.CustomsDeclaration.create(
     items=[customs_item]
 )
 
-# Creating the shipment object. In this example, the objects are directly passed to the
+# Creating the shipment object. async=False indicates that the function will wait until all
+# rates are generated before it returns. In this example, the objects are directly passed to the
 # Shipment.create method, Alternatively, the Address and Parcel objects could be created
 # using Address.create(..) and Parcel.create(..) functions respectively.
 shipment = shippo.Shipment.create(
@@ -75,7 +76,8 @@ shipment = shippo.Shipment.create(
     address_to=address_to,
     parcel=parcel,
     submission_type='DROPOFF',
-    customs_declaration=customs_declaration.object_id
+    customs_declaration=customs_declaration.object_id,
+    async=False
 )
 
 # Get all rates for shipment. async=False indicates that the function will wait until all
