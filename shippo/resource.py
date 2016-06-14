@@ -1,6 +1,11 @@
 import urllib
 import sys
-from shippo import api_requestor, error, util
+import time
+import warnings
+
+from shippo import api_requestor, error, util, rates_req_timeout
+
+warnings.simplefilter('always', DeprecationWarning)
 
 
 def convert_to_shippo_object(resp, api_key):
@@ -234,8 +239,8 @@ class Address(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
         extn = urllib.quote_plus(object_id)
         url = cls.class_url() + extn + '/validate'
         requestor = api_requestor.APIRequestor(api_key)
-        response, content = requestor.request('get', url)
-        return convert_to_shippo_object(response, content)
+        response, api_key = requestor.request('get', url)
+        return convert_to_shippo_object(response, api_key)
 
     @classmethod
     def class_url(cls):
@@ -295,17 +300,28 @@ class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
     """
 
     @classmethod
-    def get_rates(cls, object_id, api_key=None, currency=None, **params):
+    def get_rates(cls, object_id, async=False, api_key=None, currency=None, **params):
         """
             Given a valid shipment object_id, all possible rates are calculated and returned.
         """
+        if 'sync' in params:
+            warnings.warn('The `sync` parameter is deprecated. '
+                          'Use `async` while creating a shipment instead.', DeprecationWarning)
+            # will be removed in the next major version
+            params['async'] = False if params.get('sync') is None else (not params['sync'])
+
+        if not async:
+            timeout = time.time() + rates_req_timeout
+            while cls.retrieve(object_id).object_status in ("QUEUED", "WAITING") and time.time() < timeout:
+                continue
+
         shipment_id = urllib.quote_plus(object_id)
         url = cls.class_url() + shipment_id + '/rates/'
         if currency:
             url = url + '' + urllib.quote_plus(currency)
         requestor = api_requestor.APIRequestor(api_key)
-        response, content = requestor.request('get', url)
-        return convert_to_shippo_object(response, content)
+        response, api_key = requestor.request('get', url)
+        return convert_to_shippo_object(response, api_key)
 
     @classmethod
     def class_url(cls):
@@ -325,10 +341,13 @@ class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResour
             Creates a new transaction object, given a valid rate ID.
             Takes the parameters as a dictionary instead of key word arguments.
         """
-        url = cls.class_url()
-        requestor = api_requestor.APIRequestor(api_key)
-        response, content = requestor.request('post', url, params)
-        return convert_to_shippo_object(response, content)
+        # will be removed in the next major version
+        if 'sync' in params:
+            warnings.warn('The `sync` parameter is deprecated. '
+                          'Use `async` instead.', DeprecationWarning)
+            params['async'] = False if params.get('sync') is None else (not params['sync'])
+
+        return super(Transaction, cls).create(api_key, **params)
 
     @classmethod
     def class_url(cls):
