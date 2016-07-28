@@ -6,7 +6,7 @@ shippo.api_key = "<API-KEY>"
 # example address_from object dict
 address_from = {
     "object_purpose": "PURCHASE",
-    "name": "Laura Behrens Wu",
+    "name": "Mrs Hippo",
     "company": "Shippo",
     "street1": "215 Clayton St.",
     "city": "San Francisco",
@@ -20,7 +20,7 @@ address_from = {
 # example address_to object dict
 address_to = {
     "object_purpose": "PURCHASE",
-    "name": "Mr Hippo",
+    "name": "Mr. Hippo",
     "company": "London Zoo",
     "street1": "Regent's Park",
     "street2": "Outer Cir",
@@ -30,7 +30,7 @@ address_to = {
     "country": "GB",  # iso2 country code
     "phone": "+1 555 341 9393",
     "email": "mrhippo@goshippo.com",
-    "metadata": "Hippos dont lie"
+    "metadata": "T-Shirt order #1043"
 }
 
 # parcel object dict
@@ -59,10 +59,9 @@ customs_item = {
 # (CustomsDeclaration are NOT required for domestic shipments)
 customs_declaration = shippo.CustomsDeclaration.create(
     contents_type='MERCHANDISE',
-    contents_explanation='T-Shirt purchase',
     non_delivery_option='RETURN',
     certify=True,
-    certify_signer='Laura Behrens Wu',
+    certify_signer='Mr. Hippo',
     items=[customs_item]
 )
 
@@ -75,7 +74,6 @@ shipment = shippo.Shipment.create(
     address_from=address_from,
     address_to=address_to,
     parcel=parcel,
-    submission_type='DROPOFF',
     customs_declaration=customs_declaration.object_id,
     async=False
 )
