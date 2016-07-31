@@ -5,7 +5,7 @@ import warnings
 
 from shippo import api_requestor, error, util, rates_req_timeout
 
-warnings.simplefilter('always', DeprecationWarning)
+warnings.filterwarnings('always', category=DeprecationWarning, module='shippo')
 
 
 def convert_to_shippo_object(resp, api_key):
