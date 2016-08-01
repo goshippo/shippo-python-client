@@ -1,6 +1,13 @@
 Release History
 ---------------
 
+1.2.2 (2016-08-1)
++++++++++++++++++++
+
+**Minor Improvements**
+
+- Only show DeprecationWarning for shippo package.
+
 1.2.1 (2016-06-13)
 +++++++++++++++++++
 
