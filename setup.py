@@ -2,8 +2,6 @@ import os
 import sys
 import warnings
 
-from version import VERSION
-
 try:
     from setuptools import setup
 except ImportError:
@@ -33,6 +31,8 @@ else:
 
 # Don't import shippo module here, since deps may not be installed
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'shippo'))
+
+from version import VERSION
 
 # Get simplejson if we don't already have json
 if sys.version_info < (3, 0):
