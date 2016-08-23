@@ -48,8 +48,8 @@ parcel = {
 		"mass_unit":"lb",
        	}
 
-#Creating the shipment object. In this example, the objects are directly passed to the 
-#Shipment.create method, Alternatively, the Address and Parcel objects could be created 
+#Creating the shipment object. In this example, the objects are directly passed to the
+#Shipment.create method, Alternatively, the Address and Parcel objects could be created
 #using Address.create(..) and Parcel.create(..) functions respectively.
 shipment = shippo.Shipment.create(
 		object_purpose= 'PURCHASE',
@@ -59,17 +59,19 @@ shipment = shippo.Shipment.create(
 		async= False )
 
 #Get the first rate in the rates results for demo purposes.
-rate = shipment.rates_list.results[0]
+rate = shipment.rates_list[0]
 
 #Purchase the desired rate.
 transaction = shippo.Transaction.create(rate=rate.object_id, async=False)
 
 #print label_url and tracking_number
 if transaction.object_status == "SUCCESS":
-	print transaction.label_url
-	print transaction.tracking_number
-else :
-	print transaction.messages
+    print "Purchased label with tracking number %s" % transaction.tracking_number
+    print "The label can be downloaded at %s" % transaction.label_url
+else:
+    print "Failed purchasing the label due to:"
+    for message in transaction.messages:
+        print "- %s" % message['text']
 
 
 ########################
@@ -114,8 +116,8 @@ customs_declaration = shippo.CustomsDeclaration.create(
 		items= [customs_item],
 		)
 
-#Creating the shipment object. In this example, the objects are directly passed to the 
-#Shipment.create method, Alternatively, the Address and Parcel objects could be created 
+#Creating the shipment object. In this example, the objects are directly passed to the
+#Shipment.create method, Alternatively, the Address and Parcel objects could be created
 #using Address.create(..) and Parcel.create(..) functions respectively.
 shipment_international = shippo.Shipment.create(
 		object_purpose= 'PURCHASE',
@@ -126,14 +128,16 @@ shipment_international = shippo.Shipment.create(
 		async= False )
 
 #Get the first rate in the rates results for demo purposes.
-rate_international = shipment_international.rates_list.results[0]
+rate_international = shipment_international.rates_list[0]
 
 #Purchase the desired rate.
 transaction_international = shippo.Transaction.create(rate=rate_international.object_id, async=False)
 
 #print label_url and tracking_number
-if transaction_international.object_status == "SUCCESS":
-	print transaction_international.label_url
-	print transaction_international.tracking_number
-else :
-	print transaction_international.messages
+if transaction.object_status == "SUCCESS":
+    print "Purchased label with tracking number %s" % transaction.tracking_number
+    print "The label can be downloaded at %s" % transaction.label_url
+else:
+    print "Failed purchasing the label due to:"
+    for message in transaction.messages:
+        print "- %s" % message['text']
