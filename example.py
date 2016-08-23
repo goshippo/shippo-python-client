@@ -1,8 +1,7 @@
 import shippo
 
-#replace <API-KEY> with your key
+# replace <API-KEY> with your key
 shippo.api_key = "<API-KEY>"
-
 
 ###################
 # Domestic Shipment
@@ -17,12 +16,12 @@ address_from = {
 		"city":"San Francisco",
 		"state":"CA",
 		"zip":"94117",
-		"country":"US", #iso2 country code
+		"country":"US",
 		"phone":"+1 555 341 9393",
-		"email":"laura@goshippo.com",
+		"email":"mrhippo@goshippo.com",
        }
 
-#example address_to object dict
+# example address_to object dict
 address_to = {
 		"object_purpose":"PURCHASE",
 		"name":"Ms Hippo",
@@ -34,19 +33,19 @@ address_to = {
 		"zip":"10007",
 		"country":"US",
 		"phone":"+1 555 341 9393",
-		"email":"mrhippo@goshippo.com",
+		"email":"mshippo@goshippo.com",
 		"metadata" : "Hippos dont lie"
        	}
 
-#parcel object dict
+# parcel object dict
 parcel = {
-		"length":"5",
-		"width":"5",
-		"height":"5",
-		"distance_unit":"in",
-		"weight":"2",
-		"mass_unit":"lb",
-       	}
+    "length": "5",
+    "width": "5",
+    "height": "5",
+    "distance_unit": "in",
+    "weight": "2",
+    "mass_unit": "lb",
+}
 
 #Creating the shipment object. In this example, the objects are directly passed to the
 #Shipment.create method, Alternatively, the Address and Parcel objects could be created
@@ -86,9 +85,8 @@ address_to_international = {
 		"street1":"Regent's Park",
 		"street2":"Outer Cir",
 		"city":"LONDON",
-		"state":"",
 		"zip":"NW1 4RY",
-		"country":"GB", #iso2 country code
+		"country":"GB",
 		"phone":"+1 555 341 9393",
 		"email":"mrhippo@goshippo.com",
 		"metadata" : "Hippos dont lie"
@@ -96,15 +94,15 @@ address_to_international = {
 
 #example CustomsItems object.
 customs_item = {
-		"description":"T-Shirt",
-		"quantity":2,
-		"net_weight":"400",
-		"mass_unit":"g",
-		"value_amount":"20",
-		"value_currency":"USD",
-		"origin_country":"US",
-		"tariff_number":"",
-		}
+    "description": "T-Shirt",
+    "quantity": 2,
+    "net_weight": "400",
+    "mass_unit": "g",
+    "value_amount": "20",
+    "value_currency": "USD",
+    "origin_country": "US",
+    "tariff_number": "",
+}
 
 #Creating the CustomsDeclaration
 customs_declaration = shippo.CustomsDeclaration.create(
@@ -133,7 +131,7 @@ rate_international = shipment_international.rates_list[0]
 #Purchase the desired rate.
 transaction_international = shippo.Transaction.create(rate=rate_international.object_id, async=False)
 
-#print label_url and tracking_number
+# print label_url and tracking_number
 if transaction.object_status == "SUCCESS":
     print "Purchased label with tracking number %s" % transaction.tracking_number
     print "The label can be downloaded at %s" % transaction.label_url

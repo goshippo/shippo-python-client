@@ -1,0 +1,76 @@
+interactions:
+- request:
+    body: '{"city": "San Francisco", "object_purpose": "QUOTE", "name": "Laura Behrens
+      Wu", "zip": "94117", "street1": "Clayton St.", "company": "Shippo", "street_no":
+      "215", "phone": "+1 555 341 9393", "state": "CA", "country": "US", "street2":
+      "", "email": "laura@goshippo.com", "metadata": "Customer ID 123456"}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate, compress']
+      Content-Length: [!!python/unicode '303']
+      Content-Type: [application/json]
+      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
+          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
+          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
+          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
+          "bindings_version": "1.2.0"}']
+    method: POST
+    uri: https://api.goshippo.com/v1/addresses/
+  response:
+    body:
+      string: !!binary |
+        H4sIAHV07FYC/5WRX0vDMBTFv0rpsxtNm7brntStg0FRdJuiIiVmd2ukTUL+IFP87jbZZAWffMs9
+        v3MO95KvULy9AzW1NsRAOA3Ch6tqOQ8vgl8grZJCe3S3uV2XA6SFVdSTxaaqnuryZl3el8MwVdDX
+        bp0ljlA2ipIRmqxjNE3wFKdjjPHzwG3l9h9u5o0pFDnNJqSAPMGTiJIkg3i3A5riPNthNAiIDw7K
+        ZTpiTMPAXu6FbpiUYkxF54ycdP6cilhFgmtoFHAdPFrHeosk/ODwyoecqI0CMDUXfmeUnjXklFlL
+        DkbwYGXGZxI74huZOdYRHiwU4ZRpemo9/cXsyo2fTLqhwAjlx00sN8pHNysnyEZw748ilKZpglGR
+        FIkj0BHWOtK6i/7cy3StQLMtcMOI83Hbtk6X53cHWpM96F55efWzIf03Eb+f1UZ0oILlPEBxgtMs
+        /P4BizQQUVICAAA=
+    headers:
+      allow: ['GET, POST, HEAD, OPTIONS']
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-length: ['353']
+      content-type: [application/json]
+      date: ['Fri, 18 Mar 2016 21:34:45 GMT']
+      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
+      server: [nginx/1.8.0]
+      vary: ['Host, Cookie, Accept-Encoding']
+    status: {code: 201, message: CREATED}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate, compress']
+      Content-Type: [application/json]
+      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
+          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
+          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
+          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
+          "bindings_version": "1.2.0"}']
+    method: GET
+    uri: https://api.goshippo.com/v1/addresses/5e97c68a9e73480ca36e2ffec5476f41/validate
+  response:
+    body:
+      string: !!binary |
+        H4sIAHZ07FYC/32RXUvDMBSG/0rotRtJm9Z2V9ZOYTA2dJ2iIiNrT9fI2oR8ICr+d5fMsYLg5Xmf
+        5w3nkK9AbN+gMhttmIFggoKHfD6bBhfoBKRVUmiP7tbL8maAtLCqOpfycnk/oJWCw5O1wyEmyQhH
+        I5KWIZlEdEKTMc7w88C2sv7PJpgObX4UU0xIumVJnVaU1TELmybFNG0oRLhJq0FBvPegXKdjxrQc
+        7NVO6JZLKcaV6JzYs86fMmdWMXQNrYJeo0fr2EGRrP9weOVLLtRGAZhNL1x8DojfjMSomOdP5XKB
+        VuUZhie34ub4XL5At/f5opitiuXR+/2HInfjJ5duyCghlyOSkei4ju2N8v31ygWyFb0vYUziOI4o
+        yaLMq9Axvndk7876czTXGwWa19AbzpxnlAWXy9OiHWjNdqAP88urnw07/BTzK1ptRAcKzaaIhBGN
+        k+D7B0/ikgpRAgAA
+    headers:
+      allow: ['GET, HEAD, OPTIONS']
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-length: ['354']
+      content-type: [application/json]
+      date: ['Fri, 18 Mar 2016 21:34:46 GMT']
+      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
+      server: [nginx/1.8.0]
+      vary: ['Host, Cookie, Accept-Encoding']
+    status: {code: 200, message: OK}
+version: 1

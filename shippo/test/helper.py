@@ -1,11 +1,11 @@
 import datetime
 import os
 import re
-import unittest
+import shippo
+import vcr
 
 from mock import patch, Mock
-
-import shippo
+from unittest2 import TestCase
 
 NOW = datetime.datetime.now()
 
@@ -34,7 +34,7 @@ INVALID_ADDRESS = {
     "country": "US",
     "phone": "+1 555 341 9393",
     "email": "laura@goshippo.com",
-    "metadata": "Customer ID 123456" 
+    "metadata": "Customer ID 123456"
 }
 NOT_POSSIBLE_ADDRESS = {
     "object_purpose": "QUOTE",
@@ -51,7 +51,6 @@ NOT_POSSIBLE_ADDRESS = {
     "email": "laura@goshippo.com",
     "metadata": "Customer ID 123456"
 }
-
 DUMMY_PARCEL = {
     "length": "5",
     "width": "5",
@@ -72,7 +71,7 @@ INVALID_PARCEL = {
 }
 DUMMY_MANIFEST = {
     "provider": "USPS",
-    "submission_date": "2014-05-16T23:59:59Z",
+    "submission_date": "2016-03-18T23:59:59Z",
     "address_from": "28828839a2b04e208ac2aa4945fbca9a"
 }
 INVALID_MANIFEST = {
@@ -116,7 +115,7 @@ DUMMY_CUSTOMS_DECLARATION = {
     "items": [
         "0c1a723687164307bb2175972fbcd9ef"
     ],
-    "metadata": "Order ID #123123"   
+    "metadata": "Order ID #123123"
 }
 INVALID_CUSTOMS_DECLARATION = {
     "exporter_reference": "",
@@ -172,7 +171,7 @@ DUMMY_SHIPMENT = {
     "address_to": "4c7185d353764d0985a6a7825aed8ffb",
     "parcel": "ec952343dd4843c39b42aca620471fd5",
     "submission_type": "PICKUP",
-    "submission_date": "2013-12-03T12:00:00.000Z",
+    "submission_date": "2016-03-18T23:59:59Z",
     "insurance_amount": "200",
     "insurance_currency": "USD",
     "extra": {
@@ -212,7 +211,54 @@ INVALID_TRANSACTION = {
 }
 
 
-class ShippoTestCase(unittest.TestCase):
+def create_mock_shipment(async=False):
+    to_address = shippo.Address.create(**TO_ADDRESS)
+    from_address = shippo.Address.create(**FROM_ADDRESS)
+    parcel = shippo.Parcel.create(**DUMMY_PARCEL)
+    SHIPMENT = DUMMY_SHIPMENT.copy()
+    SHIPMENT['address_from'] = from_address.object_id
+    SHIPMENT['address_to'] = to_address.object_id
+    SHIPMENT['parcel'] = parcel.object_id
+    SHIPMENT['async'] = async
+    shipment = shippo.Shipment.create(**SHIPMENT)
+    return shipment
+
+
+def create_mock_manifest(transaction=None):
+    if not transaction:
+        transaction = create_mock_transaction()
+    rate = shippo.Rate.retrieve(transaction.rate)
+    shipment = shippo.Shipment.retrieve(rate.shipment)
+    MANIFEST = DUMMY_MANIFEST.copy()
+    MANIFEST['address_from'] = shipment.address_from
+    MANIFEST['async'] = False
+    manifest = shippo.Manifest.create(**MANIFEST)
+    return manifest
+
+
+def create_mock_transaction(async=False):
+    shipment = create_mock_shipment(async)
+    rates_list = shipment.rates_list
+    usps_rate = list(filter(lambda x: x.servicelevel_token == 'usps_priority', rates_list))[0]
+    t = DUMMY_TRANSACTION.copy()
+    t['rate'] = usps_rate.object_id
+    t['async'] = async
+    txn = shippo.Transaction.create(**t)
+    return txn
+
+
+def create_mock_international_shipment():
+    SHIPMENT = create_mock_shipment()
+    customs_item = shippo.CustomsItem.create(**DUMMY_CUSTOMS_ITEM)
+    customs_declaration_parameters = DUMMY_CUSTOMS_DECLARATION.copy()
+    customs_declaration_parameters["items"][0] = customs_item.object_id
+    customs_declaration = shippo.CustomsDeclaration.create(**customs_declaration_parameters)
+    SHIPMENT['customs_declaration'] = customs_declaration.object_id
+    shipment = shippo.Shipment.create(**SHIPMENT)
+    return shipment
+
+
+class ShippoTestCase(TestCase):
     RESTORE_ATTRIBUTES = ('api_version', 'api_key')
 
     def setUp(self):
@@ -226,7 +272,8 @@ class ShippoTestCase(unittest.TestCase):
         api_base = os.environ.get('SHIPPO_API_BASE')
         if api_base:
             shippo.api_base = api_base
-        shippo.api_key = "<API-KEY>"
+
+        shippo.api_key = os.environ.get('SHIPPO_API_KEY', '51895b669caa45038110fd4074e61e0d')
 
     def tearDown(self):
         super(ShippoTestCase, self).tearDown()
@@ -250,7 +297,8 @@ class ShippoTestCase(unittest.TestCase):
         else:
             raise self.failureException(
                 '%s was not raised' % (exception.__name__,))
-                
+
+
 class ShippoUnitTestCase(ShippoTestCase):
     REQUEST_LIBRARIES = ['urlfetch', 'requests']
 
@@ -270,8 +318,8 @@ class ShippoUnitTestCase(ShippoTestCase):
 
         for patcher in self.request_patchers.itervalues():
             patcher.stop()
-            
-            
+
+
 class ShippoApiTestCase(ShippoTestCase):
 
     def setUp(self):
@@ -287,4 +335,9 @@ class ShippoApiTestCase(ShippoTestCase):
         self.requestor_patcher.stop()
 
     def mock_response(self, res):
-        self.requestor_mock.request = Mock(return_value=(res, 'reskey'))            
+        self.requestor_mock.request = Mock(return_value=(res, 'reskey'))
+
+
+shippo_vcr = vcr.VCR(
+    filter_headers=['Authorization']
+)

@@ -1,8 +1,11 @@
 import urllib
 import sys
 import time
+import warnings
 
-from shippo import api_requestor, error, util, rates_req_timeout, transaction_req_timeout
+from shippo import api_requestor, error, util, rates_req_timeout
+
+warnings.filterwarnings('always', category=DeprecationWarning, module='shippo')
 
 
 def convert_to_shippo_object(resp, api_key):
@@ -189,7 +192,7 @@ class ListableAPIResource(APIResource):
     @classmethod
     def all(cls, api_key=None, size=None, page=None, **params):
         """
-        To retrieve a list of all the objects in a class. The size of page and 
+        To retrieve a list of all the objects in a class. The size of page and
             the page number can be specified respectively cls.all(<size>,<page>)
             **NOTE: To specify a page number, the page size must also be provided
         """
@@ -226,8 +229,8 @@ class UpdateableAPIResource(APIResource):
         response, api_key = requestor.request('put', url, params)
         return convert_to_shippo_object(response, api_key)
 
-# ---- API objects ---- 
 
+# ---- API objects ----
 
 class Address(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
 
@@ -236,8 +239,8 @@ class Address(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
         extn = urllib.quote_plus(object_id)
         url = cls.class_url() + extn + '/validate'
         requestor = api_requestor.APIRequestor(api_key)
-        response, content = requestor.request('get', url)
-        return convert_to_shippo_object(response, content)
+        response, api_key = requestor.request('get', url)
+        return convert_to_shippo_object(response, api_key)
 
     @classmethod
     def class_url(cls):
@@ -256,7 +259,7 @@ class CustomsDeclaration(CreateableAPIResource, ListableAPIResource, FetchableAP
 
     @classmethod
     def class_url(cls):
-        return "v1/customs/declarations/"        
+        return "v1/customs/declarations/"
 
 
 class Parcel(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
@@ -269,7 +272,7 @@ class Parcel(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
 
 class Manifest(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
     """
-     Manifests are close-outs of shipping labels of a certain day. Some carriers 
+     Manifests are close-outs of shipping labels of a certain day. Some carriers
         require Manifests to properly process the shipments
     """
 
@@ -279,29 +282,36 @@ class Manifest(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
         return "v1/%ss/" % (cls_name,)
 
 
-class Refund(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
+class Refund(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
     """
         Refunds are reimbursements for successfully created but unused Transaction.
     """
-    
+
     @classmethod
     def class_url(cls):
         cls_name = cls.class_name()
         return "v1/%ss/" % (cls_name,)
 
 
-class Shipment(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
+class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
     """
-        The heart of the Shippo API, a Shipment is made up of "to" and "from" Addresses 
+        The heart of the Shippo API, a Shipment is made up of "to" and "from" Addresses
         and the Parcel to be shipped. Shipments can be created, retrieved and listed.
     """
 
     @classmethod
-    def get_rates(cls, object_id, api_key=None, currency=None, **params):
+    def get_rates(cls, object_id, async=False, api_key=None, currency=None, **params):
         """
             Given a valid shipment object_id, all possible rates are calculated and returned.
         """
-        if 'sync' in params and params['sync']:
+        if 'sync' in params:
+            warnings.warn('The `sync` parameter is deprecated. '
+                          'Use `async` while creating a shipment instead.', DeprecationWarning)
+            # will be removed in the next major version
+            if params.get('sync') is not None:
+                async = not params['sync']
+
+        if not async:
             timeout = time.time() + rates_req_timeout
             while cls.retrieve(object_id).object_status in ("QUEUED", "WAITING") and time.time() < timeout:
                 continue
@@ -311,9 +321,9 @@ class Shipment(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
         if currency:
             url = url + '' + urllib.quote_plus(currency)
         requestor = api_requestor.APIRequestor(api_key)
-        response, content = requestor.request('get', url)
-        return convert_to_shippo_object(response, content)
-        
+        response, api_key = requestor.request('get', url)
+        return convert_to_shippo_object(response, api_key)
+
     @classmethod
     def class_url(cls):
         cls_name = cls.class_name()
@@ -322,28 +332,24 @@ class Shipment(CreateableAPIResource,ListableAPIResource,FetchableAPIResource):
 
 class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
     """
-        A Transaction is the purchase of a Shipment Label for a given Shipment Rate. 
+        A Transaction is the purchase of a Shipment Label for a given Shipment Rate.
         Transactions can be as simple as posting a Rate ID.
     """
-    
+
     @classmethod
     def create(cls, api_key=None, **params):
         """
             Creates a new transaction object, given a valid rate ID.
             Takes the parameters as a dictionary instead of key word arguments.
         """
-        url = cls.class_url()
-        requestor = api_requestor.APIRequestor(api_key)
-        response, content = requestor.request('post', url, params)
-        transaction = convert_to_shippo_object(response, content)
-        if 'sync' in params and params['sync']:
-            timeout = time.time() + transaction_req_timeout
-            while transaction.object_status in ("QUEUED", "WAITING") and time.time() < timeout:
-                transaction = cls.retrieve(transaction.object_id)
-                continue
+        # will be removed in the next major version
+        if 'sync' in params:
+            warnings.warn('The `sync` parameter is deprecated. '
+                          'Use `async` instead.', DeprecationWarning)
+            params['async'] = False if params.get('sync') is None else (not params['sync'])
 
-        return transaction
-    
+        return super(Transaction, cls).create(api_key, **params)
+
     @classmethod
     def class_url(cls):
         cls_name = cls.class_name()
@@ -352,10 +358,10 @@ class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResour
 
 class Rate(ListableAPIResource, FetchableAPIResource):
     """
-     Each valid Shipment object will automatically trigger the calculation of all available 
+     Each valid Shipment object will automatically trigger the calculation of all available
      Rates. Depending on your Addresses and Parcel, there may be none, one or multiple Rates
     """
-    
+
     @classmethod
     def class_url(cls):
         cls_name = cls.class_name()

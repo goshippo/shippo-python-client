@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
-import os
-import sys
-import unittest
+import unittest2
 
 from mock import patch
 
 import shippo
-from shippo.test.helper import ShippoTestCase
+from shippo.test.helper import (
+    create_mock_shipment,
+    ShippoTestCase
+)
 
-import test_shipment
-
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
+from shippo.test.helper import shippo_vcr
 
 
 class RateTests(ShippoTestCase):
@@ -32,22 +31,26 @@ class RateTests(ShippoTestCase):
         super(RateTests, self).tearDown()
 
         self.client_patcher.stop()
-    
+
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/rate')
     def test_retrieve(self):
-        shipment = test_shipment.create_mock_shipment()
-        rates = shippo.Shipment.get_rates(shipment.object_id, sync=True)
+        shipment = create_mock_shipment()
+        rates = shippo.Shipment.get_rates(shipment.object_id, async=False)
         rate = rates.results[0]
         retrieve = shippo.Rate.retrieve(rate.object_id)
         self.assertItemsEqual(rate, retrieve)
-        
+
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/rate')
     def test_invalid_retrieve(self):
         self.assertRaises(shippo.error.APIError, shippo.Rate.retrieve, 'EXAMPLE_OF_INVALID_ID')
-        
+
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/rate')
     def test_list_all(self):
         rate_list = shippo.Rate.all()
         self.assertTrue('count' in rate_list)
         self.assertTrue('results' in rate_list)
-        
+
+    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/rate')
     def test_list_page_size(self):
         pagesize = 1
         rate_list = shippo.Rate.all(size=pagesize)
@@ -55,4 +58,4 @@ class RateTests(ShippoTestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest2.main()

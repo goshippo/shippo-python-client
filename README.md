@@ -1,9 +1,12 @@
-#Shippo Python API wrapper
+#Shippo API Python wrapper
+[![PyPI version](https://badge.fury.io/py/shippo.svg)](https://badge.fury.io/py/shippo)
+[![Build Status](https://travis-ci.org/goshippo/shippo-python-client.svg?branch=helper-merge-steveByerly-fork-2)](https://travis-ci.org/goshippo/shippo-python-client)
 
-Shippo is a shipping API that connects you with multiple shipping providers such as USPS, UPS, and Fedex through one interface and offers you great discounts.
+Shippo is a shipping API that connects you with [multiple shipping carriers](https://goshippo.com/carriers/) (such as USPS, UPS, DHL, Canada Post, Australia Post, UberRUSH and many others) through one interface.
 
-Don't have an account? Sign up at https://goshippo.com/
+Print a shipping label in 10 mins using our default USPS and DHL Express accounts. No need to register for a carrier account to get started.
 
+You will first need to [register for a Shippo account](https://goshippo.com/) to use our API. It's free to sign up, free to use the API. Only pay to print a live label, test labels are free. 
 
 ### How do I get set up? ###
 
@@ -22,7 +25,10 @@ sudo pip install shippo
 
 #### To test:
 
-Add your `<API-KEY>` in `/test/helper.py`
+Set your `SHIPPO_API_KEY` as an environment variable.
+e.g. on OSX:
+
+`export SHIPPO_API_KEY="<MY-API-KEY>"`
 
 Run the test with the following command:
 
@@ -66,12 +72,34 @@ address1 = shippo.Address.create(
 print 'Success with Address 1 : %r' % (address1, )
 ```
 
-and you will have created an address. 
+and you will have created an address.
+
+Some resources are asynchronous by default. Creating these resources will return the resource object, but the `object_status` property will be set to `QUEUED` until you retrieve it again. Pass in the param `async=False` to these resources' methods to wait for a response.
 
 Explore example.py for more examples on using the python wrapper.
 
-### Full API documentation ###
+## Documentation
 
-* go to https://goshippo.com/docs/ for API documentation
+Please see [https://goshippo.com/docs](https://goshippo.com/docs) for up-to-date documentation.
 
-* contact support@goshippo.com with any questions
+## About Shippo
+
+Connect with multiple different carriers, get discounted shipping labels, track parcels, and much more with just one integration. You can use your own carrier accounts or take advantage of our discounted rates with the USPS and DHL Express. Using Shippo makes it easy to deal with multiple carrier integrations, rate shopping, tracking and other parts of the shipping workflow. We provide the API and dashboard for all your shipping needs.
+
+## Supported Features
+
+The Shippo API provides in depth support of carrier and shipping functionalities. Here are just some of the features we support through the API:
+
+* Shipping rates & labels
+* Tracking for any shipment with just the tracking number
+* Batch label generation
+* Multi-piece shipments
+* Manifests and SCAN forms
+* Customs declaration and commercial invoicing
+* Address verification
+* Signature and adult signature confirmation
+* Consolidator support including:
+	* DHL eCommerce
+	* UPS Mail Innovations
+	* FedEx Smartpost
+* Additional services: cash-on-delivery, certified mail, delivery confirmation, and more.

@@ -48,10 +48,11 @@ setup(
     author='Shippo',
     author_email='support@goshippo.com',
     url='https://goshippo.com/',
-    packages=['shippo', 'shippo.test'],
+    packages=['shippo', 'shippo.test', 'shippo.test.integration'],
     package_data={'shippo': ['data/ca-certificates.crt', '../VERSION']},
     install_requires=install_requires,
     test_suite='shippo.test.all',
+    tests_require=['unittest2', 'mock', 'vcrpy'],
     use_2to3=True,
     classifiers=[
         "Development Status :: 5 - Production/Stable",
@@ -67,4 +68,5 @@ setup(
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: Implementation :: PyPy",
         "Topic :: Software Development :: Libraries :: Python Modules",
-    ])
+    ]
+)

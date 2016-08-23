@@ -1,0 +1,32 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate, compress']
+      Content-Type: [application/json]
+      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
+          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
+          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
+          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
+          "bindings_version": "1.2.0"}']
+    method: GET
+    uri: https://api.goshippo.com/v1/parcels/EXAMPLE_OF_INVALID_ID
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA7PJMLTzyy9RcMsvzUux0QfybArsQjJSFYpSC0tTi0tSUxRCg3wU9MsM9QsSi5JT
+        c4r1XSMcfQN8XOP93eI9/cIcfTxd4j1dFMoTixXygAalgQxSyM9TKMnILFYoTi0qSy3Ss9EvsAMA
+        Vp5PvWoAAAA=
+    headers:
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-length: ['122']
+      content-type: [text/html]
+      date: ['Fri, 18 Mar 2016 21:45:34 GMT']
+      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
+      server: [nginx/1.8.0]
+      vary: ['Host, Cookie']
+    status: {code: 404, message: NOT FOUND}
+version: 1
