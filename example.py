@@ -131,10 +131,10 @@ rate_international = shipment_international.rates_list[0]
 transaction_international = shippo.Transaction.create(rate=rate_international.object_id, async=False)
 
 # print label_url and tracking_number
-if transaction.object_status == "SUCCESS":
-    print "Purchased label with tracking number %s" % transaction.tracking_number
-    print "The label can be downloaded at %s" % transaction.label_url
+if transaction_international.object_status == "SUCCESS":
+    print "Purchased label with tracking number %s" % transaction_international.tracking_number
+    print "The label can be downloaded at %s" % transaction_international.label_url
 else:
     print "Failed purchasing the label due to:"
-    for message in transaction.messages:
+    for message in transaction_international.messages:
         print "- %s" % message['text']
