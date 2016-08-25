@@ -50,37 +50,21 @@ sudo easy_install mock
 
 #### Using the API:
 
-```
-import shippo
-shippo.api_key = "<API-KEY>"
 
-address1 = shippo.Address.create(
-    object_purpose='PURCHASE',
-    name='John Smith',
-    street1='6512 Greene Rd.',
-    street2='',
-    company='Initech',
-    phone='+1 234 346 7333',
-    city='Woodridge',
-    state='IL',
-    zip='60517',
-    country='US',
-    email='user@gmail.com',
-    metadata='Customer ID 123456'
-)
+We've created a number of examples to cover the most common use cases. You can find the sample code files in the [examples folder](examples/).
+Some of the use cases we covered include:
 
-print 'Success with Address 1 : %r' % (address1, )
-```
+* [Basic domestic shipment](examples/basic-shipment.py)
+* [Interntational shipment](examples/interntaional-shipment.py)  - Custom forms, interntational destinations
+* [Price estimation matrix](examples/estimate-shipping-prices.py)
+* [Retrieve rates, filter by delivery time and purchase appropriate label](examples/filter-by-delivery-time.py)
+* [Retrieve rates, purchase label for fastest delivery option](examples/purchase-fastest-service.py)
+* [Retrieve rates so customer can pick preferred shipping method, purchase label](examples/get-rates-to-show-customer.py)
 
-and you will have created an address.
-
-Some resources are asynchronous by default. Creating these resources will return the resource object, but the `object_status` property will be set to `QUEUED` until you retrieve it again. Pass in the param `async=False` to these resources' methods to wait for a response.
-
-Explore example.py for more examples on using the python wrapper.
 
 ## Documentation
 
-Please see [https://goshippo.com/docs](https://goshippo.com/docs) for up-to-date documentation.
+Please see [https://goshippo.com/docs](https://goshippo.com/docs) for complete up-to-date documentation.
 
 ## About Shippo
 
