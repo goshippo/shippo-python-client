@@ -9,7 +9,7 @@ We will retrieve all available shipping rates for each delivery
 address and calculate the min, max and average price for specific
 transit time windows (next day, 3 days, 7 days).
 
-Samle output:
+Sample output:
 For a delivery window of 1 days:
 --> Min. costs: 5.81
 --> Max. costs: 106.85
