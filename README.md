@@ -50,7 +50,8 @@ sudo easy_install mock
 
 #### Using the API:
 
-```
+```python
+
 import shippo
 shippo.api_key = "<API-KEY>"
 
@@ -70,7 +71,8 @@ address1 = shippo.Address.create(
 )
 
 print 'Success with Address 1 : %r' % (address1, )
-````
+
+```
 
 We've created a number of examples to cover the most common use cases. You can find the sample code files in the [examples folder](examples/).
 Some of the use cases we covered include:
