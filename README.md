@@ -50,6 +50,27 @@ sudo easy_install mock
 
 #### Using the API:
 
+```
+import shippo
+shippo.api_key = "<API-KEY>"
+
+address1 = shippo.Address.create(
+    object_purpose='PURCHASE',
+    name='John Smith',
+    street1='6512 Greene Rd.',
+    street2='',
+    company='Initech',
+    phone='+1 234 346 7333',
+    city='Woodridge',
+    state='IL',
+    zip='60517',
+    country='US',
+    email='user@gmail.com',
+    metadata='Customer ID 123456'
+)
+
+print 'Success with Address 1 : %r' % (address1, )
+````
 
 We've created a number of examples to cover the most common use cases. You can find the sample code files in the [examples folder](examples/).
 Some of the use cases we covered include:
