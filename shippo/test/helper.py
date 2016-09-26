@@ -211,16 +211,16 @@ INVALID_TRANSACTION = {
 }
 
 
-def create_mock_shipment(async=False):
-    to_address = shippo.Address.create(**TO_ADDRESS)
-    from_address = shippo.Address.create(**FROM_ADDRESS)
-    parcel = shippo.Parcel.create(**DUMMY_PARCEL)
+def create_mock_shipment(async=False, api_key=None):
+    to_address = shippo.Address.create(api_key=api_key, **TO_ADDRESS)
+    from_address = shippo.Address.create(api_key=api_key, **FROM_ADDRESS)
+    parcel = shippo.Parcel.create(api_key=api_key, **DUMMY_PARCEL)
     SHIPMENT = DUMMY_SHIPMENT.copy()
     SHIPMENT['address_from'] = from_address.object_id
     SHIPMENT['address_to'] = to_address.object_id
     SHIPMENT['parcel'] = parcel.object_id
     SHIPMENT['async'] = async
-    shipment = shippo.Shipment.create(**SHIPMENT)
+    shipment = shippo.Shipment.create(api_key=api_key, **SHIPMENT)
     return shipment
 
 

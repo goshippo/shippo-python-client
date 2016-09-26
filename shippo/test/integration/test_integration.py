@@ -5,6 +5,7 @@ from mock import patch
 
 import shippo
 from shippo.test.helper import (
+    create_mock_shipment,
     DUMMY_ADDRESS,
     INVALID_ADDRESS,
     ShippoTestCase,
@@ -77,6 +78,19 @@ class FunctionalTests(ShippoTestCase):
         self.assertRaises(shippo.error.APIError,
                           shippo.Address.retrieve,
                           u'☃')
+
+    def test_get_rates(self):
+        try:
+            shipment = create_mock_shipment()
+            rates = shippo.Shipment.get_rates(shipment.object_id, async=False)
+        except shippo.error.InvalidRequestError:
+            pass
+        except shippo.error.AuthenticationError:
+            self.fail('Set your SHIPPO_API_KEY in your os.environ')
+        except Exception as inst:
+            self.fail("Test failed with exception %s" % inst)
+        self.assertTrue('count' in rates)
+        self.assertTrue('results' in rates)
 
     # --- if dynamic object typing is implemented, this will be a useful test
     # def test_missing_id(self):
