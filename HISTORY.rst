@@ -1,6 +1,13 @@
 Release History
 ---------------
 
+1.2.3 (2016-09-27)
++++++++++++++++++++
+
+**Minor Improvements**
+
+- Fix relative imports for Python 3
+
 1.2.2 (2016-08-1)
 +++++++++++++++++++
 
