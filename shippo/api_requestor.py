@@ -11,8 +11,7 @@ import warnings
 import shippo
 
 from shippo import error, http_client, util, certificate_blacklist
-
-from version import VERSION
+from shippo.version import VERSION
 
 
 def _encode_datetime(dttime):

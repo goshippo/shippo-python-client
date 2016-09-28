@@ -2,7 +2,7 @@ import os
 import sys
 import textwrap
 
-from . import error
+from shippo import error
 
 # - Requests is the preferred HTTP library
 # - Google App Engine has urlfetch
