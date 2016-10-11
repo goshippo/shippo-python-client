@@ -1,6 +1,13 @@
 Release History
 ---------------
 
+1.2.4 (2016-10-11)
++++++++++++++++++++
+
+**Bugfixes**
+
+- Change the API version header name
+
 1.2.3 (2016-09-27)
 +++++++++++++++++++
 
