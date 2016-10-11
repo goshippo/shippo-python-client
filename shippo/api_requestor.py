@@ -142,7 +142,7 @@ class APIRequestor(object):
         }
 
         if api_version is not None:
-            headers['Shippo-Version'] = api_version
+            headers['Shippo-API-Version'] = api_version
 
         rbody, rcode = self._client.request(
             method, abs_url, headers, post_data)
