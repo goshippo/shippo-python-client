@@ -4,8 +4,8 @@ import shippo
 In this tutorial we have an order with a sender address,
 recipient address and parcel information that we need to ship.
 
-We want to get the parcel to the customer as soon as possible, 
-with a max delivery time of 3 days.
+We want to get the cheapest shipping label that will 
+get the packages to the customer within 3 days.
 """
 
 # for demo purposes we set the max. transit time here
@@ -73,8 +73,8 @@ shipment = shippo.Shipment.create(
 rates = shipment.rates_list
 
 # Find the fastest possible transite time
-key = lambda x: float(x['days'])
-rate = min(eligible_rate, key=lambda x: float(x['amount']))
+eligible_rates = (rate for rate in rates if rate['days'] <= MAX_TRANSIT_TIME_DAYS)
+rate = min(eligible_rates, key=lambda x: float(x['amount']))
 print "Picked service %s %s for %s %s with est. transit time of %s days" % \
     (rate['provider'], rate['servicelevel_name'], rate['currency'], rate['amount'], rate['days'])
 
@@ -90,6 +90,6 @@ else:
     print "Failed purchasing the label due to:"
     for message in transaction.messages:
         print "- %s" % message['text']
-        
+
 #For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our
 #complete documentation: https://goshippo.com/docs/
