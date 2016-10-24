@@ -4,8 +4,8 @@ import shippo
 In this tutorial we have an order with a sender address,
 recipient address and parcel information that we need to ship.
 
-We want to get the parcel to the customer as soon as possible,
-with a max delivery time of 3 days.
+We want to get the cheapest shipping label that will 
+get the packages to the customer within 3 days.
 """
 
 # for demo purposes we set the max. transit time here
