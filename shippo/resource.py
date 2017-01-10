@@ -356,6 +356,25 @@ class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResour
         return "v1/%ss/" % (cls_name,)
 
 
+class Rate(ListableAPIResource, FetchableAPIResource):
+    """
+     Each valid Shipment object will automatically trigger the calculation of all available
+     Rates. Depending on your Addresses and Parcel, there may be none, one or multiple Rates
+    """
+
+    @classmethod
+    def class_url(cls):
+        cls_name = cls.class_name()
+        return "v1/%ss/" % (cls_name,)
+
+
+class CarrierAccount(CreateableAPIResource, ListableAPIResource, FetchableAPIResource, UpdateableAPIResource):
+
+    @classmethod
+    def class_url(cls):
+        return "v1/carrier_accounts/"
+
+
 class Track(CreateableAPIResource):
     """
     A Track object gives you the current shipping state of a package not tendered through Shippo
@@ -413,22 +432,3 @@ class Track(CreateableAPIResource):
     def class_url(cls):
         cls_name = cls.class_name()
         return "v1/%ss/" % (cls_name,)
-
-
-class Rate(ListableAPIResource, FetchableAPIResource):
-    """
-     Each valid Shipment object will automatically trigger the calculation of all available
-     Rates. Depending on your Addresses and Parcel, there may be none, one or multiple Rates
-    """
-
-    @classmethod
-    def class_url(cls):
-        cls_name = cls.class_name()
-        return "v1/%ss/" % (cls_name,)
-
-
-class CarrierAccount(CreateableAPIResource, ListableAPIResource, FetchableAPIResource, UpdateableAPIResource):
-
-    @classmethod
-    def class_url(cls):
-        return "v1/carrier_accounts/"
