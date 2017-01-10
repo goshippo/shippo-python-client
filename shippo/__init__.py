@@ -15,5 +15,6 @@ from shippo.resource import (
     Rate,
     Refund,
     Shipment,
+    Track,
     Transaction,
 )

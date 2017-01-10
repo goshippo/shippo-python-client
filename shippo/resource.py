@@ -356,6 +356,34 @@ class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResour
         return "v1/%ss/" % (cls_name,)
 
 
+class Track(CreateableAPIResource):
+
+    @classmethod
+    def get(cls, carrier_token, tracking_number, api_key=None, **params):
+        """
+        A custom get method for tracking based on carrier and tracking number
+        Written because the endpoint for tracking is different from our standard endpoint
+        
+        Args:
+            carrier_token (str) -- [description]
+            tracking_number (str) -- [description]
+            **params -- [description]
+        """
+        requestor = api_requestor.APIRequestor(api_key)
+        url = cls.class_url() + carrier_token + '/' + tracking_number
+        response, api_key = requestor.request('get', url)
+        return convert_to_shippo_object(response, api_key)
+
+    @classmethod
+    def create_webhook(cls, api_key=None, **params):
+        return super(Track, cls).create(api_key, **params)
+
+    @classmethod
+    def class_url(cls):
+        cls_name = cls.class_name()
+        return "v1/%ss/" % (cls_name,)
+
+
 class Rate(ListableAPIResource, FetchableAPIResource):
     """
      Each valid Shipment object will automatically trigger the calculation of all available
