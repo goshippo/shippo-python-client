@@ -1,0 +1,51 @@
+interactions:
+- request:
+    body: !!python/unicode '{"tracking_number": "9205590164917337534322", "carrier":
+      "usps", "metadata": "metadata"}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['88']
+      Content-Type: [application/json]
+      User-Agent: [Shippo/v1 PythonBindings/1.2.4]
+      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
+          "requests", "uname": "Darwin Davids-MacBook-Pro.local 16.3.0 Darwin Kernel
+          Version 16.3.0: Thu Nov 17 20:23:58 PST 2016; root:xnu-3789.31.2~1/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.3.0-x86_64-i386-64bit",
+          "bindings_version": "1.2.4"}']
+    method: POST
+    uri: https://api.goshippo.com/v1/tracks/
+  response:
+    body:
+      string: !!binary |
+        H4sIAMm4dlgC/+WXbW/bNhCA/4rgz6vBV5HUt27NgGJbWjTOhm0YAr4cEy6yZEh0tq7If99JiWdn
+        9WynTpECA/RBEo/H43PHu+OHibddl6CbVMVk2S/6yVfFJHfWX6fm8qJZzt3dkGFESkNoKQxVnCvJ
+        BWdsELYhdND3F7Fr5yj5YeJTfj9MGQb7bDOsPv5Ki9Wrb5dN7kax87PJ7Yaa3D5Q8jV011DD+wfK
+        vnm5oc4IReR2nZDt8MXQ7BeUvSB6Rkg1Pr+M+qC7SR6130A9Lprba2hWIC4WXWq7wQwUbex8XPnt
+        /b/iB5vqcY05LhLs3UL/vG8yHKxe9qP+1v0OPl/4DnAj4YFpZkZoJUhF1VRSOZp3L71chEdIp1GQ
+        GhmJJdZbrwV31lDOeKBCB0aMYWFFc7Rr8urk+9c/nrw7ebX+fRFwK6keh39ul13RX6XFHJpcXNm+
+        cABNEaBON9BBKGwu8hXgjz6nxubUNsUcJ7v2z+mmxnvnbXiDyoqalTfq1o9zn8j9t5s+uEp9bsex
+        X3d6Qc3QHqEqVk612sJVM2WkkM5GxoUPUXtJuTOMWx6YiP4h1/PT707f/HS6neoMiZ2fvT0bgXbg
+        AWGGkSPu1+eubZJfU09NbLv5HVvbhCL1hf3DJuR9Oc5JGeY7YauHob8Bu1nWNcI6ikupHQ3AFQ+B
+        CK6jttHE6Bgn3BHj+SO5DNteDFurrYN6HXL3po0E8orfp6Bg21Gs4+7MNsW3nW186n27K/go4duD
+        bydPTESq4rqSZmqU2sKTG+kgasaiEJFoK0tDFNfE86jKf8fZ7N3L07PXs0edXus9LPL68I4oMbVd
+        pqaI1qcaQeyhOBxd8cVQ1B9TBHDBeRGjByM8tcZKH4UpKaZCTbQ6iuJQNW+O4sfIvux3OD+tPwM/
+        IgJWD+sRnhfMEx1EYKoUkRrMfcCO4hdgYbsMGwf5UGxY+eSXjM1KZT3BvAckCIlHmTHlDXHG8cCF
+        tk8edoeCw6y3G9wbe11jbt2FrKT/UWz3IKO8ErSS5VRp8TEyLByGGiiZs1I45rQ20WLjwljJvHHl
+        c0QauplX7PmAmaHBE3LK2JaC6wlioSFQp0FIyR2UWGojV85RPLP0KWNs0fa5aGPEVnkfsHKw+bP1
+        c4cTK7e0xIwBp5GwUgXBAjYsxnDKo/RWsgDhKGJjSe3bMcp8O1/UkKHeF150b/5/PlqeC0VLap2w
+        mLKkdHroOwgXDgxmtk+nhd1au8wFdrOrC8QBmNhzYdp3zzIEGwpaOks0Exr7DaVlYNi5OSEolOb/
+        cM/67fZv8HE/0kQQAAA=
+    headers:
+      allow: [OPTIONS]
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-length: ['983']
+      content-type: [application/json]
+      date: ['Wed, 11 Jan 2017 22:59:21 GMT']
+      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
+      server: [nginx/1.8.0]
+      vary: ['Host, Cookie, Accept-Encoding']
+    status: {code: 201, message: CREATED}
+version: 1

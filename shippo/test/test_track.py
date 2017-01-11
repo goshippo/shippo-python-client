@@ -53,8 +53,8 @@ class TrackTests(ShippoTestCase):
         )
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/track')
-    def test_create_webhook(self):
-        tracking = shippo.Track.create_webhook(
+    def test_create(self):
+        tracking = shippo.Track.create(
             carrier='usps',
             tracking_number=self.usps_tracking_no,
             metadata='metadata'
@@ -64,10 +64,10 @@ class TrackTests(ShippoTestCase):
         self.assertTrue('tracking_history' in tracking)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/track')
-    def test_invalid_create_webhook(self):
+    def test_invalid_create(self):
         self.assertRaises(
             shippo.error.InvalidRequestError,
-            shippo.Track.create_webhook,
+            shippo.Track.create,
             None,
             **{
                 'carrier': 'EXAMPLE_OF_INVALID_CARRIER',
@@ -75,7 +75,7 @@ class TrackTests(ShippoTestCase):
                 'metadata': 'metadata'
             }
         )
-        tracking = shippo.Track.create_webhook(
+        tracking = shippo.Track.create(
             carrier='usps', 
             tracking_number='EXAMPLE_OF_INVALID_TRACKING_NUMBER',
             metadata='metadata'

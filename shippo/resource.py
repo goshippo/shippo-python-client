@@ -410,7 +410,7 @@ class Track(CreateableAPIResource):
         return convert_to_shippo_object(response, api_key)
 
     @classmethod
-    def create_webhook(cls, api_key=None, **params):
+    def create(cls, api_key=None, **params):
         """
         Creates a webhook to keep track of the shipping status of a specific package
                 
