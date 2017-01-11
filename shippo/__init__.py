@@ -16,4 +16,5 @@ from shippo.resource import (
     Refund,
     Shipment,
     Transaction,
+    Batch,
 )

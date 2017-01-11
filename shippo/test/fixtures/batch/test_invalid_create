@@ -1,0 +1,62 @@
+interactions:
+- request:
+    body: !!python/unicode '{}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['2']
+      Content-Type: [application/json]
+      User-Agent: [Shippo/v1 PythonBindings/1.2.4]
+      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
+          "requests", "uname": "Darwin Davids-MacBook-Pro.local 16.3.0 Darwin Kernel
+          Version 16.3.0: Thu Nov 17 20:23:58 PST 2016; root:xnu-3789.31.2~1/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.3.0-x86_64-i386-64bit",
+          "bindings_version": "1.2.4"}']
+    method: POST
+    uri: https://api.goshippo.com/v1/batches/
+  response:
+    body: {string: !!python/unicode '{"detail": "Invalid request."}'}
+    headers:
+      allow: [OPTIONS]
+      connection: [keep-alive]
+      content-length: ['30']
+      content-type: [application/json]
+      date: ['Wed, 11 Jan 2017 18:58:03 GMT']
+      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
+      server: [nginx/1.8.0]
+      vary: ['Host, Cookie']
+    status: {code: 400, message: BAD REQUEST}
+- request:
+    body: !!python/unicode '{"label_filetype": "PDF_4x6", "metadata": "teehee", "default_servicelevel_token":
+      "usps_priority", "default_carrier_account": "NOT_VALID", "batch_shipments":
+      []}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['161']
+      Content-Type: [application/json]
+      User-Agent: [Shippo/v1 PythonBindings/1.2.4]
+      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
+          "requests", "uname": "Darwin Davids-MacBook-Pro.local 16.3.0 Darwin Kernel
+          Version 16.3.0: Thu Nov 17 20:23:58 PST 2016; root:xnu-3789.31.2~1/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.3.0-x86_64-i386-64bit",
+          "bindings_version": "1.2.4"}']
+    method: POST
+    uri: https://api.goshippo.com/v1/batches/
+  response:
+    body: {string: !!python/unicode '{"default_carrier_account": ["Invalid account
+        object_id provided ''NOT_VALID''. Please list the available CarrierAccount
+        objects (/v1/carrier_accounts) to get your valid object_ids."]}'}
+    headers:
+      allow: [OPTIONS]
+      connection: [keep-alive]
+      content-length: ['182']
+      content-type: [application/json]
+      date: ['Wed, 11 Jan 2017 18:58:03 GMT']
+      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
+      server: [nginx/1.8.0]
+      vary: ['Host, Cookie']
+    status: {code: 400, message: BAD REQUEST}
+version: 1

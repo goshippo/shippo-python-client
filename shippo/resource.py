@@ -373,3 +373,118 @@ class CarrierAccount(CreateableAPIResource, ListableAPIResource, FetchableAPIRes
     @classmethod
     def class_url(cls):
         return "v1/carrier_accounts/"
+
+
+class Batch(CreateableAPIResource, FetchableAPIResource):
+    """
+    A Batch bundles together large amounts of shipments, up to 10,000
+    """
+    @classmethod
+    def retrieve(cls, object_id, api_key=None, **params):
+        """
+        Retrieve a batch, customized to allow the addition of url parameters
+        
+        Arguments:
+            object_id (str) -- the batch object id
+            **params
+                page (int as str) -- pagination
+                object_results (str) -- valid options are:
+                                            "creation_failed"
+                                            "creation_succeeded"
+                                            "purchase_succeeded"
+                                            "purchase_failed"
+        
+        Keyword Arguments:
+            api_key (str) -- an api key, if not specified here it will default to the key
+                             set in your environment var or by shippo.api_key = "..."
+
+        Returns:
+            (ShippoObject) -- The server response
+        """
+        object_id = util.utf8(object_id)
+        extn = urllib.quote_plus(object_id)
+        glue = '?'
+        for key in params:
+            extn += glue + key + '=' + str(params[key])
+            if glue == '?':
+                glue = '&'
+        requestor = api_requestor.APIRequestor(api_key)
+        url = cls.class_url() + extn
+        response, api_key = requestor.request('get', url)
+        return convert_to_shippo_object(response, api_key)
+
+    @classmethod
+    def add(cls, object_id, shipments_to_add, api_key=None):
+        """
+        Add shipments to a batch
+        
+        Arguments:
+            object_id (str) -- the batch object id
+            shipments_to_add (list of dict) -- list of shipments to add, must be in the format
+                [{'shipment': <shipment 1 object id>}, {'shipment': <shipment 2 object id>}, ...]
+        
+        Keyword Arguments:
+            api_key (str) -- an api key, if not specified here it will default to the key
+                             set in your environment var or by shippo.api_key = "..."
+
+        Returns:
+            (ShippoObject) -- The server response
+        """
+        object_id = util.utf8(object_id)
+        extn = urllib.quote_plus(object_id)
+        requestor = api_requestor.APIRequestor(api_key)
+        url = cls.class_url() + extn + '/add_shipments'
+        response, api_key = requestor.request('post', url, shipments_to_add)
+        return convert_to_shippo_object(response, api_key)
+
+    @classmethod
+    def remove(cls, object_id, shipments_to_remove, api_key=None):
+        """
+        Remove shipments from a batch
+        
+        Arguments:
+            object_id (str) -- the batch object id
+            shipments_to_remove (list of str) -- list of shipments to remove, must be in the format
+                [<shipment 1 object id>, <shipment 2 object id>, ...]
+        
+        Keyword Arguments:
+            api_key (str) -- an api key, if not specified here it will default to the key
+                             set in your environment var or by shippo.api_key = "..."
+
+        Returns:
+            (ShippoObject) -- The server response
+        """
+        object_id = util.utf8(object_id)
+        extn = urllib.quote_plus(object_id)
+        requestor = api_requestor.APIRequestor(api_key)
+        url = cls.class_url() + extn + '/remove_shipments'
+        response, api_key = requestor.request('post', url, shipments_to_remove)
+        return convert_to_shippo_object(response, api_key)
+
+    @classmethod
+    def purchase(cls, object_id, api_key=None):
+        """
+        Purchase batch of shipments
+        
+        Arguments:
+            object_id (str) -- the batch object id
+        
+        Keyword Arguments:
+            api_key (str) -- an api key, if not specified here it will default to the key
+                             set in your environment var or by shippo.api_key = "..."
+
+        Returns:
+            (ShippoObject) -- The server response
+        """
+        object_id = util.utf8(object_id)
+        extn = urllib.quote_plus(object_id)
+        requestor = api_requestor.APIRequestor(api_key)
+        url = cls.class_url() + extn + '/purchase'
+        response, api_key = requestor.request('post', url)
+        return convert_to_shippo_object(response, api_key)
+
+    @classmethod
+    def class_url(cls):
+        cls_name = cls.class_name()
+        return "v1/%ses/" % (cls_name,)
+
