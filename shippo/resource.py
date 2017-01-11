@@ -384,7 +384,7 @@ class Track(CreateableAPIResource):
     Tracking packages tendered through Shippo can be done through the Transaction object
     """
     @classmethod
-    def get(cls, carrier_token, tracking_number, api_key=None):
+    def get_status(cls, carrier_token, tracking_number, api_key=None):
         """
         A custom get method for tracking based on carrier and tracking number
         Written because the endpoint for tracking is different from our standard endpoint
@@ -401,6 +401,9 @@ class Track(CreateableAPIResource):
         Returns:
             (ShippoObject) -- The server response
         """
+        carrier_token = urllib.quote_plus(util.utf8(carrier_token))
+        tracking_number = urllib.quote_plus(util.utf8(tracking_number))
+        tn = urllib.quote_plus(tracking_number)
         requestor = api_requestor.APIRequestor(api_key)
         url = cls.class_url() + carrier_token + '/' + tracking_number
         response, api_key = requestor.request('get', url)

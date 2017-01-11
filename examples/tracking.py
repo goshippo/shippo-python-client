@@ -20,11 +20,11 @@ if transaction:
 tracking_number = '9205590164917337534322'
 # For full list of carrier tokens see https://goshippo.com/docs/reference#carriers
 carrier_token = 'usps'
-tracking = shippo.Tracking.get(carrier_token, tracking_number)
+tracking = shippo.Track.get_status(carrier_token, tracking_number)
 print tracking
 
 # Registering a tracking webhook
-webhook_response = shippo.Tracking.create_webhook(
+webhook_response = shippo.Track.create_webhook(
                                         carrier=carrier_token, 
                                         tracking=tracking_number, 
                                         metadata='optional, up to 100 characters'

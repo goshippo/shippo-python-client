@@ -4,11 +4,7 @@ import unittest2
 from mock import patch
 
 import shippo
-from shippo.test.helper import (
-    create_mock_shipment,
-    ShippoTestCase,
-    DUMMY_TRANSACTION
-)
+from shippo.test.helper import ShippoTestCase
 
 from shippo.test.helper import shippo_vcr
 
@@ -34,24 +30,24 @@ class TrackTests(ShippoTestCase):
         self.client_patcher.stop()
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/track')
-    def test_get(self):
+    def test_get_status(self):
         carrier_token = 'usps'
-        tracking = shippo.Track.get(carrier_token, self.usps_tracking_no)
+        tracking = shippo.Track.get_status(carrier_token, self.usps_tracking_no)
         self.assertTrue(tracking)
         self.assertTrue('tracking_status' in tracking)
         self.assertTrue('tracking_history' in tracking)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/track')
-    def test_invalid_get(self):
+    def test_invalid_get_status(self):
         self.assertRaises(
             shippo.error.InvalidRequestError,
-            shippo.Track.get,
+            shippo.Track.get_status,
             'EXAMPLE_OF_INVALID_CARRIER',
             self.usps_tracking_no
         )
         self.assertRaises(
             shippo.error.APIError,
-            shippo.Track.get,
+            shippo.Track.get_status,
             'usps',
             'EXAMPLE_OF_INVALID_TRACKING_NUMBER'
         )
