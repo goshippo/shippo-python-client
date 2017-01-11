@@ -1,4 +1,3 @@
-import os
 import sys
 import textwrap
 
@@ -6,8 +5,6 @@ from shippo import error
 
 # - Requests is the preferred HTTP library
 # - Google App Engine has urlfetch
-# - Use Pycurl if it's there (at least it verifies SSL certs)
-# - Fall back to urllib2 with a warning if needed
 
 try:
     import requests
@@ -15,17 +12,17 @@ except ImportError:
     requests = None
 else:
     try:
-        # Require version 0.8.8, but don't want to depend on distutils
+        # Require version 0.9.0 which has ssl verification as default
         version = requests.__version__
         major, minor, patch = [int(i) for i in version.split('.')]
     except Exception:
         # Probably some new-fangled version, so it should support verify
         pass
     else:
-        if (major, minor, patch) < (0, 8, 8):
+        if (major, minor, patch) < (0, 9, 0):
             sys.stderr.write(
                 'Warning: the Shippo library requires that your Python '
-                '"requests" library be newer than version 0.8.8, but your '
+                '"requests" library be newer than version 0.9.0, but your '
                 '"requests" library is version %s. Shippo will fall back to '
                 'an alternate HTTP library so everything should work. We '
                 'recommend upgrading your "requests" library. If you have any '
@@ -33,6 +30,13 @@ else:
                 '"pip install -U requests" should upgrade your requests '
                 'library to the latest version.)' % (version,))
             requests = None
+
+
+try:
+    import urllib3.contrib.pyopenssl as pyopenssl
+except ImportError:
+    pyopenssl = None
+
 
 try:
     from google.appengine.api import urlfetch
@@ -64,9 +68,8 @@ class RequestsClient(HTTPClient):
     def request(self, method, url, headers, post_data=None):
         kwargs = {}
 
-        if self._verify_ssl_certs:
-            kwargs['verify'] = os.path.join(
-                os.path.dirname(__file__), 'data/ca-certificates.crt')
+        if self._verify_ssl_certs and pyopenssl:
+            pyopenssl.inject_into_urllib3()
         else:
             kwargs['verify'] = False
 
