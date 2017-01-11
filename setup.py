@@ -2,6 +2,8 @@ import os
 import sys
 import warnings
 
+from shippo.version import VERSION
+
 try:
     from setuptools import setup
 except ImportError:
@@ -23,15 +25,14 @@ if sys.version_info < (2, 6):
         'If you have any questions, please file an issue on Github or '
         'contact us at support@goshippo.com.',
         DeprecationWarning)
-    install_requires.append('requests >= 0.8.8, < 0.10.1')
+    install_requires.append('requests >= 0.9.0, < 0.10.1')
     install_requires.append('ssl')
 else:
-    install_requires.append('requests >= 0.8.8')
+    install_requires.append('requests >= 0.9.0')
 
 
 # Don't import shippo module here, since deps may not be installed
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'shippo'))
-from version import VERSION
 
 # Get simplejson if we don't already have json
 if sys.version_info < (3, 0):
@@ -49,7 +50,7 @@ setup(
     author_email='support@goshippo.com',
     url='https://goshippo.com/',
     packages=['shippo', 'shippo.test', 'shippo.test.integration'],
-    package_data={'shippo': ['data/ca-certificates.crt', '../VERSION']},
+    package_data={'shippo': ['../VERSION']},
     install_requires=install_requires,
     test_suite='shippo.test.all',
     tests_require=['unittest2', 'mock', 'vcrpy'],

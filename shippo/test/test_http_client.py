@@ -91,12 +91,6 @@ class ClientTestBase():
                           'get', self.valid_url, {}, None)
 
 
-class RequestsVerify(object):
-
-    def __eq__(self, other):
-        return other and other.endswith('shippo/data/ca-certificates.crt')
-
-
 class RequestsClientTests(ShippoUnitTestCase, ClientTestBase):
     request_client = shippo.http_client.RequestsClient
 
