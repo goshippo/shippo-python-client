@@ -25,7 +25,7 @@ if sys.version_info < (2, 6):
         'If you have any questions, please file an issue on Github or '
         'contact us at support@goshippo.com.',
         DeprecationWarning)
-    install_requires.append('requests >= 0.9., < 0.10.1')
+    install_requires.append('requests >= 0.9.0, < 0.10.1')
     install_requires.append('ssl')
 else:
     install_requires.append('requests >= 0.9.0')
