@@ -15,17 +15,17 @@ except ImportError:
     requests = None
 else:
     try:
-        # Require version 0.8.8, but don't want to depend on distutils
+        # Require version 0.9.0 which has SSL verification enabled by default
         version = requests.__version__
         major, minor, patch = [int(i) for i in version.split('.')]
     except Exception:
         # Probably some new-fangled version, so it should support verify
         pass
     else:
-        if (major, minor, patch) < (0, 8, 8):
+        if (major, minor, patch) < (0, 9, 0):
             sys.stderr.write(
                 'Warning: the Shippo library requires that your Python '
-                '"requests" library be newer than version 0.8.8, but your '
+                '"requests" library be newer than version 0.9.0, but your '
                 '"requests" library is version %s. Shippo will fall back to '
                 'an alternate HTTP library so everything should work. We '
                 'recommend upgrading your "requests" library. If you have any '
@@ -64,10 +64,7 @@ class RequestsClient(HTTPClient):
     def request(self, method, url, headers, post_data=None):
         kwargs = {}
 
-        if self._verify_ssl_certs:
-            kwargs['verify'] = os.path.join(
-                os.path.dirname(__file__), 'data/ca-certificates.crt')
-        else:
+        if not self._verify_ssl_certs:
             kwargs['verify'] = False
 
         try:
