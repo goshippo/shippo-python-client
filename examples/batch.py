@@ -1,4 +1,5 @@
 import shippo
+import time
 
 """
 In this tutorial we see how to use and interact with batches
@@ -96,6 +97,9 @@ batch = shippo.Batch.create(**example_batch)
 
 #the batch endpoint is async so we need to retrieve it in order to see the details
 batch = shippo.Batch.retrieve(batch.object_id)
+while batch.batch_shipments.count = 0: #long-polling
+  time.sleep(0.5)
+  batch = shippo.Batch.retrieve(batch.object_id)
 print batch
 
 #now we want to add a shipment to our batch
