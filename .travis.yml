@@ -7,12 +7,6 @@ python:
   - "3.4"
   - "3.5"
 
-env: PYCURL_SSL_LIBRARY=gnutls
-addons:
-  apt:
-    packages:
-      - libcurl4-gnutls-dev
-
 install:
   - python setup.py install
 
@@ -20,6 +14,7 @@ before_script:
   - pip install unittest2
   - pip install mock
   - pip install vcrpy
+  - pip install requests[secure]
 
 script:
   - python setup.py test
