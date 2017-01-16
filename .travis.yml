@@ -21,6 +21,7 @@ before_script:
   - pip install unittest2
   - pip install mock
   - pip install vcrpy
+  - pip install cryptography
 
 script:
   - python setup.py test
