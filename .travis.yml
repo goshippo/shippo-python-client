@@ -14,7 +14,7 @@ before_script:
   - pip install unittest2
   - pip install mock
   - pip install vcrpy
-  - pip install requests[secure]
+  - pip install requests[security]
 
 script:
   - python setup.py test
