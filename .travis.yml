@@ -7,6 +7,13 @@ python:
   - "3.4"
   - "3.5"
 
+addons:
+  apt:
+    sources:
+      - debian-sid
+    packages:
+      - libssl1.0.0
+
 install:
   - python setup.py install
 
@@ -14,7 +21,6 @@ before_script:
   - pip install unittest2
   - pip install mock
   - pip install vcrpy
-  - pip install requests[security]
 
 script:
   - python setup.py test
