@@ -9,10 +9,10 @@ In this tutorial we see how to use and interact with batches
 shippo.api_key = "<API-KEY>"
 
 example_batch = {
-    "default_carrier_account": "0d19dbd3b09544c79be2ab1b780f490d", #replace with your carrier account
-    "default_servicelevel_token": "usps_priority", #replace with desired service level, https://goshippo.com/docs/reference#servicelevels
+    "default_carrier_account": "<CARRIER-ACCOUNT>", #replace with your carrier account
+    "default_servicelevel_token": "<SERVICE-LEVEL-TOKEN>", #replace with desired service level, https://goshippo.com/docs/reference#servicelevels
     "label_filetype": "PDF_4x6",
-    "metadata": "BATCH #170",
+    "metadata": "this is metadata",
     "batch_shipments": [
         {
           "shipment": { #see basic-shipment.py on how to create shipments
@@ -95,11 +95,19 @@ example_batch = {
 #create batch, passing in each attribute as a parameter
 batch = shippo.Batch.create(**example_batch)
 
-#the batch endpoint is async so we need to retrieve it in order to see the details
+"""
+  The batch endpoint is async so we need to retrieve it in order to see the details
+  In this example we are long-polling but in practice you should use webhooks over
+    long-polling, we would encourage you to add a webhook through the UI
+    see https://app.goshippo.com/api/
+"""
 batch = shippo.Batch.retrieve(batch.object_id)
-while batch.batch_shipments.count = 0: #long-polling
+tries = 0
+TIMEOUT = 60 #thirty second timeout
+while batch.object_status = 'VALIDATING' and tries < TIMEOUT:
   time.sleep(0.5)
   batch = shippo.Batch.retrieve(batch.object_id)
+  tries += 1
 print batch
 
 #now we want to add a shipment to our batch
