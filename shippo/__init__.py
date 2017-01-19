@@ -17,4 +17,5 @@ from shippo.resource import (
     Shipment,
     Track,
     Transaction,
+    Batch,
 )

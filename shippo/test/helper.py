@@ -209,6 +209,96 @@ INVALID_TRANSACTION = {
     "notification_email_other": "max@goshippo.com",
     "metadata": "Customer ID 123456"
 }
+DUMMY_BATCH = {
+    "default_carrier_account": "0d19dbd3b09544c79be2ab1b780f490d",
+    "default_servicelevel_token": "usps_priority",
+    "label_filetype": "PDF_4x6",
+    "metadata": "BATCH #170",
+    "batch_shipments": [
+        {
+          "shipment": {    
+            "object_purpose": "PURCHASE",
+            "address_from": {
+              "object_purpose": "PURCHASE",
+              "name": "Mr Hippo",
+              "street1": "965 Mission St",
+              "street2": "Ste 201",
+              "city": "San Francisco",
+              "state": "CA",
+              "zip": "94103",
+              "country": "US",
+              "phone": "4151234567",
+              "email": "mrhippo@goshippo.com"
+            },
+            "address_to": {
+              "object_purpose": "PURCHASE",
+              "name": "Mrs Hippo",
+              "company": "",
+              "street1": "Broadway 1",
+              "street2": "",
+              "city": "New York",
+              "state": "NY",
+              "zip": "10007",
+              "country": "US",
+              "phone": "4151234567",
+              "email": "mrshippo@goshippo.com"
+            },
+            "parcel": {
+              "length": "5",
+              "width": "5",
+              "height": "5",
+              "distance_unit": "in",
+              "weight": "2",
+              "mass_unit": "oz"
+            }
+          }
+        },
+        {
+          "shipment": {    
+            "object_purpose": "PURCHASE",
+            "address_from": {
+              "object_purpose": "PURCHASE",
+              "name": "Mr Hippo",
+              "street1": "1092 Indian Summer Ct",
+              "city": "San Jose",
+              "state": "CA",
+              "zip": "95122",
+              "country": "US",
+              "phone": "4151234567",
+              "email": "mrhippo@goshippo.com"
+            },
+            "address_to": {
+              "object_purpose": "PURCHASE",
+              "name": "Mrs Hippo",
+              "company": "",
+              "street1": "Broadway 1",
+              "street2": "",
+              "city": "New York",
+              "state": "NY",
+              "zip": "10007",
+              "country": "US",
+              "phone": "4151234567",
+              "email": "mrshippo@goshippo.com"
+            },
+            "parcel": {
+              "length": "5",
+              "width": "5",
+              "height": "5",
+              "distance_unit": "in",
+              "weight": "20",
+              "mass_unit": "lb"
+            }
+          }
+        }
+    ]
+}
+INVALID_BATCH = {
+    "default_carrier_account": "NOT_VALID",
+    "default_servicelevel_token": "usps_priority",
+    "label_filetype": "PDF_4x6",
+    "metadata": "teehee",
+    "batch_shipments": []
+}
 
 
 def create_mock_shipment(async=False, api_key=None):

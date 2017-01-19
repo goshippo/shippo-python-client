@@ -1,0 +1,34 @@
+interactions:
+- request:
+    body: !!python/unicode 'null'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['4']
+      Content-Type: [application/json]
+      User-Agent: [Shippo/v1 PythonBindings/1.2.4]
+      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
+          "requests", "uname": "Darwin Davids-MacBook-Pro.local 16.3.0 Darwin Kernel
+          Version 16.3.0: Thu Nov 17 20:23:58 PST 2016; root:xnu-3789.31.2~1/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.3.0-x86_64-i386-64bit",
+          "bindings_version": "1.2.4"}']
+    method: POST
+    uri: https://api.goshippo.com/v1/batches/INVALID_OBJECT_ID/purchase
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAxXMQQrCMBAF0Kv8Ezh0HwLaKkRKBWndltiOjJskZpJ6fevybZ6Rxg6x4BJrWA3t
+        MsmOwsj8qayFV0z3HrQ19PRlEVZyw+PYu26+na7ndpxdR6nmRbwyvl4R9u313xADirwVynnjfDCU
+        7A9DZqiybwAAAA==
+    headers:
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-length: ['124']
+      content-type: [text/html]
+      date: ['Wed, 11 Jan 2017 18:58:04 GMT']
+      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
+      server: [nginx/1.8.0]
+      vary: ['Host, Cookie']
+    status: {code: 404, message: NOT FOUND}
+version: 1
