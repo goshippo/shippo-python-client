@@ -1,6 +1,14 @@
 Release History
 ---------------
 
+1.3.0 (2016-01-18)
++++++++++++++++++++
+
+**New Features**
+
+- Added Track endpoint support
+- Added Batch endpoint support
+
 1.2.4 (2016-10-11)
 +++++++++++++++++++
 
