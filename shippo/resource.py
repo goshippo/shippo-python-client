@@ -375,6 +375,68 @@ class CarrierAccount(CreateableAPIResource, ListableAPIResource, FetchableAPIRes
         return "v1/carrier_accounts/"
 
 
+class Track(CreateableAPIResource):
+    """
+    A Track object gives you the current shipping state of a package not tendered through Shippo
+    given a carrier and respective tracking number. It also allows you to register a webhook to
+    a carrier + tracking number pair in order to receive live updates.
+
+    Tracking packages tendered through Shippo can be done through the Transaction object
+    """
+    @classmethod
+    def get_status(cls, carrier_token, tracking_number, api_key=None):
+        """
+        A custom get method for tracking based on carrier and tracking number
+        Written because the endpoint for tracking is different from our standard endpoint
+        
+        Arguments:
+            carrier_token (str) -- name of the carrier of the shipment to track
+                                    see https://goshippo.com/docs/reference#carriers
+            tracking_number (str) -- tracking number to track
+
+        Keyword Arguments:
+            api_key (str) -- an api key, if not specified here it will default to the key
+                             set in your environment var or by shippo.api_key = "..."
+
+        Returns:
+            (ShippoObject) -- The server response
+        """
+        carrier_token = urllib.quote_plus(util.utf8(carrier_token))
+        tracking_number = urllib.quote_plus(util.utf8(tracking_number))
+        tn = urllib.quote_plus(tracking_number)
+        requestor = api_requestor.APIRequestor(api_key)
+        url = cls.class_url() + carrier_token + '/' + tracking_number
+        response, api_key = requestor.request('get', url)
+        return convert_to_shippo_object(response, api_key)
+
+    @classmethod
+    def create(cls, api_key=None, **params):
+        """
+        Creates a webhook to keep track of the shipping status of a specific package
+                
+        Arguments:
+            **params
+                carrier (str) -- name of the carrier of the shipment to track
+                                  see https://goshippo.com/docs/reference#carriers
+                tracking_number (str) -- tracking number to track
+                metadata (str) -- A string of up to 100 characters that can be filled with any 
+                                   additional information you want to attach to the object
+        
+        Keyword Arguments:
+            api_key (str) -- an api key, if not specified here it will default to the key
+                             set in your environment var or by shippo.api_key = "..."
+
+        Returns:
+            (ShippoObject) -- The server response
+        """
+        return super(Track, cls).create(api_key, **params)
+
+    @classmethod
+    def class_url(cls):
+        cls_name = cls.class_name()
+        return "v1/%ss/" % (cls_name,)
+
+
 class Batch(CreateableAPIResource, FetchableAPIResource):
     """
     A Batch bundles together large amounts of shipments, up to 10,000
@@ -422,7 +484,7 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
             object_id (str) -- the batch object id
             shipments_to_add (list of dict) -- list of shipments to add, must be in the format
                 [{'shipment': <shipment 1 object id>}, {'shipment': <shipment 2 object id>}, ...]
-        
+
         Keyword Arguments:
             api_key (str) -- an api key, if not specified here it will default to the key
                              set in your environment var or by shippo.api_key = "..."
@@ -487,4 +549,3 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
     def class_url(cls):
         cls_name = cls.class_name()
         return "v1/%ses/" % (cls_name,)
-
