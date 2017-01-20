@@ -7,6 +7,12 @@ Release History
 
 - SSL cert verification is now enabled by default
 
+1.3.0 (2017-01-18)
++++++++++++++++++++
+
+**New features**
+
+- Added support for Track and Batch Objects
 
 1.2.4 (2016-10-11)
 +++++++++++++++++++
