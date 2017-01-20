@@ -23,10 +23,10 @@ if sys.version_info < (2, 6):
         'If you have any questions, please file an issue on Github or '
         'contact us at support@goshippo.com.',
         DeprecationWarning)
-    install_requires.append('requests >= 0.8.8, < 0.10.1')
+    install_requires.append('requests >= 0.9.0, < 0.10.1')
     install_requires.append('ssl')
 else:
-    install_requires.append('requests >= 0.8.8')
+    install_requires.append('requests >= 0.9.0')
 
 
 # Don't import shippo module here, since deps may not be installed
@@ -49,7 +49,7 @@ setup(
     author_email='support@goshippo.com',
     url='https://goshippo.com/',
     packages=['shippo', 'shippo.test', 'shippo.test.integration'],
-    package_data={'shippo': ['data/ca-certificates.crt', '../VERSION']},
+    package_data={'shippo': ['../VERSION']},
     install_requires=install_requires,
     test_suite='shippo.test.all',
     tests_require=['unittest2', 'mock', 'vcrpy'],

@@ -6,20 +6,7 @@ python:
   - "3.3"
   - "3.4"
   - "3.5"
-
 install:
   - python setup.py install
-
-before_script:
-  - pip install unittest2
-  - pip install mock
-  - pip install vcrpy
-
 script:
-  - python setup.py test
-
-matrix:
-  allow_failures:
-    - python: pypy
-
-sudo: false
+  - python -W always setup.py test
