@@ -1,5 +1,12 @@
 Release History
 ---------------
+1.4.0 (2017-01-19)
++++++++++++++++++++
+
+**Improvements**
+
+- SSL cert verification is now enabled by default
+
 
 1.2.4 (2016-10-11)
 +++++++++++++++++++
