@@ -15,7 +15,19 @@ except ImportError:
 path, script = os.path.split(sys.argv[0])
 os.chdir(os.path.abspath(path))
 
-install_requires = ['requests >= 1.0.0', 'six']
+install_requires = []
+
+if sys.version_info < (2, 6):
+    warnings.warn(
+        'Python 2.5 is not officially supported by Shippo. '
+        'If you have any questions, please file an issue on Github or '
+        'contact us at support@goshippo.com.',
+        DeprecationWarning)
+    install_requires.append('requests >= 0.9.0, < 0.10.1')
+    install_requires.append('ssl')
+else:
+    install_requires.append('requests >= 0.9.0')
+
 
 # Don't import shippo module here, since deps may not be installed
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'shippo'))
