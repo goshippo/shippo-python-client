@@ -63,9 +63,9 @@ shipment = shippo.Shipment.create(
     async=False
 )
 
-# Rates are stored in the `rates_list` array
+# Rates are stored in the `rates` array
 # The details on the returned object are here: https://goshippo.com/docs/reference#rates
-rates = shipment.rates_list
+rates = shipment.rates
 
 """
 You can now show those rates to the user in your UI. 

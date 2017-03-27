@@ -91,7 +91,7 @@ shipment_international = shippo.Shipment.create(
 
 # Get the first rate in the rates results for demo purposes.
 # The details on the returned object are here: https://goshippo.com/docs/reference#rates
-rate_international = shipment_international.rates_list[0]
+rate_international = shipment_international.rates[0]
 
 # Purchase the desired rate.
 # The complete information about purchasing the label: https://goshippo.com/docs/reference#transaction-create

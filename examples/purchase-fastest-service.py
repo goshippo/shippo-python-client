@@ -65,9 +65,9 @@ shipment = shippo.Shipment.create(
     async=False
 )
 
-# Rates are stored in the `rates_list` array
+# Rates are stored in the `rates` array
 # The details on the returned object are here: https://goshippo.com/docs/reference#rates
-rates = shipment.rates_list
+rates = shipment.rates
 
 # Find the fastest possible transite time
 eligible_rates = (rate for rate in rates if rate['days'] <= MAX_TRANSIT_TIME_DAYS)

@@ -85,10 +85,10 @@ for delivery_address_zip_code in DESTINATION_ADDRESSES_ZIP_CODES:
         parcel=parcel,
         async=False
     )
-    # Rates are stored in the `rates_list` array
+    # Rates are stored in the `rates` array
     # The details on the returned object are here: https://goshippo.com/docs/reference#rates
     
-    rates = shipment.rates_list
+    rates = shipment.rates
     print "Returned %s rates to %s" % (len(rates), delivery_address_zip_code)
     # We now store the shipping cost for each delivery window in our
     # `shipping_costs` dictionary to analyse it later.

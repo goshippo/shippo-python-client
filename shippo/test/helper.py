@@ -309,8 +309,8 @@ def create_mock_manifest(transaction=None):
 
 def create_mock_transaction(async=False):
     shipment = create_mock_shipment(async)
-    rates_list = shipment.rates_list
-    usps_rate = list(filter(lambda x: x.servicelevel.token == 'usps_priority', rates_list))[0]
+    rates = shipment.rates
+    usps_rate = list(filter(lambda x: x.servicelevel.token == 'usps_priority', rates))[0]
     t = DUMMY_TRANSACTION.copy()
     t['rate'] = usps_rate.object_id
     t['async'] = async

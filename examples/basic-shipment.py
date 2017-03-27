@@ -59,10 +59,10 @@ shipment = shippo.Shipment.create(
     async=False
 )
 
-# Rates are stored in the `rates_list` array
+# Rates are stored in the `rates` array
 # The details on the returned object are here: https://goshippo.com/docs/reference#rates
 # Get the first rate in the rates results for demo purposes.
-rate = shipment.rates_list[0]
+rate = shipment.rates[0]
 # Purchase the desired rate with a transaction request
 # Set async=False, indicating that the function will wait until the carrier returns a shipping label before it returns
 transaction = shippo.Transaction.create(rate=rate.object_id, async=False)
