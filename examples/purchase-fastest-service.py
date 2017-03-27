@@ -17,7 +17,6 @@ shippo.api_key = "<API-KEY>"
 # Example address_from object dict
 # The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 address_from = {
-    "object_purpose": "PURCHASE",
     "name": "Shippo Team",
     "street1": "965 Mission St",
     "street2": "Unit 480",
@@ -33,7 +32,6 @@ address_from = {
 # The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 
 address_to = {
-    "object_purpose": "PURCHASE",
     "name": "Shippo Friend",
     "street1": "1092 Indian Summer Ct",
     "city": "San Jose",
@@ -61,7 +59,6 @@ parcel = {
 # The reference for the shipment object is here: https://goshippo.com/docs/reference#shipments
 # By default Shippo API operates on an async basis. You can read about our async flow here: https://goshippo.com/docs/async
 shipment = shippo.Shipment.create(
-    object_purpose='PURCHASE',
     address_from=address_from,
     address_to=address_to,
     parcel=parcel,
@@ -76,14 +73,14 @@ rates = shipment.rates_list
 eligible_rates = (rate for rate in rates if rate['days'] <= MAX_TRANSIT_TIME_DAYS)
 rate = min(eligible_rates, key=lambda x: float(x['amount']))
 print "Picked service %s %s for %s %s with est. transit time of %s days" % \
-    (rate['provider'], rate['servicelevel_name'], rate['currency'], rate['amount'], rate['days'])
+    (rate['provider'], rate['servicelevel']['name'], rate['currency'], rate['amount'], rate['days'])
 
 # Purchase the desired rate. async=False indicates that the function will wait until the
 # carrier returns a shipping label before it returns
 transaction = shippo.Transaction.create(rate=rate.object_id, async=False)
 
 # print label_url and tracking_number
-if transaction.object_status == "SUCCESS":
+if transaction.status == "SUCCESS":
     print "Purchased label with tracking number %s" % transaction.tracking_number
     print "The label can be downloaded at %s" % transaction.label_url
 else:

@@ -16,7 +16,6 @@ shippo.api_key = "<API-KEY>"
 # Example address_from object dict
 # The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 address_from = {
-    "object_purpose": "PURCHASE",
     "name": "Shippo Team",
     "street1": "965 Mission St",
     "street2": "Unit 480",
@@ -32,7 +31,6 @@ address_from = {
 # The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 
 address_to = {
-    "object_purpose": "PURCHASE",
     "name": "Shippo Friend",
     "street1": "1092 Indian Summer Ct",
     "city": "San Jose",
@@ -59,7 +57,6 @@ parcel = {
 # This object has async=False, indicating that the function will wait until all rates are generated before it returns.
 # By default, Shippo handles responses asynchronously. However this will be depreciated soon. Learn more: https://goshippo.com/docs/async
 shipment = shippo.Shipment.create(
-    object_purpose='PURCHASE',
     address_from=address_from,
     address_to=address_to,
     parcel=parcel,
@@ -90,7 +87,7 @@ transaction = shippo.Transaction.create(rate=selected_rate_object_id, async=Fals
 
 # print the shipping label from label_url 
 # Get the tracking number from tracking_number
-if transaction.object_status == "SUCCESS":
+if transaction.status == "SUCCESS":
     print "Purchased label with tracking number %s" % transaction.tracking_number
     print "The label can be downloaded at %s" % transaction.label_url
 else:

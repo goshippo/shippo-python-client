@@ -44,7 +44,7 @@ class FunctionalTests(ShippoTestCase):
     def test_run(self):
         try:
             address = shippo.Address.create(**DUMMY_ADDRESS)
-            self.assertEqual(address.object_state, 'VALID')
+            self.assertEqual(address.is_complete, True)
             address_validated = shippo.Address.validate(address.object_id)
             self.assertEqual(address_validated.object_source, 'VALIDATOR')
         except shippo.error.AuthenticationError:

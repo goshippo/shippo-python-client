@@ -313,7 +313,7 @@ class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
 
         if not async:
             timeout = time.time() + rates_req_timeout
-            while cls.retrieve(object_id, api_key=api_key).object_status in ("QUEUED", "WAITING") and time.time() < timeout:
+            while cls.retrieve(object_id, api_key=api_key).status in ("QUEUED", "WAITING") and time.time() < timeout:
                 continue
 
         shipment_id = urllib.quote_plus(object_id)
@@ -349,18 +349,6 @@ class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResour
             params['async'] = False if params.get('sync') is None else (not params['sync'])
 
         return super(Transaction, cls).create(api_key, **params)
-
-    @classmethod
-    def class_url(cls):
-        cls_name = cls.class_name()
-        return "v1/%ss/" % (cls_name,)
-
-
-class Rate(ListableAPIResource, FetchableAPIResource):
-    """
-     Each valid Shipment object will automatically trigger the calculation of all available
-     Rates. Depending on your Addresses and Parcel, there may be none, one or multiple Rates
-    """
 
     @classmethod
     def class_url(cls):

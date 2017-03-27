@@ -45,7 +45,7 @@ class ManifestTests(ShippoTestCase):
     def test_create(self):
         transaction = create_mock_transaction()
         manifest = create_mock_manifest(transaction)
-        self.assertEqual(manifest.object_status, 'SUCCESS')
+        self.assertEqual(manifest.status, 'SUCCESS')
         self.assertEqual(manifest.transactions[0], transaction.object_id)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
