@@ -62,7 +62,7 @@ class CustomsItemTest(ShippoTestCase):
     def test_list_page_size(self):
         pagesize = 1
         customs_items_list = shippo.CustomsItem.all(size=pagesize)
-        self.assertEquals(len(customs_items_list.results), pagesize)
+        self.assertEqual(len(customs_items_list.results), pagesize)
 
 
 if __name__ == '__main__':

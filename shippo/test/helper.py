@@ -68,7 +68,7 @@ INVALID_PARCEL = {
 }
 DUMMY_MANIFEST = {
     "provider": "USPS",
-    "shipment_date": "2016-03-18T23:59:59Z",
+    "shipment_date": "2017-03-31T17:37:59.817Z",
     "address_from": "28828839a2b04e208ac2aa4945fbca9a"
 }
 INVALID_MANIFEST = {
@@ -135,12 +135,12 @@ INVALID_CUSTOMS_DECLARATION = {
 TO_ADDRESS = {
     "name": "John Smith",
     "company": "Initech",
-    "street1": "Clayton St.",
-    "street_no": "6512",
-    "street2": "",
-    "city": "Woodridge",
-    "state": "IL",
-    "zip": "60517",
+    "street1": "965 Mission Street",
+    "street_no": "",
+    "street2": "Ste 480",
+    "city": "San Francisco",
+    "state": "CA",
+    "zip": "94103",
     "country": "US",
     "phone": "+1 630 333 7333",
     "email": "jmerc@gmail.com",
@@ -165,7 +165,7 @@ DUMMY_SHIPMENT = {
     "address_to": "4c7185d353764d0985a6a7825aed8ffb",
     "parcel": "ec952343dd4843c39b42aca620471fd5",
     "submission_type": "PICKUP",
-    "shipment_date": "2016-03-18T23:59:59Z",
+    "shipment_date": "2017-03-31T17:37:59.817Z",
     "insurance_amount": "200",
     "insurance_currency": "USD",
     "extra": {
@@ -178,7 +178,7 @@ DUMMY_SHIPMENT = {
 INVALID_SHIPMENT = {
     "address_from": "4f406a13253945a8bc8deb0f8266b245",
     "submission_type": "PICKUP",
-    "shipment_date": "2013-12-03T12:00:00.000Z",
+    "shipment_date": "2017-03-31T17:37:59.817Z",
     "insurance_amount": "200",
     "insurance_currency": "USD",
     "extra": {
@@ -197,7 +197,7 @@ INVALID_TRANSACTION = {
     "metadata": "Customer ID 123456"
 }
 DUMMY_BATCH = {
-    "default_carrier_account": "0d19dbd3b09544c79be2ab1b780f490d",
+    "default_carrier_account": "79f8ad5ea5de436fa6167ba39380cbe9",
     "default_servicelevel_token": "usps_priority",
     "label_filetype": "PDF_4x6",
     "metadata": "BATCH #170",
@@ -345,6 +345,7 @@ class ShippoTestCase(TestCase):
             shippo.api_base = api_base
 
         shippo.api_key = os.environ.get('SHIPPO_API_KEY', '51895b669caa45038110fd4074e61e0d')
+        shippo.api_version = os.environ.get('SHIPPO_API_VERSION', '2017-03-29')
 
     def tearDown(self):
         super(ShippoTestCase, self).tearDown()

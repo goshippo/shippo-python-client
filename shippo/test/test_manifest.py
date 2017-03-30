@@ -39,7 +39,9 @@ class ManifestTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
     def test_invalid_create(self):
-        self.assertRaises(shippo.error.InvalidRequestError, shippo.Manifest.create, **INVALID_MANIFEST)
+        self.assertRaises(
+            shippo.error.InvalidRequestError, shippo.Manifest.create,
+            **INVALID_MANIFEST)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
     def test_create(self):
@@ -69,7 +71,7 @@ class ManifestTests(ShippoTestCase):
     def test_list_page_size(self):
         pagesize = 1
         manifest_list = shippo.Manifest.all(size=pagesize)
-        self.assertEquals(len(manifest_list.results), pagesize)
+        self.assertEqual(len(manifest_list.results), pagesize)
 
 
 if __name__ == '__main__':

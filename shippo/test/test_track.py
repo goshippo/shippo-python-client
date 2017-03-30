@@ -76,8 +76,8 @@ class TrackTests(ShippoTestCase):
             }
         )
         tracking = shippo.Track.create(
-            carrier='usps', 
-            tracking_number='EXAMPLE_OF_INVALID_TRACKING_NUMBER',
+            carrier='usps',
+            tracking_number='EXAMPLEOFINVALID123TRACKINGNUMBER',
             metadata='metadata'
         )
         self.assertFalse(tracking.tracking_status)

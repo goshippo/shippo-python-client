@@ -1,228 +1,253 @@
 interactions:
 - request:
-    body: '{"city": "Woodridge", "object_purpose": "PURCHASE", "name": "John Smith",
-      "zip": "60517", "street1": "Clayton St.", "company": "Initech", "street_no":
-      "6512", "phone": "+1 630 333 7333", "state": "IL", "country": "US", "street2":
-      "", "email": "jmerc@gmail.com", "metadata": "Customer ID 123456"}'
+    body: !!python/unicode '{"city": "San Francisco", "name": "John Smith", "zip":
+      "94103", "street1": "965 Mission Street", "company": "Initech", "street_no":
+      "", "email": "jmerc@gmail.com", "phone": "+1 630 333 7333", "state": "CA", "country":
+      "US", "street2": "Ste 480", "metadata": "Customer ID 123456"}'
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
-      Content-Length: [!!python/unicode '295']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['279']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
-          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
-          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.0"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/addresses/
   response:
     body:
       string: !!binary |
-        H4sIANKj7FYC/5WRXUvDMBSG/0rptY606Yfb1cZWsVJE9qGoSMmaY5vRJiFJkSn+d5vMsd56Ech5
-        n/e85OR8+2J/gMqU2hAD/szznxZFvvKvvDOQvZJCO/S4Wy/vFptsRLXoVeXg7a4oXsrsYZuts3F/
-        pWBIptYSoiC5Rvg6mG4RmsXJLEaTMEGvI3cv6T/czBkBow+KbyBOCY3CPSFpEk1TDBHBmNBpNWoQ
-        nxyU7emIMQ2Dfl4L3TApxaQSnTVy0rlx7kXDvU3HTGPVAUrCjxbknBmonKqNAjAlF1ZP4iC8iIGV
-        li05GjHEmMmFhJa4TGZc4LMQVDFaw8nzt4a8sOUXky4bxUF6ekfPjXJtu40VZCO486PhtzDCGKfD
-        sQQ6wlpLDh2oal7b8jwk06UCzShww4g18b5trS4v9w60JjXoQXl7d7Uhw26IG6zXRgyxXr7yghBH
-        ceL//AJo5W4eSgIAAA==
+        H4sIADFR3VgC/31QO0/DMBD+K1ZmWjmx8+pUBEIqElNgYalc52hcJXYUX0BQ9b/jc1WFicHDfc/z
+        nRN3OIHGvZ5AIbTJhiUZT8sVFyvBX9NqI/lG1mspi/fkjt3U89j+q86zv2oThXld8kxUcOB1KWXV
+        1iWkWpeilHmqwiOD8XvthrEHhGDBaYYAfqrehDrj7H4CP/foA3e+LPnuy8JEFdgZdXTbo/OdGUe3
+        DlmUatVAccmz6yxrBoMdoVSk7DcRO2sQdEQ9TgC4t47wBUhprIucvRjvwyasifAiyEjQIDBZ8QUV
+        txRtMDY1yrKnSVltvHZXnYp/TR7uafwxY2ySKRfXJWeLU7S+NQSMnbNRz3laCC6EKMMjBgZlemJO
+        A0x6e6TxdoFw13A604JFo0hk574P+ACowmlVXGD26IKV7R5ZmgmZF+RE8BjYD9V7uPwCVGJQSy4C
+        AAA=
     headers:
-      allow: ['GET, POST, HEAD, OPTIONS']
+      allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['355']
+      content-length: ['344']
       content-type: [application/json]
-      date: ['Sat, 19 Mar 2016 00:56:50 GMT']
+      date: ['Thu, 30 Mar 2017 18:40:49 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
     status: {code: 201, message: CREATED}
 - request:
-    body: '{"city": "San Francisco", "object_purpose": "PURCHASE", "name": "Laura
-      Behrens Wu", "zip": "94117", "street1": "Clayton St.", "company": "Shippo",
-      "street_no": "215", "phone": "+1 555 341 9393", "state": "CA", "country": "US",
-      "street2": "", "email": "laura@goshippo.com", "metadata": "Customer ID 123456"}'
+    body: !!python/unicode '{"city": "San Francisco", "name": "Laura Behrens Wu",
+      "zip": "94117", "street1": "Clayton St.", "company": "Shippo", "street_no":
+      "215", "email": "laura@goshippo.com", "phone": "+1 555 341 9393", "state": "CA",
+      "country": "US", "street2": "", "metadata": "Customer ID 123456"}'
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
-      Content-Length: [!!python/unicode '306']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['276']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
-          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
-          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.0"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/addresses/
   response:
     body:
       string: !!binary |
-        H4sIANKj7FYC/5WRX0vDMBTFv0rpsxtJ22zLnpxbh4Mism6KipQsjWukTUL+IFP87jbZZAOffMs9
-        v3MO95KvWO7eGbWVscSyeBrFD7NitYivol+gnFbSBHS/Xc9vZ2V+QY10mga43BbFU5XfbfJ1fpmn
-        mvXNtbckAI4GIB1AvAFgikZTBIaTNHm+cDtV/8PNj0YK8SRLIAYpzbIU4LcxQTuCJ6zGCajri4D8
-        EEz7TEesbThz13tpGq6UHFLZeaMgXTinIE6T6IY1mgkTPTrPeosi4uBxGUJeNFYzZishwyoQnTXo
-        lXlLDlaKqLTDM0k8CY3cHuuIiJaaCMoNPbWevmM+8+MnV37AGYTj4yZOWB2i29ILqpEi+AGACKE0
-        gzjFqSesI7z1pPUX/bmXm0ozw2smLCfeJ1zbel2d3x0zhuyZ6ZWX1zBb0n8TCfs5Y2XHdLRaRDBJ
-        MzSKv38Atb21B1UCAAA=
+        H4sIADJR3VgC/31Q30vDMBD+V0qf3UiWdG33pE4Ewbcpgi/jTG9bJE1KclWm+L+bq8oEwcf7ft19
+        916Gp2c0tDURgbArV0W5ELKeCTVT4k42Ky1WlZiLun4sz4of9Th0/6qb5W+1nYSgGr1UxijQnX7a
+        6UZpJboGzaI1O1O3bLBpa0I/OCTMFoojZvAFnM3rbPDbiGl0lDL3/nHKD68eI6+gg4V9ON+HdLDD
+        EOY5i1M99BxX3sIYobjEQ0SfioeROV4H/sj0ZjIxmCgi0taHqaCsTphkZO3gSMEXG5qfmAUzp1H9
+        jMbSVzr44jqCNzaZ7yUwtSzXFzy+2YGHVktZfx02eoqT9X7DwHAIftILIauqUlq2qlXMYA/WMeO4
+        4J/6+an5b7ZDTxZY50fnMt4jQf4rTDeMiUKPsbi5KuRC6WrJTsJEmd2BS/jxCQ2IHgYrAgAA
     headers:
-      allow: ['GET, POST, HEAD, OPTIONS']
+      allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['356']
+      content-length: ['339']
       content-type: [application/json]
-      date: ['Sat, 19 Mar 2016 00:56:50 GMT']
+      date: ['Thu, 30 Mar 2017 18:40:50 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
     status: {code: 201, message: CREATED}
 - request:
-    body: '{"weight": "2", "distance_unit": "cm", "mass_unit": "lb", "height": "5",
-      "width": "5", "length": "5", "template": "", "metadata": "Customer ID 123456"}'
+    body: !!python/unicode '{"weight": "2", "distance_unit": "cm", "mass_unit": "lb",
+      "height": "5", "width": "5", "length": "5", "template": "", "metadata": "Customer
+      ID 123456"}'
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
-      Content-Length: [!!python/unicode '151']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['151']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
-          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
-          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.0"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/parcels/
   response:
     body:
       string: !!binary |
-        H4sIANOj7FYC/5WQT0+EMBDFvwrh7G7aQtFy0riXTTwaD15IKbO0pn8ITCXG+N2lS2S5enzv/d5M
-        Zr7z0H6AwmZCiZDXWf729HI+5XfZX6BGWJIuRYzQ6kCKAxWvhNS8qjk9FoS87+g4dP+gzQqy4l52
-        HMrLRZYPgrZMSSFoxYQoOFXlrhBmD2PqOImoDcTHPkzaDEM4quASiOAGu57io7WLY8H3qFOJJ2A2
-        3U5pML3GTXZm+YNX0ERvrq66Dp03iiXp5DRthG2T9SlthEa6ED3eVq+uiuMIXn3dfAcolz/J1H+O
-        EwYHY3Y+ZZQVJa/yn1/vWNvDlgEAAA==
+        H4sIADJR3VgC/5WQzW6DMBCEXwVxbiIbgwmcUjWXSD1WPbSqkDEbcOUfhO3SKsq71yYqybXHnflm
+        V7Pn1LSfwF1jHXOQ1kn6+vh8PKQPyZ/BJwhOF60M4XKDyIagF7yrc1QXaEur8u2O9mP3D1os4A5R
+        goGd2pLQPCOoIjirKMa0KmhXEHoXMLOGKWbcIFhv9r2xgxhHs+VGRcyBGuW1iPZSBkWC7t0QI0UE
+        ZtHdTQOIfnDr2InwBc2h8VosKl+WziuVxVExa1dCtlH6YtJDw5Tx2t1OX1Xupwk0/7npChwLX2Ix
+        /+StMwqm5HhIcEbyYmkL326K9vkSGwgNjQjNbFDeP5aWNp45MWnh8gvbXt6/wgEAAA==
     headers:
-      allow: ['GET, POST, HEAD, OPTIONS']
+      allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['250']
+      content-length: ['277']
       content-type: [application/json]
-      date: ['Sat, 19 Mar 2016 00:56:51 GMT']
+      date: ['Thu, 30 Mar 2017 18:40:50 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
     status: {code: 201, message: CREATED}
 - request:
-    body: '{"submission_date": "2016-03-18T23:59:59Z", "address_from": "2c198421903c44309f7a5ba98ed920dd",
-      "insurance_currency": "USD", "parcel": "2237ad5e4ffa4891b2ca9916299351c4", "insurance_amount":
-      "200", "extra": {"signature_confirmation": true}, "reference_1": "", "address_to":
-      "e30fd38e57ad42baa764973e4a33ad9c", "reference_2": "", "async": false, "object_purpose":
-      "PURCHASE", "submission_type": "PICKUP", "metadata": "Customer ID 123456"}'
+    body: !!python/unicode '{"address_from": "a38463cc3a4d4bf483430d8ec29cfc79", "insurance_currency":
+      "USD", "parcel": "80631eafb7364230931296116956d536", "extra": {"signature_confirmation":
+      true, "reference_1": "", "reference_2": ""}, "insurance_amount": "200", "address_to":
+      "5970238eb097448d97e1cc737451a451", "shipment_date": "2017-03-31T17:37:59.817Z",
+      "async": false, "submission_type": "PICKUP", "metadata": "Customer ID 123456"}'
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
-      Content-Length: [!!python/unicode '437']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['409']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
-          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
-          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.0"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/shipments/
   response:
     body:
       string: !!binary |
-        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
+        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
     headers:
-      allow: ['GET, POST, HEAD, OPTIONS']
+      allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['2275']
+      content-length: ['3168']
       content-type: [application/json]
-      date: ['Sat, 19 Mar 2016 00:56:53 GMT']
+      date: ['Thu, 30 Mar 2017 18:40:53 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
     status: {code: 201, message: CREATED}
 - request:
-    body: '{"notification_email_other": "max@goshippo.com", "notification_email_from":
-      true, "rate": "e6996955448b4af493b4b46c3e76836b", "notification_email_to": false,
-      "async": false, "metadata": "Customer ID 123456"}'
+    body: !!python/unicode '{"async": false, "rate": "70d211b6359a493ea8745466e989dcf7",
+      "metadata": "Customer ID 123456"}'
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
-      Content-Length: [!!python/unicode '207']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['94']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
-          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
-          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.0"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/transactions/
   response:
     body:
       string: !!binary |
-        H4sIANij7FYC/5VS70/bMBT8V6pK49OaOonzq1LFohShjq5MFFZt0xTZzkvrkcSR7RQY4n+f0xQI
-        Gmjb17t7fr67dz8U9CcwnSpNNAwng+GXeDGfDd8P+kSjWmZ1lSQnq1WPYxLMVNaSDrL9EXJHdnSJ
-        0MTzJx62sO9866mbOntb7Vu27/XVvBNGHnFsgsKMUZw7QF2aZW4WUhtIQBjqDYibCmQ7UxKttxya
-        DxuhtryuhcVE2QpviEo1KG1EOSkUGEgeXIMfRX7keRiHFJMcRy7FFPvMhcAPXZ+24zVn102dZt1I
-        1RSFASuhec4Z0VxUKZSEF2kuzbrJQMsGXhdo0fvBK7zQ20cnt3+Y0JKwa15t0qopaSeLsI1CGzkI
-        haEdeSFCgWt7L8RPLd7/U3emDYz+p7uX6q47isDJAicCwlxsUxRilOEg8HzqBrad77t7vq6r5dny
-        fL18BtMMtEljT/bRF/EXokvugDz0PW+50kLeGer7jz7eyCKtpdjxrItvq3WtJuOxFqJQVqNq1WY9
-        3ojxZTuSiCrnsozZviFe1Y0+FpJv9uSyKadvx18QCkW7r7+mq3OUQcF3IO9GQJS2lGuRkvwSFbnp
-        tv/t8K06y49XfFOZUCRMg9MyCUR9nmOEL5JZffHZx3iNVM7Cd+7s6OS25hLU1MZhFIaeafAoXq9i
-        xkCpM7ibZ9P4bB5/PF0kiffp62Kxnp9iJ24tmL+UIBknhbG+E5zBwc+hgNK8QDagHlNmjQm9VKk5
-        a3hqrqElV6qNrw8L2RXw9JImplzS0sn+FZCD+WxgOy72/OHDb5yAKl2rBAAA
+        H4sIADhR3VgC/5WSa2/aMBSG/wpCaj+N4HtiJNQh6CpWyrTRyy6akOM4wV0SR7bTjlX970uAdemk
+        atvHvO97fHKecx76Jr5V0q+dF171R73+9WQxn/Vf9fqtUrtWWl1Np6erVSse0tKqJp60JgIwHAA8
+        wOASRiMCRpQEOMSfO+m6Sl5OswAB0E3rXTCJCFUqQqFIBYkwFrHCQBDEaIJDhtNOgbkvlW1r/EaL
+        zLzOjNvoqjKBNEUb88r5xk5F7lTzaQ+DhiBBEMYMUy4Ix0pEIaGEMcUjnsg03JVaIb/pMluXdRHv
+        m3AEQcQBZITDEAPICYwoehZ+IvfwT7xYACn9D15/pPe8MBWSMywkRA2vSHCWxhGOuQQgDdMYPN/o
+        1fJ8+e5m+VtcJ8oLne/MrrpnVdZ53oi5kcJrUx6Ux+7MG+28sdvG+vK1q9c2X1fW3Olkj2/jfeVG
+        w6E3JndB7SrXrmmYmeFlWzI1ZaptMZFtn7Uuq9qfGKuznbmsi/HL+PPmRPK2X7fN/hIGicr1nbLb
+        gRLOBw4HohA/TCnu993/dmxBlaQnK52VDRSrxkfoze3sfXRZs+2HenadgWpbbtOPjheRI0d4dnz6
+        vdJWuTGkCBFMEWXHk5vVRErl3LnazpPx5Hw+eXu2mE7pxafF4mZ+RtCkHaL5m0JZqUXeDH9ntFSH
+        iQ4rKJoXRKbcL87G7rk+2V40OxMtgmndbKR5rDef9SDChLK2QSWsVDtEEWAYKpHGIWYEYcAxRJxB
+        yDhlCcWs//gTv8Rqzh0EAAA=
     headers:
-      allow: ['GET, POST, HEAD, OPTIONS']
+      allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['615']
+      content-length: ['587']
       content-type: [application/json]
-      date: ['Sat, 19 Mar 2016 00:56:56 GMT']
+      date: ['Thu, 30 Mar 2017 18:40:56 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
@@ -231,37 +256,37 @@ interactions:
     body: null
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
-          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
-          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.0"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: GET
-    uri: https://api.goshippo.com/v1/rates/e6996955448b4af493b4b46c3e76836b
+    uri: https://api.goshippo.com/v1/rates/70d211b6359a493ea8745466e989dcf7
   response:
     body:
       string: !!binary |
-        H4sIANmj7FYC/51Ty47TMBT9FavraZqHkyZdMWKQQAJpRBkWIBT5cduaSezIdloVhMRvzG6+ZT6F
-        L8G36Uw7jwqJXXLPQ9fHxz9Hhn8H4WvnmYfRjIw+n79/dzE6I/dA19vOuB10efXx9dvz+ZsjVFgI
-        OoloGifFOM7GSfUpjmd5McvTKI+zL0fsvpOn2UWUZvExW+2IUFRVUeU5pSWnbEGrjFNOC5HBtCiz
-        gh8JzEaDRU3LvF8p6F8tjVuprjORMC0S8a8F7ZGUT1MJIqcyoSUVbFrJMknThIJkJZ/yBfLZmqmG
-        8QbqwSfovO0BEe+t4r0HF2Zfv+GkNf3gnKRRmqBc9NaCFlscXs13qQ6sujGCNS9yD9Be0VmzVnI4
-        2NX8cn48q1XLllBPcwRX3nduNpkMq47xRpWIXBaxlv0wmm0cxjC517rJNJ+gYdTp5QumaRz/l2vQ
-        PbJ1YNdKQANraGrN2qFKVhmr/JZ8CAE/Y3lzDRppvetc3e25z2lgW4x/hIhkW/xOMWNr1RpczTF4
-        3TcNwr0Nixt9EF1AE1h2SzYqlEWT5CyI726NJRlBs7tbzhxIYjTZrMAC2Zreko6J65AOCTnYUGXC
-        tNzDyv/5feMIB6WXxIWSRbiWtygIDTpUR2kXltHipVH9tB8hzShcxCPOyao8tfmXwZFU7tOoQ7Gh
-        7bw7RGd6z4ObrEHLzqjBVhpjB9PTWAvOhaweXojAiwn9YkI8bMeTBRecx6WoKM0qziFOY4AFlAtO
-        Yfe6wxtD7oI1Dn79BXL4QyuxBAAA
+        H4sIADhR3VgC/51SS27bMBC9CqF1LOv/8appY6CLFjDguIsUhTAixzYbiRRIyoYbBOg1ustZcpSe
+        pBx/0hTIqsuZ98HMw3sIdPsduWu4QXAoghkLkiguJ1E6SaPbuJpl0SyPwyKN7oIrdmHLI7GMRBLH
+        bZHmNWR1ilCVWZ4VBdZVLfi6fCXQe4WGNG4rYaPfbbTdymHQIdc90WjqUbmjbb0uqjJJ8jqtMhGv
+        a55AjGItoKgx44L44JyR7ejQesXX4P18efvl+tNqTtiHj/PrhV8E34jY6/FkW4VxTTAfjUHFD7Rb
+        LW+CF1LTaQ7dW9S/yFkwGL2T4vTRarlYvt41socNNmVO4Na5wc6m09O3E+vASR7aNIQefmgFe0sJ
+        TC9aOy3zKRmGg9q8YZpE0X+5et0/thbNTnLscIf01kOgoEdyXhipjXQH9hlkR0yn71ERMtrBNsMZ
+        PiJoeko/CB79JOBAQ0xpGiN3aJuWIlZj1xE8Gn+jVs2L6gY7zzIHtpe+E4qUydXzkzYsZWT2/NSC
+        RcG0YvstGmQHPRo2AL/3QTD/svF1ZaDEGZbu989flrUo1YZZX6WQjuzRWs8/toTqwOk4HydwfumF
+        r1sFIkfIBWZpsYYiLsoWUt++iLdYn361xF1DZ9GPPuNjWnHw+ActgehSQQMAAA==
     headers:
-      allow: ['GET, HEAD, OPTIONS']
+      allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['591']
+      content-length: ['502']
       content-type: [application/json]
-      date: ['Sat, 19 Mar 2016 00:56:57 GMT']
+      date: ['Thu, 30 Mar 2017 18:40:56 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
@@ -270,105 +295,128 @@ interactions:
     body: null
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
-          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
-          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.0"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: GET
-    uri: https://api.goshippo.com/v1/shipments/572dec54d1484ca79d812214eda8b7bf
+    uri: https://api.goshippo.com/v1/shipments/79f6872259384d1f9c2a1edfda69e4cd
   response:
     body:
       string: !!binary |
-        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
-        AA==
+        H4sIADlR3VgC/+2d/XLbxhHAXwWjv2P4vj/0Vx3Had1J0kxkN9N2Mpz7WEhoSJAFQNuKJzN9jf6X
+        J+hD5FH6JN0DKVkiYQmKFEIy5TFHw8MCd7j77d7eYsF7fxBcXZdQT1wI82XVNgeH2T9++Cw7mPt/
+        QmgnoQbXQsTSA0aofkL4E05eUXMoyKGkueDy7wcfpJeL+HFplit6SbrsBLUtlNGMScuNiLSwgTkK
+        sYhOWRAhXjhh/raCOp3TnpTueP6H43lzUi4W8zzMZ0msaV27THdwcPT6+fMXR0ep0MVYQ9NMihqF
+        DrP3l2t3WKniIXAnovCFMFxwEg0EZkMRtE1XKJsJVrCYQgt4SlsvAQsrN0vfDr5yy9pln8NJDVWT
+        fb9MJyRpV512DekauGpcDdBOqnnXO1R+KKOp5PnUnbbzKjtq83TkjZuW2JflvJpg65fTbmDe/3x+
+        DkvnfLgEP/saynZVr6uyL2tXhbIJ87O+6Rr8/Fn6+lO5SF+soFSvmoyDX3envu66bXEyrzp5QqiU
+        kgtqueXr7sAmlRGqtnRTFKmW0ymWt9C0+K1w0wZ+vtDx7Xy726XVhHEDnlgthIlWAw1Bcy0kdfi5
+        ttv/PD/BvpqV7clGh7+syhbCyVaPb3S3VTL7umyasuvyVDy4149ayIQhd9L5qCDMKn7tCChOOOca
+        PzcZgYWrA0wv9v55Q/767KuXX1xQrSv1nOTK6sF6jlZBkm09N0RxCq7wmivBOLGc4q1TqqxUUXJ1
+        Az1vAbFY3cj6zuFdW7uzsZpCdYxcJMxygv/SKW/LuFl0AuXxSXu5LJbYQ1WAyRIxSodCV+Hbc1F2
+        LjpzyPaZ2NSv8VnCxM3SSH5o26o0LGu0EOH0Q/kMWofd6Doulk07n0Gdvfwio4wL2XXHtKxggjjP
+        zq3y5ginfpkhBpO4Htfz4aCvqD7k+lDa3NDV4J0pZA3tsq4ebeEObWHoxreZRAhTV3f30gPvQVMe
+        VziF1YjLvCrKenYmue7oGgpIFMGEnt3kh6JVN6TasALokHk/cBpH89IzMZPIKPWKS+uE5eAMWmeh
+        FFhjYyj0TSbmNaZD53vXtnXpl+u7OPj8xdErNFivX6Rjz//04tm3WHCQ9OFc1w5MTjtAL+gZjl5n
+        4lZCk+k8dEO0JfrhyPqERT1/g2Nar4q+PbpYNiln7hgmWqaDJ227aA6fPl3d7ZPEVRnyhudu5n6a
+        V+5tk3rg6dm5zVMtn6YL5ovquOeiDC3Lb7kqnnfpsg3Ub0q0/PBmbf3PFPTbupzXqBXZ166cdpZ0
+        /iMkvg6WzaKZLNaHVza27szOiqjoTtMXmnoT/cU30Ez8BVMWlyumJ+dnfQFTlKpPs7c4RZdVOpN9
+        9usv8zrjWbrYr79410DMUMvfniDA2el8WWcLF37EjsjwlmvENXNVXB8u2//9+z9N5qGsjrMGUeos
+        wwzNGcqfm8cNZ3aNm3FRgpMRBFeFU1Rp71B/DQke7MGGtiZ7sNZ2mm59mAqxXGq2rUJEM1MwpqUn
+        SoBlBqfw9Ecq1C2t5M5U6LKuUJavLd31yrIle6W2fAnxxbs7VZfuir+Dvly67kcV5o819ka8pCkF
+        RHg3Of5w4HaKMhBjQQUJVEnQkQjjrAPvWFSROK4LbYorMGY3w5j2zARAmVO6YAS4UN5ax4mmjrBC
+        eEMFGwtjnUs+FONN2b3C+MW7RfL8siOHNrmHZlgdnzTnx/uglptQH1B1yMnh2nUeAW1ye7apsZZa
+        GoHhQpRT64lQAluDEwVHt7cYi22T26H+zJbsXrHNsi/caQ/TDNdEH/dkxINnucdjLzhX3plokDuB
+        HPtg0Tx7EjUuvkGPZacZyVeuzgCWt2T3j+XsWf51/jGgJ272Uab5NtPkQTGt7DbTUujCskitwHU3
+        icGbSLXSivoENR+NaZVbOpTpTdm9YvqoxVWcq2P2F/Qtqi6Ots12sxaazC8JDaRcIuIPm3JvgjRa
+        QiBSCKaUkehcEw/GFS5Y78aiXOd6sOXelN0rys8jK1dRfhZfGUA5e/C23PQ96vPCAtZOYxSGGsOi
+        LngswCigyPpIlCuaWzOQ8i3ZvaL8y7Ju2isRL5LEb+KbmAdlxUnPWpK4wLj3LGh0VxzjBsn2REpn
+        lcfaw3jhPiOGh/suy+4V3/cm3BeCD0ZaS3lUopCAHnAgxAbKnfbK6zsL95GeZWQQXIJTgZIohDDK
+        oNvtmOIFiYAuCh1vGUnY8GXkZdm9wvheh/tugfZNTXQP28IHSZmmAJoIWhDLldTaR+UdoeuHumOw
+        TXM91ERvye4V2/cq3LczloXtWzQqzSNS52JBhEU3A1iBa0WqeNQOBIzFMs/10McyW7L7x/J9C/ft
+        kOmeJaKn3DhFnSYeBGfGakJtZGCLaD3VfiSmOc3p0CXiluxeMf1Awn07pFxvUx6l9LGgnAd0sFN2
+        VaSeB5OYFAWXN8mFvFPK2Q0o35TdK8ofSLhvXMoBAOsiiofoRLDS+GgMV4QWTobg7GO4755Tfu/D
+        fTvjm2vRE+6TwBzDegmacYVLSMKDBVxfKqJBix0myH757OjVdkosT3ntQ835puzVSbF3nRP7+6TE
+        DsiI/QbetSsvvKx//e8lwpeLZlLh4ZUfXn48ULIV/bsb462YllRozj0Hgcs6YymNThrGebRFuCJz
+        NUUfbwt3FIqrIBjRTgji0hs6lgmGWq+kEWGsQAnnORn6RHJLdg+ZXsUAryH7mkBgD9934YLvkG/e
+        9ywSEGpDRDLhmlLLCx8oTh3SFNzy3RnvjeAJu0FeyabsnvB9BGFexSusdtMJXGu3t5yS2z612SHR
+        PS8b2GSorbNKUiYikY4oIF4Y7mlwhI722EbmcnBoe1N2L4nuIoLXYn1VaPB3Wk7ukO+ep+vBoJsv
+        ohHKgIii8IRQz4CjsLZktBwpqoY/ltyS3RO+X53UAE8S3kd4NLQ9cPOO66Y7PDwY+IAsdl++tgRX
+        cIkQOyc4Llijd1qIQinKkO7RiOa5Hbpu3JLdE6J7MkUSxdfkiajB/J6/P9mWiHH2xtWnebYuhJgt
+        m6WbTk+z9GblE5n5ZVNW6Yl/qmfom5E7Yx99654HPdpIrTX3RHOhnfbSMXS8sXpPLHVmLPbpcG9l
+        S3avgoP3JleK+pTcVwDjEYQBxJgRG4F6iYTxYK4IAt4oBkhtj9PtrRJWaWwAUOFF8N6yYIACD5Qr
+        GO3VSJGbocvILdm9wvhe50rdAu2bxbf72Y5aKEpitEEID8ZEYnHK0CxoWRg+mnsiczM0BLglu1ds
+        36tcqR2y3PeaLy8Qt/QwEhmT0lqpC0eYEZwwZsZcPNrB7sam7P6xfN9ypXbIdM/yURWCMi650oQL
+        pgvrGIRIOeMFS3klYzGtb+BCb8ruFdMPJFdqXMolGOJ0BBV5EDHlSmkdC8msDZZHd6Pfh7xbytXg
+        H2jYlN0ryh9IrtTuKDc9udzgBQ/RKxMDERQ0riuJ1k6ogjkPoz28ecyV+mRypXbGN6E9ed0kci8l
+        84xzKSLXznoKyuP/wuqgdmfFH3OlPsVcKa2FdzIKI4lApxiXgMwXNDgqLK77xBVw3zCWTWhPoqv3
+        KhA00zbighIKZgJQTqljtDCqgNFeWnjMlfpUcqXG5Ru8NWirhVa4rFQOwfYWGBNWEIp4k5H4fsyV
+        esC5UjskWvVY7MJTZ4KAwJUoInipBOcFeifCogs+VujkMVfqk8mV2iHfPZtquOR3oM9t0dMXOhoX
+        abSFVujuk4L5sV4NfsyVesC5UuMSbZ133gaXfoZEFMQ6GrzyllrPo4xcjEX0Y67UPuRK7Yj9tBND
+        z8NLiFSDsQw/hTBFgY4L8i+CFCagXz7aDz3c4KX4Ldk93XQhW+ebXNaGi5svnGWc3IErfh6NzOK5
+        isyz2bxps9f5UZ6lIUhnDFeDnWym8JH9SKL3DjXOCOutiAYcUzREVMRQWE/MWC/Nm9wM3UthU3SP
+        dKDbiWrt0fSw3x2+zqPRN58R0OazxLy5mbW/FeY/bFTy/qCZL/H+LkzqYR7hzPNq4V1X6XdJIY7W
+        YH7vUHGr48PVHmXVcfY0e1l1+yBlSWQBdfbNcuahzrPvut2ccJ7rdv3JXA2pKJmadEW8507vbtGE
+        v6WdWcrqzRxHNpuhX5om2Cxtp5e1J5DFsllM3WlqwNlWRKum3Lri103aEGu1C8zlu84QQ19W3ahn
+        ZZNV8zb7F87yZVFiO3C8awiABGQVHM/bMl191abH3tjojRWs121Edmk7q/8Dd1xTmjRyAAA=
     headers:
-      allow: ['GET, HEAD, OPTIONS']
+      allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['2281']
+      content-length: ['3188']
       content-type: [application/json]
-      date: ['Sat, 19 Mar 2016 00:57:03 GMT']
+      date: ['Thu, 30 Mar 2017 18:40:57 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
     status: {code: 200, message: OK}
 - request:
-    body: '{"submission_date": "2016-03-18T23:59:59Z", "async": false, "address_from":
-      "2c198421903c44309f7a5ba98ed920dd", "provider": "USPS"}'
+    body: !!python/unicode '{"async": false, "address_from": {"city": "San Francisco",
+      "street2": "", "name": "Laura Behrens Wu", "zip": "94117", "street1": "Clayton
+      St.", "company": "Shippo", "street3": "", "street_no": "215", "object_id": "a38463cc3a4d4bf483430d8ec29cfc79",
+      "is_residential": null, "phone": "0015553419393", "state": "CA", "country":
+      "US", "test": false, "validation_results": {}, "is_complete": true}, "shipment_date":
+      "2017-03-31T17:37:59.817Z", "provider": "USPS"}'
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
-      Content-Length: [!!python/unicode '131']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['458']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
-          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
-          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.0"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/manifests/
   response:
     body:
       string: !!binary |
-        H4sIAOGj7FYC/4WQXWvbMBSG/0oxtFeLI+sjlgJhy9KupMkuijvKNoo5ko4bdYttJDltOvrfZycM
-        sosx0NXRc6T3fX4ljX5CE0vjESLaZHqWUJJNRoSNMnVHyFTkU8LSCePfkndnf+iutf+meZrn9JR2
-        BxClkcgJCppnHOxEQWalMlSBZFpIcbLQPNfoh50txLhx2H14bMLGtW2TmmZ7AoYIsQsDWXxZLK6K
-        YrhrfbNz9vhAF9owzEKnty4E19TlkPyv4PKOsqlQ/TmEBms9hlBWvv9q4EymJKeZIsxwzoiqchAa
-        lESrKLF22LGN6bZYxyHK92QTYxum4/Ex8sjiT7dDvx8hhJgGlsIWXpsansPQZvw/LyXW1hkHaWur
-        94V7rPvKHmebvcD9Cusf5/STeHla7Hc3t6yeXE6WH3k4Z5cXVy+t64vMMi6VlIJQfjG/L+bG9OVW
-        uF/a2Xy1nN9crxcL8fnren2/vOZ0njz0dQx479CXYEzT1fFgQWeVNloTaVRvQWmNhBLECmWlOerB
-        QvRQBzCxt3wUQZUAmgGR1mheUdRMW8us1BlCDoYkD2+/AU4us2SBAgAA
+        H4sIADtR3VgC/4WQXW/TMBSG/8oUabuiqeOPxI5UQck+KCs3pFAxNEUnttMG0TiynZYO7b8vboU0
+        LhC3R8+j877v78jUP7T0lbQavFZRfhFhlGQTRCYErRKeU5QzHqeYP0RvLv7QQ6/+TYs4oeI13Z7A
+        mhJESIoYJIJqxWoOqUC15rwh44G9Esyh0zY4ftvCxrzbGLdt+97E0uwC5jz4wQWg/FIUN2UZjr01
+        +1advcH17gSO2k53vgpx/0qbrJIsJ1lIy5PslBaUstq5qrHjl5FFrMakUXJ0MBWN5EIJhgjUWApK
+        MxocZeQQHoQw36Ot973Lp9Nz2onSP9u9tseJBudjR2LYwZPp4OBCken/BqlQFXrEvWrelu2mGztb
+        PXt4WhfF4kh9//V6OHTvV59vP+wzoS7xLTGX5Prq5lffjj1mCcOYEoaZuJqvy7mUY7d7fVyo2fx+
+        Mf94tywK9unbcrle3FE8jx7HNhKsbbWtQEozdD6MkImGg2IamNKUpA2kSZrVQAThSNZahBG8hc6B
+        9K3pzjsoTpnWHGfQAOVknEwTBBSnTJEsJU30+PwCBkw50nkCAAA=
     headers:
-      allow: ['GET, POST, HEAD, OPTIONS']
+      allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['441']
+      content-length: ['437']
       content-type: [application/json]
-      date: ['Sat, 19 Mar 2016 00:57:05 GMT']
+      date: ['Thu, 30 Mar 2017 18:40:59 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']

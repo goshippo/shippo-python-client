@@ -60,9 +60,9 @@ class ParcelTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/parcel')
     def test_list_page_size(self):
-        pagesize = 1
+        pagesize = 2
         parcel_list = shippo.Parcel.all(size=pagesize)
-        self.assertEquals(len(parcel_list.results), pagesize)
+        self.assertEqual(len(parcel_list.results), pagesize)
 
 
 if __name__ == '__main__':

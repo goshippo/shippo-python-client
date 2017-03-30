@@ -46,7 +46,7 @@ class FunctionalTests(ShippoTestCase):
             address = shippo.Address.create(**DUMMY_ADDRESS)
             self.assertEqual(address.is_complete, True)
             address_validated = shippo.Address.validate(address.object_id)
-            self.assertEqual(address_validated.object_source, 'VALIDATOR')
+            self.assertEqual(address_validated.is_complete, True)
         except shippo.error.AuthenticationError:
                 self.fail('Set your SHIPPO_API_KEY in your os.environ')
         except Exception as inst:
@@ -61,17 +61,6 @@ class FunctionalTests(ShippoTestCase):
         self.assertEqual(address['object_created'], address.object_created)
         address['foo'] = 'bar'
         self.assertEqual(address.foo, 'bar')
-
-    def test_raise(self):
-        try:
-            shippo.Address.create(**INVALID_ADDRESS)
-            self.fail("Invalid address should have triggered a InvalidRequestError")
-        except shippo.error.InvalidRequestError:
-            pass
-        except shippo.error.AuthenticationError:
-            self.fail('Set your SHIPPO_API_KEY in your os.environ')
-        except Exception as inst:
-            self.fail("Test failed with exception %s" % inst)
 
     def test_unicode(self):
         # Make sure unicode requests can be sent

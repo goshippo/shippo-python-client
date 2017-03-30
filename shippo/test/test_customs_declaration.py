@@ -75,7 +75,7 @@ class CustomsDeclarationTests(ShippoTestCase):
     def test_list_page_size(self):
         pagesize = 1
         customs_declaration_list = shippo.CustomsDeclaration.all(size=pagesize)
-        self.assertEquals(len(customs_declaration_list.results), pagesize)
+        self.assertEqual(len(customs_declaration_list.results), pagesize)
 
 if __name__ == '__main__':
     unittest2.main()

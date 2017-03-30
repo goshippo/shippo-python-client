@@ -3,33 +3,35 @@ interactions:
     body: null
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
-          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
-          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.0"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: GET
     uri: https://api.goshippo.com/v1/customs/items/?results=1
   response:
     body:
       string: !!binary |
-        H4sIAPV27FYC/5VRXUvDMBT9KyWCT65t0m62haHCXgaCD5s+KFKy9q6NtElNbjZl7L+bdH3YqyEE
-        7jnnnvuRE6mUlUiKgN7ndwGR8OMD0iIOpogiPoiwUaYVw6DCSvXRgUaVNah6EwkE9z5oMLZDs6S3
-        A29gyYizGTQchLLGWUnbdQ6ZVA74OBG1+4IKy0oDR6h9PRbTxSxOZjTbMlqk84KlYZxl795sUtuh
-        /odajMJFPo8ZzdPdnrJ0TlmW05otIIGkrud1ll0lqKME7XN6jtgKsI/Xc18JDbo2vPDt6Xm98kQN
-        ptJiQKGkx7ezTSs0eubbcokCfx3Mxu1ieQTRtOOO0zgOY3e8sOfGlFaKkWg8cuCdhZL30/e4mcOL
-        9EJUVmuQlXcmr5uxDaVFI2Q5fqieCI8j12K/L6Xtd5cJx4KA3O2T+/hF16CD9Sq4oSxxl5w/z38X
-        kvGgGQIAAA==
+        H4sIAC9R3VgC/5WRXUvDMBSG/8qo4JVrk67rusJQYTcDwYtNLxQpaXrWRtukJiebMvbfTbqBwztD
+        CeR9n3N6Pg4BV1ZikI/oNLkZBRK+/CNoEHuTRxHrRVgr04i+VyFXXbSjEbcGVWcigeDuWw3GtmgW
+        9LpnNSziwKXpNeyEssalkrZtnXKmnPB6CFT5DhwLroEhVP5/MaGzMZmMJ2RDszwheTINKY1ffLIz
+        bfvqH7QYwFlKSJmxajYvs2SbzsskpRlUWTzJZmkclxcBai9B+xhsBKvV3WXXF5hBV4THnu8fVktv
+        VGC4Fj0KJb2+Ga8bodE7n5ZJFPjt5HiYLRZ7EHUzTDghJCTueLBjxhRWisGovbJjrYWCdefluI7D
+        E3oyuNUaJPeZg6f1UIbSohayGNapz4bXkWmx3RbSduWpPy82xoEV/K7HfNg/SgfI3MCZD3nUFejR
+        ajm6ovHEfUNeML6yLWsNHN+OP09J6xRJAgAA
     headers:
-      allow: ['GET, POST, HEAD, OPTIONS']
+      allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['349']
+      content-length: ['369']
       content-type: [application/json]
-      date: ['Fri, 18 Mar 2016 21:45:25 GMT']
+      date: ['Thu, 30 Mar 2017 18:40:47 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
