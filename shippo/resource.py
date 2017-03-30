@@ -313,7 +313,7 @@ class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
 
         if not async:
             timeout = time.time() + rates_req_timeout
-            while cls.retrieve(object_id, api_key=api_key).object_status in ("QUEUED", "WAITING") and time.time() < timeout:
+            while cls.retrieve(object_id, api_key=api_key).status in ("QUEUED", "WAITING") and time.time() < timeout:
                 continue
 
         shipment_id = urllib.quote_plus(object_id)

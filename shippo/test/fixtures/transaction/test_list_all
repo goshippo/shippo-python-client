@@ -3,50 +3,59 @@ interactions:
     body: null
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
-          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
-          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.0"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: GET
     uri: https://api.goshippo.com/v1/transactions/
   response:
     body:
       string: !!binary |
-        H4sIACR37FYC/+1XC2/bNhD+K4KBFRvQKHyKooCgM5y0SJumRe2s2IbCoKijzVUWNT3yaJD/Pkp2
-        XHd5FxmQAQVswOY9yPt4393xfKBdWzSDJKCUPg8GBZx2fwbzpinrZHtblTacuXpuy9KF2i22j/F2
-        U6miVrqxrqi3X5RqBjtk4G3LCo6ta2tvX7R57lcqqNu86Rb+PB+49C/QzbRuVAPdFr8ND/Z3O7sN
-        QW882Pvw4d2HDYmuwNtknYggHG0huoXjCcEJixKMQkbjPza02zK7WRuHSEab2rZXFFEccalAiDRm
-        Mo3jmEKMpCE4FUAZ3zBwJwVUnc1CNc3cQvvrJj6d4omqpw3UHY5G5TV0QKxi5lTqSJoMpQQYQSY1
-        VIAwjCKUcQ6oh9Hqz205zZYmKyQL11hjtepAn8JC2XxqKr9dEjRVC9crNG7jBNfIXTO/jOT0ShD+
-        kvVnW8ymRbtIl2rfLK9va3XAtWBu68ZVZ92df9pcb6t8Wlbu2GZfveUqhbyTXC74zRdQaavyqS2O
-        ndWwkq52WUBd+3xbZVTt2kr3uO4VmfVWSxcZrE+7yua3tq79GQJXBd6tym0WQA4LKJok2PU4D7Nj
-        VWgIg72q8jpQ9KSACrLg5wM3C/Z3k4BxGZFfBhddULr1MS7qqQd1vVfdpotuGw/v5rKrlvGuA2iU
-        v1nViUe9F6i8+wATn2XR4OJ58BCijI9Go73x+A6q8AkWCRMJJ6EU+C6qRBMcJwgljIcoxlepQiTg
-        jDCNAcdMEaRMHCFFWBRRTrF8NKoILY1QEmdIUKYQSakRgCkBiamgQn0HVW7hwr25cgM3JOMcY0QQ
-        ij2XY48E4gxdz5jz2y5rE358Z127WXt5WShNsb8rhZGmjEWpUkqnqVSpNEoJwfrEXafT0eGbw3cf
-        D78uTjOfrjbvhZM5BEfj9+NgruqgAg322NPDw9JRSTeVK6wOutvtaOVpZly16BEMN/2tLncjAH/6
-        /tMfPndL1Fe3eXFDYbkDQRQliHqXIUPXYJJiHaUm9vU2owwp6jHx30xyjRWJUv1ATPqE7opLX8x6
-        dFKAIlgd7dbo+QTJjplXoz8faNuc9RxXRfDSd1xta+0unfVuRsPu7xdbLhMQY7Gsf7509TANjsaD
-        i82K8rB8W6GllUQ+aTSLEQPkfyrNkJBUkcwQIZ96Bt3agy6nnMa5vA7buqz7GWfmtiedycgVxlaL
-        YT/q+IZUts0LV9lZLzxsFzs3s/6bzna5zbL2bWWQ+8irsy1QdRPWNFQL9cUV6mS5+10FNvxS5i/G
-        dlZ4PCrYQaqlfw/N2dnL9/tuMj89GbV79vRAfcbuJ7r7bO+0tH4M28EslhFCvpg+G34cD7X2nfQN
-        nO1nO8M3+8PXrw5GI/7294ODj/uvGBk+tBd/Z1McaIpppNI4iolhzJd8X6gkIkAE4UTKePCvlvnQ
-        BnmfSRJPSFcsutnQp/VdFXetTUPEruGLicAgbKjigrOUaakwVcCRQhoE1+ix2qNRLKZU+xxBijFu
-        0hhppGNhfAWj2mQ/JsmnO0kKjKMnNknekygk4TLhLBT8PkRZavOQEXaVKBAhbiDyXSsTTHGqqEEK
-        C/AtOdUGxKM9uXTK/dSj/VsrZkRg75xrhVJOKGiW/XhyPWGi+He4+L8ShcmEipBJeS+idNpxSK6b
-        V6kAFWseiVRGzL98YpMhabCIFU4zBfrROgrz7rFgTKqI+fFO+gGEYKCRMQa4iH4Q5QkThVD0nxPl
-        08U/RdmF+y4UAAA=
+        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
+        AA==
     headers:
-      allow: ['GET, POST, HEAD, OPTIONS']
+      allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['1322']
+      content-length: ['1711']
       content-type: [application/json]
-      date: ['Fri, 18 Mar 2016 21:46:12 GMT']
+      date: ['Thu, 30 Mar 2017 18:42:14 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']

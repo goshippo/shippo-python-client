@@ -1,136 +1,135 @@
 interactions:
 - request:
     body: !!python/unicode '{"batch_shipments": [{"shipment": {"address_from": {"city":
-      "San Francisco", "state": "CA", "object_purpose": "PURCHASE", "name": "Mr Hippo",
-      "zip": "94103", "country": "US", "street1": "965 Mission St", "street2": "Ste
-      201", "email": "mrhippo@goshippo.com", "phone": "4151234567"}, "object_purpose":
-      "PURCHASE", "parcel": {"weight": "2", "distance_unit": "in", "mass_unit": "oz",
-      "height": "5", "width": "5", "length": "5"}, "address_to": {"street1": "Broadway
-      1", "company": "", "phone": "4151234567", "city": "New York", "object_purpose":
-      "PURCHASE", "name": "Mrs Hippo", "zip": "10007", "country": "US", "email": "mrshippo@goshippo.com",
-      "state": "NY", "street2": ""}}}, {"shipment": {"address_from": {"city": "San
-      Jose", "state": "CA", "object_purpose": "PURCHASE", "name": "Mr Hippo", "zip":
-      "95122", "country": "US", "street1": "1092 Indian Summer Ct", "email": "mrhippo@goshippo.com",
-      "phone": "4151234567"}, "object_purpose": "PURCHASE", "parcel": {"weight": "20",
-      "distance_unit": "in", "mass_unit": "lb", "height": "5", "width": "5", "length":
-      "5"}, "address_to": {"street1": "Broadway 1", "company": "", "phone": "4151234567",
-      "city": "New York", "object_purpose": "PURCHASE", "name": "Mrs Hippo", "zip":
-      "10007", "country": "US", "email": "mrshippo@goshippo.com", "state": "NY", "street2":
-      ""}}}], "label_filetype": "PDF_4x6", "default_servicelevel_token": "usps_priority",
-      "default_carrier_account": "0d19dbd3b09544c79be2ab1b780f490d", "metadata": "BATCH
-      #170"}'
+      "San Francisco", "state": "CA", "name": "Mr Hippo", "zip": "94103", "country":
+      "US", "street1": "965 Mission St", "street2": "Ste 201", "email": "mrhippo@goshippo.com",
+      "phone": "4151234567"}, "parcel": {"weight": "2", "distance_unit": "in", "mass_unit":
+      "oz", "height": "5", "width": "5", "length": "5"}, "address_to": {"city": "New
+      York", "state": "NY", "name": "Mrs Hippo", "zip": "10007", "country": "US",
+      "street1": "Broadway 1", "company": "", "street2": "", "phone": "4151234567",
+      "email": "mrshippo@goshippo.com"}}}, {"shipment": {"address_from": {"city":
+      "San Jose", "state": "CA", "name": "Mr Hippo", "zip": "95122", "country": "US",
+      "street1": "1092 Indian Summer Ct", "email": "mrhippo@goshippo.com", "phone":
+      "4151234567"}, "parcel": {"weight": "20", "distance_unit": "in", "mass_unit":
+      "lb", "height": "5", "width": "5", "length": "5"}, "address_to": {"city": "New
+      York", "state": "NY", "name": "Mrs Hippo", "zip": "10007", "country": "US",
+      "street1": "Broadway 1", "company": "", "street2": "", "phone": "4151234567",
+      "email": "mrshippo@goshippo.com"}}}], "label_filetype": "PDF_4x6", "default_servicelevel_token":
+      "usps_priority", "default_carrier_account": "79f8ad5ea5de436fa6167ba39380cbe9",
+      "metadata": "BATCH #170"}'
     headers:
       Accept: ['*/*']
       Accept-Encoding: ['gzip, deflate']
       Connection: [keep-alive]
-      Content-Length: ['1475']
+      Content-Length: ['1295']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.4]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Davids-MacBook-Pro.local 16.3.0 Darwin Kernel
-          Version 16.3.0: Thu Nov 17 20:23:58 PST 2016; root:xnu-3789.31.2~1/RELEASE_X86_64
-          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.3.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.4"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/batches/
   response:
     body:
       string: !!binary |
-        H4sIADaAdlgC/42RW0/CMBiG/wqZt0LabWyMK1GikhjjBfECY5Yevkm1rE0PE0L4765TYF6YeNe+
-        7/Md+nYfKfoOzJWCR9NBhDkUtMqShMVFimJUxBlPsrhKgJKsAoguB8cC9VmDCTWcNIJfvSm7Flqr
-        EVObHmUdcd4G7Hn2sJjPlovHu57NDBAH3egY4XyI8BDjJZ5Mx/l0PBnFSbLq0V7z/9AbcKQFSeCu
-        Z8ub+8EFzlFwOFTEy3YsMUaAKQljytcugIjjglOeUFSM05TlBYWYUEzzCarSAvF+uQXTCAYSGpCl
-        Ux9Qhw7ealtqI5QRbhdwSWjrV0KC22kIyNP8tky3WTApcWxdhsw2ULuQ0D46LoNav4ZtONZeyvam
-        DTRCdUH+KAZsu0oQXl4P54jO8j7S3rA1sVBazxgA75ILvU9GRdrljmr3F0LVf6i/mhxOz/NGfu/w
-        BdjD8mxKAgAA
+        H4sIAPZQ3VgC/42RW0/CMBiG/wqZt0I6xraOK1GikhjjBfFCY5Zv7VeolnXpASGE/+465eCFiXft
+        +z7foW93ka7ekblS8mjci0QmkjgXlBKRjlAImg2rgqdxiowOeZ5Hl71Dgf6s0YQat5Sw0FcLbZey
+        afSA6VXArAPnbQCeJw+z6WQ+e7w7K2cGwWE3dEjivE+SfkLmMR0nxTglA0KLlzPaN/w/9AodtCAE
+        7noyv7nvXcQ5CQ5HAV61Y8EYiaYExrSvXQDzQlDgKULKcZRkArI4yytIioQSVmFxXm7RrCVDhWtU
+        pdMfWIcO3ja2bIzURrptwBVUrS+kQrdtMCBP09tytMmCWYFjyzKEtcLahYR20WEZ0vo1bsKx9kq1
+        t8bgWuouyB/FoG1XCcLr2/4U0UneRY03bAkWS+sZQ+RdcqH30RDQLndQu7+Quv5D/dVkf3yeN+p7
+        hy+FYX7hRAIAAA==
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['351']
+      content-length: ['352']
       content-type: [application/json]
-      date: ['Wed, 11 Jan 2017 18:57:58 GMT']
+      date: ['Thu, 30 Mar 2017 18:39:50 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
     status: {code: 201, message: CREATED}
 - request:
-    body: !!python/unicode '{"city": "Woodridge", "object_purpose": "PURCHASE", "name":
-      "John Smith", "zip": "60517", "street1": "Clayton St.", "company": "Initech",
-      "street_no": "6512", "email": "jmerc@gmail.com", "phone": "+1 630 333 7333",
-      "state": "IL", "country": "US", "street2": "", "metadata": "Customer ID 123456"}'
+    body: !!python/unicode '{"city": "San Francisco", "name": "John Smith", "zip":
+      "94103", "street1": "965 Mission Street", "company": "Initech", "street_no":
+      "", "email": "jmerc@gmail.com", "phone": "+1 630 333 7333", "state": "CA", "country":
+      "US", "street2": "Ste 480", "metadata": "Customer ID 123456"}'
     headers:
       Accept: ['*/*']
       Accept-Encoding: ['gzip, deflate']
       Connection: [keep-alive]
-      Content-Length: ['295']
+      Content-Length: ['279']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.4]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Davids-MacBook-Pro.local 16.3.0 Darwin Kernel
-          Version 16.3.0: Thu Nov 17 20:23:58 PST 2016; root:xnu-3789.31.2~1/RELEASE_X86_64
-          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.3.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.4"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/addresses/
   response:
     body:
       string: !!binary |
-        H4sIADaAdlgC/5WRX2vCMBTFv0rxeUrTWGt9UtSxDhnDPxvbGBLTq0ZsEpLbDTf23ZfESX3dQyDn
-        /M497SXfLbU5AMe1RYbQGkStp9GsmLRuogvQtdHKBvS4mo/vRovpFbWqNjzA29Vs9rKePiyn8+n1
-        PDfgmksfSWKStWPSJmRJ+oM0G6T9Tk7o61W61uU/0iIEc7KNec7LJIa8m7Mu29Aty2ieMULoNute
-        DahPCcbPlOxDlMOdsnuhtepwVfmUZFXY5V7tZbSoBO6966Bm8uRBIQUCD65FA4BrqbzfS0nSmMRb
-        4yM7oXI12GlI4kkj6UVygaH/WanSiHIH58zfkxQzL7+EDp+KU5Kdf6uWaMLYauENvVcy5OOY9GhM
-        Kc3c8QQqJo6eHCowfLjz8rKzsGsDVpQgUTAfkvXx6H3d3Cuwlu3AOuftPWhk7p1Y2LO2qFxtVEwi
-        ktBu2vOtCBYdRVPDzy+3ck/kZAIAAA==
+        H4sIAPZQ3VgC/31QPU/DMBD9K1ZmWjlxmsSdikBIRWIKLCyR61waV4kd2RcQVP3v2C5VxMLgwe/r
+        7t45MYcTSGykBYHQJluSZDQtV5StGH1Nqy3j2w1dF1X2ntyRm3qe2n/V/I9aRSHPU8F5mdKuynLJ
+        OG+Lrs1KcYDuAKLgwaBcI804DYDgLWhn8OCHGJQfp4xuLLh5QOe582XJN58abBiBvRJHszsa16tp
+        MmufFVK1GENc8mx6TepRYR/QMEjor0DstUKQEXVoAbDRJuALkMYLig15Uc75TUgd4UWQBUGNQPKK
+        Lii7pUiFcVItNHmyQkvlpLnqRLw1ebgP3281/XZF2XXJWaON1rc6AFNvdNRTmhaMMsZK/wIDo1BD
+        YE4jWLk7hu+tAd+rr061oFGJINLzMHh8BBS+WhEXmB0abyX7R5JmLN8UwYng0LOdGBxcfgAt07Mv
+        LgIAAA==
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['364']
+      content-length: ['346']
       content-type: [application/json]
-      date: ['Wed, 11 Jan 2017 18:57:58 GMT']
+      date: ['Thu, 30 Mar 2017 18:39:50 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
     status: {code: 201, message: CREATED}
 - request:
-    body: !!python/unicode '{"city": "San Francisco", "object_purpose": "PURCHASE",
-      "name": "Laura Behrens Wu", "zip": "94117", "street1": "Clayton St.", "company":
-      "Shippo", "street_no": "215", "email": "laura@goshippo.com", "phone": "+1 555
-      341 9393", "state": "CA", "country": "US", "street2": "", "metadata": "Customer
-      ID 123456"}'
+    body: !!python/unicode '{"city": "San Francisco", "name": "Laura Behrens Wu",
+      "zip": "94117", "street1": "Clayton St.", "company": "Shippo", "street_no":
+      "215", "email": "laura@goshippo.com", "phone": "+1 555 341 9393", "state": "CA",
+      "country": "US", "street2": "", "metadata": "Customer ID 123456"}'
     headers:
       Accept: ['*/*']
       Accept-Encoding: ['gzip, deflate']
       Connection: [keep-alive]
-      Content-Length: ['306']
+      Content-Length: ['276']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.4]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Davids-MacBook-Pro.local 16.3.0 Darwin Kernel
-          Version 16.3.0: Thu Nov 17 20:23:58 PST 2016; root:xnu-3789.31.2~1/RELEASE_X86_64
-          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.3.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.4"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/addresses/
   response:
     body:
       string: !!binary |
-        H4sIADeAdlgC/5WR3U/CMBTF/5WFZyHrugLjSeQjkhBjQDRqDKndFWq2tumHBo3/u7sFAolPvu2c
-        3zl396bfLf36DsKvneceWoOkdT+cz8ati+QITLBGu4huV4vR9XA5OaNOBysinK7m88f15OZuspic
-        94WFZnKJkSwlvXZK2oTckf6A9Qas6HRJ8XSWDqb8R1rGIKX0rU9LBoymeQGigKzpcpqXPBM0JWcF
-        /anAYqfkH7K83Gi3lcbojtA1phSv4y1zHixPrmBrQbnkISBrIoarHeJlLKHpvAXwa6XjwoSdPILO
-        qOI7r1Wy9J0TyZCcJD1KIf1+OlfJ1HIlpBOHnxyeZjRE+SUNiiInpLdfLChvY3W1RMNstYr5NCWM
-        MZqTghYUCdRcVkgqPPDP+dKtLThZgvKSY06FqkLfnL5rcI5vwDXO80vUnjdPxuN+wXldg01m44Rk
-        NGddnOrB+YZ6G+DnF6jle+lvAgAA
+        H4sIAPdQ3VgC/31QS0vDQBD+KyFnW7J5NN2e1IogeKsieAnTzbRd2eyG3YlSS/+7O6kSQfA432vm
+        m1Pqtm+oqFEegbBNV0maZ6KeZcWsyJ7EclXIVSXmucxe06vkRz307f/q5W+1HoXZTqLYlTXsFrJU
+        USLFtpJbVKqu8zYDNujQKNf1BgmjhfyAEXwHo+M67WzjMQyGQuRO5ynffVj0vIIOGvbueu/CQfe9
+        m8csTrXQcVz6CIOH5BYPHm1IXgbmeB3YI9Ob0cRgII9IjXVjQVFNmGBkbeBIziYbmk9Mzsw0Fj+j
+        0nRJB5vce7BKB/W9BMaW6fqGx0/d8yBLIerLYYMlP1qfNwz0B2dHfZaJqqqKUshCFsxgB9owY7jg
+        n/rxqfFvukVLGlhnB2Mi3iFB/CuMNwyBXIc+ebhLRF6U1YKdhIEiuwMT8PwFyxH6aisCAAA=
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['363']
+      content-length: ['338']
       content-type: [application/json]
-      date: ['Wed, 11 Jan 2017 18:57:59 GMT']
+      date: ['Thu, 30 Mar 2017 18:39:51 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
@@ -145,154 +144,476 @@ interactions:
       Connection: [keep-alive]
       Content-Length: ['151']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.4]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Davids-MacBook-Pro.local 16.3.0 Darwin Kernel
-          Version 16.3.0: Thu Nov 17 20:23:58 PST 2016; root:xnu-3789.31.2~1/RELEASE_X86_64
-          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.3.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.4"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/parcels/
   response:
     body:
       string: !!binary |
-        H4sIADiAdlgC/5WQS0/DMBCE/0qUM638SEiVUxG9VOKIOIBQ5NjbxMiPyI8GVPW/E6cizZXjznyz
-        q9lLbtsv4KHxgQXI6yx/e3o5HvKH7M/gDiZHJIsgXG0Q3mD8ind1uasR2lKM3ld0HMQ/aDmDnIiS
-        06IShIgCV0VbUUCnlhLKT5QDWgXsaMCljGBnKfad9b0cBrvlVicqgB7UrYeJSk2KAtOFPiXKBIxS
-        rKYeZNeHZRRyeoLh0EQjZ5XPS8eFImnUzPuFUG2SzkxFaJi20YT76ZvKo3Ng+M9d1xDY9CSW8s/R
-        B6vBZcdDhgktyse0D76DS/blmhpIA42cmvlJ+ficW/p0JrgI119ohF8IwAEAAA==
+        H4sIAPdQ3VgC/5WQS2+DMBCE/wri3ERgbBI4pWoukXqsemhVIWMv4MoP5EdpFeW/FxOV5Nrjznyz
+        q9lzatpPYL5xnnpI6yR9fXw+HdOH5M9gFmaHRwtl+W6TFZsie8n3dVHVJN9WWfV2R4eR/4MWC8i7
+        smsprgguGcZFtic4J7zCgAhBCO3uAmbSYGPGD4L25tAbN4hxNFtmVMQ8qFFei+gg5axI0L0fYoRE
+        YBL8bhpA9INfRy7mL2gGTdBiUdmydFopFEdFnVsJ2Ubpi8oADVUmaH87fVVZsBY0+7npCjydv0Rj
+        /ik4bxTY5HRMclRgUsZ98O1ttM+X2EBoaMTczM3K+8fS0sUzHZUOLr+n9BZUwgEAAA==
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['274']
+      content-length: ['277']
       content-type: [application/json]
-      date: ['Wed, 11 Jan 2017 18:58:00 GMT']
+      date: ['Thu, 30 Mar 2017 18:39:51 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
     status: {code: 201, message: CREATED}
 - request:
-    body: !!python/unicode '{"submission_date": "2016-03-18T23:59:59Z", "address_from":
-      "333f83d5e53049ec9e2201a34da2c301", "insurance_currency": "USD", "parcel": "c2d5c347d22d4174b73e0fb323cf3ce0",
-      "insurance_amount": "200", "extra": {"signature_confirmation": true}, "reference_1":
-      "", "address_to": "91f0c9cd20e949a4ab3fa7397a113f74", "reference_2": "", "async":
-      false, "object_purpose": "PURCHASE", "submission_type": "PICKUP", "metadata":
-      "Customer ID 123456"}'
+    body: !!python/unicode '{"address_from": "0f9e1f47af694c29891b59becc772d0a", "insurance_currency":
+      "USD", "parcel": "df6fba49546c443085415d94e2552227", "extra": {"signature_confirmation":
+      true, "reference_1": "", "reference_2": ""}, "insurance_amount": "200", "address_to":
+      "941a99710f824c399d6fd27abefbea69", "shipment_date": "2017-03-31T17:37:59.817Z",
+      "async": false, "submission_type": "PICKUP", "metadata": "Customer ID 123456"}'
     headers:
       Accept: ['*/*']
       Accept-Encoding: ['gzip, deflate']
       Connection: [keep-alive]
-      Content-Length: ['437']
+      Content-Length: ['409']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.4]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Davids-MacBook-Pro.local 16.3.0 Darwin Kernel
-          Version 16.3.0: Thu Nov 17 20:23:58 PST 2016; root:xnu-3789.31.2~1/RELEASE_X86_64
-          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.3.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.4"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/shipments/
   response:
     body:
       string: !!binary |
-        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
+        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
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['1119']
+      content-length: ['3180']
       content-type: [application/json]
-      date: ['Wed, 11 Jan 2017 18:58:01 GMT']
+      date: ['Thu, 30 Mar 2017 18:39:54 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
     status: {code: 201, message: CREATED}
 - request:
-    body: !!python/unicode '[{"shipment": [{"object_created": "2017-01-11T18:58:01.078Z",
-      "extra": {"signature_confirmation": true}, "address_to": "91f0c9cd20e949a4ab3fa7397a113f74",
-      "address_from": "333f83d5e53049ec9e2201a34da2c301", "rates_list": [{"object_created":
-      "2017-01-11T18:58:01.416Z", "currency": "USD", "trackable": true, "outbound_endpoint":
-      "door", "insurance": true, "zone": "8", "object_id": "b95ac8c0ffdb43e29a70653e52928198",
-      "currency_local": "USD", "shipment": "60c871dc2f6c4684afc4f58573b72f8b", "provider":
-      "USPS", "test": true, "delivery_attempts": null, "inbound_endpoint": "door",
-      "insurance_amount_local": "200.00", "object_updated": "2017-01-11T18:58:01.416Z",
-      "insurance_currency": "USD", "object_owner": "david@goshippo.com", "available_shippo":
-      true, "servicelevel_terms": "", "amount_local": "37.04", "duration_terms": "Overnight
-      delivery to most U.S. locations.", "servicelevel_name": "Priority Mail Express",
-      "servicelevel_token": "usps_priority_express", "provider_image_200": "https://shippo-static.s3.amazonaws.com/providers/200/USPS.png",
-      "arrives_by": null, "object_purpose": "PURCHASE", "insurance_amount": "200.00",
-      "insurance_currency_local": "USD", "carrier_account": "0d19dbd3b09544c79be2ab1b780f490d",
-      "messages": [], "days": 1, "amount": "37.04", "object_state": "VALID", "provider_image_75":
-      "https://shippo-static.s3.amazonaws.com/providers/75/USPS.png", "attributes":
-      ["FASTEST"]}, {"object_created": "2017-01-11T18:58:01.415Z", "currency": "USD",
-      "trackable": true, "outbound_endpoint": "door", "insurance": true, "zone": "8",
-      "object_id": "fc8bf5e4e40e44f8b5f87f832b474bf2", "currency_local": "USD", "shipment":
-      "60c871dc2f6c4684afc4f58573b72f8b", "provider": "USPS", "test": true, "delivery_attempts":
-      null, "inbound_endpoint": "door", "insurance_amount_local": "200.00", "object_updated":
-      "2017-01-11T18:58:01.415Z", "insurance_currency": "USD", "object_owner": "david@goshippo.com",
-      "available_shippo": true, "servicelevel_terms": "", "amount_local": "12.11",
-      "duration_terms": "Delivery within 1, 2,\u00a0or 3 days\u00a0based on where
-      your package started and where it\u2019s being sent.", "servicelevel_name":
-      "Priority Mail", "servicelevel_token": "usps_priority", "provider_image_200":
-      "https://shippo-static.s3.amazonaws.com/providers/200/USPS.png", "arrives_by":
-      null, "object_purpose": "PURCHASE", "insurance_amount": "200.00", "insurance_currency_local":
-      "USD", "carrier_account": "0d19dbd3b09544c79be2ab1b780f490d", "messages": [],
-      "days": 2, "amount": "12.11", "object_state": "VALID", "provider_image_75":
-      "https://shippo-static.s3.amazonaws.com/providers/75/USPS.png", "attributes":
-      ["BESTVALUE", "CHEAPEST"]}, {"object_created": "2017-01-11T18:58:01.414Z", "currency":
-      "USD", "trackable": true, "outbound_endpoint": "door", "insurance": true, "zone":
-      "8", "object_id": "88c4abad43fd4632bf598efa4105d629", "currency_local": "USD",
-      "shipment": "60c871dc2f6c4684afc4f58573b72f8b", "provider": "USPS", "test":
-      true, "delivery_attempts": null, "inbound_endpoint": "door", "insurance_amount_local":
-      "200.00", "object_updated": "2017-01-11T18:58:01.414Z", "insurance_currency":
-      "USD", "object_owner": "david@goshippo.com", "available_shippo": false, "servicelevel_terms":
-      "", "amount_local": "14.67", "duration_terms": "Delivery in 2 to 8 days.", "servicelevel_name":
-      "Parcel Select", "servicelevel_token": "usps_parcel_select", "provider_image_200":
-      "https://shippo-static.s3.amazonaws.com/providers/200/USPS.png", "arrives_by":
-      null, "object_purpose": "PURCHASE", "insurance_amount": "200.00", "insurance_currency_local":
-      "USD", "carrier_account": "0d19dbd3b09544c79be2ab1b780f490d", "messages": [],
-      "days": 7, "amount": "14.67", "object_state": "VALID", "provider_image_75":
-      "https://shippo-static.s3.amazonaws.com/providers/75/USPS.png", "attributes":
-      []}], "reference_1": "", "object_id": "60c871dc2f6c4684afc4f58573b72f8b", "reference_2":
-      "", "object_state": "VALID", "test": true, "metadata": "Customer ID 123456",
-      "submission_date": "2016-03-18T23:59:59Z", "object_updated": "2017-01-11T18:58:01.078Z",
-      "insurance_currency": "USD", "parcel": "c2d5c347d22d4174b73e0fb323cf3ce0", "object_owner":
-      "david@goshippo.com", "return_of": null, "carrier_accounts": [], "customs_declaration":
-      null, "object_purpose": "PURCHASE", "rates_url": "https://api.goshippo.com/shipments/60c871dc2f6c4684afc4f58573b72f8b/rates/",
-      "insurance_amount": "200", "messages": [], "address_return": "333f83d5e53049ec9e2201a34da2c301",
-      "object_status": "SUCCESS", "submission_type": "PICKUP"}]}]'
+    body: !!python/unicode '[{"shipment": [{"status": "SUCCESS", "customs_declaration":
+      null, "object_updated": "2017-03-30T18:39:53.535Z", "parcel": {"line_items":
+      [], "object_updated": "2017-03-30T18:39:52.596Z", "object_created": "2017-03-30T18:39:51.909Z",
+      "weight": "2.0000", "extra": {}, "object_owner": "thiago@goshippo.com", "distance_unit":
+      "cm", "mass_unit": "lb", "value_currency": null, "object_id": "df6fba49546c443085415d94e2552227",
+      "height": "5.0000", "width": "5.0000", "length": "5.0000", "object_state": "VALID",
+      "template": null, "test": false, "value_amount": null, "metadata": "Customer
+      ID 123456"}, "object_created": "2017-03-30T18:39:52.586Z", "extra": {"signature_confirmation":
+      true, "reference_1": "", "reference_2": ""}, "object_owner": "thiago@goshippo.com",
+      "messages": [{"source": "UPS", "code": "", "text": "RatedShipmentWarning: Missing
+      / Invalid Shipper Number. Returned rates are Retail Rates."}, {"source": "UPS",
+      "code": "", "text": "RatedShipmentWarning: Your invoice may vary from the displayed
+      reference rates"}, {"source": "UPS", "code": "", "text": "RatedShipmentWarning:
+      User Id and Shipper Number combination is not qualified to receive negotiated
+      rates."}, {"source": "UPS", "code": "", "text": "RatedShipmentWarning: Your
+      invoice may vary from the displayed reference rates"}, {"source": "UPS", "code":
+      "", "text": "RatedShipmentWarning: User Id and Shipper Number combination is
+      not qualified to receive negotiated rates."}], "address_to": {"city": "San Francisco",
+      "street2": "Ste 480", "name": "John Smith", "zip": "94103", "street1": "965
+      Mission Street", "company": "Initech", "street3": "", "street_no": "", "object_id":
+      "941a99710f824c399d6fd27abefbea69", "is_residential": null, "phone": "0016303337333",
+      "state": "CA", "country": "US", "test": false, "validation_results": {}, "is_complete":
+      true}, "address_return": {"city": "San Francisco", "street2": "", "name": "Laura
+      Behrens Wu", "zip": "94117", "street1": "Clayton St.", "company": "Shippo",
+      "street3": "", "street_no": "215", "object_id": "0f9e1f47af694c29891b59becc772d0a",
+      "is_residential": null, "phone": "0015553419393", "state": "CA", "country":
+      "US", "test": false, "validation_results": {}, "is_complete": true}, "address_from":
+      {"city": "San Francisco", "street2": "", "name": "Laura Behrens Wu", "zip":
+      "94117", "street1": "Clayton St.", "company": "Shippo", "street3": "", "street_no":
+      "215", "object_id": "0f9e1f47af694c29891b59becc772d0a", "is_residential": null,
+      "phone": "0015553419393", "state": "CA", "country": "US", "test": false, "validation_results":
+      {}, "is_complete": true}, "shipment_date": "2017-03-31T17:37:59.817Z", "object_id":
+      "bbf75c36f46b46de9f15ba13b87419bc", "test": false, "rates": [{"arrives_by":
+      null, "zone": "2", "object_created": "2017-03-30T18:39:53.480Z", "carrier_account":
+      "4140c165e7d048a9aeba2d6d0a37f78f", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 1, "object_id": "ee669284f5894bd38976715ae420a8a3", "servicelevel":
+      {"token": "fedex_ground", "terms": "", "name": "Ground"}, "currency": "USD",
+      "duration_terms": "", "currency_local": "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "12.17", "amount_local": "12.17", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "16:30:00", "zone": "02", "object_created": "2017-03-30T18:39:53.480Z", "carrier_account":
+      "4140c165e7d048a9aeba2d6d0a37f78f", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 5, "object_id": "4b90f4ac530547e489386ce332dad8eb", "servicelevel":
+      {"token": "fedex_express_saver", "terms": "", "name": "Express Saver"}, "currency":
+      "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "17.53", "amount_local": "17.53", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "16:30:00", "zone": "02", "object_created": "2017-03-30T18:39:53.479Z", "carrier_account":
+      "4140c165e7d048a9aeba2d6d0a37f78f", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 4, "object_id": "81d2f08df58f45eeae0e1062f99b8e9c", "servicelevel":
+      {"token": "fedex_2_day", "terms": "", "name": "2 Day"}, "currency": "USD", "duration_terms":
+      "", "currency_local": "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "18.99", "amount_local": "18.99", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "10:30:00", "zone": "02", "object_created": "2017-03-30T18:39:53.478Z", "carrier_account":
+      "4140c165e7d048a9aeba2d6d0a37f78f", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 3, "object_id": "aa53558d57f4430796f46d1354b2796e", "servicelevel":
+      {"token": "fedex_2_day_am", "terms": "", "name": "2 Day A.M."}, "currency":
+      "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "20.65", "amount_local": "20.65", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "15:00:00", "zone": "02", "object_created": "2017-03-30T18:39:53.477Z", "carrier_account":
+      "4140c165e7d048a9aeba2d6d0a37f78f", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 3, "object_id": "9d5d03c300194999b4fdf1d47eb579a7", "servicelevel":
+      {"token": "fedex_standard_overnight", "terms": "", "name": "Standard Overnight"},
+      "currency": "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75":
+      "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png", "shipment":
+      "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test": false, "attributes":
+      [], "amount": "26.91", "amount_local": "26.91", "provider_image_200": "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"},
+      {"arrives_by": "10:30:00", "zone": "02", "object_created": "2017-03-30T18:39:53.477Z",
+      "carrier_account": "4140c165e7d048a9aeba2d6d0a37f78f", "object_owner": "thiago@goshippo.com",
+      "messages": [], "days": 2, "object_id": "3e0e6dc52232436fb8c58c4f1e5d7db4",
+      "servicelevel": {"token": "fedex_priority_overnight", "terms": "", "name": "Priority
+      Overnight"}, "currency": "USD", "duration_terms": "", "currency_local": "USD",
+      "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "27.75", "amount_local": "27.75", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "08:00:00", "zone": "02", "object_created": "2017-03-30T18:39:53.476Z", "carrier_account":
+      "4140c165e7d048a9aeba2d6d0a37f78f", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 2, "object_id": "e72f188538ab432691160990ef1d23aa", "servicelevel":
+      {"token": "fedex_first_overnight", "terms": "", "name": "First Overnight"},
+      "currency": "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75":
+      "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png", "shipment":
+      "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test": false, "attributes":
+      [], "amount": "61.98", "amount_local": "61.98", "provider_image_200": "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"},
+      {"arrives_by": "10:30:00", "zone": null, "object_created": "2017-03-30T18:39:53.400Z",
+      "carrier_account": "627514733b3e4ba18911da58233d9fc9", "object_owner": "thiago@goshippo.com",
+      "messages": [], "days": 1, "object_id": "59f4a5bba60b4de2a0b24296f396ad28",
+      "servicelevel": {"token": "ups_next_day_air", "terms": "", "name": "Next Day
+      Air\u00ae"}, "currency": "USD", "duration_terms": "", "currency_local": "USD",
+      "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/UPS.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "UPS", "test": false,
+      "attributes": ["FASTEST"], "amount": "35.00", "amount_local": "35.00", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/UPS.png"}, {"arrives_by":
+      "15:00:00", "zone": null, "object_created": "2017-03-30T18:39:53.399Z", "carrier_account":
+      "627514733b3e4ba18911da58233d9fc9", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 1, "object_id": "cbce84cefd6d4cbf81db7748c420fdc6", "servicelevel":
+      {"token": "ups_next_day_air_saver", "terms": "", "name": "Next Day Air Saver\u00ae"},
+      "currency": "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75":
+      "https://shippo-static.s3.amazonaws.com/providers/75/UPS.png", "shipment": "bbf75c36f46b46de9f15ba13b87419bc",
+      "provider": "UPS", "test": false, "attributes": [], "amount": "33.05", "amount_local":
+      "33.05", "provider_image_200": "https://shippo-static.s3.amazonaws.com/providers/200/UPS.png"},
+      {"arrives_by": null, "zone": null, "object_created": "2017-03-30T18:39:53.398Z",
+      "carrier_account": "627514733b3e4ba18911da58233d9fc9", "object_owner": "thiago@goshippo.com",
+      "messages": [], "days": 2, "object_id": "52b6d982855d4e61a66e45188d074a91",
+      "servicelevel": {"token": "ups_second_day_air", "terms": "", "name": "Second
+      Day Air\u00ae"}, "currency": "USD", "duration_terms": "", "currency_local":
+      "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/UPS.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "UPS", "test": false,
+      "attributes": [], "amount": "22.91", "amount_local": "22.91", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/UPS.png"}, {"arrives_by":
+      "10:30:00", "zone": null, "object_created": "2017-03-30T18:39:53.398Z", "carrier_account":
+      "627514733b3e4ba18911da58233d9fc9", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 2, "object_id": "961cc3f901ca4494a34db0dd99de77d5", "servicelevel":
+      {"token": "ups_second_day_air_am", "terms": "", "name": "Second Day Air A.M.\u00ae"},
+      "currency": "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75":
+      "https://shippo-static.s3.amazonaws.com/providers/75/UPS.png", "shipment": "bbf75c36f46b46de9f15ba13b87419bc",
+      "provider": "UPS", "test": false, "attributes": [], "amount": "25.54", "amount_local":
+      "25.54", "provider_image_200": "https://shippo-static.s3.amazonaws.com/providers/200/UPS.png"},
+      {"arrives_by": null, "zone": null, "object_created": "2017-03-30T18:39:53.397Z",
+      "carrier_account": "627514733b3e4ba18911da58233d9fc9", "object_owner": "thiago@goshippo.com",
+      "messages": [], "days": 3, "object_id": "19d4b622f89c4c3b8c31c32da4a1cb6b",
+      "servicelevel": {"token": "ups_3_day_select", "terms": "", "name": "Three-Day
+      Select\u00ae"}, "currency": "USD", "duration_terms": "", "currency_local": "USD",
+      "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/UPS.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "UPS", "test": false,
+      "attributes": [], "amount": "16.02", "amount_local": "16.02", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/UPS.png"}, {"arrives_by":
+      null, "zone": null, "object_created": "2017-03-30T18:39:53.396Z", "carrier_account":
+      "627514733b3e4ba18911da58233d9fc9", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 6, "object_id": "8bb73fd1c9274be199c2e190f2513f0c", "servicelevel":
+      {"token": "ups_ground", "terms": "", "name": "Ground"}, "currency": "USD", "duration_terms":
+      "Delivery times vary. Delivered usually in 1-5 business days.", "currency_local":
+      "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/UPS.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "UPS", "test": false,
+      "attributes": [], "amount": "13.90", "amount_local": "13.90", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/UPS.png"}, {"arrives_by":
+      null, "zone": "2", "object_created": "2017-03-30T18:39:53.350Z", "carrier_account":
+      "1ba37ffe23de48e891209de1b58573c8", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 1, "object_id": "9587f411fac9433bb034eb1196cf5496", "servicelevel":
+      {"token": "fedex_ground", "terms": "", "name": "Ground"}, "currency": "USD",
+      "duration_terms": "", "currency_local": "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "11.54", "amount_local": "11.54", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "16:30:00", "zone": "02", "object_created": "2017-03-30T18:39:53.350Z", "carrier_account":
+      "1ba37ffe23de48e891209de1b58573c8", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 5, "object_id": "29e2eeae41664ebb8970b5e250d6d273", "servicelevel":
+      {"token": "fedex_express_saver", "terms": "", "name": "Express Saver"}, "currency":
+      "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "14.81", "amount_local": "14.81", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "16:30:00", "zone": "02", "object_created": "2017-03-30T18:39:53.349Z", "carrier_account":
+      "1ba37ffe23de48e891209de1b58573c8", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 4, "object_id": "1605603247774cfd9d5b597c5db9d4e1", "servicelevel":
+      {"token": "fedex_2_day", "terms": "", "name": "2 Day"}, "currency": "USD", "duration_terms":
+      "", "currency_local": "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "15.85", "amount_local": "15.85", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "10:30:00", "zone": "02", "object_created": "2017-03-30T18:39:53.348Z", "carrier_account":
+      "1ba37ffe23de48e891209de1b58573c8", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 3, "object_id": "e4439849595a476ca1c96aa0da9a57ae", "servicelevel":
+      {"token": "fedex_2_day_am", "terms": "", "name": "2 Day A.M."}, "currency":
+      "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "16.94", "amount_local": "16.94", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "15:00:00", "zone": "02", "object_created": "2017-03-30T18:39:53.348Z", "carrier_account":
+      "1ba37ffe23de48e891209de1b58573c8", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 3, "object_id": "f0b047044dc4487a9eb03e734c5d3e4f", "servicelevel":
+      {"token": "fedex_standard_overnight", "terms": "", "name": "Standard Overnight"},
+      "currency": "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75":
+      "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png", "shipment":
+      "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test": false, "attributes":
+      [], "amount": "17.54", "amount_local": "17.54", "provider_image_200": "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"},
+      {"arrives_by": "10:30:00", "zone": "02", "object_created": "2017-03-30T18:39:53.347Z",
+      "carrier_account": "1ba37ffe23de48e891209de1b58573c8", "object_owner": "thiago@goshippo.com",
+      "messages": [], "days": 2, "object_id": "8a9bd42da6484bffbedd19bc53a34ea6",
+      "servicelevel": {"token": "fedex_priority_overnight", "terms": "", "name": "Priority
+      Overnight"}, "currency": "USD", "duration_terms": "", "currency_local": "USD",
+      "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "17.69", "amount_local": "17.69", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "08:00:00", "zone": "02", "object_created": "2017-03-30T18:39:53.346Z", "carrier_account":
+      "1ba37ffe23de48e891209de1b58573c8", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 2, "object_id": "e4d5861b2eea4821b527ebf655d5ae47", "servicelevel":
+      {"token": "fedex_first_overnight", "terms": "", "name": "First Overnight"},
+      "currency": "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75":
+      "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png", "shipment":
+      "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test": false, "attributes":
+      [], "amount": "61.98", "amount_local": "61.98", "provider_image_200": "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"},
+      {"arrives_by": "10:30:00", "zone": null, "object_created": "2017-03-30T18:39:53.308Z",
+      "carrier_account": "774ba5d485044121912bf1ca149f9348", "object_owner": "thiago@goshippo.com",
+      "messages": [], "days": 1, "object_id": "da024f3117fc4763ba6a7e33badc5736",
+      "servicelevel": {"token": "ups_next_day_air", "terms": "", "name": "Next Day
+      Air\u00ae"}, "currency": "USD", "duration_terms": "", "currency_local": "USD",
+      "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/UPS.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "UPS", "test": false,
+      "attributes": ["FASTEST"], "amount": "35.00", "amount_local": "35.00", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/UPS.png"}, {"arrives_by":
+      "15:00:00", "zone": null, "object_created": "2017-03-30T18:39:53.308Z", "carrier_account":
+      "774ba5d485044121912bf1ca149f9348", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 1, "object_id": "d1e5a8f7141545a685f296792a7efe42", "servicelevel":
+      {"token": "ups_next_day_air_saver", "terms": "", "name": "Next Day Air Saver\u00ae"},
+      "currency": "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75":
+      "https://shippo-static.s3.amazonaws.com/providers/75/UPS.png", "shipment": "bbf75c36f46b46de9f15ba13b87419bc",
+      "provider": "UPS", "test": false, "attributes": [], "amount": "33.05", "amount_local":
+      "33.05", "provider_image_200": "https://shippo-static.s3.amazonaws.com/providers/200/UPS.png"},
+      {"arrives_by": null, "zone": null, "object_created": "2017-03-30T18:39:53.307Z",
+      "carrier_account": "774ba5d485044121912bf1ca149f9348", "object_owner": "thiago@goshippo.com",
+      "messages": [], "days": 2, "object_id": "8dfd8dae8fa54693945485a0dcbb81e2",
+      "servicelevel": {"token": "ups_second_day_air", "terms": "", "name": "Second
+      Day Air\u00ae"}, "currency": "USD", "duration_terms": "", "currency_local":
+      "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/UPS.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "UPS", "test": false,
+      "attributes": [], "amount": "22.91", "amount_local": "22.91", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/UPS.png"}, {"arrives_by":
+      "10:30:00", "zone": null, "object_created": "2017-03-30T18:39:53.306Z", "carrier_account":
+      "774ba5d485044121912bf1ca149f9348", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 2, "object_id": "88a0063579ba4a059c4d2f42ee9f1a45", "servicelevel":
+      {"token": "ups_second_day_air_am", "terms": "", "name": "Second Day Air A.M.\u00ae"},
+      "currency": "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75":
+      "https://shippo-static.s3.amazonaws.com/providers/75/UPS.png", "shipment": "bbf75c36f46b46de9f15ba13b87419bc",
+      "provider": "UPS", "test": false, "attributes": [], "amount": "25.54", "amount_local":
+      "25.54", "provider_image_200": "https://shippo-static.s3.amazonaws.com/providers/200/UPS.png"},
+      {"arrives_by": null, "zone": null, "object_created": "2017-03-30T18:39:53.306Z",
+      "carrier_account": "774ba5d485044121912bf1ca149f9348", "object_owner": "thiago@goshippo.com",
+      "messages": [], "days": 3, "object_id": "a4d41e96893d45379204eaaa096413cc",
+      "servicelevel": {"token": "ups_3_day_select", "terms": "", "name": "Three-Day
+      Select\u00ae"}, "currency": "USD", "duration_terms": "", "currency_local": "USD",
+      "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/UPS.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "UPS", "test": false,
+      "attributes": [], "amount": "16.02", "amount_local": "16.02", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/UPS.png"}, {"arrives_by":
+      null, "zone": null, "object_created": "2017-03-30T18:39:53.305Z", "carrier_account":
+      "774ba5d485044121912bf1ca149f9348", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 6, "object_id": "cbffa09d876b415c95c86d4d846edb42", "servicelevel":
+      {"token": "ups_ground", "terms": "", "name": "Ground"}, "currency": "USD", "duration_terms":
+      "Delivery times vary. Delivered usually in 1-5 business days.", "currency_local":
+      "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/UPS.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "UPS", "test": false,
+      "attributes": [], "amount": "13.90", "amount_local": "13.90", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/UPS.png"}, {"arrives_by":
+      null, "zone": "2", "object_created": "2017-03-30T18:39:53.273Z", "carrier_account":
+      "ccbc859913d64f5e92dc009c13a7b6b7", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 1, "object_id": "cd56dfa13387484592499f8ecb18c41e", "servicelevel":
+      {"token": "fedex_ground", "terms": "", "name": "Ground"}, "currency": "USD",
+      "duration_terms": "", "currency_local": "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "12.84", "amount_local": "12.84", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "16:30:00", "zone": "02", "object_created": "2017-03-30T18:39:53.272Z", "carrier_account":
+      "ccbc859913d64f5e92dc009c13a7b6b7", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 5, "object_id": "3547eedaeedc4de8a69b39402ef51a91", "servicelevel":
+      {"token": "fedex_express_saver", "terms": "", "name": "Express Saver"}, "currency":
+      "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "20.02", "amount_local": "20.02", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "16:30:00", "zone": "02", "object_created": "2017-03-30T18:39:53.272Z", "carrier_account":
+      "ccbc859913d64f5e92dc009c13a7b6b7", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 4, "object_id": "6203799d69084251b31e99269f67fa48", "servicelevel":
+      {"token": "fedex_2_day", "terms": "", "name": "2 Day"}, "currency": "USD", "duration_terms":
+      "", "currency_local": "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "21.74", "amount_local": "21.74", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "10:30:00", "zone": "02", "object_created": "2017-03-30T18:39:53.271Z", "carrier_account":
+      "ccbc859913d64f5e92dc009c13a7b6b7", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 3, "object_id": "9be9b68075774fcbb95f96913fd75b03", "servicelevel":
+      {"token": "fedex_2_day_am", "terms": "", "name": "2 Day A.M."}, "currency":
+      "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "23.73", "amount_local": "23.73", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "15:00:00", "zone": "02", "object_created": "2017-03-30T18:39:53.270Z", "carrier_account":
+      "ccbc859913d64f5e92dc009c13a7b6b7", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 3, "object_id": "3e29aad417684cec9a63bc3c11fa9f3e", "servicelevel":
+      {"token": "fedex_standard_overnight", "terms": "", "name": "Standard Overnight"},
+      "currency": "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75":
+      "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png", "shipment":
+      "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test": false, "attributes":
+      [], "amount": "31.18", "amount_local": "31.18", "provider_image_200": "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"},
+      {"arrives_by": "10:30:00", "zone": "02", "object_created": "2017-03-30T18:39:53.269Z",
+      "carrier_account": "ccbc859913d64f5e92dc009c13a7b6b7", "object_owner": "thiago@goshippo.com",
+      "messages": [], "days": 2, "object_id": "db01dfdb85f7419fa17acb419af01024",
+      "servicelevel": {"token": "fedex_priority_overnight", "terms": "", "name": "Priority
+      Overnight"}, "currency": "USD", "duration_terms": "", "currency_local": "USD",
+      "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test":
+      false, "attributes": [], "amount": "32.18", "amount_local": "32.18", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"}, {"arrives_by":
+      "08:00:00", "zone": "02", "object_created": "2017-03-30T18:39:53.269Z", "carrier_account":
+      "ccbc859913d64f5e92dc009c13a7b6b7", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 2, "object_id": "416dc12862ab44cdb3a965da15eb316b", "servicelevel":
+      {"token": "fedex_first_overnight", "terms": "", "name": "First Overnight"},
+      "currency": "USD", "duration_terms": "", "currency_local": "USD", "provider_image_75":
+      "https://shippo-static.s3.amazonaws.com/providers/75/FedEx.png", "shipment":
+      "bbf75c36f46b46de9f15ba13b87419bc", "provider": "FedEx", "test": false, "attributes":
+      [], "amount": "61.98", "amount_local": "61.98", "provider_image_200": "https://shippo-static.s3.amazonaws.com/providers/200/FedEx.png"},
+      {"arrives_by": null, "zone": "1", "object_created": "2017-03-30T18:39:52.761Z",
+      "carrier_account": "79f8ad5ea5de436fa6167ba39380cbe9", "object_owner": "thiago@goshippo.com",
+      "messages": [], "days": 2, "object_id": "9dad67a964d440619d09ab19d1a3020a",
+      "servicelevel": {"token": "usps_priority_express", "terms": "", "name": "Priority
+      Mail Express"}, "currency": "USD", "duration_terms": "Overnight delivery to
+      most U.S. locations.", "currency_local": "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/USPS.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "USPS", "test":
+      false, "attributes": [], "amount": "21.18", "amount_local": "21.18", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/USPS.png"}, {"arrives_by":
+      null, "zone": "1", "object_created": "2017-03-30T18:39:52.761Z", "carrier_account":
+      "79f8ad5ea5de436fa6167ba39380cbe9", "object_owner": "thiago@goshippo.com", "messages":
+      [], "days": 1, "object_id": "1a0b906ea4554125bbcbd0d9dbb2c123", "servicelevel":
+      {"token": "usps_priority", "terms": "", "name": "Priority Mail"}, "currency":
+      "USD", "duration_terms": "Delivery within 1, 2,\u00a0or 3 days\u00a0based on
+      where your package started and where it\u2019s being sent.", "currency_local":
+      "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/USPS.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "USPS", "test":
+      false, "attributes": ["BESTVALUE", "CHEAPEST"], "amount": "8.19", "amount_local":
+      "8.19", "provider_image_200": "https://shippo-static.s3.amazonaws.com/providers/200/USPS.png"},
+      {"arrives_by": null, "zone": "1", "object_created": "2017-03-30T18:39:52.760Z",
+      "carrier_account": "79f8ad5ea5de436fa6167ba39380cbe9", "object_owner": "thiago@goshippo.com",
+      "messages": [], "days": 7, "object_id": "b64eae1869854648af2ba49646c4e4ba",
+      "servicelevel": {"token": "usps_parcel_select", "terms": "", "name": "Parcel
+      Select"}, "currency": "USD", "duration_terms": "Delivery in 2 to 8 days.", "currency_local":
+      "USD", "provider_image_75": "https://shippo-static.s3.amazonaws.com/providers/75/USPS.png",
+      "shipment": "bbf75c36f46b46de9f15ba13b87419bc", "provider": "USPS", "test":
+      false, "attributes": [], "amount": "8.87", "amount_local": "8.87", "provider_image_200":
+      "https://shippo-static.s3.amazonaws.com/providers/200/USPS.png"}], "carrier_accounts":
+      [], "metadata": "Customer ID 123456"}]}]'
     headers:
       Accept: ['*/*']
       Accept-Encoding: ['gzip, deflate']
       Connection: [keep-alive]
-      Content-Length: ['4505']
+      Content-Length: ['29300']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.4]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Davids-MacBook-Pro.local 16.3.0 Darwin Kernel
-          Version 16.3.0: Thu Nov 17 20:23:58 PST 2016; root:xnu-3789.31.2~1/RELEASE_X86_64
-          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.3.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.4"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/batches/INVALID_OBJECT_KEY/add_shipments
   response:
@@ -306,7 +627,7 @@ interactions:
       content-encoding: [gzip]
       content-length: ['130']
       content-type: [text/html]
-      date: ['Wed, 11 Jan 2017 18:58:02 GMT']
+      date: ['Thu, 30 Mar 2017 18:39:55 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie']

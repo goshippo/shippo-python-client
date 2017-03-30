@@ -16,9 +16,7 @@ example_batch = {
     "batch_shipments": [
         {
           "shipment": { #see basic-shipment.py on how to create shipments
-            "object_purpose": "PURCHASE",
             "address_from": {
-              "object_purpose": "PURCHASE",
               "name": "Mr Hippo",
               "street1": "965 Mission St",
               "street2": "Ste 201",
@@ -30,7 +28,6 @@ example_batch = {
               "email": "mrhippo@goshippo.com"
             },
             "address_to": {
-              "object_purpose": "PURCHASE",
               "name": "Mrs Hippo",
               "company": "",
               "street1": "Broadway 1",
@@ -54,9 +51,7 @@ example_batch = {
         },
         {
           "shipment": {    
-            "object_purpose": "PURCHASE",
             "address_from": {
-              "object_purpose": "PURCHASE",
               "name": "Mr Hippo",
               "street1": "1092 Indian Summer Ct",
               "city": "San Jose",
@@ -67,7 +62,6 @@ example_batch = {
               "email": "mrhippo@goshippo.com"
             },
             "address_to": {
-              "object_purpose": "PURCHASE",
               "name": "Mrs Hippo",
               "company": "",
               "street1": "Broadway 1",
@@ -104,7 +98,7 @@ batch = shippo.Batch.create(**example_batch)
 batch = shippo.Batch.retrieve(batch.object_id)
 tries = 0
 TIMEOUT = 60 #thirty second timeout
-while batch.object_status = 'VALIDATING' and tries < TIMEOUT:
+while batch.status = 'VALIDATING' and tries < TIMEOUT:
   time.sleep(0.5)
   batch = shippo.Batch.retrieve(batch.object_id)
   tries += 1
@@ -113,7 +107,6 @@ print batch
 #now we want to add a shipment to our batch
 #create a sample shipment
 address_from = {
-    "object_purpose": "PURCHASE",
     "name": "Shippo Team",
     "street1": "965 Mission St",
     "street2": "Unit 480",
@@ -126,7 +119,6 @@ address_from = {
 }
 
 address_to = {
-    "object_purpose": "PURCHASE",
     "name": "Shippo Friend",
     "street1": "1092 Indian Summer Ct",
     "city": "San Jose",
@@ -147,7 +139,6 @@ parcel = {
 }
 
 shipment = shippo.Shipment.create(
-    object_purpose='PURCHASE',
     address_from=address_from,
     address_to=address_to,
     parcel=parcel,

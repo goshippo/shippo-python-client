@@ -44,18 +44,6 @@ class RateTests(ShippoTestCase):
     def test_invalid_retrieve(self):
         self.assertRaises(shippo.error.APIError, shippo.Rate.retrieve, 'EXAMPLE_OF_INVALID_ID')
 
-    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/rate')
-    def test_list_all(self):
-        rate_list = shippo.Rate.all()
-        self.assertTrue('count' in rate_list)
-        self.assertTrue('results' in rate_list)
-
-    @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/rate')
-    def test_list_page_size(self):
-        pagesize = 1
-        rate_list = shippo.Rate.all(size=pagesize)
-        self.assertEquals(len(rate_list.results), pagesize)
-
 
 if __name__ == '__main__':
     unittest2.main()

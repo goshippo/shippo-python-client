@@ -10,7 +10,6 @@ from unittest2 import TestCase
 NOW = datetime.datetime.now()
 
 DUMMY_ADDRESS = {
-    "object_purpose": "QUOTE",
     "name": "Laura Behrens Wu",
     "company": "Shippo",
     "street1": "Clayton St.",
@@ -25,7 +24,6 @@ DUMMY_ADDRESS = {
     "metadata": "Customer ID 123456"
 }
 INVALID_ADDRESS = {
-    "object_purpose": "PURCHASE",
     "name": "Laura Behrens Wu",
     "company": "Shippo",
     "street2": "",
@@ -37,7 +35,6 @@ INVALID_ADDRESS = {
     "metadata": "Customer ID 123456"
 }
 NOT_POSSIBLE_ADDRESS = {
-    "object_purpose": "QUOTE",
     "name": "Laura Behrens Wu",
     "company": "Shippo",
     "street1": "ClaytonKLJLKJL St.",
@@ -71,12 +68,12 @@ INVALID_PARCEL = {
 }
 DUMMY_MANIFEST = {
     "provider": "USPS",
-    "submission_date": "2016-03-18T23:59:59Z",
+    "shipment_date": "2017-03-31T17:37:59.817Z",
     "address_from": "28828839a2b04e208ac2aa4945fbca9a"
 }
 INVALID_MANIFEST = {
     "provider": "RANDOM_INVALID_PROVIDER",
-    "submission_date": "2014-05-16T23:59:59Z",
+    "shipment_date": "2014-05-16T23:59:59Z",
     "address_from": "EXAMPLE_OF_INVALID_ADDRESS"
 }
 DUMMY_CUSTOMS_ITEM = {
@@ -136,22 +133,20 @@ INVALID_CUSTOMS_DECLARATION = {
     "metadata": "Order ID #123123"
 }
 TO_ADDRESS = {
-    "object_purpose": "PURCHASE",
     "name": "John Smith",
     "company": "Initech",
-    "street1": "Clayton St.",
-    "street_no": "6512",
-    "street2": "",
-    "city": "Woodridge",
-    "state": "IL",
-    "zip": "60517",
+    "street1": "965 Mission Street",
+    "street_no": "",
+    "street2": "Ste 480",
+    "city": "San Francisco",
+    "state": "CA",
+    "zip": "94103",
     "country": "US",
     "phone": "+1 630 333 7333",
     "email": "jmerc@gmail.com",
     "metadata": "Customer ID 123456"
 }
 FROM_ADDRESS = {
-    "object_purpose": "PURCHASE",
     "name": "Laura Behrens Wu",
     "company": "Shippo",
     "street1": "Clayton St.",
@@ -166,60 +161,56 @@ FROM_ADDRESS = {
     "metadata": "Customer ID 123456"
 }
 DUMMY_SHIPMENT = {
-    "object_purpose": "PURCHASE",
     "address_from": "4f406a13253945a8bc8deb0f8266b245",
     "address_to": "4c7185d353764d0985a6a7825aed8ffb",
     "parcel": "ec952343dd4843c39b42aca620471fd5",
     "submission_type": "PICKUP",
-    "submission_date": "2016-03-18T23:59:59Z",
+    "shipment_date": "2017-03-31T17:37:59.817Z",
     "insurance_amount": "200",
     "insurance_currency": "USD",
     "extra": {
-        "signature_confirmation": True
+        "signature_confirmation": True,
+        "reference_1": "",
+        "reference_2": "",
+        "insurance": {
+            "amount": "200",
+            "currency": "USD"
+        }
     },
-    "reference_1": "",
-    "reference_2": "",
     "metadata": "Customer ID 123456"
 }
 INVALID_SHIPMENT = {
-    "object_purpose": "QUOTE",
     "address_from": "4f406a13253945a8bc8deb0f8266b245",
     "submission_type": "PICKUP",
-    "submission_date": "2013-12-03T12:00:00.000Z",
-    "insurance_amount": "200",
-    "insurance_currency": "USD",
+    "shipment_date": "2017-03-31T17:37:59.817Z",
     "extra": {
-        "signature_confirmation": True
+        "signature_confirmation": True,
+        "reference_1": "",
+        "reference_2": "",
+        "insurance": {
+            "amount": "200",
+            "currency": "USD"
+        }
     },
     "customs_declaration": "b741b99f95e841639b54272834bc478c",
-    "reference_1": "",
-    "reference_2": "",
     "metadata": "Customer ID 123456"
 }
 DUMMY_TRANSACTION = {
     "rate": "67891d0ebaca4973ae2569d759da6139",
-    "notification_email_from": True,
-    "notification_email_to": False,
-    "notification_email_other": "max@goshippo.com",
     "metadata": "Customer ID 123456"
 }
 INVALID_TRANSACTION = {
-    "notification_email_from": True,
-    "notification_email_to": False,
-    "notification_email_other": "max@goshippo.com",
     "metadata": "Customer ID 123456"
 }
 DUMMY_BATCH = {
-    "default_carrier_account": "0d19dbd3b09544c79be2ab1b780f490d",
+    "default_carrier_account": "79f8ad5ea5de436fa6167ba39380cbe9",
     "default_servicelevel_token": "usps_priority",
     "label_filetype": "PDF_4x6",
     "metadata": "BATCH #170",
     "batch_shipments": [
         {
           "shipment": {    
-            "object_purpose": "PURCHASE",
             "address_from": {
-              "object_purpose": "PURCHASE",
               "name": "Mr Hippo",
               "street1": "965 Mission St",
               "street2": "Ste 201",
@@ -231,7 +222,6 @@ DUMMY_BATCH = {
               "email": "mrhippo@goshippo.com"
             },
             "address_to": {
-              "object_purpose": "PURCHASE",
               "name": "Mrs Hippo",
               "company": "",
               "street1": "Broadway 1",
@@ -255,9 +245,7 @@ DUMMY_BATCH = {
         },
         {
           "shipment": {    
-            "object_purpose": "PURCHASE",
             "address_from": {
-              "object_purpose": "PURCHASE",
               "name": "Mr Hippo",
               "street1": "1092 Indian Summer Ct",
               "city": "San Jose",
@@ -268,7 +256,6 @@ DUMMY_BATCH = {
               "email": "mrhippo@goshippo.com"
             },
             "address_to": {
-              "object_purpose": "PURCHASE",
               "name": "Mrs Hippo",
               "company": "",
               "street1": "Broadway 1",
@@ -328,8 +315,8 @@ def create_mock_manifest(transaction=None):
 
 def create_mock_transaction(async=False):
     shipment = create_mock_shipment(async)
-    rates_list = shipment.rates_list
-    usps_rate = list(filter(lambda x: x.servicelevel_token == 'usps_priority', rates_list))[0]
+    rates = shipment.rates
+    usps_rate = list(filter(lambda x: x.servicelevel.token == 'usps_priority', rates))[0]
     t = DUMMY_TRANSACTION.copy()
     t['rate'] = usps_rate.object_id
     t['async'] = async
@@ -364,6 +351,7 @@ class ShippoTestCase(TestCase):
             shippo.api_base = api_base
 
         shippo.api_key = os.environ.get('SHIPPO_API_KEY', '51895b669caa45038110fd4074e61e0d')
+        shippo.api_version = os.environ.get('SHIPPO_API_VERSION', '2017-03-29')
 
     def tearDown(self):
         super(ShippoTestCase, self).tearDown()

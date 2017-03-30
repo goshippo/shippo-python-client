@@ -36,13 +36,13 @@ class AddressTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/address')
     def test_invalid_create(self):
-        self.assertRaises(shippo.error.InvalidRequestError, shippo.Address.create,
-                          **INVALID_ADDRESS)
+        address = shippo.Address.create(**INVALID_ADDRESS)
+        self.assertEqual(address.is_complete, False)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/address')
     def test_create(self):
         address = shippo.Address.create(**DUMMY_ADDRESS)
-        self.assertEqual(address.object_state, 'VALID')
+        self.assertEqual(address.is_complete, True)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/address')
     def test_retrieve(self):
@@ -65,22 +65,20 @@ class AddressTests(ShippoTestCase):
     def test_list_page_size(self):
         pagesize = 1
         address_list = shippo.Address.all(size=pagesize)
-        self.assertEquals(len(address_list.results), pagesize)
+        self.assertEqual(len(address_list.results), pagesize)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/address')
     def test_invalid_validate(self):
         address = shippo.Address.create(**NOT_POSSIBLE_ADDRESS)
-        self.assertEqual(address.object_state, 'VALID')
+        self.assertEqual(address.is_complete, True)
         address = shippo.Address.validate(address.object_id)
-        self.assertEqual(address.object_source, 'VALIDATOR')
-        self.assertEqual(address.object_state, 'INVALID')
+        self.assertEqual(address.is_complete, False)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/address')
     def test_validate(self):
         address = shippo.Address.create(**DUMMY_ADDRESS)
-        self.assertEqual(address.object_state, 'VALID')
+        self.assertEqual(address.is_complete, True)
         address = shippo.Address.validate(address.object_id)
-        self.assertEqual(address.object_source, 'VALIDATOR')
 
 if __name__ == '__main__':
     unittest2.main()

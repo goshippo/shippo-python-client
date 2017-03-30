@@ -1,39 +1,41 @@
 interactions:
 - request:
-    body: '{"city": "San Francisco", "object_purpose": "QUOTE", "name": "Laura Behrens
-      Wu", "zip": "74338", "street1": "ClaytonKLJLKJL St.", "company": "Shippo", "street_no":
+    body: !!python/unicode '{"city": "San Francisco", "name": "Laura Behrens Wu",
+      "zip": "74338", "street1": "ClaytonKLJLKJL St.", "company": "Shippo", "street_no":
       "0798987987987", "phone": "+1 555 341 9393", "state": "CA", "country": "US",
       "street2": "", "email": "laura@goshippo.com", "metadata": "Customer ID 123456"}'
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
-      Content-Length: [!!python/unicode '320']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['293']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
-          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
-          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.0"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/addresses/
   response:
     body:
       string: !!binary |
-        H4sIAHF07FYC/5WR2UoDMRSGX2WYa1uSWdpMr9QuoA6KtlVUpKQzp21kJglZkCq+uz1ppQWvhFzk
-        /N93sn7FavkOlVtYxx3Egyh+vCivRvFZ9Au0N1rZgO7nd7PxCbLKmyqQybwsnxfj29n4YXzaXBnY
-        LVujkhDa65C0Q9ksoYM0G2S0y0j+cmJ7Xf/DFkHM8gJYr8hXeZ9mpCpYXcOKFIQlyxWrl8lJg/qQ
-        YLCn5c5tBPjztbIbobXqVqpFUfI2XKfk3vDoEjYGpI2ePLKdorncIp6GJgytMwBuIRXGpF+wgvX3
-        40gpsmHDt07Jm/K6vLkuo6nrHoUEhbCFcPv1uYwmhstK2OqwzeFzhhdYfgqNRT9LU7Y/mpfOhNb5
-        FAO9UTL4hNA8z9OMFmmRIoGWiwZJg1f88wDCLgxYUYN0gqMnfdNgro/zFqzla7C75PUt1I7v/o2H
-        83nrVAsmuhpFNEmzvBd//wDwcl8CYwIAAA==
+        H4sIANJQ3VgC/31Q20oDMRD9lWWfbdk02730yRuC2rcqgi9lNjttI9lkSWYVLf13M1tLBUHIy5zL
+        nMnZp655Q0Vr5REI23SRpLNMlJNMTmT2JKqFrBcin+alfE0vkpN66Nt/1ZX4rdajsG3KumpULjbV
+        Jm9ECRtRNKKRhSoK1bY5G3RYK9f1BgmjhfyAEXwHo2OcdnbtMQyGQuT2h/N+92HRcwTtNGzd5daF
+        ne57N427eKuFjtelSxg8JNe482hD8jIwx3FgP5lejSYGA3lEWlvHcBbPrqvy+M6sYO7GwCc5+7h8
+        WD4+LJMVTc+CGQvOozyNStMxDmxy58EqHdRPKozfTm+uePzSPQ9lLmV1vHSw5Efr84qBfufsqM8y
+        MZ/PZS5qWUtmsANtmDH84z99xJZjkbpFSxpYZwdjIt4hQSwaxhuGQK5Dn9zfJmIm83nBTsJAkd2A
+        CXj4BrBo/Ok8AgAA
     headers:
-      allow: ['GET, POST, HEAD, OPTIONS']
+      allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['367']
+      content-length: ['354']
       content-type: [application/json]
-      date: ['Fri, 18 Mar 2016 21:34:41 GMT']
+      date: ['Thu, 30 Mar 2017 18:39:14 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
@@ -42,34 +44,37 @@ interactions:
     body: null
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
-          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
-          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.0"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: GET
-    uri: https://api.goshippo.com/v1/addresses/459e8695f57140c98ddef09082bf8db2/validate
+    uri: https://api.goshippo.com/v1/addresses/db798bc41f8f4b17af16b1b36c66cdd4/validate
   response:
     body:
       string: !!binary |
-        H4sIAHJ07FYC/31SW2/TMBT+K0d57qpcnCbpEyEbUraohSUFMYQq1/EWQ2JHtsOAaf8d26FqJCQk
-        v5zvYp/vHL944vSNEn1UGmvqbcErdx/zqrz2VnCmxkmOQjnyw2Hf3CwoJSZJHONMebO/X7BEUnNp
-        a+nQDzZXfnQVpE0YbCO0ReEaoexhoZ7G9r/qxF+qmRPiePO4yTJ6IjhGjyk5UT+JgogShNI0zrKF
-        QTxzKq1nwFp3jE5vnoTq2DiKNRGDFXI8uCgVniSGt7STlCv4NFnOSEbMf1m6diYLKi0p1UcuLHwB
-        Alv6SZZmaTIfKKr8c7Pf3VW31d1tBXWzvsjDs5swPT+Q7+Ddfb4ryrrYz7q/uylyW/5moy0SFEXp
-        3NvEtXTWQ22BsRPc6X0/iOM4QkEWZZFl6IBZb5neZvxnAkwdJVWspVwzbHV86nuLj+ceB6oUfqLK
-        1F9evMv6b3jLCMNzO62DDvw7N0OH2qW0jKY/tYthgq4MblIB5i08lO+hMC7AksIP3LN2BadJwzwf
-        wG1rulLAFHBhSjAbJN3ae/3qGtLY/Bvs7p2UFgOVUF5DEEYo3nivfwABUKuE4QIAAA==
+        H4sIANNQ3VgC/31SYWvbMBD9K4c/r8GOktrOp2UZhbYhLUvG2MYIsnSJtcmSkeSsXch/n85ulkJh
+        oC937727d6c7Jrb6iSJshUMeUCYzSMZpll+l7Iqlm6yYsXKWTUcsZd+Sd3Bmd638H7tg2Wu26olV
+        xYVEVpQ7Jid5KUomBY7H4jrfYSnznATKb4VtWo0Bo2THtceYPXCtYj9lzdah73TwETwSuUdeMRv0
+        nu+R8O/HxNvOCSqUfF4/rqm+sLKP51LGSh5WNsCN7YwkMOBTIHBTI/AXAvfgu6pRIU4LwnZagoma
+        CmFHshE8auQeQdQofsWcA3wSUagOsUZVOTyo3rgHZSDEwj44xPCvvlYGIape0IUKz2B4g6Pk9ON0
+        2aD9bdCRt1Arvrfv99bXqm3tKG6LrJOE4CXvHIcPWDuMLb90w8xNy80zweteRMnBxtZYSqd5WZRF
+        PrwLmr3BYLGcf908rO6Xd8v7uyWsN6MLfUz0S8jOoYgz9c3nK7j5NF8tbteLh4HH+29OFnMK/6iW
+        gnzCWDH47kxwz8P3UaKtren5aZpNp1M2yUpWMkKw4UoTomn+N9uJhxKXrSSaoDjxTKd1fy2Bx7vi
+        vYfOB9ugg9uPkI3ZZHo9nIQP5/M6/QXxWb8CLAMAAA==
     headers:
-      allow: ['GET, HEAD, OPTIONS']
+      allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['448']
+      content-length: ['487']
       content-type: [application/json]
-      date: ['Fri, 18 Mar 2016 21:34:42 GMT']
+      date: ['Thu, 30 Mar 2017 18:39:15 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']

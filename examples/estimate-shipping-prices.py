@@ -40,7 +40,6 @@ shippo.api_key = "<API-KEY>"
 # sample address_from
 # The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 address_from = {
-    "object_purpose": "QUOTE",
     "city": "San Francisco",
     "state": "CA",
     "zip": "94117",
@@ -51,7 +50,6 @@ address_from = {
 # The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 
 address_to = {
-    "object_purpose": "QUOTE",
     "country": "US"
 }
 
@@ -82,16 +80,15 @@ for delivery_address_zip_code in DESTINATION_ADDRESSES_ZIP_CODES:
     # By default Shippo API operates on an async basis. You can read about our async flow here: https://goshippo.com/docs/async
     
     shipment = shippo.Shipment.create(
-        object_purpose='QUOTE',
         address_from=address_from,
         address_to=address_to,
         parcel=parcel,
         async=False
     )
-    # Rates are stored in the `rates_list` array
+    # Rates are stored in the `rates` array
     # The details on the returned object are here: https://goshippo.com/docs/reference#rates
     
-    rates = shipment.rates_list
+    rates = shipment.rates
     print "Returned %s rates to %s" % (len(rates), delivery_address_zip_code)
     # We now store the shipping cost for each delivery window in our
     # `shipping_costs` dictionary to analyse it later.

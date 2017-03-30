@@ -7,6 +7,7 @@ rates_req_timeout = 20.0  # seconds
 
 from shippo.resource import (
     Address,
+    Batch,
     CarrierAccount,
     CustomsDeclaration,
     CustomsItem,
@@ -17,5 +18,4 @@ from shippo.resource import (
     Shipment,
     Track,
     Transaction,
-    Batch,
 )

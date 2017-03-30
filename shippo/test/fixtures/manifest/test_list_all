@@ -3,44 +3,53 @@ interactions:
     body: null
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
-          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
-          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.0"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: GET
     uri: https://api.goshippo.com/v1/manifests/
   response:
     body:
       string: !!binary |
-        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
+        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
+        ZnZy8jF5bT0pji5ULJPz/ee/AS5wm8SgDgAA
     headers:
-      allow: ['GET, POST, HEAD, OPTIONS']
+      allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['1001']
+      content-length: ['1395']
       content-type: [application/json]
-      date: ['Sat, 19 Mar 2016 01:08:12 GMT']
+      date: ['Thu, 30 Mar 2017 18:41:01 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']

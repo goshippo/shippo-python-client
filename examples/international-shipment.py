@@ -16,7 +16,6 @@ shippo.api_key = "<API-KEY>"
 # Example address_from object dict
 # The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 address_from = {
-    "object_purpose":"PURCHASE",
     "name":"Mr Hippo",
     "company":"Shippo",
     "street1":"965 Mission St",
@@ -32,7 +31,6 @@ address_from = {
 # The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
 
 address_to_international = {
-    "object_purpose":"PURCHASE",
     "name":"Mr Hippo",
     "company":"London Zoo",
     "street1":"Regent's Park",
@@ -85,7 +83,6 @@ customs_declaration = shippo.CustomsDeclaration.create(
 # The reference for the shipment object is here: https://goshippo.com/docs/reference#shipments
 # By default Shippo API operates on an async basis. You can read about our async flow here: https://goshippo.com/docs/async
 shipment_international = shippo.Shipment.create(
-    object_purpose= 'PURCHASE',
     address_from= address_from,
     address_to= address_to_international,
     parcel= parcel,
@@ -94,14 +91,14 @@ shipment_international = shippo.Shipment.create(
 
 # Get the first rate in the rates results for demo purposes.
 # The details on the returned object are here: https://goshippo.com/docs/reference#rates
-rate_international = shipment_international.rates_list[0]
+rate_international = shipment_international.rates[0]
 
 # Purchase the desired rate.
 # The complete information about purchasing the label: https://goshippo.com/docs/reference#transaction-create
 transaction_international = shippo.Transaction.create(rate=rate_international.object_id, async=False)
 
 # print label_url and tracking_number
-if transaction_international.object_status == "SUCCESS":
+if transaction_international.status == "SUCCESS":
     print "Purchased label with tracking number %s" % transaction_international.tracking_number
     print "The label can be downloaded at %s" % transaction_international.label_url
 else:

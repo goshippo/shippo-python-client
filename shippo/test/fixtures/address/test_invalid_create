@@ -1,32 +1,41 @@
 interactions:
 - request:
-    body: '{"city": "San Francisco", "object_purpose": "PURCHASE", "name": "Laura
-      Behrens Wu", "country": "US", "company": "Shippo", "phone": "+1 555 341 9393",
-      "state": "CA", "street2": "", "email": "laura@goshippo.com", "metadata": "Customer
-      ID 123456"}'
+    body: !!python/unicode '{"city": "San Francisco", "name": "Laura Behrens Wu",
+      "country": "US", "company": "Shippo", "email": "laura@goshippo.com", "phone":
+      "+1 555 341 9393", "state": "CA", "street2": "", "metadata": "Customer ID 123456"}'
     headers:
       Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate, compress']
-      Content-Length: [!!python/unicode '244']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['214']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.0]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin matts-mbp 15.2.0 Darwin Kernel Version 15.2.0:
-          Fri Nov 13 19:56:56 PST 2015; root:xnu-3248.20.55~2/RELEASE_X86_64 x86_64
-          i386", "lang_version": "2.7.11", "platform": "Darwin-15.2.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.0"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/addresses/
   response:
-    body: {string: !!python/unicode '{"__all__": ["For an Address to be PURCHASE''able,
-        all information must be provided."]}'}
+    body:
+      string: !!binary |
+        H4sIANFQ3VgC/31QW0vDMBT+K6HPbrRN07V78oYg+DZF8KWctsc1kiYlSRUd++/mROccgo/nu3K+
+        XWLaF+x801kEj32yZkmeZqtFyhc8vc+qNa/XGV/mRfmUnLGDep76f9Wi/q2WUVj1FeBKYF2VVdHm
+        bS16sQJAbGsu2rQkg3RNZ8ZJocdgeQblMKCvoGTok0Y3Ft2svAvkbn8sMG8aLXX4QcLWnG+NG+Q0
+        mWUIo1gNI+UldzBbYJc4WNSOPc7EUR/od6I30USg8xbRN9oQfASy0zM/Pfnh7KT/ygPNbizoTrru
+        OxbiY8nVBZ0fcvqxmFl7G10PGwKmwegoTdNMCMGLrOY1JwZHkIoYRd/8+TVMGEaSPWovgXR6Virg
+        I3oII0Ksn503I1p2e82ynBciju/R+cPq+0+BU8EZGQIAAA==
     headers:
-      allow: ['GET, POST, HEAD, OPTIONS']
+      allow: [OPTIONS]
       connection: [keep-alive]
+      content-encoding: [gzip]
+      content-length: ['319']
       content-type: [application/json]
-      date: ['Fri, 18 Mar 2016 21:34:40 GMT']
+      date: ['Thu, 30 Mar 2017 18:39:13 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
-      vary: ['Host, Cookie']
-    status: {code: 400, message: BAD REQUEST}
+      vary: ['Host, Cookie, Accept-Encoding']
+    status: {code: 201, message: CREATED}
 version: 1

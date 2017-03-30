@@ -38,7 +38,7 @@ class BatchTests(ShippoTestCase):
     def test_create(self):
         BATCH = DUMMY_BATCH.copy()
         batch = shippo.Batch.create(**BATCH)
-        self.assertEqual(batch.object_status, 'VALIDATING')
+        self.assertEqual(batch.status, 'VALIDATING')
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_invalid_create(self):
@@ -56,13 +56,14 @@ class BatchTests(ShippoTestCase):
         batch = shippo.Batch.create(**BATCH)
         retrieve = shippo.Batch.retrieve(batch.object_id)
         self.assertItemsEqual(batch, retrieve)
+        # Leave enough time for the batch to be processed
         retrieve = shippo.Batch.retrieve(
             batch.object_id,
             **{
                 'object_results': 'creation_succeeded'
             }
         )
-        self.assertTrue(retrieve['batch_shipments']['results'])
+        self.assertGreater(len(retrieve['batch_shipments']['results']), 0)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_invalid_retrieve(self):
@@ -72,22 +73,23 @@ class BatchTests(ShippoTestCase):
     def test_add(self):
         BATCH = DUMMY_BATCH.copy()
         batch = shippo.Batch.create(**BATCH)
+        # Leave enough time for the batch to be processed
         retrieve = shippo.Batch.retrieve(batch.object_id)
         batch_size = len(retrieve.batch_shipments.results)
-        self.assertEqual(batch.object_status, 'VALIDATING')
+        self.assertEqual(batch.status, 'VALIDATING')
         addon = []
         for i in xrange(BATCH_ADD_SIZE):
             mock_shipment = create_mock_shipment()
             addon.append({'shipment': mock_shipment.object_id})
         added = shippo.Batch.add(batch.object_id, addon)
         added_size = len(added.batch_shipments.results)
-        self.assertTrue(batch_size + len(addon) == added_size)
+        self.assertEqual(batch_size + len(addon), added_size)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_invalid_add(self):
         BATCH = DUMMY_BATCH.copy()
         batch = shippo.Batch.create(**BATCH)
-        self.assertEqual(batch.object_status, 'VALIDATING')
+        self.assertEqual(batch.status, 'VALIDATING')
         mock_shipment = create_mock_shipment()
         self.assertRaises(
             shippo.error.APIError,
@@ -100,16 +102,17 @@ class BatchTests(ShippoTestCase):
     def test_remove(self):
         BATCH = DUMMY_BATCH.copy()
         batch = shippo.Batch.create(**BATCH)
+        # Leave enough time for the batch to be processed
         retrieve = shippo.Batch.retrieve(batch.object_id)
         batch_size = len(retrieve.batch_shipments.results)
-        self.assertEqual(batch.object_status, 'VALIDATING')
+        self.assertEqual(batch.status, 'VALIDATING')
         addon = []
         for i in xrange(BATCH_ADD_SIZE):
             mock_shipment = create_mock_shipment()
             addon.append({'shipment': mock_shipment.object_id})
         added = shippo.Batch.add(batch.object_id, addon)
         added_size = len(added.batch_shipments.results)
-        self.assertTrue(batch_size + len(addon) == added_size)
+        self.assertEqual(batch_size + len(addon), added_size)
         to_remove = []
         for shipment in added.batch_shipments.results:
             to_remove.append(shipment.object_id)
@@ -120,7 +123,7 @@ class BatchTests(ShippoTestCase):
     def test_invalid_remove(self):
         BATCH = DUMMY_BATCH.copy()
         batch = shippo.Batch.create(**BATCH)
-        self.assertEqual(batch.object_status, 'VALIDATING')
+        self.assertEqual(batch.status, 'VALIDATING')
         retrieve = shippo.Batch.retrieve(batch.object_id)
         to_remove = []
         for shipment in retrieve.batch_shipments.results:
@@ -136,8 +139,10 @@ class BatchTests(ShippoTestCase):
     def test_purchase(self):
         BATCH = DUMMY_BATCH.copy()
         batch = shippo.Batch.create(**BATCH)
+        while batch.status == 'VALIDATING':
+            batch = shippo.Batch.retrieve(batch.object_id)
         purchase = shippo.Batch.purchase(batch.object_id)
-        self.assertEqual(purchase.object_status, 'PURCHASING')
+        self.assertEqual(purchase.status, 'PURCHASING')
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_invalid_purchase(self):

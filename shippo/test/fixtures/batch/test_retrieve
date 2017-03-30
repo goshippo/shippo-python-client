@@ -1,55 +1,54 @@
 interactions:
 - request:
     body: !!python/unicode '{"batch_shipments": [{"shipment": {"address_from": {"city":
-      "San Francisco", "state": "CA", "object_purpose": "PURCHASE", "name": "Mr Hippo",
-      "zip": "94103", "country": "US", "street1": "965 Mission St", "street2": "Ste
-      201", "email": "mrhippo@goshippo.com", "phone": "4151234567"}, "object_purpose":
-      "PURCHASE", "parcel": {"weight": "2", "distance_unit": "in", "mass_unit": "oz",
-      "height": "5", "width": "5", "length": "5"}, "address_to": {"street1": "Broadway
-      1", "company": "", "phone": "4151234567", "city": "New York", "object_purpose":
-      "PURCHASE", "name": "Mrs Hippo", "zip": "10007", "country": "US", "email": "mrshippo@goshippo.com",
-      "state": "NY", "street2": ""}}}, {"shipment": {"address_from": {"city": "San
-      Jose", "state": "CA", "object_purpose": "PURCHASE", "name": "Mr Hippo", "zip":
-      "95122", "country": "US", "street1": "1092 Indian Summer Ct", "email": "mrhippo@goshippo.com",
-      "phone": "4151234567"}, "object_purpose": "PURCHASE", "parcel": {"weight": "20",
-      "distance_unit": "in", "mass_unit": "lb", "height": "5", "width": "5", "length":
-      "5"}, "address_to": {"street1": "Broadway 1", "company": "", "phone": "4151234567",
-      "city": "New York", "object_purpose": "PURCHASE", "name": "Mrs Hippo", "zip":
-      "10007", "country": "US", "email": "mrshippo@goshippo.com", "state": "NY", "street2":
-      ""}}}], "label_filetype": "PDF_4x6", "default_servicelevel_token": "usps_priority",
-      "default_carrier_account": "0d19dbd3b09544c79be2ab1b780f490d", "metadata": "BATCH
-      #170"}'
+      "San Francisco", "state": "CA", "name": "Mr Hippo", "zip": "94103", "country":
+      "US", "street1": "965 Mission St", "street2": "Ste 201", "email": "mrhippo@goshippo.com",
+      "phone": "4151234567"}, "parcel": {"weight": "2", "distance_unit": "in", "mass_unit":
+      "oz", "height": "5", "width": "5", "length": "5"}, "address_to": {"city": "New
+      York", "state": "NY", "name": "Mrs Hippo", "zip": "10007", "country": "US",
+      "street1": "Broadway 1", "company": "", "street2": "", "phone": "4151234567",
+      "email": "mrshippo@goshippo.com"}}}, {"shipment": {"address_from": {"city":
+      "San Jose", "state": "CA", "name": "Mr Hippo", "zip": "95122", "country": "US",
+      "street1": "1092 Indian Summer Ct", "email": "mrhippo@goshippo.com", "phone":
+      "4151234567"}, "parcel": {"weight": "20", "distance_unit": "in", "mass_unit":
+      "lb", "height": "5", "width": "5", "length": "5"}, "address_to": {"city": "New
+      York", "state": "NY", "name": "Mrs Hippo", "zip": "10007", "country": "US",
+      "street1": "Broadway 1", "company": "", "street2": "", "phone": "4151234567",
+      "email": "mrshippo@goshippo.com"}}}], "label_filetype": "PDF_4x6", "default_servicelevel_token":
+      "usps_priority", "default_carrier_account": "79f8ad5ea5de436fa6167ba39380cbe9",
+      "metadata": "BATCH #170"}'
     headers:
       Accept: ['*/*']
       Accept-Encoding: ['gzip, deflate']
       Connection: [keep-alive]
-      Content-Length: ['1475']
+      Content-Length: ['1295']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.4]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Davids-MacBook-Pro.local 16.3.0 Darwin Kernel
-          Version 16.3.0: Thu Nov 17 20:23:58 PST 2016; root:xnu-3789.31.2~1/RELEASE_X86_64
-          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.3.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.4"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/batches/
   response:
     body:
       string: !!binary |
-        H4sIAAuCdVgC/42RyU7DMBRFf6UKW1rZSZqhKwoVUAkhFhULEIqe7RdqSOPIQ2hV8e/EgbZhgcTO
-        vve8wdf7QLE35LaQIpiNAp6RKErKLI05xMAJJEBIJIhIw0SE0zA4Hx0K1EeN2tcIaKW4eFVmLZtG
-        TbjaDChjwTrjscf53XIxXy3vbwY21wgW+9EhoemY0DGlK0Jm02gW0UmYZE8D2jXiP/QGLXQgeO5y
-        vrq6HZ3RlHhHYAmu6saC1hJ1AZwrV1sPEkFzwUTESD6NY57mDENglKUZKeOciGG5Qd1KjhW2WBVW
-        vWPtOzjTmKLRUmlpdx6vgHV+KSu0uwY98rC4LuJt4k0Glq8Ln9kGa+sT2geHZUjn17j1x9pVVXdr
-        NLZS9UH+KBpNt4oXnl8+TxGd5H3QOM3XYLAwjnNE0Sfnex+NErrlDmr/F1LVf6i/mnwen+d09b3D
-        F7XD/65KAgAA
+        H4sIACBR3VgC/42RyU7DMBRFf6UKW1o5TeIkXVGogEoIsahYgFD0bL80hjSOPJRWVf+dONCBBRI7
+        +97zBl/vAsXekdtCimAyCAQvmeA8pkDTOGMZE5RmWQKMYJlHlAeXg0OB+mxQ+xpbSViqq6UylWxb
+        NeJq5TFjwTrjgefpw3w2Xcwf787KuUaw2A8dkzAdkmgYkUWYTWIyicYjSpKXM9q14j/0Ci10IHju
+        erq4uR9chCnxjsASXN2NBa0l6gI4V66xHkzzMgORICQC44iWQEOaMojyKCOcYX5eblCvJcca11gX
+        Vn1g4zs405qi1VJpabcer4F1filrtNsWPfI0uy3iDfUmA8urwoe1wsb6hHbBYRnS+Q1u/LFxdd3d
+        Wo1rqfogfxSNplvFC69v+1NEJ3kXtE7zCgwWxnGOKPrkfO+jUUK33EHt/0Kq5g/1V5P98XlO1987
+        fAEWp8eARAIAAA==
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['351']
+      content-length: ['352']
       content-type: [application/json]
-      date: ['Wed, 11 Jan 2017 00:53:31 GMT']
+      date: ['Thu, 30 Mar 2017 18:40:32 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
@@ -61,33 +60,32 @@ interactions:
       Accept-Encoding: ['gzip, deflate']
       Connection: [keep-alive]
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.4]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Davids-MacBook-Pro.local 16.3.0 Darwin Kernel
-          Version 16.3.0: Thu Nov 17 20:23:58 PST 2016; root:xnu-3789.31.2~1/RELEASE_X86_64
-          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.3.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.4"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: GET
-    uri: https://api.goshippo.com/v1/batches/c80336f874ca4ac0a6a003d0d726d252
+    uri: https://api.goshippo.com/v1/batches/dcfbdcc46a6748b8bd66885ab0ef936c
   response:
     body:
       string: !!binary |
-        H4sIABCCdVgC/7VTTW/UMBD9K6twbVfjrzjeE4UKgcSBQ8UBhKKxPekGsknkOEurVf87cdhAKiiC
-        Azd73puZ98bjU9bZz+RiWftst8lcAULkVaGlQ4kOMEcA4cFrnnuueHaxWRK6ry2FlOPxWPvnt92w
-        r/u+27rusGINEeM4JNr7q7dvrleIC4SR5q4cmL4EdsnYDcBOiZ1gW54XH1bssfdPs8VWCjWzDxRx
-        ImLivbi6efl684xpSIinCsdmaosh1BRKdK4b25iI4Jnx1gsLRknptLHE0TKrC6ikAb9OHygca0cN
-        HakpY/eF2lRhHPqh7EPdhTreJ3qDdsKruqF431OivLt+Vcq7PIEWo9uXaVwHamMazilbxPAJb+ku
-        HduxaaZbH+hYd/MMz5FAwyQlBT6eHjlOxX/1d876rfIFO2tJRSrLmTEFMeWslDANhoThSmvtrFfO
-        pCYxYDugi3W3KvJokXRujUAwvsi9FGAKJ4w1HKS0CC6HP6/IgYYBb2m2+OnhYvMfbErFFFlCwYSR
-        QnALSlumQBQkbK7Y39ksKm281FxqISVXiBVWzjNlOVYCKvsvNpPRhfzziU9ZPwa3x4HKYXSOyM+/
-        ANJmLECF06It0flfTYqfiK6L8IcfqzqG5ruKb/2uWm4RBAAA
+        H4sIACFR3VgC/42RyU7DMBRFf6UKW1o5TeIkXVGogEoIsahYgFD0bL80hjSOPJRWVf+dONCBBRI7
+        +97zBl/vAsXekdtCimAyCAQvmeA8pkDTOGMZE5RmWQKMYJlHlAeXg0OB+mxQ+xpbSViqq6UylWxb
+        NeJq5TFjwTrjgefpw3w2Xcwf787KuUaw2A8dkzAdkmgYkUWYTWIyicYjSpKXM9q14j/0Ci10IHju
+        erq4uR9chCnxjsASXN2NBa0l6gI4V66xHkzzMgORICQC44iWQEOaMojyKCOcYX5eblCvJcca11gX
+        Vn1g4zs405qi1VJpabcer4F1filrtNsWPfI0uy3iDfUmA8urwoe1wsb6hHbBYRnS+Q1u/LFxdd3d
+        Wo1rqfogfxSNplvFC69v+1NEJ3kXtE7zCgwWxnGOKPrkfO+jUUK33EHt/0Kq5g/1V5P98XlO1987
+        fAEWp8eARAIAAA==
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['492']
+      content-length: ['352']
       content-type: [application/json]
-      date: ['Wed, 11 Jan 2017 00:53:36 GMT']
+      date: ['Thu, 30 Mar 2017 18:40:33 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
@@ -99,33 +97,34 @@ interactions:
       Accept-Encoding: ['gzip, deflate']
       Connection: [keep-alive]
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.4]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Davids-MacBook-Pro.local 16.3.0 Darwin Kernel
-          Version 16.3.0: Thu Nov 17 20:23:58 PST 2016; root:xnu-3789.31.2~1/RELEASE_X86_64
-          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.3.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.4"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: GET
-    uri: https://api.goshippo.com/v1/batches/c80336f874ca4ac0a6a003d0d726d252?object_results=creation_succeeded
+    uri: https://api.goshippo.com/v1/batches/dcfbdcc46a6748b8bd66885ab0ef936c?object_results=creation_succeeded
   response:
     body:
       string: !!binary |
-        H4sIABGCdVgC/7VTTW/UMBD9K6twbVfjrzjeE4UKgcSBQ8UBhKKxPekGsknkOEurVf87cdhAKiiC
-        Azd73puZ98bjU9bZz+RiWftst8lcAULkVaGlQ4kOMEcA4cFrnnuueHaxWRK6ry2FlOPxWPvnt92w
-        r/u+27rusGINEeM4JNr7q7dvrleIC4SR5q4cmL4EdsnYDcBOiZ1gW54XH1bssfdPs8VWCjWzDxRx
-        ImLivbi6efl684xpSIinCsdmaosh1BRKdK4b25iI4Jnx1gsLRknptLHE0TKrC6ikAb9OHygca0cN
-        HakpY/eF2lRhHPqh7EPdhTreJ3qDdsKruqF431OivLt+Vcq7PIEWo9uXaVwHamMazilbxPAJb+ku
-        HduxaaZbH+hYd/MMz5FAwyQlBT6eHjlOxX/1d876rfIFO2tJRSrLmTEFMeWslDANhoThSmvtrFfO
-        pCYxYDugi3W3KvJokXRujUAwvsi9FGAKJ4w1HKS0CC6HP6/IgYYBb2m2+OnhYvMfbErFFFlCwYSR
-        QnALSlumQBQkbK7Y39ksKm281FxqISVXiBVWzjNlOVYCKvsvNpPRhfzziU9ZPwa3x4HKYXSOyM+/
-        ANJmLECF06It0flfTYqfiK6L8IcfqzqG5ruKb/2uWm4RBAAA
+        H4sIACZR3VgC/7VTy27TQBT9lchs22henkdWFCoEEgsWFQsQsu7MXCcGx7ZmxqFV1H/H48aQCiJ1
+        w86+59zHOT4+Fr39ji5VjS82q8K72nrnhASphLbaeim1LsESrA2XrrhaLQ39zw5D7km7Brb9620f
+        d80w9GvX7zMtJkhjzITPNx8/3J51uoCQcN7HCFXXhF9zckf1RpANZ2tJyi9n7HHwl9lirYyY2XtM
+        MBEh897c3L19v3pFFcmIxxrGdloLITQYKnCuH7uUicrUGnyJUHoUXNYgqVQWuOGaOIvmvD1iODQO
+        WzxgW6X+B3Z5whiHWA2h6UOTHjK9BTvhddNiehgwUz7dvqvEvcygheR2VfZpj13K5hyL5Rg24R3e
+        58dubNvpbQh4aPrZw1MlYJxOyYWvx2eK8/C/9Z26/nn5gp1ume21xlHmuTXaCk+4QSqAydIJIaBU
+        dV6SAnQRXGr6syHPIsRRgFEaEH0tqCdAlDXKW5jqtWfkQjb2GCNscdb27fFq9R/0lQaN5Eww0Fqg
+        p5YpxrRnSnlPncaX6QOpuRacgBNOGOUmqyhV3AppZWlRvUhfVriM/fNRj8UwBreDiFUcnZscnHNP
+        chYWoIYpWkt1/pOmUy9Uz4ewx9/hHEP7dMUvbCxbT/0DAAA=
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['492']
+      content-length: ['491']
       content-type: [application/json]
-      date: ['Wed, 11 Jan 2017 00:53:37 GMT']
+      date: ['Thu, 30 Mar 2017 18:40:38 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']

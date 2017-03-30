@@ -8,42 +8,43 @@ interactions:
       Connection: [keep-alive]
       Content-Length: ['88']
       Content-Type: [application/json]
-      User-Agent: [Shippo/v1 PythonBindings/1.2.4]
+      Shippo-API-Version: ['2017-03-29']
+      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Davids-MacBook-Pro.local 16.3.0 Darwin Kernel
-          Version 16.3.0: Thu Nov 17 20:23:58 PST 2016; root:xnu-3789.31.2~1/RELEASE_X86_64
-          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.3.0-x86_64-i386-64bit",
-          "bindings_version": "1.2.4"}']
+          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
+          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
+          "bindings_version": "1.4.0"}']
     method: POST
     uri: https://api.goshippo.com/v1/tracks/
   response:
     body:
       string: !!binary |
-        H4sIAMm4dlgC/+WXbW/bNhCA/4rgz6vBV5HUt27NgGJbWjTOhm0YAr4cEy6yZEh0tq7If99JiWdn
-        9WynTpECA/RBEo/H43PHu+OHibddl6CbVMVk2S/6yVfFJHfWX6fm8qJZzt3dkGFESkNoKQxVnCvJ
-        BWdsELYhdND3F7Fr5yj5YeJTfj9MGQb7bDOsPv5Ki9Wrb5dN7kax87PJ7Yaa3D5Q8jV011DD+wfK
-        vnm5oc4IReR2nZDt8MXQ7BeUvSB6Rkg1Pr+M+qC7SR6130A9Lprba2hWIC4WXWq7wQwUbex8XPnt
-        /b/iB5vqcY05LhLs3UL/vG8yHKxe9qP+1v0OPl/4DnAj4YFpZkZoJUhF1VRSOZp3L71chEdIp1GQ
-        GhmJJdZbrwV31lDOeKBCB0aMYWFFc7Rr8urk+9c/nrw7ebX+fRFwK6keh39ul13RX6XFHJpcXNm+
-        cABNEaBON9BBKGwu8hXgjz6nxubUNsUcJ7v2z+mmxnvnbXiDyoqalTfq1o9zn8j9t5s+uEp9bsex
-        X3d6Qc3QHqEqVk612sJVM2WkkM5GxoUPUXtJuTOMWx6YiP4h1/PT707f/HS6neoMiZ2fvT0bgXbg
-        AWGGkSPu1+eubZJfU09NbLv5HVvbhCL1hf3DJuR9Oc5JGeY7YauHob8Bu1nWNcI6ikupHQ3AFQ+B
-        CK6jttHE6Bgn3BHj+SO5DNteDFurrYN6HXL3po0E8orfp6Bg21Gs4+7MNsW3nW186n27K/go4duD
-        bydPTESq4rqSZmqU2sKTG+kgasaiEJFoK0tDFNfE86jKf8fZ7N3L07PXs0edXus9LPL68I4oMbVd
-        pqaI1qcaQeyhOBxd8cVQ1B9TBHDBeRGjByM8tcZKH4UpKaZCTbQ6iuJQNW+O4sfIvux3OD+tPwM/
-        IgJWD+sRnhfMEx1EYKoUkRrMfcCO4hdgYbsMGwf5UGxY+eSXjM1KZT3BvAckCIlHmTHlDXHG8cCF
-        tk8edoeCw6y3G9wbe11jbt2FrKT/UWz3IKO8ErSS5VRp8TEyLByGGiiZs1I45rQ20WLjwljJvHHl
-        c0QauplX7PmAmaHBE3LK2JaC6wlioSFQp0FIyR2UWGojV85RPLP0KWNs0fa5aGPEVnkfsHKw+bP1
-        c4cTK7e0xIwBp5GwUgXBAjYsxnDKo/RWsgDhKGJjSe3bMcp8O1/UkKHeF150b/5/PlqeC0VLap2w
-        mLKkdHroOwgXDgxmtk+nhd1au8wFdrOrC8QBmNhzYdp3zzIEGwpaOks0Exr7DaVlYNi5OSEolOb/
-        cM/67fZv8HE/0kQQAAA=
+        H4sIAHhR3VgC/92XbW/bNhCA/4rgz6vBl+Obv3VrBhTb0qJxNmzDEBzJU6NFlgyJztYW+e+jlHhx
+        Us9O6hYpBuiDJB6Px+eOd8cPk4BdV1E3mRWTVb/sJ98Uk9RhuKiat2fNauGvh5xgSjnGNThupDRK
+        ghRiEMYYO+r7s7JrF1nywyRU6d0wZRjsEyZaf7yvluvX0K6a1I1ipyeTqw01qb2j5FvqLqimd3eU
+        ffd8Q50Dw9R2nZRw+BLZ7GdcPGN2zthsfH4b9VF3WYWs/ZLqcdHUXlCzBnG27Kq2G8zIog0uxpVf
+        3/wrfsKqHtdY5EUiXi/07/smw8HqVT/qb/2fFNJZ6ChvJN4xzc0ZnwGbcTNVXI3m3UivlvER0tUo
+        qIRmXOgYohYQbekhAI/SygCoI4U1zdGuyYujH1/+fPTm6MXt77OYt1LV4/Cv7aor+vNquaAmFefY
+        F56oKSLV1SV1FAtMRTqn/KNPVYOpaptikSf79u/ppsYb5214g6sZd2tv1G0Y534m919t+uC86lM7
+        jv2+0wtmnu0BMxN6as0WroIDpyhkaTSAUw6tZBwoU7VcAud3uZ4e/3D86pfj7VTnmdjpyeuTEWhH
+        gTLMOHLM+w2pa5sq3FKvmrLtFtdssYlF1Rf4F1aZ99txTpVosRO2uRv6G7CbVV1nWAdxIbDeEefC
+        Rg7KOscRDQlOXElrQnwkl2Hby2FrNXqqb0PuxrSRQFrz+xQUYjuK27g7wab4vsMmVH1odwUfZ3J7
+        8O3kmRORmUk7U27qjPmYp8l5likjmVYRlApWKohGGq+JJPf34mz+5vnxycv5o04vhkDLdHt4R5Q5
+        tb2tmqLEUNUZxB6Kw9GFr4ai3XJagQQxI5y2BnxgTpcZq9SUg1KWpT2I4lA1Lw/iJ9i+7PdwftZ+
+        AX4ejLOQywjDAJYb55ApHjwwG71DPIhfpCV2iTYO8kOx5cqnvmpsGKHU6K0oI7CydCCk8pKZEgLn
+        Dj572D0UXM56u8G9wos659ZdyDT/j2K7BxmXM+AzpafGwpaT6pkMfMh2vgRpyFNAFbSMwpYURPkU
+        kZbdLGfi6YC5ocEDNRViS8E1GRR3QjstIgRlMVBpBXhhcv1FfViBuBdjy7ZPRVuWuVXeB0wPNn+x
+        fu7hxPTHxJgHzxwTwCJCcGBLUXprUMigTL7YHF5S+3aMstAuljUlqveFF9+b/5+OFhhhmZACI48g
+        MXpSESVFbnLby4B9Mq3crbWrVORudn2BeAAm8VSY9t2zyEsThRLOBQ0oGBo0pUHUCA7D/T7t/3nP
+        +uPqH9ovn5JEEAAA
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['983']
+      content-length: ['981']
       content-type: [application/json]
-      date: ['Wed, 11 Jan 2017 22:59:21 GMT']
+      date: ['Thu, 30 Mar 2017 18:42:00 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
