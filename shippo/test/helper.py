@@ -172,6 +172,10 @@ DUMMY_SHIPMENT = {
         "signature_confirmation": True,
         "reference_1": "",
         "reference_2": "",
+        "insurance": {
+            "amount": "200",
+            "currency": "USD"
+        }
     },
     "metadata": "Customer ID 123456"
 }
@@ -179,12 +183,14 @@ INVALID_SHIPMENT = {
     "address_from": "4f406a13253945a8bc8deb0f8266b245",
     "submission_type": "PICKUP",
     "shipment_date": "2017-03-31T17:37:59.817Z",
-    "insurance_amount": "200",
-    "insurance_currency": "USD",
     "extra": {
         "signature_confirmation": True,
         "reference_1": "",
         "reference_2": "",
+        "insurance": {
+            "amount": "200",
+            "currency": "USD"
+        }
     },
     "customs_declaration": "b741b99f95e841639b54272834bc478c",
     "metadata": "Customer ID 123456"
