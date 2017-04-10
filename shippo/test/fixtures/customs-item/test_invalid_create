@@ -11,7 +11,7 @@ interactions:
       Shippo-API-Version: ['2017-03-29']
       User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          "requests", "uname": "Darwin guozhen-shippo-mbp.local 16.4.0 Darwin Kernel
           Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
@@ -20,7 +20,7 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAC1R3VgC/4XMwQmAMAxA0VVKzuIAzuFNpBQbNdCm2iaKiLvrBPb2D49/w+GConUxKQt0ZoB+
+        H4sIAO7y61gC/4XMwQmAMAxA0VVKzuIAzuFNpBQbNdCm2iaKiLvrBPb2D49/w+GConUxKQt0ZoB+
         pWJmwuDNFxl3pYy+hbExEF0pVpnq0mOZMm1CiauWUeyJtKz17a6OheT6h88L92J9StcAAAA=
     headers:
       allow: [OPTIONS]
@@ -28,7 +28,7 @@ interactions:
       content-encoding: [gzip]
       content-length: ['110']
       content-type: [application/json]
-      date: ['Thu, 30 Mar 2017 18:40:45 GMT']
+      date: ['Mon, 10 Apr 2017 21:02:38 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']

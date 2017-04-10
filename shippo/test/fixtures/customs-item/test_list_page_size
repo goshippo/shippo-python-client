@@ -9,7 +9,7 @@ interactions:
       Shippo-API-Version: ['2017-03-29']
       User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          "requests", "uname": "Darwin guozhen-shippo-mbp.local 16.4.0 Darwin Kernel
           Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
@@ -18,20 +18,20 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAC9R3VgC/5WRXUvDMBSG/8qo4JVrk67rusJQYTcDwYtNLxQpaXrWRtukJiebMvbfTbqBwztD
-        CeR9n3N6Pg4BV1ZikI/oNLkZBRK+/CNoEHuTRxHrRVgr04i+VyFXXbSjEbcGVWcigeDuWw3GtmgW
-        9LpnNSziwKXpNeyEssalkrZtnXKmnPB6CFT5DhwLroEhVP5/MaGzMZmMJ2RDszwheTINKY1ffLIz
-        bfvqH7QYwFlKSJmxajYvs2SbzsskpRlUWTzJZmkclxcBai9B+xhsBKvV3WXXF5hBV4THnu8fVktv
-        VGC4Fj0KJb2+Ga8bodE7n5ZJFPjt5HiYLRZ7EHUzTDghJCTueLBjxhRWisGovbJjrYWCdefluI7D
-        E3oyuNUaJPeZg6f1UIbSohayGNapz4bXkWmx3RbSduWpPy82xoEV/K7HfNg/SgfI3MCZD3nUFejR
-        ajm6ovHEfUNeML6yLWsNHN+OP09J6xRJAgAA
+        H4sIAPDy61gC/5VRXUvDMBT9K6OCT65t0rJshaHCXgaCD5s+KFKy9K6NrklNbjZ1+N9NuoLDN0MI
+        yTnnntyPYyS0UxgVI0Jmk6tRpOAjvKIGsbNFkvBOxrW2jew6HQvdJnuSCGdRtzaRCP68NmDdDu2c
+        XHa8hjmNvE1nYC+1s95Kud3OI4PKA8/HSG9eQWApDHCEKvxHU8LGaT4m6ZqSIqVFxuJ8OnsKZoPa
+        ddU/1LIXzuiWiGy6hWzD8pz52ySbwIQzYEwwSs8C9EGBCTG1018NqJvzss90Fn0WQfd4e7dcBKIC
+        K4zsUGoV8PV41UiDgXl3XKHETw/TvrlYHkDWTd/iPE3j1K8gbLm1pVOyJ+qA7PnOQcnbYTy+5Pgk
+        PRHCGQNKBOfoYdWnoY2spSr7gZqBCDhyI7fbUrl2cyowgI31wgp+52Pf3B+kBeS+4zyE3JsKzGi5
+        GF0Qmvnd+4INmaFx8P3y/QPNqOkZSgIAAA==
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['369']
+      content-length: ['367']
       content-type: [application/json]
-      date: ['Thu, 30 Mar 2017 18:40:47 GMT']
+      date: ['Mon, 10 Apr 2017 21:02:40 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']

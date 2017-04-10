@@ -198,7 +198,7 @@ INVALID_TRANSACTION = {
     "metadata": "Customer ID 123456"
 }
 DUMMY_BATCH = {
-    "default_carrier_account": "79f8ad5ea5de436fa6167ba39380cbe9",
+    "default_carrier_account": "e68e95b95e33431a87bdecdd2b891c2b",
     "default_servicelevel_token": "usps_priority",
     "label_filetype": "PDF_4x6",
     "metadata": "BATCH #170",

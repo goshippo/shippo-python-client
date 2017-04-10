@@ -12,7 +12,7 @@ interactions:
       Shippo-API-Version: ['2017-03-29']
       User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          "requests", "uname": "Darwin guozhen-shippo-mbp.local 16.4.0 Darwin Kernel
           Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
@@ -21,19 +21,19 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAC1R3VgC/5WQsU7DMBCGXyUKK60cJyRpJ5C6VEJiaGFgiRz7khgSO9hnKoR4d3wBRMWG5MXf
-        fXf+z++pbZ9AYiMdCASVbpOUs6xasXyVs2NWbwu2La7WWcYf08vkxw6z+oetF7EqGWtroapNWxdd
-        uWmLMqtB1Tyvq5Lz9qzBngw46sFBi95e99YPep7tWtrpTPMYQ5D2cHO731FBgZdOz6itIX5cHQbt
-        kCovQRjU+BYxj1cD2JxA9wOSVzBGziS8b4LRC+uJvIoxQCMmGwx+LftLZXAOjKSJ6f1hed463WvT
-        SNLdd4E4Cqe7rjFhar/2Ijj4KCrKb8I4RuCfwx8yAYr40YJa7pwCl+x3yUXG83iWueApVidGDx+f
-        CsrB/8sBAAA=
+        H4sIAO3y61gC/5WQz0+DMBSA/xWCV1mgELpx0mSXJSYeNj14IaU8oAottq8uavzf7WMal91Memi/
+        971f/YxN8wwSa2lBILRxFcUszXiSFkmWHlhWpazK+apYb57i6+jX9nP7D1st4oZ1mczXHeQNLwoe
+        bmVeQik4cC45Y2cJ5qjBUk7vzccA+qY3blDzbFbSTGeewzAFeY+3d7stBVpw0qoZldHED8l+UBYp
+        8uqFRoXvAbPw1ID1EVQ/IHlFmpIzCedqr9XCeiJvYvRQi8l4jadt/6j01oKWVDF+2C/tjVW90rUk
+        3f4EiKOwqutq7afmtBjBwQWxpfm1H8cA3Iu/IBOgCD8tKOXetmCj3Ta6ylgezlIXHI2F1sPXN4Xn
+        cBPLAQAA
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['293']
+      content-length: ['291']
       content-type: [application/json]
-      date: ['Thu, 30 Mar 2017 18:40:45 GMT']
+      date: ['Mon, 10 Apr 2017 21:02:37 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']

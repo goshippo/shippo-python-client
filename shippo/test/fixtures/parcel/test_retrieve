@@ -12,7 +12,7 @@ interactions:
       Shippo-API-Version: ['2017-03-29']
       User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          "requests", "uname": "Darwin guozhen-shippo-mbp.local 16.4.0 Darwin Kernel
           Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
@@ -21,18 +21,18 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAE1R3VgC/5WQS2+DMBCE/wri3ETYQECcUjWXSD1WPbSqkLEXcOUH8qO0ivLfaxOVcO1xZ77Z
-        1ewl1d0nUNdaRxykTZK+Pj6fT+lD8mdQA8Fh0cIZqnZZvsuzF1Q3BWpQtc/w4W1D+4n9g+YLSAgj
-        XY/zAmFc9HVV11Wf0zKjjBV1R9gmoGcFJmbcyMmgj4O2I58mvadaRsyBnMStiPJCBEWAGtwYI2UE
-        Zs420wh8GN06Mh6+oCi0XvFFpcvSeaVwHCWxdiVEF6UvIjy0RGqv3P30TaXeGFD0565LcKGxIzH/
-        5K3TEkxyPiUovKA8xH3w7Uy0L9fYgCtoeWhmg/L+sbS08UxPhIXrL0SZ5pLCAQAA
+        H4sIAAzz61gC/5WQS0/DMBCE/0qUM61sJ6FRT0X0Uokj4gBCkWNvEiM/Ij8IUPW/Y6cizZXjznyz
+        q9lzbtoPYL5xnnrI91n+8vB0OuZ32Z/BLESHJ4sgvNugcoPRM8F7VOxRvS0Ifl3RYeT/oMUM1oRg
+        XpKuBVyViKK26wjhqOrIjpOu5quAmTTYlOmD+RlAH3rjBjGOZsuMSpwHNcprEx2kjIoE3fshZaoE
+        TIKvpgFEP/hl5CK+QTNoghazyual00KRNCrq3ELINkmfVAZoqDJB+9vpq8qCtaDZ901X4Gl8E035
+        x+C8UWCz0zHDpCir+7QPvrxN9vmSGggNjYjNXFTe3ueWLp3xNsDlF/+bvx/CAQAA
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
       content-length: ['276']
       content-type: [application/json]
-      date: ['Thu, 30 Mar 2017 18:41:17 GMT']
+      date: ['Mon, 10 Apr 2017 21:03:08 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
@@ -47,27 +47,27 @@ interactions:
       Shippo-API-Version: ['2017-03-29']
       User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          "requests", "uname": "Darwin guozhen-shippo-mbp.local 16.4.0 Darwin Kernel
           Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: GET
-    uri: https://api.goshippo.com/v1/parcels/aadabf2341224f87887f3c50cdd48bad
+    uri: https://api.goshippo.com/v1/parcels/8221d42fbe1540a0bff22d05f27d2f8d
   response:
     body:
       string: !!binary |
-        H4sIAE1R3VgC/5WQzU7DMBCEXyXKmUa2kzRRTyB6qcQRcQChyLE3iZF/otgmoKrvjp2KtHCrjzPf
-        eHf2mJr2A5hrrKMO0l2Svjw8HfbpXfJrsAmCw6NFEK42KN/k6BnXuwLvcJUhsn29ov3Ib6DFAlLK
-        aduRvMCEFF1d1XXV5axEjPOibim/CphZwxQzbhC0N/e9sYMYR5MxoyLmQI3yXER7KYMiQfduiJEy
-        Q+FFahb8vzSA6Af3V+MiHEUzaLwWi8WWGfOKkhVV1NoVk22UPqn00FBlvHaXdc4q89MEmn1fdAUu
-        XMHRmH/01hkFU3LYJzicpdzG/+DLTdE+nmIroaERoa0Nytv70tzGMR2VFk4/3BeaRdYBAAA=
+        H4sIAAzz61gC/5WQzU7DMBCEXyXKmUa2k9AoJxC9VOKIOIBQ5NibxCi2I/8QoOq7Y6ciLdzq48w3
+        3p09pLp9B+Ya66iDtE7S5/vH/S69SX4NZiA4PFoE4e0GFRuMngiuUV6jKssJfrmg/cSvoMUCVoRg
+        XpCuBVwWiKK26wjhqOzIlpOu4hcBPSswMdN7/T2Auuu1HcQ06YxpGTkHchpPTZQfx6CMoHo3xEyZ
+        ofAiNQv+XxpA9IP7q3ERrqIYNF6JxWLLjHlFyYpKau2KjW2UPujooaFSe+XO65xU5o0Bxb7OugRH
+        w+lozD9467QEk+x3CSZ5Ud7G/+DTmWgfjrGVUNCI0NYG5fVtaW7jGGc8HH8AXC3q7NYBAAA=
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
       content-length: ['281']
       content-type: [application/json]
-      date: ['Thu, 30 Mar 2017 18:41:17 GMT']
+      date: ['Mon, 10 Apr 2017 21:03:08 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']

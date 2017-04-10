@@ -12,7 +12,7 @@ interactions:
       Shippo-API-Version: ['2017-03-29']
       User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          "requests", "uname": "Darwin guozhen-shippo-mbp.local 16.4.0 Darwin Kernel
           Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
@@ -21,18 +21,18 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAElR3VgC/32QS0+EQBCE/wrh7G4YYAE5adzLJh6NB40hw0wDY+ZB5iGazf53aTaynDx21Vfd
-        qT7Hpv0E5hvnqYe4juLXx+fTMb6L/gxmYXY4WmlCyl2S7bLkhVR1TmqS7QtSvG3oMPL/6XJLiwWs
-        8hxaQpKCZlXe8uq+7BLoaFpWLeOU8k3ATBosZvwgaG8eeuMGMY5mz4xCzIMa5bWIDlLOigTd+wEj
-        BwQmwTfTAKIf/DpyMX9BM2iCFovKlqXTSqU4KurcSsgWpS8qAzRUmaD97fRVZcFa0OznpivwdP4S
-        xfxTcN4osNHpGJE0yw8F7oNvb9E+X7CB0NCIuZmblfePpaXDMx2VDi6/R8UETcIBAAA=
+        H4sIAAjz61gC/5WQS0/DMBCE/0qUM63sOA8lJxC9VOKIOIBQ5DjbxMiPyA8CVP3v2KlIc+W4M9/s
+        avac6u4DmGutow7SJklfHp6Oh/Qu+TOYgeD00coQrnYo32H0nOEGkQbl+6ooXze0n/p/0HwBaded
+        yhrXdQGQYwKUMJJTXDFC6gKVsAnoWYGJmcHrnxHU/aDtyKdJ75mWkXMgJ3FtorwQQRGgBjfGTBGB
+        mfebaQQ+jG4dex7eoBi0XvFFZcvSeaWyOEpq7UqILkqfVHhoqdReudvpq8q8MaDY902X4Gh4E435
+        R2+dlmCS4yHBGcmLMu6DL2eifb7EBlxBy0MzG5S396WljWec8XD5BW8qdQrCAQAA
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['278']
+      content-length: ['276']
       content-type: [application/json]
-      date: ['Thu, 30 Mar 2017 18:41:13 GMT']
+      date: ['Mon, 10 Apr 2017 21:03:04 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']

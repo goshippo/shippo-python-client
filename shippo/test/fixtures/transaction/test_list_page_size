@@ -9,7 +9,7 @@ interactions:
       Shippo-API-Version: ['2017-03-29']
       User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          "requests", "uname": "Darwin guozhen-shippo-mbp.local 16.4.0 Darwin Kernel
           Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
@@ -18,24 +18,21 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAIdR3VgC/4WTW2/aMBTHvwqKNJ5GEl9yQ4o6RlHFSh+m3tZOFXLsA7gNcWQ7UFb1u88JFLFJ
-        0x59zv/cfuf4zeOqqaw37GEUfe55Fby2D29lbW2GQcBq6S+VWcm6Vj5X62CDAqtZZRi3UlUmONNg
-        mtKaHPVrtoQcey5LrWEjVWNcpqopS2c5qJzh55unimfgdm4ss9AWuxvNpudtXGvporzvt5PbSWc7
-        iLkGpxatD4coGYRkQMIblA4pHiLs4zR7PFE3tfi3OvIxjU/VshPSJBUUi0UkGKYJS1iMuUAsRSJb
-        ZBFOTgLUtgLdxtiVZEv15ZRQK7NgWooLVhpohz/MSTKRIICsiMKIhjRjkKapKNKQREKguKvg4PIX
-        WS3nVbMu9kWSNA5TnEQxDvEfkiOuA+SjYyWNVXrX0n46tTe6nNdabaTYZ/7Y8na79Rcg4LVbMatr
-        E3TPLjA42+867159Xlm9m3MlIG9M/yP1vtv871ZLVkDZlj2ttmc1EFDKDejdAJixviE+W7NfqmJb
-        03Xxv3X4tVicXctl5RhoyFcp+XF387W80I3ZWDR5eB6T+8dZ/By/fCLn/clrLd0N5ijCmJKIkKg/
-        ur8ecQ7GXMJuKvLR5XT07WI2HkdXD7PZ/fSC4lE7gutlDZpLVs5ltVGSw2GeA/S1y+AO33zAVnoP
-        9+i2zN0iawGMG7cWl6w3Pe8hTGgUd5+FaQ4dIEwIcZcBbAGUxiIrUEJpFqfACzc1YO/96f03+/RI
-        BrEDAAA=
+        H4sIAEzz61gC/31SyW7bMBD9FUOHnhqLpChKMhC0RZJDgF4KND20CAxyNLbZyKTAxV2C/HtJRXGU
+        S49823Ae+ViAjSYUmxWtxPtVYfB3PhSHEEa/KUs56vXe+oMeR7sGeyxPtAxOGi8haGt8+cGhj0Pw
+        l/TdKPd4yYqUMjo8aRt9SjJxGBIyqxLw47Gw6idC2PogA+Zh3z59vr3OvoxMruLL3c3dzYTNYnCY
+        1H3mGKHNBeEXlHxldEP4hpI1qdrvC3Uc+/+qRbdU60lIAGUlRNs2WHPoKikV1k1fN6TlPfZ0YbC/
+        DLrs2Uf794Dm47KirAvoc43BRczLz3vWDKHqQHW0o1zUtSQ7Khl0RDAFSnST00l40Ga/NfGonoe8
+        gc8VzcWeiYP2wbo/ueH7JR7dsB2dPen+NW1Iqw2ZeQHStY/oQMthq83JasCZnacc0fv0uv4l3brn
+        tDMdZCpc5rirmO6Rwla31yvKKl6L6UdIBziN23GoeYuK807wiinVyKqVrKctZbDjffF0//QP6YVT
+        u5YCAAA=
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['575']
+      content-length: ['404']
       content-type: [application/json]
-      date: ['Thu, 30 Mar 2017 18:42:15 GMT']
+      date: ['Mon, 10 Apr 2017 21:04:12 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']
