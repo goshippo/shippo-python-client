@@ -1,6 +1,13 @@
 Release History
 ---------------
-1.5.0 (2017-01-19)
+1.5.1 (2017-04-10)
++++++++++++++++++++
+
+**Behavioural Changes**
+
+- Remove unnecessary email fields and amend parcel fields to match the new version
+
+1.5.0 (2017-03-29)
 +++++++++++++++++++
 
 **Behavioural Changes**
