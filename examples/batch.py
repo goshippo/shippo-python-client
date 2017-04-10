@@ -25,7 +25,6 @@ example_batch = {
               "zip": "94103",
               "country": "US",
               "phone": "4151234567",
-              "email": "mrhippo@goshippo.com"
             },
             "address_to": {
               "name": "Mrs Hippo",
@@ -37,16 +36,15 @@ example_batch = {
               "zip": "10007",
               "country": "US",
               "phone": "4151234567",
-              "email": "mrshippo@goshippo.com"
             },
-            "parcel": {
+            "parcels": [{
               "length": "5",
               "width": "5",
               "height": "5",
               "distance_unit": "in",
               "weight": "2",
               "mass_unit": "oz"
-            }
+            }]
           }
         },
         {
@@ -59,7 +57,6 @@ example_batch = {
               "zip": "95122",
               "country": "US",
               "phone": "4151234567",
-              "email": "mrhippo@goshippo.com"
             },
             "address_to": {
               "name": "Mrs Hippo",
@@ -71,16 +68,15 @@ example_batch = {
               "zip": "10007",
               "country": "US",
               "phone": "4151234567",
-              "email": "mrshippo@goshippo.com"
             },
-            "parcel": {
+            "parcels": [{
               "length": "5",
               "width": "5",
               "height": "5",
               "distance_unit": "in",
               "weight": "20",
               "mass_unit": "lb"
-            }
+            }]
           }
         }
     ]
@@ -98,7 +94,7 @@ batch = shippo.Batch.create(**example_batch)
 batch = shippo.Batch.retrieve(batch.object_id)
 tries = 0
 TIMEOUT = 60 #thirty second timeout
-while batch.status = 'VALIDATING' and tries < TIMEOUT:
+while batch.status == 'VALIDATING' and tries < TIMEOUT:
   time.sleep(0.5)
   batch = shippo.Batch.retrieve(batch.object_id)
   tries += 1
@@ -115,7 +111,6 @@ address_from = {
     "zip": "94103",
     "country": "US",
     "phone": "+1 555 341 9393",
-    "email": "support@goshippo.com"
 }
 
 address_to = {
@@ -126,7 +121,6 @@ address_to = {
     "zip": "95122",
     "country": "US",
     "phone": "+1 555 341 9393",
-    "email": "support@goshippo.com"
 }
 
 parcel = {
@@ -141,7 +135,7 @@ parcel = {
 shipment = shippo.Shipment.create(
     address_from=address_from,
     address_to=address_to,
-    parcel=parcel,
+    parcels=[parcel],
     async=False
 )
 

@@ -1,20 +1,20 @@
 interactions:
 - request:
     body: !!python/unicode '{"customs_declaration": "b741b99f95e841639b54272834bc478c",
-      "address_from": "4f406a13253945a8bc8deb0f8266b245", "insurance_currency": "USD",
-      "insurance_amount": "200", "extra": {"signature_confirmation": true, "reference_1":
-      "", "reference_2": ""}, "shipment_date": "2017-03-31T17:37:59.817Z", "submission_type":
+      "address_from": "4f406a13253945a8bc8deb0f8266b245", "extra": {"signature_confirmation":
+      true, "reference_1": "", "insurance": {"currency": "USD", "amount": "200"},
+      "reference_2": ""}, "shipment_date": "2017-03-31T17:37:59.817Z", "submission_type":
       "PICKUP", "metadata": "Customer ID 123456"}'
     headers:
       Accept: ['*/*']
       Accept-Encoding: ['gzip, deflate']
       Connection: [keep-alive]
-      Content-Length: ['356']
+      Content-Length: ['351']
       Content-Type: [application/json]
       Shippo-API-Version: ['2017-03-29']
       User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          "requests", "uname": "Darwin guozhen-shippo-mbp.local 16.4.0 Darwin Kernel
           Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
@@ -22,14 +22,14 @@ interactions:
     uri: https://api.goshippo.com/v1/shipments/
   response:
     body: {string: !!python/unicode '{"customs_declaration": ["CustomsDeclaration
-        with supplied object_id b741b99f95e841639b54272834bc478c not found."], "parcel":
+        with supplied object_id b741b99f95e841639b54272834bc478c not found."], "parcels":
         ["This field is required."], "address_to": ["This field is required."]}'}
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
-      content-length: ['197']
+      content-length: ['198']
       content-type: [application/json]
-      date: ['Thu, 30 Mar 2017 18:41:48 GMT']
+      date: ['Mon, 10 Apr 2017 21:03:41 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie']

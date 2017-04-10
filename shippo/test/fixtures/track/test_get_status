@@ -9,7 +9,7 @@ interactions:
       Shippo-API-Version: ['2017-03-29']
       User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          "requests", "uname": "Darwin guozhen-shippo-mbp.local 16.4.0 Darwin Kernel
           Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
@@ -18,31 +18,31 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAHpR3VgC/+WXbW/bNhCA/4rgz6tBUnzVt27NgGJbWjTOhnUYAr4cEy6yZEh0trbIf99JiRu7
-        8Wy3SZECA/RBEo/H43PHu+OHibddl6CbVMVk2S/6yXfFJHfWX6bm/KxZzt3NkGFECEOo5IaqslSi
-        5CVjg7ANoYO+P4tdO0fJDxOf8rthyjDYZ5th9fE+LVavvl02uRvFTk8m12tqcruh5HvoLqGGdxvK
-        fni+ps5wRcR2nZDt8MXQ7GeUPSN6Rkg1Pm9HfdBdJY/ar6AeF83tJTQrEGeLLrXdYAaKNnY+rvz6
-        9l/xi031uMYcFwn2ZqGP7+sMB6uX/ai/dX+Bz2e+A9xI2DDNzAitOKmomgoqRvNupZeL8BnSaRR0
-        zmjvgmciOl5yZXQMIJ2jAaLhmq5ojnZNXhz9/PLXozdHL+5+nwXcSqrH4d/bZVf0F2kxhyYXF7Yv
-        HEBTBKjTFXQQCpuLfAH4o8+psTm1TTHHya79Z7qu8dZ5a96goqJm5Y269ePcR3L/9boPLlKf23Hs
-        j51eUDO0h6uKyalWW7hGKgi1kkQlFSegnNQ2UEs0SE8R8SbX0+Ofjl/9dryd6gyJnZ68PhmBduAB
-        YYaRI+7X565tkr+jnprYdvMbtrYJReoL+7dNyPt8nJMyzHfCVpuhvwa7WdY1wnoQF2Uk91EwT5jh
-        oTSOcCJCkJorbspP420vl2Hbi2FrtXVQ34XcrWkjgbzi9yUo2HYUd3F3Ypvix842PvW+3RV8lJTb
-        g28nT0xEqip1JczUKHWfJ+KTUTstJJNcBeWi9sEEowMoCfyTOJu9eX588nL2WafXeg+LfHd4R5SY
-        2s5TU0TrU40g9lAcji7/Zijq+xSDNZFzRblSgNXK6hKTRaROaSxdUocHURyq5tWD+DGyL/sdzk/r
-        r8AvqmiZk55HFnnEPMc0IZZIR6Wl0dsH8QuwsF2GtYN8KDasfOJbxqYJlGIoFEo4bpXTRmvlCNEW
-        GLecP3rYHQoOs95ucK/sZY25dRcySf+j2O5BRsuK00rIqdJ8S7+CceWjcVbHkhMVrMQ8pwIvMU1x
-        LZ8k0tDNZcWeDpgZGjwupoxtKbjGeFaWjJfAKKY4rV3AFi9w5nyULJDHjLFF2+eijRFb5X3A5GDz
-        V+vnDicm7xOjlmMLrAWx2KIoYNYYxo3Abi5qHuzDiI0ltW/HKPPtfFFDhnpfeNG9+f/paGlmpMZC
-        CcRbDtHitaYkmpEAITgp/BfTwm6tXeYCu9nVBeIATOypMO27Z2HPq11JVcQayTWmqoi9r9AlNUF4
-        x/X/4Z715/W/QpxlcEQQAAA=
+        H4sIADzz61gC/92XbW/bNhCA/4rgz6vB9xd969YMKLalReNs2IYhOL4lXGTJkOhsXZH/PoqJF7v1
+        bGdOkWKAYUji8Xh87nh3/DCx0PfR95O6miyHxTD5qpqkHux1bC8v2uXc3A1pgjjXCAumsaRUcsoo
+        IaMwONf7YbgIfTfPkh8mNqb345RxcEiQ/Orlr7hYPdpu2aa+iJ2fTW7X1KRuQ8nXvr/2jX+/oeyb
+        l2vqNJOIb9fpE4xvJJv9ApMXSM0Qqsvvl6LP9zfRZu03vimLpu7atysQF4s+dv1oRhZtYV5Wfnv/
+        rfoBYlPWmOdFHNwt9M/zOsPR6uVQ9Hfmd2/The193ojbME3PEK4ZqrGccsyLeffSy4V7hHQsgoIG
+        wgixKgjNnCTZqiCdDCYoKZGAFc1i1+TVyfevfzx5d/Lq4fOFy1uJTRn+uVv21XAVF3PfpuoKhsp4
+        31bON/HG995VkKp05fOHIcUWUuzaap4nm+7P6brGe+eteQPzGuuVN5rOlrlP5P7bdR9cxSF1ZezX
+        nV6Qs2wPkzURUyW3cMWGEUwsV8oq5gwxwMEpYY3MVhBGN7men353+uan0+1UZ5nY+dnbswK099Zn
+        mK5wzPu1qe/aaB+oxzZ0/fyOLbSuikMFf0DMvC/LnJj8fCdsuRn6a7DbZdNkWEdxCQoRLqQBJQOj
+        UoGmgQtqqUOMgnCP5DJuezFurQHjm4eQuzetEEgrfv8FBdmO4iHuzqCtvu2htXGw3a7gw4huD76d
+        PHMikjVVNddTLeWnPLnBmhLupAWSz68EJH2gyCMNwVKCNnnO3r08PXs9e9TpBWv9Ij0c3oIyp7bL
+        2FYBbGwyiD0Ux6PLvhiK6lOKhElfYlAjzoST4LVFGIPRDLAQ5iiKY9W8OYofQfuy3+H8lPoM/DyX
+        XnDQRuRq4ixSOe9hA9gYhbkW4ih+zi+gT37tIB+KLVc+/iVjYwHASaGwtrlJMlojzQ3Nf4KSYDQ8
+        edgdCi5nvd3g3sB1k3PrLmQC/0ux3YMM05rhmoupVGxLXXXeuUAkwdwxbcBI7ZzPmQ8rp0OgzxFp
+        2c20Js8HTI8NHuNTQrYUXGsQALJee+EYCK81MdqNJYOqHGzsKWNs0Q2p6kLIrfI+YGK0+bP1c4cT
+        E1uKAc41wBgsNEYsVwNNFTUomNy5sECCO4pYKalDV6LMdvNF45Nv9oUX3pv/n48WQ9hQzoyyWDKT
+        K6hFlGLwXBCr3ceN7iNo5W6tW6Yqd7OrC8QBmMhzYdp3zwIQMggFgSjMUO4wKDJCBRSY4zKQj4Lq
+        /3nP+u32b09FdrxEEAAA
     headers:
       allow: [OPTIONS]
       connection: [keep-alive]
       content-encoding: [gzip]
-      content-length: ['986']
+      content-length: ['984']
       content-type: [application/json]
-      date: ['Thu, 30 Mar 2017 18:42:02 GMT']
+      date: ['Mon, 10 Apr 2017 21:03:56 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']

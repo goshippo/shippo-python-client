@@ -82,7 +82,7 @@ for delivery_address_zip_code in DESTINATION_ADDRESSES_ZIP_CODES:
     shipment = shippo.Shipment.create(
         address_from=address_from,
         address_to=address_to,
-        parcel=parcel,
+        parcels=[parcel],
         async=False
     )
     # Rates are stored in the `rates` array

@@ -11,7 +11,7 @@ interactions:
       Shippo-API-Version: ['2017-03-29']
       User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          "requests", "uname": "Darwin guozhen-shippo-mbp.local 16.4.0 Darwin Kernel
           Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
@@ -25,7 +25,7 @@ interactions:
       connection: [keep-alive]
       content-length: ['82']
       content-type: [application/json]
-      date: ['Thu, 30 Mar 2017 18:42:02 GMT']
+      date: ['Mon, 10 Apr 2017 21:03:57 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie']
@@ -42,7 +42,7 @@ interactions:
       Shippo-API-Version: ['2017-03-29']
       User-Agent: [Shippo/v1 PythonBindings/1.4.0]
       X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
+          "requests", "uname": "Darwin guozhen-shippo-mbp.local 16.4.0 Darwin Kernel
           Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
@@ -51,7 +51,7 @@ interactions:
   response:
     body:
       string: !!binary |
-        H4sIAHtR3VgC/02PTw+CMAzFv4rZ2Yt684aKhoho8E9MjCFzVF2EjWydiRK+uxuKcOvr6++1LQmj
+        H4sIAD7z61gC/02PTw+CMAzFv4rZ2Yt684aKhoho8E9MjCFzVF2EjWydiRK+uxuKcOvr6++1LQmj
         SnFQZNwjRhea9HsEFWUPLm6JMPnla/lHb7UJ/fU8iA5eGMwGw9Eu9qbLIFpE+9XEjx1H01SB1slV
         ydxCJWEcX452pkaK0Ig3L5qSSSNQ1WP7Lak6MShtU5gssz1A2goN6skZZPCErN6D8gGi9QXN4adc
         Xm7hlNYBbd19051mdMv/jTvXKOvbTufqA3AEdEUrAQAA
@@ -61,7 +61,7 @@ interactions:
       content-encoding: [gzip]
       content-length: ['204']
       content-type: [application/json]
-      date: ['Thu, 30 Mar 2017 18:42:03 GMT']
+      date: ['Mon, 10 Apr 2017 21:03:58 GMT']
       p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
       server: [nginx/1.8.0]
       vary: ['Host, Cookie, Accept-Encoding']

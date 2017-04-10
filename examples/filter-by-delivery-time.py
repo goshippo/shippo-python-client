@@ -25,7 +25,6 @@ address_from = {
     "zip": "94117",
     "country": "US",
     "phone": "+1 555 341 9393",
-    "email": "laura@goshippo.com"
 }
 
 # Example address_to object dict
@@ -39,7 +38,6 @@ address_to = {
     "zip": "95122",
     "country": "US",
     "phone": "+1 555 341 9393",
-    "email": "mrhippo@goshippo.com"
 }
 
 # parcel object dict
@@ -60,7 +58,7 @@ parcel = {
 shipment = shippo.Shipment.create(
     address_from=address_from,
     address_to=address_to,
-    parcel=parcel,
+    parcels=[parcel],
     async=False
 )
 
