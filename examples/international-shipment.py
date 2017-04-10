@@ -24,7 +24,6 @@ address_from = {
     "zip":"94117",
     "country":"US",
     "phone":"+1 555 341 9393",
-    "email":"mrhippo@goshippo.com",
 }
 
 # Example address_to object dict
@@ -39,7 +38,6 @@ address_to_international = {
     "zip":"NW1 4RY",
     "country":"GB",
     "phone":"+1 555 341 9393",
-    "email":"mrhippo@goshippo.com",
     "metadata" : "For Order Number 123"
 }
 

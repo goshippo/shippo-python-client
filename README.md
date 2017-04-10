@@ -65,7 +65,6 @@ address1 = shippo.Address.create(
     state='IL',
     zip='60517',
     country='US',
-    email='user@gmail.com',
     metadata='Customer ID 123456'
 )
 

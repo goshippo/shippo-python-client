@@ -20,7 +20,6 @@ DUMMY_ADDRESS = {
     "zip": "94117",
     "country": "US",
     "phone": "+1 555 341 9393",
-    "email": "laura@goshippo.com",
     "metadata": "Customer ID 123456"
 }
 INVALID_ADDRESS = {
@@ -31,7 +30,6 @@ INVALID_ADDRESS = {
     "state": "CA",
     "country": "US",
     "phone": "+1 555 341 9393",
-    "email": "laura@goshippo.com",
     "metadata": "Customer ID 123456"
 }
 NOT_POSSIBLE_ADDRESS = {
@@ -45,7 +43,6 @@ NOT_POSSIBLE_ADDRESS = {
     "zip": "74338",
     "country": "US",
     "phone": "+1 555 341 9393",
-    "email": "laura@goshippo.com",
     "metadata": "Customer ID 123456"
 }
 DUMMY_PARCEL = {
@@ -143,7 +140,6 @@ TO_ADDRESS = {
     "zip": "94103",
     "country": "US",
     "phone": "+1 630 333 7333",
-    "email": "jmerc@gmail.com",
     "metadata": "Customer ID 123456"
 }
 FROM_ADDRESS = {
@@ -157,7 +153,6 @@ FROM_ADDRESS = {
     "zip": "94117",
     "country": "US",
     "phone": "+1 555 341 9393",
-    "email": "laura@goshippo.com",
     "metadata": "Customer ID 123456"
 }
 DUMMY_SHIPMENT = {
@@ -219,7 +214,6 @@ DUMMY_BATCH = {
               "zip": "94103",
               "country": "US",
               "phone": "4151234567",
-              "email": "mrhippo@goshippo.com"
             },
             "address_to": {
               "name": "Mrs Hippo",
@@ -231,7 +225,6 @@ DUMMY_BATCH = {
               "zip": "10007",
               "country": "US",
               "phone": "4151234567",
-              "email": "mrshippo@goshippo.com"
             },
             "parcels": [{
               "length": "5",
@@ -253,7 +246,6 @@ DUMMY_BATCH = {
               "zip": "95122",
               "country": "US",
               "phone": "4151234567",
-              "email": "mrhippo@goshippo.com"
             },
             "address_to": {
               "name": "Mrs Hippo",
@@ -265,7 +257,6 @@ DUMMY_BATCH = {
               "zip": "10007",
               "country": "US",
               "phone": "4151234567",
-              "email": "mrshippo@goshippo.com"
             },
             "parcels": [{
               "length": "5",

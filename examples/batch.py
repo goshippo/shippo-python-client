@@ -25,7 +25,6 @@ example_batch = {
               "zip": "94103",
               "country": "US",
               "phone": "4151234567",
-              "email": "mrhippo@goshippo.com"
             },
             "address_to": {
               "name": "Mrs Hippo",
@@ -37,7 +36,6 @@ example_batch = {
               "zip": "10007",
               "country": "US",
               "phone": "4151234567",
-              "email": "mrshippo@goshippo.com"
             },
             "parcels": [{
               "length": "5",
@@ -59,7 +57,6 @@ example_batch = {
               "zip": "95122",
               "country": "US",
               "phone": "4151234567",
-              "email": "mrhippo@goshippo.com"
             },
             "address_to": {
               "name": "Mrs Hippo",
@@ -71,7 +68,6 @@ example_batch = {
               "zip": "10007",
               "country": "US",
               "phone": "4151234567",
-              "email": "mrshippo@goshippo.com"
             },
             "parcels": [{
               "length": "5",
@@ -115,7 +111,6 @@ address_from = {
     "zip": "94103",
     "country": "US",
     "phone": "+1 555 341 9393",
-    "email": "support@goshippo.com"
 }
 
 address_to = {
@@ -126,7 +121,6 @@ address_to = {
     "zip": "95122",
     "country": "US",
     "phone": "+1 555 341 9393",
-    "email": "support@goshippo.com"
 }
 
 parcel = {
