@@ -56,7 +56,6 @@ import shippo
 shippo.api_key = "<API-KEY>"
 
 address1 = shippo.Address.create(
-    object_purpose='PURCHASE',
     name='John Smith',
     street1='6512 Greene Rd.',
     street2='',

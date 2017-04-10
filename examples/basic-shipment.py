@@ -55,7 +55,7 @@ parcel = {
 shipment = shippo.Shipment.create(
     address_from=address_from,
     address_to=address_to,
-    parcel=parcel,
+    parcels=[parcel],
     async=False
 )
 

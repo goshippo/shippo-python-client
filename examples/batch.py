@@ -39,14 +39,14 @@ example_batch = {
               "phone": "4151234567",
               "email": "mrshippo@goshippo.com"
             },
-            "parcel": {
+            "parcels": [{
               "length": "5",
               "width": "5",
               "height": "5",
               "distance_unit": "in",
               "weight": "2",
               "mass_unit": "oz"
-            }
+            }]
           }
         },
         {
@@ -73,14 +73,14 @@ example_batch = {
               "phone": "4151234567",
               "email": "mrshippo@goshippo.com"
             },
-            "parcel": {
+            "parcels": [{
               "length": "5",
               "width": "5",
               "height": "5",
               "distance_unit": "in",
               "weight": "20",
               "mass_unit": "lb"
-            }
+            }]
           }
         }
     ]
@@ -98,7 +98,7 @@ batch = shippo.Batch.create(**example_batch)
 batch = shippo.Batch.retrieve(batch.object_id)
 tries = 0
 TIMEOUT = 60 #thirty second timeout
-while batch.status = 'VALIDATING' and tries < TIMEOUT:
+while batch.status == 'VALIDATING' and tries < TIMEOUT:
   time.sleep(0.5)
   batch = shippo.Batch.retrieve(batch.object_id)
   tries += 1
@@ -141,7 +141,7 @@ parcel = {
 shipment = shippo.Shipment.create(
     address_from=address_from,
     address_to=address_to,
-    parcel=parcel,
+    parcels=[parcel],
     async=False
 )
 

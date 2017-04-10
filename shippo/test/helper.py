@@ -163,7 +163,7 @@ FROM_ADDRESS = {
 DUMMY_SHIPMENT = {
     "address_from": "4f406a13253945a8bc8deb0f8266b245",
     "address_to": "4c7185d353764d0985a6a7825aed8ffb",
-    "parcel": "ec952343dd4843c39b42aca620471fd5",
+    "parcels": ["ec952343dd4843c39b42aca620471fd5"],
     "submission_type": "PICKUP",
     "shipment_date": "2017-03-31T17:37:59.817Z",
     "insurance_amount": "200",
@@ -233,14 +233,14 @@ DUMMY_BATCH = {
               "phone": "4151234567",
               "email": "mrshippo@goshippo.com"
             },
-            "parcel": {
+            "parcels": [{
               "length": "5",
               "width": "5",
               "height": "5",
               "distance_unit": "in",
               "weight": "2",
               "mass_unit": "oz"
-            }
+            }]
           }
         },
         {
@@ -267,14 +267,14 @@ DUMMY_BATCH = {
               "phone": "4151234567",
               "email": "mrshippo@goshippo.com"
             },
-            "parcel": {
+            "parcels": [{
               "length": "5",
               "width": "5",
               "height": "5",
               "distance_unit": "in",
-              "weight": "20",
-              "mass_unit": "lb"
-            }
+              "weight": "2",
+              "mass_unit": "oz"
+            }]
           }
         }
     ]
@@ -295,7 +295,7 @@ def create_mock_shipment(async=False, api_key=None):
     SHIPMENT = DUMMY_SHIPMENT.copy()
     SHIPMENT['address_from'] = from_address.object_id
     SHIPMENT['address_to'] = to_address.object_id
-    SHIPMENT['parcel'] = parcel.object_id
+    SHIPMENT['parcels'] = [parcel.object_id]
     SHIPMENT['async'] = async
     shipment = shippo.Shipment.create(api_key=api_key, **SHIPMENT)
     return shipment
