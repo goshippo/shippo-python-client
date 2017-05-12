@@ -12,7 +12,7 @@ Release History
 
 **Behavioural Changes**
 
-- The client now only supports the most recent version of the Shippo API (2017-03-29)
+- The client now only supports the most recent version of the Shippo API (2017-03-29). For more information on versioning and upgrading your version, please refer to https://goshippo.com/docs/versioning
 
 1.4.0 (2017-01-19)
 +++++++++++++++++++
