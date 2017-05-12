@@ -12,7 +12,7 @@ Release History
 
 **Behavioural Changes**
 
-- The client now works with the most recent version of Shippo (2017-03-29)
+- The client now only supports the most recent version of the Shippo API (2017-03-29)
 
 1.4.0 (2017-01-19)
 +++++++++++++++++++
