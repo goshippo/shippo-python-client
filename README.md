@@ -10,7 +10,7 @@ You will first need to [register for a Shippo account](https://goshippo.com/) to
 
 ### How do I get set up? ###
 
-####To install from the source file:
+#### To install from the source file:
 
 ```
 #!shell
