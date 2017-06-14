@@ -77,7 +77,7 @@ We've created a number of examples to cover the most common use cases. You can f
 Some of the use cases we covered include:
 
 * [Basic domestic shipment](examples/basic-shipment.py)
-* [Interntational shipment](examples/interntational-shipment.py)  - Custom forms, interntational destinations
+* [International shipment](examples/international-shipment.py)  - Custom forms, interntational destinations
 * [Price estimation matrix](examples/estimate-shipping-prices.py)
 * [Retrieve rates, filter by delivery time and purchase cheapest label](examples/filter-by-delivery-time.py)
 * [Retrieve rates, purchase label for fastest delivery option](examples/purchase-fastest-service.py)
