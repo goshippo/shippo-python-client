@@ -64,7 +64,6 @@ class ManifestTests(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')
     def test_list_all(self):
         manifest_list = shippo.Manifest.all()
-        self.assertTrue('count' in manifest_list)
         self.assertTrue('results' in manifest_list)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/manifest')

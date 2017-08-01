@@ -55,7 +55,6 @@ class CustomsItemTest(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/customs-item')
     def test_list_all(self):
         customs_items_list = shippo.CustomsItem.all()
-        self.assertTrue('count' in customs_items_list)
         self.assertTrue('results' in customs_items_list)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/customs-item')

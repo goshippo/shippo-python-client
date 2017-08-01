@@ -78,7 +78,6 @@ class FunctionalTests(ShippoTestCase):
             self.fail('Set your SHIPPO_API_KEY in your os.environ')
         except Exception as inst:
             self.fail("Test failed with exception %s" % inst)
-        self.assertTrue('count' in rates)
         self.assertTrue('results' in rates)
 
     # --- if dynamic object typing is implemented, this will be a useful test

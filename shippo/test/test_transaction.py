@@ -64,7 +64,6 @@ class TransactionTests(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/transaction')
     def test_list_all(self):
         transaction_list = shippo.Transaction.all()
-        self.assertTrue('count' in transaction_list)
         self.assertTrue('results' in transaction_list)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/transaction')

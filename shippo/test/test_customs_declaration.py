@@ -68,7 +68,6 @@ class CustomsDeclarationTests(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/customs-declaration')
     def test_list_all(self):
         customs_declaration_list = shippo.CustomsDeclaration.all()
-        self.assertTrue('count' in customs_declaration_list)
         self.assertTrue('results' in customs_declaration_list)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/customs-declaration')
