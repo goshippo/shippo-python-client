@@ -160,7 +160,6 @@ DUMMY_SHIPMENT = {
     "address_to": "4c7185d353764d0985a6a7825aed8ffb",
     "parcels": ["ec952343dd4843c39b42aca620471fd5"],
     "submission_type": "PICKUP",
-    "shipment_date": "2017-03-31T17:37:59.817Z",
     "insurance_amount": "200",
     "insurance_currency": "USD",
     "extra": {

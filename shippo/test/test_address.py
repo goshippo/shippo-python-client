@@ -58,7 +58,6 @@ class AddressTests(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/address')
     def test_list_all(self):
         address_list = shippo.Address.all()
-        self.assertTrue('count' in address_list)
         self.assertTrue('results' in address_list)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/address')

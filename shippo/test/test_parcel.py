@@ -55,7 +55,6 @@ class ParcelTests(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/parcel')
     def test_list_all(self):
         parcel_list = shippo.Parcel.all()
-        self.assertTrue('count' in parcel_list)
         self.assertTrue('results' in parcel_list)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/parcel')
