@@ -32,15 +32,17 @@ address_from = {
 # Example address_to object dict
 # The complete reference for the address object is available here: https://goshippo.com/docs/reference#addresses
 
-address_to = {
+address_to_international = {
     "name":"Mrs. Hippo",
     "street1":"200 University Ave W",
+    "street2": "",
     "city":"Waterloo",
     "state":"ON",
     "zip":"N2L 3G1",
     "country":"CA",
     "phone":"+1 555 341 9393",
     "email":"support@goshippo.com",
+    "metadata" : "For Order Number 123"
 },
 
 # parcel object dict
