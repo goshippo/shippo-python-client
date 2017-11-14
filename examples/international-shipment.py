@@ -14,32 +14,36 @@ the cheapest shipping label with a transit time <= 3 days.
 shippo.api_key = "<API-KEY>"
 
 # Example address_from object dict
-# The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
+# The complete reference for the address object is available here: https://goshippo.com/docs/reference#addresses
 address_from = {
-    "name":"Mr Hippo",
-    "company":"Shippo",
-    "street1":"965 Mission St",
-    "city":"San Francisco",
-    "state":"CA",
-    "zip":"94117",
-    "country":"US",
-    "phone":"+1 555 341 9393",
-}
+    "company": "",
+    "street_no": "",
+    "name": "Mr. Hippo",
+    "street1": "215 Clayton St.",
+    "street2": "",
+    "city": "San Francisco",
+    "state": "CA",
+    "zip": "94117",
+    "country": "US",
+    "phone": "+15553419393",
+    "email": "support@goshippo.com",
+},
 
 # Example address_to object dict
-# The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
+# The complete reference for the address object is available here: https://goshippo.com/docs/reference#addresses
 
 address_to_international = {
-    "name":"Mr Hippo",
-    "company":"London Zoo",
-    "street1":"Regent's Park",
-    "street2":"Outer Cir",
-    "city":"LONDON",
-    "zip":"NW1 4RY",
-    "country":"GB",
+    "name":"Mrs. Hippo",
+    "street1":"200 University Ave W",
+    "street2": "",
+    "city":"Waterloo",
+    "state":"ON",
+    "zip":"N2L 3G1",
+    "country":"CA",
     "phone":"+1 555 341 9393",
+    "email":"support@goshippo.com",
     "metadata" : "For Order Number 123"
-}
+},
 
 # parcel object dict
 # The complete reference for parcel object is here: https://goshippo.com/docs/reference#parcels
@@ -104,5 +108,5 @@ else:
     for message in transaction_international.messages:
         print "- %s" % message['text']
 
-#For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our
+#For more tutorials of address validation, tracking, returns, refunds, and other functionality, check out our
 #complete documentation: https://goshippo.com/docs/
