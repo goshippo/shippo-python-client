@@ -26,7 +26,7 @@ print tracking
 # Registering a tracking webhook
 webhook_response = shippo.Track.create(
                                         carrier=carrier_token, 
-                                        tracking=tracking_number, 
+                                        tracking_number=tracking_number, 
                                         metadata='optional, up to 100 characters'
                                     )
 print webhook_response
