@@ -104,6 +104,10 @@ class APIRequestor(object):
                 'for details, or email support@goshippo.comom if you have any '
                 'questions.')
 
+        token_type = 'ShippoToken'
+        if my_api_key.startswith('oauth.'):
+            token_type = 'Bearer'
+
         abs_url = '%s%s' % (shippo.api_base, url)
 
         if method == 'get' or method == 'delete':
@@ -138,7 +142,7 @@ class APIRequestor(object):
             'Content-Type': 'application/json',
             'X-Shippo-Client-User-Agent': util.json.dumps(ua),
             'User-Agent': 'Shippo/v1 PythonBindings/%s' % (VERSION, ),
-            'Authorization': 'ShippoToken %s' % (my_api_key,)
+            'Authorization': '%s %s' % (token_type, my_api_key,)
         }
 
         if api_version is not None:
