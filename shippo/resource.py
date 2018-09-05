@@ -300,18 +300,18 @@ class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
     """
 
     @classmethod
-    def get_rates(cls, object_id, async=False, api_key=None, currency=None, **params):
+    def get_rates(cls, object_id, async_=False, api_key=None, currency=None, **params):
         """
             Given a valid shipment object_id, all possible rates are calculated and returned.
         """
         if 'sync' in params:
             warnings.warn('The `sync` parameter is deprecated. '
-                          'Use `async` while creating a shipment instead.', DeprecationWarning)
+                          'Use `async_` while creating a shipment instead.', DeprecationWarning)
             # will be removed in the next major version
             if params.get('sync') is not None:
-                async = not params['sync']
+                async_ = not params['sync']
 
-        if not async:
+        if not async_:
             timeout = time.time() + rates_req_timeout
             while cls.retrieve(object_id, api_key=api_key).status in ("QUEUED", "WAITING") and time.time() < timeout:
                 continue
