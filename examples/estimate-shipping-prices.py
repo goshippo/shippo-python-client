@@ -1,7 +1,7 @@
 import shippo
 
 """
-In this tutorial we want to calculate our average shipping costs so 
+In this tutorial we want to calculate our average shipping costs so
 we set pricing for customers.
 
 We have a sender address, a parcel and a set of delivery zip codes.
@@ -53,7 +53,7 @@ address_to = {
     "country": "US"
 }
 
-# Sample parcel, make sure to replace placeholders with your average shipment size 
+# Sample parcel, make sure to replace placeholders with your average shipment size
 # The complete reference for parcel object is here: https://goshippo.com/docs/reference#parcels
 
 parcel = {
@@ -74,20 +74,20 @@ shipping_costs = {}
 for delivery_address_zip_code in DESTINATION_ADDRESSES_ZIP_CODES:
     # Change delivery address to current delivery address
     address_to['zip'] = delivery_address_zip_code
-    # Creating the shipment object. async=False indicates that the function will wait until all
+    # Creating the shipment object. asynchronous=False indicates that the function will wait until all
     # rates are generated before it returns.
     # The reference for the shipment object is here: https://goshippo.com/docs/reference#shipments
     # By default Shippo API operates on an async basis. You can read about our async flow here: https://goshippo.com/docs/async
-    
+
     shipment = shippo.Shipment.create(
         address_from=address_from,
         address_to=address_to,
         parcels=[parcel],
-        async=False
+        asynchronous=False
     )
     # Rates are stored in the `rates` array
     # The details on the returned object are here: https://goshippo.com/docs/reference#rates
-    
+
     rates = shipment.rates
     print "Returned %s rates to %s" % (len(rates), delivery_address_zip_code)
     # We now store the shipping cost for each delivery window in our
@@ -113,6 +113,6 @@ for delivery_window in DELIVERY_WINDOWS:
         print "--> Max. costs: %0.2f" % max(costs)
         print "--> Avg. costs: %0.2f" % (sum(costs) / float(len(costs)))
         print "\n"
-        
+
 # For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our
 # complete documentation: https://goshippo.com/docs/

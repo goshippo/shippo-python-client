@@ -35,7 +35,7 @@ class RateTests(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/rate')
     def test_retrieve(self):
         shipment = create_mock_shipment()
-        rates = shippo.Shipment.get_rates(shipment.object_id, async=False)
+        rates = shippo.Shipment.get_rates(shipment.object_id, asynchronous=False)
         rate = rates.results[0]
         retrieve = shippo.Rate.retrieve(rate.object_id)
         self.assertItemsEqual(rate, retrieve)

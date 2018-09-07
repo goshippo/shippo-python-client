@@ -48,7 +48,7 @@ example_batch = {
           }
         },
         {
-          "shipment": {    
+          "shipment": {
             "address_from": {
               "name": "Mr Hippo",
               "street1": "1092 Indian Summer Ct",
@@ -136,7 +136,7 @@ shipment = shippo.Shipment.create(
     address_from=address_from,
     address_to=address_to,
     parcels=[parcel],
-    async=False
+    asynchronous=False
 )
 
 #the post data should be in an array even if it's just one shipment
@@ -157,6 +157,6 @@ removed = shippo.Batch.remove(batch.object_id, to_remove)
 #now we're ready to purchase
 purchase = shippo.Batch.purchase(batch.object_id)
 print purchase
-        
+
 #For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our
 #complete documentation: https://goshippo.com/docs/

@@ -52,13 +52,13 @@ parcel = {
 
 # Example shipment object
 # For complete reference to the shipment object: https://goshippo.com/docs/reference#shipments
-# This object has async=False, indicating that the function will wait until all rates are generated before it returns.
+# This object has asynchronous=False, indicating that the function will wait until all rates are generated before it returns.
 # By default, Shippo handles responses asynchronously. However this will be depreciated soon. Learn more: https://goshippo.com/docs/async
 shipment = shippo.Shipment.create(
     address_from=address_from,
     address_to=address_to,
     parcels=[parcel],
-    async=False
+    asynchronous=False
 )
 
 # Rates are stored in the `rates` array
@@ -66,24 +66,24 @@ shipment = shippo.Shipment.create(
 rates = shipment.rates
 
 """
-You can now show those rates to the user in your UI. 
+You can now show those rates to the user in your UI.
 Most likely you want to show some of the following fields:
 - provider (carrier name)
 - servicelevel_name
 - amount (price of label - you could add e.g. a 10% markup here)
 - days (transit time)
-Don't forget to store the `object_id` of each Rate so that you 
+Don't forget to store the `object_id` of each Rate so that you
 can use it for the label purchase later.
 """
 
 # After the user has selected a rate, use the corresponding object_id
 selected_rate_object_id = '<SELECTED-RATE-OBJECT-ID>'
 
-# Purchase the desired rate. async=False indicates that the function will wait until the
+# Purchase the desired rate. asynchronous=False indicates that the function will wait until the
 # carrier returns a shipping label before it returns
-transaction = shippo.Transaction.create(rate=selected_rate_object_id, async=False)
+transaction = shippo.Transaction.create(rate=selected_rate_object_id, asynchronous=False)
 
-# print the shipping label from label_url 
+# print the shipping label from label_url
 # Get the tracking number from tracking_number
 if transaction.status == "SUCCESS":
     print "Purchased label with tracking number %s" % transaction.tracking_number
@@ -92,6 +92,6 @@ else:
     print "Failed purchasing the label due to:"
     for message in transaction.messages:
         print "- %s" % message['text']
-        
+
 #For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our
-#complete documentation: https://goshippo.com/docs/        
+#complete documentation: https://goshippo.com/docs/

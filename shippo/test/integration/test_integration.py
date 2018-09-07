@@ -71,7 +71,7 @@ class FunctionalTests(ShippoTestCase):
     def test_get_rates(self):
         try:
             shipment = create_mock_shipment()
-            rates = shippo.Shipment.get_rates(shipment.object_id, async=False)
+            rates = shippo.Shipment.get_rates(shipment.object_id, asynchronous=False)
         except shippo.error.InvalidRequestError:
             pass
         except shippo.error.AuthenticationError:
