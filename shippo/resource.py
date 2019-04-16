@@ -46,7 +46,7 @@ class ShippoObject(dict):
 
         try:
             return self[k]
-        except KeyError, err:
+        except KeyError as err:
             raise AttributeError(*err.args)
 
     def __setitem__(self, k, v):
@@ -68,7 +68,7 @@ class ShippoObject(dict):
     def __getitem__(self, k):
         try:
             return super(ShippoObject, self).__getitem__(k)
-        except KeyError, err:
+        except KeyError as err:
             if k in self._transient_values:
                 raise KeyError(
                     "%r.  HINT: The %r attribute was set in the past."
@@ -300,18 +300,25 @@ class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
     """
 
     @classmethod
-    def get_rates(cls, object_id, async=False, api_key=None, currency=None, **params):
+    def get_rates(cls, object_id, asynchronous=False, api_key=None, currency=None, **params):
         """
             Given a valid shipment object_id, all possible rates are calculated and returned.
         """
         if 'sync' in params:
             warnings.warn('The `sync` parameter is deprecated. '
-                          'Use `async` while creating a shipment instead.', DeprecationWarning)
+                            'Use `asynchronous` while creating a shipment instead.', DeprecationWarning)
             # will be removed in the next major version
             if params.get('sync') is not None:
-                async = not params['sync']
+                asynchronous = not params['sync']
 
-        if not async:
+        if 'async' in params:
+            warnings.warn('The `async` parameter is deprecated. '
+                            'Use `asynchronous` while creating a shipment instead.', DeprecationWarning)
+            # will be removed in the next major version
+            if params.get('async') is not None:
+                asynchronous = params['async']
+
+        if not asynchronous:
             timeout = time.time() + rates_req_timeout
             while cls.retrieve(object_id, api_key=api_key).status in ("QUEUED", "WAITING") and time.time() < timeout:
                 continue
@@ -343,11 +350,6 @@ class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResour
             Takes the parameters as a dictionary instead of key word arguments.
         """
         # will be removed in the next major version
-        if 'sync' in params:
-            warnings.warn('The `sync` parameter is deprecated. '
-                          'Use `async` instead.', DeprecationWarning)
-            params['async'] = False if params.get('sync') is None else (not params['sync'])
-
         return super(Transaction, cls).create(api_key, **params)
 
     @classmethod
@@ -388,7 +390,7 @@ class Track(CreateableAPIResource):
         """
         A custom get method for tracking based on carrier and tracking number
         Written because the endpoint for tracking is different from our standard endpoint
-        
+
         Arguments:
             carrier_token (str) -- name of the carrier of the shipment to track
                                     see https://goshippo.com/docs/reference#carriers
@@ -413,15 +415,15 @@ class Track(CreateableAPIResource):
     def create(cls, api_key=None, **params):
         """
         Creates a webhook to keep track of the shipping status of a specific package
-                
+
         Arguments:
             **params
                 carrier (str) -- name of the carrier of the shipment to track
                                   see https://goshippo.com/docs/reference#carriers
                 tracking_number (str) -- tracking number to track
-                metadata (str) -- A string of up to 100 characters that can be filled with any 
+                metadata (str) -- A string of up to 100 characters that can be filled with any
                                    additional information you want to attach to the object
-        
+
         Keyword Arguments:
             api_key (str) -- an api key, if not specified here it will default to the key
                              set in your environment var or by shippo.api_key = "..."
@@ -445,7 +447,7 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
     def retrieve(cls, object_id, api_key=None, **params):
         """
         Retrieve a batch, customized to allow the addition of url parameters
-        
+
         Arguments:
             object_id (str) -- the batch object id
             **params
@@ -455,7 +457,7 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
                                             "creation_succeeded"
                                             "purchase_succeeded"
                                             "purchase_failed"
-        
+
         Keyword Arguments:
             api_key (str) -- an api key, if not specified here it will default to the key
                              set in your environment var or by shippo.api_key = "..."
@@ -479,7 +481,7 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
     def add(cls, object_id, shipments_to_add, api_key=None):
         """
         Add shipments to a batch
-        
+
         Arguments:
             object_id (str) -- the batch object id
             shipments_to_add (list of dict) -- list of shipments to add, must be in the format
@@ -503,12 +505,12 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
     def remove(cls, object_id, shipments_to_remove, api_key=None):
         """
         Remove shipments from a batch
-        
+
         Arguments:
             object_id (str) -- the batch object id
             shipments_to_remove (list of str) -- list of shipments to remove, must be in the format
                 [<shipment 1 object id>, <shipment 2 object id>, ...]
-        
+
         Keyword Arguments:
             api_key (str) -- an api key, if not specified here it will default to the key
                              set in your environment var or by shippo.api_key = "..."
@@ -527,10 +529,10 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
     def purchase(cls, object_id, api_key=None):
         """
         Purchase batch of shipments
-        
+
         Arguments:
             object_id (str) -- the batch object id
-        
+
         Keyword Arguments:
             api_key (str) -- an api key, if not specified here it will default to the key
                              set in your environment var or by shippo.api_key = "..."

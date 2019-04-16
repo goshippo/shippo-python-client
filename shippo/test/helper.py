@@ -203,7 +203,7 @@ DUMMY_BATCH = {
     "metadata": "BATCH #170",
     "batch_shipments": [
         {
-          "shipment": {    
+          "shipment": {
             "address_from": {
               "name": "Mr Hippo",
               "street1": "965 Mission St",
@@ -236,7 +236,7 @@ DUMMY_BATCH = {
           }
         },
         {
-          "shipment": {    
+          "shipment": {
             "address_from": {
               "name": "Mr Hippo",
               "street1": "1092 Indian Summer Ct",
@@ -278,7 +278,7 @@ INVALID_BATCH = {
 }
 
 
-def create_mock_shipment(async=False, api_key=None):
+def create_mock_shipment(asynchronous=False, api_key=None):
     to_address = shippo.Address.create(api_key=api_key, **TO_ADDRESS)
     from_address = shippo.Address.create(api_key=api_key, **FROM_ADDRESS)
     parcel = shippo.Parcel.create(api_key=api_key, **DUMMY_PARCEL)
@@ -286,7 +286,7 @@ def create_mock_shipment(async=False, api_key=None):
     SHIPMENT['address_from'] = from_address.object_id
     SHIPMENT['address_to'] = to_address.object_id
     SHIPMENT['parcels'] = [parcel.object_id]
-    SHIPMENT['async'] = async
+    SHIPMENT['asynchronous'] = asynchronous
     shipment = shippo.Shipment.create(api_key=api_key, **SHIPMENT)
     return shipment
 
@@ -303,13 +303,13 @@ def create_mock_manifest(transaction=None):
     return manifest
 
 
-def create_mock_transaction(async=False):
-    shipment = create_mock_shipment(async)
+def create_mock_transaction(asynchronous=False):
+    shipment = create_mock_shipment(asynchronous)
     rates = shipment.rates
     usps_rate = list(filter(lambda x: x.servicelevel.token == 'usps_priority', rates))[0]
     t = DUMMY_TRANSACTION.copy()
     t['rate'] = usps_rate.object_id
-    t['async'] = async
+    t['asynchronous'] = asynchronous
     txn = shippo.Transaction.create(**t)
     return txn
 

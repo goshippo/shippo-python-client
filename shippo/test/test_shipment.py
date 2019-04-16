@@ -74,14 +74,14 @@ class ShipmentTests(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/shipment')
     def test_get_rates_blocking(self):
         shipment = create_mock_shipment()
-        rates = shippo.Shipment.get_rates(shipment.object_id, async=False)
+        rates = shippo.Shipment.get_rates(shipment.object_id, asynchronous=False)
         self.assertTrue('results' in rates)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/shipment')
     def test_invalid_get_rate(self):
-        # we are testing async=True in order to test the 2nd API call of the function
+        # we are testing asynchronous=True in order to test the 2nd API call of the function
         self.assertRaises(shippo.error.APIError, shippo.Shipment.get_rates,
-                          'EXAMPLE_OF_INVALID_ID', async=True)
+                          'EXAMPLE_OF_INVALID_ID', asynchronous=True)
 
 
 if __name__ == '__main__':

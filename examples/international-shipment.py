@@ -2,7 +2,7 @@ import shippo
 
 """
 In this tutorial we have an order with a sender address,
-recipient address and parcel. The shipment is going from the 
+recipient address and parcel. The shipment is going from the
 United States to an international location.
 
 In addition to that we know that the customer expects the
@@ -79,7 +79,7 @@ customs_declaration = shippo.CustomsDeclaration.create(
     certify_signer= 'Mr Hippo',
     items= [customs_item])
 
-# Creating the shipment object. async=False indicates that the function will wait until all
+# Creating the shipment object. asynchronous=False indicates that the function will wait until all
 # rates are generated before it returns.
 
 # The reference for the shipment object is here: https://goshippo.com/docs/reference#shipments
@@ -89,7 +89,7 @@ shipment_international = shippo.Shipment.create(
     address_to= address_to_international,
     parcels= [parcel],
     customs_declaration=customs_declaration.object_id,
-    async= False )
+    asynchronous= False )
 
 # Get the first rate in the rates results for demo purposes.
 # The details on the returned object are here: https://goshippo.com/docs/reference#rates
@@ -97,7 +97,7 @@ rate_international = shipment_international.rates[0]
 
 # Purchase the desired rate.
 # The complete information about purchasing the label: https://goshippo.com/docs/reference#transaction-create
-transaction_international = shippo.Transaction.create(rate=rate_international.object_id, async=False)
+transaction_international = shippo.Transaction.create(rate=rate_international.object_id, asynchronous=False)
 
 # print label_url and tracking_number
 if transaction_international.status == "SUCCESS":

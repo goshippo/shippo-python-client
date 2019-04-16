@@ -39,7 +39,7 @@ class TransactionTests(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/transaction')
     def test_create(self):
         shipment = create_mock_shipment()
-        rates = shippo.Shipment.get_rates(shipment.object_id, async=False)
+        rates = shippo.Shipment.get_rates(shipment.object_id, asynchronous=False)
         rate = rates.results[0]
         TRANSACTION = DUMMY_TRANSACTION.copy()
         TRANSACTION['rate'] = rate.object_id
@@ -49,7 +49,7 @@ class TransactionTests(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/transaction')
     def test_retrieve(self):
         shipment = create_mock_shipment()
-        rates = shippo.Shipment.get_rates(shipment.object_id, async=False)
+        rates = shippo.Shipment.get_rates(shipment.object_id, asynchronous=False)
         rate = rates.results[0]
         TRANSACTION = DUMMY_TRANSACTION.copy()
         TRANSACTION['rate'] = rate.object_id

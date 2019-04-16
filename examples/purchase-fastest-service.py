@@ -4,7 +4,7 @@ import shippo
 In this tutorial we have an order with a sender address,
 recipient address and parcel information that we need to ship.
 
-We want to get the cheapest shipping label that will 
+We want to get the cheapest shipping label that will
 get the packages to the customer within 3 days.
 """
 
@@ -52,7 +52,7 @@ parcel = {
     "mass_unit": "lb",
 }
 
-# Creating the shipment object. async=False indicates that the function will wait until all
+# Creating the shipment object. asynchronous=False indicates that the function will wait until all
 # rates are generated before it returns.
 # The reference for the shipment object is here: https://goshippo.com/docs/reference#shipments
 # By default Shippo API operates on an async basis. You can read about our async flow here: https://goshippo.com/docs/async
@@ -60,7 +60,7 @@ shipment = shippo.Shipment.create(
     address_from=address_from,
     address_to=address_to,
     parcels=[parcel],
-    async=False
+    asynchronous=False
 )
 
 # Rates are stored in the `rates` array
@@ -73,9 +73,9 @@ rate = min(eligible_rates, key=lambda x: float(x['amount']))
 print "Picked service %s %s for %s %s with est. transit time of %s days" % \
     (rate['provider'], rate['servicelevel']['name'], rate['currency'], rate['amount'], rate['days'])
 
-# Purchase the desired rate. async=False indicates that the function will wait until the
+# Purchase the desired rate. asynchronous=False indicates that the function will wait until the
 # carrier returns a shipping label before it returns
-transaction = shippo.Transaction.create(rate=rate.object_id, async=False)
+transaction = shippo.Transaction.create(rate=rate.object_id, asynchronous=False)
 
 # print label_url and tracking_number
 if transaction.status == "SUCCESS":
