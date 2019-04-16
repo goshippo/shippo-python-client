@@ -5,8 +5,7 @@ import platform
 import socket
 import ssl
 import time
-import urllib
-import urlparse
+import urllib.parse
 import warnings
 import shippo
 
@@ -24,33 +23,33 @@ def _encode_datetime(dttime):
 
 
 def _api_encode(data):
-    for key, value in data.iteritems():
-        key = util.utf8(key)
+    for key, value in list(data.items()):
+        key = key
         if value is None:
             continue
         elif hasattr(value, 'shippo_id'):
             yield (key, value.shippo_id)
         elif isinstance(value, list) or isinstance(value, tuple):
             for subvalue in value:
-                yield ("%s[]" % (key,), util.utf8(subvalue))
+                yield ("%s[]" % (key,), subvalue)
         elif isinstance(value, dict):
             subdict = dict(('%s[%s]' % (key, subkey), subvalue) for
-                           subkey, subvalue in value.iteritems())
+                           subkey, subvalue in list(value.items()))
             for subkey, subvalue in _api_encode(subdict):
                 yield (subkey, subvalue)
         elif isinstance(value, datetime.datetime):
             yield (key, _encode_datetime(value))
         else:
-            yield (key, util.utf8(value))
+            yield (key, value)
 
 
 def _build_api_url(url, query):
-    scheme, netloc, path, base_query, fragment = urlparse.urlsplit(url)
+    scheme, netloc, path, base_query, fragment = urllib.parse.urlsplit(url)
 
     if base_query:
         query = '%s&%s' % (base_query, query)
 
-    return urlparse.urlunsplit((scheme, netloc, path, query, fragment))
+    return urllib.parse.urlunsplit((scheme, netloc, path, query, fragment))
 
 
 class APIRequestor(object):
@@ -112,7 +111,7 @@ class APIRequestor(object):
 
         if method == 'get' or method == 'delete':
             if params:
-                encoded_params = urllib.urlencode(list(_api_encode(params or {})))
+                encoded_params = urllib.parse.urlencode(list(_api_encode(params or {})))
                 abs_url = _build_api_url(abs_url, encoded_params)
             post_data = None
         elif method == 'post' or method == 'put':
@@ -134,7 +133,7 @@ class APIRequestor(object):
                            ['uname', lambda: ' '.join(platform.uname())]]:
             try:
                 val = func()
-            except Exception, e:
+            except Exception as e:
                 val = "!! %s" % (e,)
             ua[attr] = val
 
@@ -184,12 +183,12 @@ class APIRequestor(object):
         from shippo import verify_ssl_certs
 
         if verify_ssl_certs and not self._CERTIFICATE_VERIFIED:
-            uri = urlparse.urlparse(shippo.api_base)
+            uri = urllib.parse.urlparse(shippo.api_base)
             try:
                 certificate = ssl.get_server_certificate(
                     (uri.hostname, uri.port or 443))
                 der_cert = ssl.PEM_cert_to_DER_cert(certificate)
-            except socket.error, e:
+            except socket.error as e:
                 raise error.APIConnectionError(e)
             except TypeError:
                 # The Google App Engine development server blocks the C socket

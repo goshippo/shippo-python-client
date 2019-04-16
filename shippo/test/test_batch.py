@@ -78,7 +78,7 @@ class BatchTests(ShippoTestCase):
         batch_size = len(retrieve.batch_shipments.results)
         self.assertEqual(batch.status, 'VALIDATING')
         addon = []
-        for i in xrange(BATCH_ADD_SIZE):
+        for i in range(BATCH_ADD_SIZE):
             mock_shipment = create_mock_shipment()
             addon.append({'shipment': mock_shipment.object_id})
         added = shippo.Batch.add(batch.object_id, addon)
@@ -107,7 +107,7 @@ class BatchTests(ShippoTestCase):
         batch_size = len(retrieve.batch_shipments.results)
         self.assertEqual(batch.status, 'VALIDATING')
         addon = []
-        for i in xrange(BATCH_ADD_SIZE):
+        for i in range(BATCH_ADD_SIZE):
             mock_shipment = create_mock_shipment()
             addon.append({'shipment': mock_shipment.object_id})
         added = shippo.Batch.add(batch.object_id, addon)

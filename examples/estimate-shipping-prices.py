@@ -89,7 +89,7 @@ for delivery_address_zip_code in DESTINATION_ADDRESSES_ZIP_CODES:
     # The details on the returned object are here: https://goshippo.com/docs/reference#rates
 
     rates = shipment.rates
-    print "Returned %s rates to %s" % (len(rates), delivery_address_zip_code)
+    print("Returned %s rates to %s" % (len(rates), delivery_address_zip_code))
     # We now store the shipping cost for each delivery window in our
     # `shipping_costs` dictionary to analyse it later.
     for delivery_window in DELIVERY_WINDOWS:
@@ -105,14 +105,14 @@ addresses we can return the min, max and average values.
 """
 for delivery_window in DELIVERY_WINDOWS:
     if not str(delivery_window) in shipping_costs:
-        print "No rates found for delivery window of %s days" % delivery_window
+        print("No rates found for delivery window of %s days" % delivery_window)
     else:
         costs = shipping_costs[str(delivery_window)]
-        print "For a delivery window of %s days:" % delivery_window
-        print "--> Min. costs: %0.2f" % min(costs)
-        print "--> Max. costs: %0.2f" % max(costs)
-        print "--> Avg. costs: %0.2f" % (sum(costs) / float(len(costs)))
-        print "\n"
+        print("For a delivery window of %s days:" % delivery_window)
+        print("--> Min. costs: %0.2f" % min(costs))
+        print("--> Max. costs: %0.2f" % max(costs))
+        print("--> Avg. costs: %0.2f" % (sum(costs) / float(len(costs))))
+        print("\n")
 
 # For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our
 # complete documentation: https://goshippo.com/docs/

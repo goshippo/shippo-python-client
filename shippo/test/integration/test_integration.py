@@ -66,7 +66,7 @@ class FunctionalTests(ShippoTestCase):
         # Make sure unicode requests can be sent
         self.assertRaises(shippo.error.APIError,
                           shippo.Address.retrieve,
-                          u'☃')
+                          '☃')
 
     def test_get_rates(self):
         try:
