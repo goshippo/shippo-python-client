@@ -98,7 +98,7 @@ while batch.status == 'VALIDATING' and tries < TIMEOUT:
   time.sleep(0.5)
   batch = shippo.Batch.retrieve(batch.object_id)
   tries += 1
-print batch
+print(batch)
 
 #now we want to add a shipment to our batch
 #create a sample shipment
@@ -142,7 +142,7 @@ shipment = shippo.Shipment.create(
 #the post data should be in an array even if it's just one shipment
 #each shipment object_id should be in an dictionary as shown below
 added = shippo.Batch.add(batch.object_id, [{'shipment': shipment.object_id}])
-print added
+print(added)
 
 #now let's remove a shipment from our batch
 #find the object_id of the shipment you want to remove, it will not be the same as the id you used to add it
@@ -156,7 +156,7 @@ removed = shippo.Batch.remove(batch.object_id, to_remove)
 
 #now we're ready to purchase
 purchase = shippo.Batch.purchase(batch.object_id)
-print purchase
+print(purchase)
 
 #For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our
 #complete documentation: https://goshippo.com/docs/

@@ -75,7 +75,7 @@ class RequestsClient(HTTPClient):
                                           data=post_data,
                                           timeout=80,
                                           **kwargs)
-            except NotImplementedError, e:
+            except NotImplementedError as e:
                 raise TypeError(
                     'Warning: It looks like your installed version of the '
                     '"requests" library is not compatible with Shippo\'s '
@@ -90,7 +90,7 @@ class RequestsClient(HTTPClient):
 
             content = result.content
             status_code = result.status_code
-        except Exception, e:
+        except Exception as e:
             # Would catch just requests.exceptions.RequestException, but can
             # also raise ValueError, RuntimeError, etc.
             self._handle_request_error(e)
@@ -134,7 +134,7 @@ class UrlFetchClient(HTTPClient):
                 deadline=55,
                 payload=post_data
             )
-        except urlfetch.Error, e:
+        except urlfetch.Error as e:
             self._handle_request_error(e, url)
 
         return result.content, result.status_code

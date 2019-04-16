@@ -1,21 +1,8 @@
 import logging
-import sys
 
 logger = logging.getLogger('shippo')
 
-__all__ = ['StringIO', 'parse_qsl', 'json', 'utf8']
-
-try:
-    # When cStringIO is available
-    import cStringIO as StringIO
-except ImportError:
-    import StringIO
-
-try:
-    from urlparse import parse_qsl
-except ImportError:
-    # Python < 2.6
-    from cgi import parse_qsl
+__all__ = ['json']
 
 try:
     import json
@@ -43,9 +30,3 @@ if not (json and hasattr(json, 'loads')):
                 "or 'easy_install simplejson', or contact support@goshippo.com"
                 "with questions.")
 
-
-def utf8(value):
-    if isinstance(value, unicode) and sys.version_info < (3, 0):
-        return value.encode('utf-8')
-    else:
-        return value

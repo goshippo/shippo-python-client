@@ -306,7 +306,7 @@ def create_mock_manifest(transaction=None):
 def create_mock_transaction(asynchronous=False):
     shipment = create_mock_shipment(asynchronous)
     rates = shipment.rates
-    usps_rate = list(filter(lambda x: x.servicelevel.token == 'usps_priority', rates))[0]
+    usps_rate = list([x for x in rates if x.servicelevel.token == 'usps_priority'])[0]
     t = DUMMY_TRANSACTION.copy()
     t['rate'] = usps_rate.object_id
     t['asynchronous'] = asynchronous
@@ -353,11 +353,11 @@ class ShippoTestCase(TestCase):
     def assertRaisesRegexp(self, exception, regexp, callable, *args, **kwargs):
         try:
             callable(*args, **kwargs)
-        except exception, err:
+        except exception as err:
             if regexp is None:
                 return True
 
-            if isinstance(regexp, basestring):
+            if isinstance(regexp, str):
                 regexp = re.compile(regexp)
             if not regexp.search(str(err)):
                 raise self.failureException('"%s" does not match "%s"' %
@@ -384,7 +384,7 @@ class ShippoUnitTestCase(ShippoTestCase):
     def tearDown(self):
         super(ShippoUnitTestCase, self).tearDown()
 
-        for patcher in self.request_patchers.itervalues():
+        for patcher in list(self.request_patchers.values()):
             patcher.stop()
 
 
