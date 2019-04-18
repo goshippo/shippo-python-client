@@ -15,6 +15,7 @@ from shippo.test.helper import shippo_vcr
 
 BATCH_ADD_SIZE = 4
 
+
 class BatchTests(ShippoTestCase):
     request_client = shippo.http_client.RequestsClient
 
@@ -24,7 +25,8 @@ class BatchTests(ShippoTestCase):
         def get_http_client(*args, **kwargs):
             return self.request_client(*args, **kwargs)
 
-        self.client_patcher = patch('shippo.http_client.new_default_http_client')
+        self.client_patcher = patch(
+            'shippo.http_client.new_default_http_client')
 
         client_mock = self.client_patcher.start()
         client_mock.side_effect = get_http_client
@@ -42,7 +44,8 @@ class BatchTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_invalid_create(self):
-        self.assertRaises(shippo.error.InvalidRequestError, shippo.Batch.create)
+        self.assertRaises(shippo.error.InvalidRequestError,
+                          shippo.Batch.create)
         INVALID = INVALID_BATCH.copy()
         self.assertRaises(
             shippo.error.InvalidRequestError,
@@ -67,7 +70,8 @@ class BatchTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_invalid_retrieve(self):
-        self.assertRaises(shippo.error.APIError, shippo.Batch.retrieve, 'EXAMPLE_OF_INVALID_ID')
+        self.assertRaises(shippo.error.APIError,
+                          shippo.Batch.retrieve, 'EXAMPLE_OF_INVALID_ID')
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_add(self):
@@ -151,6 +155,7 @@ class BatchTests(ShippoTestCase):
             shippo.Batch.purchase,
             'INVALID_OBJECT_ID'
         )
+
 
 if __name__ == '__main__':
     unittest2.main()

@@ -74,7 +74,8 @@ class ShipmentTests(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/shipment')
     def test_get_rates_blocking(self):
         shipment = create_mock_shipment()
-        rates = shippo.Shipment.get_rates(shipment.object_id, asynchronous=False)
+        rates = shippo.Shipment.get_rates(
+            shipment.object_id, asynchronous=False)
         self.assertTrue('results' in rates)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/shipment')

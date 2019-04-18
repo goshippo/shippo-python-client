@@ -29,4 +29,3 @@ if not (json and hasattr(json, 'loads')):
                 "python simplejson library via 'pip install simplejson' "
                 "or 'easy_install simplejson', or contact support@goshippo.com"
                 "with questions.")
-

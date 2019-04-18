@@ -94,10 +94,14 @@ for delivery_address_zip_code in DESTINATION_ADDRESSES_ZIP_CODES:
     # `shipping_costs` dictionary to analyse it later.
     for delivery_window in DELIVERY_WINDOWS:
         # Filter rates that are within delivery window
-        eligible_rates = (rate for rate in rates if rate['estimated_days'] <= delivery_window)
-        new_rate_prices = list(float(rate['amount']) for rate in eligible_rates if rate['amount'])
-        existing_rate_prices = shipping_costs[str(delivery_window)] if str(delivery_window) in shipping_costs else []
-        shipping_costs[str(delivery_window)] = existing_rate_prices + new_rate_prices
+        eligible_rates = (
+            rate for rate in rates if rate['estimated_days'] <= delivery_window)
+        new_rate_prices = list(float(rate['amount'])
+                               for rate in eligible_rates if rate['amount'])
+        existing_rate_prices = shipping_costs[str(delivery_window)] if str(
+            delivery_window) in shipping_costs else []
+        shipping_costs[str(delivery_window)
+                       ] = existing_rate_prices + new_rate_prices
 
 """
 Now that we have the costs per delivery window for all sample destination

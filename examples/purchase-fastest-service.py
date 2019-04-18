@@ -68,23 +68,26 @@ shipment = shippo.Shipment.create(
 rates = shipment.rates
 
 # Find the fastest possible transite time
-eligible_rates = (rate for rate in rates if rate['days'] <= MAX_TRANSIT_TIME_DAYS)
+eligible_rates = (
+    rate for rate in rates if rate['days'] <= MAX_TRANSIT_TIME_DAYS)
 rate = min(eligible_rates, key=lambda x: float(x['amount']))
-print("Picked service %s %s for %s %s with est. transit time of %s days" % \
-    (rate['provider'], rate['servicelevel']['name'], rate['currency'], rate['amount'], rate['days']))
+print("Picked service %s %s for %s %s with est. transit time of %s days" %
+      (rate['provider'], rate['servicelevel']['name'], rate['currency'], rate['amount'], rate['days']))
 
 # Purchase the desired rate. asynchronous=False indicates that the function will wait until the
 # carrier returns a shipping label before it returns
-transaction = shippo.Transaction.create(rate=rate.object_id, asynchronous=False)
+transaction = shippo.Transaction.create(
+    rate=rate.object_id, asynchronous=False)
 
 # print label_url and tracking_number
 if transaction.status == "SUCCESS":
-    print("Purchased label with tracking number %s" % transaction.tracking_number)
+    print("Purchased label with tracking number %s" %
+          transaction.tracking_number)
     print("The label can be downloaded at %s" % transaction.label_url)
 else:
     print("Failed purchasing the label due to:")
     for message in transaction.messages:
         print("- %s" % message['text'])
 
-#For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our
-#complete documentation: https://goshippo.com/docs/
+# For more tutorals of address validation, tracking, returns, refunds, and other functionality, check out our
+# complete documentation: https://goshippo.com/docs/

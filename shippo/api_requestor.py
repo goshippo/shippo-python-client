@@ -66,6 +66,7 @@ class APIRequestor(object):
 
     def request(self, method, url, params=None):
         self._check_ssl_cert()
+
         rbody, rcode, my_api_key = self.request_raw(
             method.lower(), url, params)
 
@@ -111,7 +112,8 @@ class APIRequestor(object):
 
         if method == 'get' or method == 'delete':
             if params:
-                encoded_params = urllib.parse.urlencode(list(_api_encode(params or {})))
+                encoded_params = urllib.parse.urlencode(
+                    list(_api_encode(params or {})))
                 abs_url = _build_api_url(abs_url, encoded_params)
             post_data = None
         elif method == 'post' or method == 'put':

@@ -203,69 +203,69 @@ DUMMY_BATCH = {
     "metadata": "BATCH #170",
     "batch_shipments": [
         {
-          "shipment": {
-            "address_from": {
-              "name": "Mr Hippo",
-              "street1": "965 Mission St",
-              "street2": "Ste 201",
-              "city": "San Francisco",
-              "state": "CA",
-              "zip": "94103",
-              "country": "US",
-              "phone": "4151234567",
-            },
-            "address_to": {
-              "name": "Mrs Hippo",
-              "company": "",
-              "street1": "Broadway 1",
-              "street2": "",
-              "city": "New York",
-              "state": "NY",
-              "zip": "10007",
-              "country": "US",
-              "phone": "4151234567",
-            },
-            "parcels": [{
-              "length": "5",
-              "width": "5",
-              "height": "5",
-              "distance_unit": "in",
-              "weight": "2",
-              "mass_unit": "oz"
-            }]
-          }
+            "shipment": {
+                "address_from": {
+                    "name": "Mr Hippo",
+                    "street1": "965 Mission St",
+                    "street2": "Ste 201",
+                    "city": "San Francisco",
+                    "state": "CA",
+                    "zip": "94103",
+                    "country": "US",
+                    "phone": "4151234567",
+                },
+                "address_to": {
+                    "name": "Mrs Hippo",
+                    "company": "",
+                    "street1": "Broadway 1",
+                    "street2": "",
+                    "city": "New York",
+                    "state": "NY",
+                    "zip": "10007",
+                    "country": "US",
+                    "phone": "4151234567",
+                },
+                "parcels": [{
+                    "length": "5",
+                    "width": "5",
+                    "height": "5",
+                    "distance_unit": "in",
+                    "weight": "2",
+                    "mass_unit": "oz"
+                }]
+            }
         },
         {
-          "shipment": {
-            "address_from": {
-              "name": "Mr Hippo",
-              "street1": "1092 Indian Summer Ct",
-              "city": "San Jose",
-              "state": "CA",
-              "zip": "95122",
-              "country": "US",
-              "phone": "4151234567",
-            },
-            "address_to": {
-              "name": "Mrs Hippo",
-              "company": "",
-              "street1": "Broadway 1",
-              "street2": "",
-              "city": "New York",
-              "state": "NY",
-              "zip": "10007",
-              "country": "US",
-              "phone": "4151234567",
-            },
-            "parcels": [{
-              "length": "5",
-              "width": "5",
-              "height": "5",
-              "distance_unit": "in",
-              "weight": "2",
-              "mass_unit": "oz"
-            }]
-          }
+            "shipment": {
+                "address_from": {
+                    "name": "Mr Hippo",
+                    "street1": "1092 Indian Summer Ct",
+                    "city": "San Jose",
+                    "state": "CA",
+                    "zip": "95122",
+                    "country": "US",
+                    "phone": "4151234567",
+                },
+                "address_to": {
+                    "name": "Mrs Hippo",
+                    "company": "",
+                    "street1": "Broadway 1",
+                    "street2": "",
+                    "city": "New York",
+                    "state": "NY",
+                    "zip": "10007",
+                    "country": "US",
+                    "phone": "4151234567",
+                },
+                "parcels": [{
+                    "length": "5",
+                    "width": "5",
+                    "height": "5",
+                    "distance_unit": "in",
+                    "weight": "2",
+                    "mass_unit": "oz"
+                }]
+            }
         }
     ]
 }
@@ -306,7 +306,8 @@ def create_mock_manifest(transaction=None):
 def create_mock_transaction(asynchronous=False):
     shipment = create_mock_shipment(asynchronous)
     rates = shipment.rates
-    usps_rate = list([x for x in rates if x.servicelevel.token == 'usps_priority'])[0]
+    usps_rate = list(
+        [x for x in rates if x.servicelevel.token == 'usps_priority'])[0]
     t = DUMMY_TRANSACTION.copy()
     t['rate'] = usps_rate.object_id
     t['asynchronous'] = asynchronous
@@ -319,7 +320,8 @@ def create_mock_international_shipment():
     customs_item = shippo.CustomsItem.create(**DUMMY_CUSTOMS_ITEM)
     customs_declaration_parameters = DUMMY_CUSTOMS_DECLARATION.copy()
     customs_declaration_parameters["items"][0] = customs_item.object_id
-    customs_declaration = shippo.CustomsDeclaration.create(**customs_declaration_parameters)
+    customs_declaration = shippo.CustomsDeclaration.create(
+        **customs_declaration_parameters)
     SHIPMENT['customs_declaration'] = customs_declaration.object_id
     shipment = shippo.Shipment.create(**SHIPMENT)
     return shipment
@@ -340,7 +342,8 @@ class ShippoTestCase(TestCase):
         if api_base:
             shippo.api_base = api_base
 
-        shippo.api_key = os.environ.get('SHIPPO_API_KEY', '51895b669caa45038110fd4074e61e0d')
+        shippo.api_key = os.environ.get(
+            'SHIPPO_API_KEY', '51895b669caa45038110fd4074e61e0d')
         shippo.api_version = os.environ.get('SHIPPO_API_VERSION', '2017-03-29')
 
     def tearDown(self):

@@ -306,14 +306,14 @@ class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
         """
         if 'sync' in params:
             warnings.warn('The `sync` parameter is deprecated. '
-                            'Use `asynchronous` while creating a shipment instead.', DeprecationWarning)
+                          'Use `asynchronous` while creating a shipment instead.', DeprecationWarning)
             # will be removed in the next major version
             if params.get('sync') is not None:
                 asynchronous = not params['sync']
 
         if 'async' in params:
             warnings.warn('The `async` parameter is deprecated. '
-                            'Use `asynchronous` while creating a shipment instead.', DeprecationWarning)
+                          'Use `asynchronous` while creating a shipment instead.', DeprecationWarning)
             # will be removed in the next major version
             if params.get('async') is not None:
                 asynchronous = params['async']
