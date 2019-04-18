@@ -65,7 +65,10 @@ class APIRequestor(object):
             verify_ssl_certs=verify_ssl_certs)
 
     def request(self, method, url, params=None):
-        self._check_ssl_cert()
+        self._check_ssl_cert()\
+
+        if params is not None and isinstance(params, dict):
+            params = {('async' if k == 'asynchronous' else k): v for k, v in params.items()}
 
         rbody, rcode, my_api_key = self.request_raw(
             method.lower(), url, params)
