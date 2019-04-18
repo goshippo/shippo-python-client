@@ -82,8 +82,6 @@ class APIRequestor(object):
             raise error.InvalidRequestError(rbody, rcode, resp)
         elif rcode == 401:
             raise error.AuthenticationError(rbody, rcode, resp)
-        elif rcode == 402:
-            raise error.CardError(rbody, rcode, resp)
         else:
             raise error.APIError(rbody, rcode, resp)
 
