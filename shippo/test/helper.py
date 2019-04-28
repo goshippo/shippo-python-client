@@ -336,21 +336,24 @@ class ShippoTestCase(TestCase):
         self._shippo_original_attributes = {}
 
         for attr in self.RESTORE_ATTRIBUTES:
-            self._shippo_original_attributes[attr] = getattr(shippo, attr)
+            self._shippo_original_attributes[attr] = getattr(
+                shippo.config, attr)
 
         api_base = os.environ.get('SHIPPO_API_BASE')
         if api_base:
-            shippo.api_base = api_base
+            shippo.config.api_base = api_base
 
-        shippo.api_key = os.environ.get(
+        shippo.config.api_key = os.environ.get(
             'SHIPPO_API_KEY', '51895b669caa45038110fd4074e61e0d')
-        shippo.api_version = os.environ.get('SHIPPO_API_VERSION', '2017-03-29')
+        shippo.config.api_version = os.environ.get(
+            'SHIPPO_API_VERSION', '2017-03-29')
 
     def tearDown(self):
         super(ShippoTestCase, self).tearDown()
 
         for attr in self.RESTORE_ATTRIBUTES:
-            setattr(shippo, attr, self._shippo_original_attributes[attr])
+            setattr(shippo.config, attr,
+                    self._shippo_original_attributes[attr])
 
     # Python < 2.7 compatibility
     def assertRaisesRegexp(self, exception, regexp, callable, *args, **kwargs):

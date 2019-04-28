@@ -6,7 +6,7 @@ recipient address and parcel information that we need to ship.
 """
 
 # Replace <API-KEY> with your key
-shippo.api_key = "<API-KEY>"
+shippo.config.api_key = "<API-KEY>"
 
 # Example address_from object dict
 # The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses

@@ -6,7 +6,7 @@ In this tutorial we see how to use and interact with batches
 """
 
 # Replace <API-KEY> with your key
-shippo.api_key = "<API-KEY>"
+shippo.config.api_key = "<API-KEY>"
 
 example_batch = {
     # replace with your carrier account

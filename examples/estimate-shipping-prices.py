@@ -35,7 +35,7 @@ DELIVERY_WINDOWS = [1, 3, 7]
 DESTINATION_ADDRESSES_ZIP_CODES = [10007, 60290, 95122]
 
 # replace <API-KEY> with your key
-shippo.api_key = "<API-KEY>"
+shippo.config.api_key = "<API-KEY>"
 
 # sample address_from
 # The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses

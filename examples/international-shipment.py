@@ -11,7 +11,7 @@ the cheapest shipping label with a transit time <= 3 days.
 """
 
 # replace <API-KEY> with your key
-shippo.api_key = "<API-KEY>"
+shippo.config.api_key = "<API-KEY>"
 
 # Example address_from object dict
 # The complete reference for the address object is available here: https://goshippo.com/docs/reference#addresses

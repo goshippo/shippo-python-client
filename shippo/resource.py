@@ -2,8 +2,10 @@ import urllib.parse
 import sys
 import time
 import warnings
+import shippo.config as config
+from shippo import api_requestor, error, util
+from shippo.config import rates_req_timeout
 
-from shippo import api_requestor, error, util, rates_req_timeout
 
 warnings.filterwarnings('always', category=DeprecationWarning, module='shippo')
 

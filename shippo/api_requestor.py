@@ -59,7 +59,7 @@ class APIRequestor(object):
     def __init__(self, key=None, client=None):
         self.api_key = key
 
-        from shippo import verify_ssl_certs
+        from shippo.config import verify_ssl_certs
 
         self._client = client or http_client.new_default_http_client(
             verify_ssl_certs=verify_ssl_certs)
@@ -89,18 +89,18 @@ class APIRequestor(object):
         """
         Mechanism for issuing an API call
         """
-        from shippo import api_version
+        from shippo.config import api_version
 
         if self.api_key:
             my_api_key = self.api_key
         else:
-            from shippo import api_key
+            from shippo.config import api_key
             my_api_key = api_key
 
         if my_api_key is None:
             raise error.AuthenticationError(
                 'No API key provided. (HINT: set your API key using '
-                '"shippo.api_key = <API-KEY>"). You can generate API keys '
+                '"shippo.api_key = shippo_test_d90f00698a0a8def0495fddb4212bb08051469d3"). You can generate API keys '
                 'from the Shippo web interface.  See https://goshippo.com/api '
                 'for details, or email support@goshippo.comom if you have any '
                 'questions.')
@@ -109,7 +109,7 @@ class APIRequestor(object):
         if my_api_key.startswith('oauth.'):
             token_type = 'Bearer'
 
-        abs_url = '%s%s' % (shippo.api_base, url)
+        abs_url = '%s%s' % (shippo.config.api_base, url)
 
         if method == 'get' or method == 'delete':
             if params:
@@ -183,10 +183,10 @@ class APIRequestor(object):
         the certificate before sending potentially sensitive data on the wire.
         This approach raises the bar for an attacker significantly."""
 
-        from shippo import verify_ssl_certs
+        from shippo.config import verify_ssl_certs
 
         if verify_ssl_certs and not self._CERTIFICATE_VERIFIED:
-            uri = urllib.parse.urlparse(shippo.api_base)
+            uri = urllib.parse.urlparse(shippo.config.api_base)
             try:
                 certificate = ssl.get_server_certificate(
                     (uri.hostname, uri.port or 443))

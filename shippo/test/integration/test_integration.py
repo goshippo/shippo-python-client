@@ -33,13 +33,13 @@ class FunctionalTests(ShippoTestCase):
         self.client_patcher.stop()
 
     def test_dns_failure(self):
-        api_base = shippo.api_base
+        api_base = shippo.config.api_base
         try:
-            shippo.api_base = 'https://my-invalid-domain.ireallywontresolve/v1'
+            shippo.config.api_base = 'https://my-invalid-domain.ireallywontresolve/v1'
             self.assertRaises(shippo.error.APIConnectionError,
                               shippo.Address.create)
         finally:
-            shippo.api_base = api_base
+            shippo.config.api_base = api_base
 
     def test_run(self):
         try:
