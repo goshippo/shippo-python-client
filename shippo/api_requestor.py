@@ -109,6 +109,9 @@ class APIRequestor(object):
 
         abs_url = '%s%s' % (shippo.api_base, url)
 
+        if 'asynchronous' in params:
+            params['async'] = params['asynchronous']
+        
         if method == 'get' or method == 'delete':
             if params:
                 encoded_params = urllib.parse.urlencode(list(_api_encode(params or {})))
