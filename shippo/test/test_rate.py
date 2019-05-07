@@ -35,14 +35,16 @@ class RateTests(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/rate')
     def test_retrieve(self):
         shipment = create_mock_shipment()
-        rates = shippo.Shipment.get_rates(shipment.object_id, async=False)
+        rates = shippo.Shipment.get_rates(
+            shipment.object_id, asynchronous=False)
         rate = rates.results[0]
         retrieve = shippo.Rate.retrieve(rate.object_id)
         self.assertItemsEqual(rate, retrieve)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/rate')
     def test_invalid_retrieve(self):
-        self.assertRaises(shippo.error.APIError, shippo.Rate.retrieve, 'EXAMPLE_OF_INVALID_ID')
+        self.assertRaises(shippo.error.APIError,
+                          shippo.Rate.retrieve, 'EXAMPLE_OF_INVALID_ID')
 
 
 if __name__ == '__main__':

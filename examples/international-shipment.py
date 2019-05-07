@@ -2,7 +2,7 @@ import shippo
 
 """
 In this tutorial we have an order with a sender address,
-recipient address and parcel. The shipment is going from the 
+recipient address and parcel. The shipment is going from the
 United States to an international location.
 
 In addition to that we know that the customer expects the
@@ -11,7 +11,7 @@ the cheapest shipping label with a transit time <= 3 days.
 """
 
 # replace <API-KEY> with your key
-shippo.api_key = "<API-KEY>"
+shippo.config.api_key = "<API-KEY>"
 
 # Example address_from object dict
 # The complete reference for the address object is available here: https://goshippo.com/docs/reference#addresses
@@ -33,16 +33,16 @@ address_from = {
 # The complete reference for the address object is available here: https://goshippo.com/docs/reference#addresses
 
 address_to_international = {
-    "name":"Mrs. Hippo",
-    "street1":"200 University Ave W",
+    "name": "Mrs. Hippo",
+    "street1": "200 University Ave W",
     "street2": "",
-    "city":"Waterloo",
-    "state":"ON",
-    "zip":"N2L 3G1",
-    "country":"CA",
-    "phone":"+1 555 341 9393",
-    "email":"support@goshippo.com",
-    "metadata" : "For Order Number 123"
+    "city": "Waterloo",
+    "state": "ON",
+    "zip": "N2L 3G1",
+    "country": "CA",
+    "phone": "+1 555 341 9393",
+    "email": "support@goshippo.com",
+    "metadata": "For Order Number 123"
 },
 
 # parcel object dict
@@ -72,24 +72,24 @@ customs_item = {
 # Creating the CustomsDeclaration
 # The details on creating the CustomsDeclaration is here: https://goshippo.com/docs/reference#customsdeclarations
 customs_declaration = shippo.CustomsDeclaration.create(
-    contents_type= 'MERCHANDISE',
-    contents_explanation= 'T-Shirt purchase',
-    non_delivery_option= 'RETURN',
-    certify= True,
-    certify_signer= 'Mr Hippo',
-    items= [customs_item])
+    contents_type='MERCHANDISE',
+    contents_explanation='T-Shirt purchase',
+    non_delivery_option='RETURN',
+    certify=True,
+    certify_signer='Mr Hippo',
+    items=[customs_item])
 
-# Creating the shipment object. async=False indicates that the function will wait until all
+# Creating the shipment object. asynchronous=False indicates that the function will wait until all
 # rates are generated before it returns.
 
 # The reference for the shipment object is here: https://goshippo.com/docs/reference#shipments
 # By default Shippo API operates on an async basis. You can read about our async flow here: https://goshippo.com/docs/async
 shipment_international = shippo.Shipment.create(
-    address_from= address_from,
-    address_to= address_to_international,
-    parcels= [parcel],
+    address_from=address_from,
+    address_to=address_to_international,
+    parcels=[parcel],
     customs_declaration=customs_declaration.object_id,
-    async= False )
+    asynchronous=False)
 
 # Get the first rate in the rates results for demo purposes.
 # The details on the returned object are here: https://goshippo.com/docs/reference#rates
@@ -97,16 +97,19 @@ rate_international = shipment_international.rates[0]
 
 # Purchase the desired rate.
 # The complete information about purchasing the label: https://goshippo.com/docs/reference#transaction-create
-transaction_international = shippo.Transaction.create(rate=rate_international.object_id, async=False)
+transaction_international = shippo.Transaction.create(
+    rate=rate_international.object_id, asynchronous=False)
 
 # print label_url and tracking_number
 if transaction_international.status == "SUCCESS":
-    print "Purchased label with tracking number %s" % transaction_international.tracking_number
-    print "The label can be downloaded at %s" % transaction_international.label_url
+    print("Purchased label with tracking number %s" %
+          transaction_international.tracking_number)
+    print("The label can be downloaded at %s" %
+          transaction_international.label_url)
 else:
-    print "Failed purchasing the label due to:"
+    print("Failed purchasing the label due to:")
     for message in transaction_international.messages:
-        print "- %s" % message['text']
+        print("- %s" % message['text'])
 
-#For more tutorials of address validation, tracking, returns, refunds, and other functionality, check out our
-#complete documentation: https://goshippo.com/docs/
+# For more tutorials of address validation, tracking, returns, refunds, and other functionality, check out our
+# complete documentation: https://goshippo.com/docs/

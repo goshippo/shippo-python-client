@@ -33,13 +33,13 @@ class FunctionalTests(ShippoTestCase):
         self.client_patcher.stop()
 
     def test_dns_failure(self):
-        api_base = shippo.api_base
+        api_base = shippo.config.api_base
         try:
-            shippo.api_base = 'https://my-invalid-domain.ireallywontresolve/v1'
+            shippo.config.api_base = 'https://my-invalid-domain.ireallywontresolve/v1'
             self.assertRaises(shippo.error.APIConnectionError,
                               shippo.Address.create)
         finally:
-            shippo.api_base = api_base
+            shippo.config.api_base = api_base
 
     def test_run(self):
         try:
@@ -48,7 +48,7 @@ class FunctionalTests(ShippoTestCase):
             address_validated = shippo.Address.validate(address.object_id)
             self.assertEqual(address_validated.is_complete, True)
         except shippo.error.AuthenticationError:
-                self.fail('Set your SHIPPO_API_KEY in your os.environ')
+            self.fail('Set your SHIPPO_API_KEY in your os.environ')
         except Exception as inst:
             self.fail("Test failed with exception %s" % inst)
 
@@ -66,12 +66,13 @@ class FunctionalTests(ShippoTestCase):
         # Make sure unicode requests can be sent
         self.assertRaises(shippo.error.APIError,
                           shippo.Address.retrieve,
-                          u'☃')
+                          '☃')
 
     def test_get_rates(self):
         try:
             shipment = create_mock_shipment()
-            rates = shippo.Shipment.get_rates(shipment.object_id, async=False)
+            rates = shippo.Shipment.get_rates(
+                shipment.object_id, asynchronous=False)
         except shippo.error.InvalidRequestError:
             pass
         except shippo.error.AuthenticationError:
@@ -84,6 +85,7 @@ class FunctionalTests(ShippoTestCase):
     # def test_missing_id(self):
     #     address = shippo.Address()
     #     self.assertRaises(shippo.error.APIError, address.refresh)
+
 
 if __name__ == '__main__':
     unittest2.main()

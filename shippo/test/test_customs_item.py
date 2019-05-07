@@ -50,7 +50,8 @@ class CustomsItemTest(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/customs-item')
     def test_invalid_retrieve(self):
-        self.assertRaises(shippo.error.APIError, shippo.CustomsItem.retrieve, 'EXAMPLE_OF_INVALID_ID')
+        self.assertRaises(shippo.error.APIError,
+                          shippo.CustomsItem.retrieve, 'EXAMPLE_OF_INVALID_ID')
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/customs-item')
     def test_list_all(self):

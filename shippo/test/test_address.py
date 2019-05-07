@@ -79,5 +79,6 @@ class AddressTests(ShippoTestCase):
         self.assertEqual(address.is_complete, True)
         address = shippo.Address.validate(address.object_id)
 
+
 if __name__ == '__main__':
     unittest2.main()

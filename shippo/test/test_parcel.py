@@ -35,7 +35,8 @@ class ParcelTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/parcel')
     def test_invalid_create(self):
-        self.assertRaises(shippo.error.InvalidRequestError, shippo.Parcel.create, **INVALID_PARCEL)
+        self.assertRaises(shippo.error.InvalidRequestError,
+                          shippo.Parcel.create, **INVALID_PARCEL)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/parcel')
     def test_create(self):
@@ -50,7 +51,8 @@ class ParcelTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/parcel')
     def test_invalid_retrieve(self):
-        self.assertRaises(shippo.error.APIError, shippo.Parcel.retrieve, 'EXAMPLE_OF_INVALID_ID')
+        self.assertRaises(shippo.error.APIError,
+                          shippo.Parcel.retrieve, 'EXAMPLE_OF_INVALID_ID')
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/parcel')
     def test_list_all(self):

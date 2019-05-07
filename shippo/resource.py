@@ -1,9 +1,11 @@
-import urllib
+import urllib.parse
 import sys
 import time
 import warnings
+import shippo.config as config
+from shippo import api_requestor, error, util
+from shippo.config import rates_req_timeout
 
-from shippo import api_requestor, error, util, rates_req_timeout
 
 warnings.filterwarnings('always', category=DeprecationWarning, module='shippo')
 
@@ -46,7 +48,7 @@ class ShippoObject(dict):
 
         try:
             return self[k]
-        except KeyError, err:
+        except KeyError as err:
             raise AttributeError(*err.args)
 
     def __setitem__(self, k, v):
@@ -68,7 +70,7 @@ class ShippoObject(dict):
     def __getitem__(self, k):
         try:
             return super(ShippoObject, self).__getitem__(k)
-        except KeyError, err:
+        except KeyError as err:
             if k in self._transient_values:
                 raise KeyError(
                     "%r.  HINT: The %r attribute was set in the past."
@@ -76,7 +78,7 @@ class ShippoObject(dict):
                     "the result returned by Shippo's API, probably as a "
                     "result of a save().  The attributes currently "
                     "available on this object are: %s" %
-                    (k, k, ', '.join(self.keys())))
+                    (k, k, ', '.join(list(self.keys()))))
             else:
                 raise err
 
@@ -106,7 +108,7 @@ class ShippoObject(dict):
 
         self._transient_values = self._transient_values - set(values)
 
-        for k, v in values.iteritems():
+        for k, v in list(values.items()):
             super(ShippoObject, self).__setitem__(
                 k, convert_to_shippo_object(v, api_key))
 
@@ -124,10 +126,10 @@ class ShippoObject(dict):
     def __repr__(self):
         ident_parts = [type(self).__name__]
 
-        if isinstance(self.get('object'), basestring):
+        if isinstance(self.get('object'), str):
             ident_parts.append(self.get('object'))
 
-        if isinstance(self.get('object_id'), basestring):
+        if isinstance(self.get('object_id'), str):
             ident_parts.append('object_id=%s' % (self.get('object_id'),))
 
         unicode_repr = '<%s at %s> JSON: %s' % (
@@ -158,7 +160,7 @@ class APIResource(ShippoObject):
             raise NotImplementedError(
                 'APIResource is an abstract class.  You should perform '
                 'actions on its subclasses (e.g. Address, Parcel)')
-        return str(urllib.quote_plus(cls.__name__.lower()))
+        return str(urllib.parse.quote_plus(cls.__name__.lower()))
 
     @classmethod
     def class_url(cls):
@@ -171,9 +173,9 @@ class APIResource(ShippoObject):
             raise error.InvalidRequestError(
                 'Could not determine which URL to request: %s instance '
                 'has invalid ID: %r' % (type(self).__name__, object_id), 'object_id')
-        object_id = util.utf8(object_id)
+        object_id = object_id
         base = self.class_url()
-        extn = urllib.quote_plus(object_id)
+        extn = urllib.parse.quote_plus(object_id)
         return "%s/%s" % (base, extn)
 
 
@@ -199,9 +201,9 @@ class ListableAPIResource(APIResource):
         requestor = api_requestor.APIRequestor(api_key)
         url = cls.class_url()
         if size:
-            url = url+'?results='+urllib.quote_plus(str(size))
+            url = url+'?results='+urllib.parse.quote_plus(str(size))
         if page:
-            url = url+'&page='+urllib.quote_plus(str(page))
+            url = url+'&page='+urllib.parse.quote_plus(str(page))
         response, api_key = requestor.request('get', url, params)
         return convert_to_shippo_object(response, api_key)
 
@@ -210,8 +212,8 @@ class FetchableAPIResource(APIResource):
 
     @classmethod
     def retrieve(cls, object_id, api_key=None):
-        object_id = util.utf8(object_id)
-        extn = urllib.quote_plus(object_id)
+        object_id = object_id
+        extn = urllib.parse.quote_plus(object_id)
         requestor = api_requestor.APIRequestor(api_key)
         url = cls.class_url() + extn
         response, api_key = requestor.request('get', url)
@@ -222,8 +224,8 @@ class UpdateableAPIResource(APIResource):
 
     @classmethod
     def update(cls, object_id, api_key=None, **params):
-        object_id = util.utf8(object_id)
-        extn = urllib.quote_plus(object_id)
+        object_id = object_id
+        extn = urllib.parse.quote_plus(object_id)
         requestor = api_requestor.APIRequestor(api_key)
         url = cls.class_url() + extn
         response, api_key = requestor.request('put', url, params)
@@ -236,7 +238,7 @@ class Address(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
 
     @classmethod
     def validate(cls, object_id, api_key=None):
-        extn = urllib.quote_plus(object_id)
+        extn = urllib.parse.quote_plus(object_id)
         url = cls.class_url() + extn + '/validate'
         requestor = api_requestor.APIRequestor(api_key)
         response, api_key = requestor.request('get', url)
@@ -300,26 +302,19 @@ class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
     """
 
     @classmethod
-    def get_rates(cls, object_id, async=False, api_key=None, currency=None, **params):
+    def get_rates(cls, object_id, asynchronous=False, api_key=None, currency=None, **params):
         """
             Given a valid shipment object_id, all possible rates are calculated and returned.
         """
-        if 'sync' in params:
-            warnings.warn('The `sync` parameter is deprecated. '
-                          'Use `async` while creating a shipment instead.', DeprecationWarning)
-            # will be removed in the next major version
-            if params.get('sync') is not None:
-                async = not params['sync']
-
-        if not async:
+        if not asynchronous:
             timeout = time.time() + rates_req_timeout
             while cls.retrieve(object_id, api_key=api_key).status in ("QUEUED", "WAITING") and time.time() < timeout:
                 continue
 
-        shipment_id = urllib.quote_plus(object_id)
+        shipment_id = urllib.parse.quote_plus(object_id)
         url = cls.class_url() + shipment_id + '/rates/'
         if currency:
-            url = url + '' + urllib.quote_plus(currency)
+            url = url + '' + urllib.parse.quote_plus(currency)
         requestor = api_requestor.APIRequestor(api_key)
         response, api_key = requestor.request('get', url)
         return convert_to_shippo_object(response, api_key)
@@ -343,11 +338,6 @@ class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResour
             Takes the parameters as a dictionary instead of key word arguments.
         """
         # will be removed in the next major version
-        if 'sync' in params:
-            warnings.warn('The `sync` parameter is deprecated. '
-                          'Use `async` instead.', DeprecationWarning)
-            params['async'] = False if params.get('sync') is None else (not params['sync'])
-
         return super(Transaction, cls).create(api_key, **params)
 
     @classmethod
@@ -388,7 +378,7 @@ class Track(CreateableAPIResource):
         """
         A custom get method for tracking based on carrier and tracking number
         Written because the endpoint for tracking is different from our standard endpoint
-        
+
         Arguments:
             carrier_token (str) -- name of the carrier of the shipment to track
                                     see https://goshippo.com/docs/reference#carriers
@@ -401,9 +391,9 @@ class Track(CreateableAPIResource):
         Returns:
             (ShippoObject) -- The server response
         """
-        carrier_token = urllib.quote_plus(util.utf8(carrier_token))
-        tracking_number = urllib.quote_plus(util.utf8(tracking_number))
-        tn = urllib.quote_plus(tracking_number)
+        carrier_token = urllib.parse.quote_plus(carrier_token)
+        tracking_number = urllib.parse.quote_plus(tracking_number)
+        tn = urllib.parse.quote_plus(tracking_number)
         requestor = api_requestor.APIRequestor(api_key)
         url = cls.class_url() + carrier_token + '/' + tracking_number
         response, api_key = requestor.request('get', url)
@@ -413,15 +403,15 @@ class Track(CreateableAPIResource):
     def create(cls, api_key=None, **params):
         """
         Creates a webhook to keep track of the shipping status of a specific package
-                
+
         Arguments:
             **params
                 carrier (str) -- name of the carrier of the shipment to track
                                   see https://goshippo.com/docs/reference#carriers
                 tracking_number (str) -- tracking number to track
-                metadata (str) -- A string of up to 100 characters that can be filled with any 
+                metadata (str) -- A string of up to 100 characters that can be filled with any
                                    additional information you want to attach to the object
-        
+
         Keyword Arguments:
             api_key (str) -- an api key, if not specified here it will default to the key
                              set in your environment var or by shippo.api_key = "..."
@@ -445,7 +435,7 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
     def retrieve(cls, object_id, api_key=None, **params):
         """
         Retrieve a batch, customized to allow the addition of url parameters
-        
+
         Arguments:
             object_id (str) -- the batch object id
             **params
@@ -455,7 +445,7 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
                                             "creation_succeeded"
                                             "purchase_succeeded"
                                             "purchase_failed"
-        
+
         Keyword Arguments:
             api_key (str) -- an api key, if not specified here it will default to the key
                              set in your environment var or by shippo.api_key = "..."
@@ -463,8 +453,8 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
         Returns:
             (ShippoObject) -- The server response
         """
-        object_id = util.utf8(object_id)
-        extn = urllib.quote_plus(object_id)
+        object_id = object_id
+        extn = urllib.parse.quote_plus(object_id)
         glue = '?'
         for key in params:
             extn += glue + key + '=' + str(params[key])
@@ -479,7 +469,7 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
     def add(cls, object_id, shipments_to_add, api_key=None):
         """
         Add shipments to a batch
-        
+
         Arguments:
             object_id (str) -- the batch object id
             shipments_to_add (list of dict) -- list of shipments to add, must be in the format
@@ -492,8 +482,8 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
         Returns:
             (ShippoObject) -- The server response
         """
-        object_id = util.utf8(object_id)
-        extn = urllib.quote_plus(object_id)
+        object_id = object_id
+        extn = urllib.parse.quote_plus(object_id)
         requestor = api_requestor.APIRequestor(api_key)
         url = cls.class_url() + extn + '/add_shipments'
         response, api_key = requestor.request('post', url, shipments_to_add)
@@ -503,12 +493,12 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
     def remove(cls, object_id, shipments_to_remove, api_key=None):
         """
         Remove shipments from a batch
-        
+
         Arguments:
             object_id (str) -- the batch object id
             shipments_to_remove (list of str) -- list of shipments to remove, must be in the format
                 [<shipment 1 object id>, <shipment 2 object id>, ...]
-        
+
         Keyword Arguments:
             api_key (str) -- an api key, if not specified here it will default to the key
                              set in your environment var or by shippo.api_key = "..."
@@ -516,8 +506,8 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
         Returns:
             (ShippoObject) -- The server response
         """
-        object_id = util.utf8(object_id)
-        extn = urllib.quote_plus(object_id)
+        object_id = object_id
+        extn = urllib.parse.quote_plus(object_id)
         requestor = api_requestor.APIRequestor(api_key)
         url = cls.class_url() + extn + '/remove_shipments'
         response, api_key = requestor.request('post', url, shipments_to_remove)
@@ -527,10 +517,10 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
     def purchase(cls, object_id, api_key=None):
         """
         Purchase batch of shipments
-        
+
         Arguments:
             object_id (str) -- the batch object id
-        
+
         Keyword Arguments:
             api_key (str) -- an api key, if not specified here it will default to the key
                              set in your environment var or by shippo.api_key = "..."
@@ -538,8 +528,8 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
         Returns:
             (ShippoObject) -- The server response
         """
-        object_id = util.utf8(object_id)
-        extn = urllib.quote_plus(object_id)
+        object_id = object_id
+        extn = urllib.parse.quote_plus(object_id)
         requestor = api_requestor.APIRequestor(api_key)
         url = cls.class_url() + extn + '/purchase'
         response, api_key = requestor.request('post', url)
