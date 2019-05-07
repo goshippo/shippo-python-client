@@ -19,7 +19,8 @@ class TrackTests(ShippoTestCase):
         def get_http_client(*args, **kwargs):
             return self.request_client(*args, **kwargs)
 
-        self.client_patcher = patch('shippo.http_client.new_default_http_client')
+        self.client_patcher = patch(
+            'shippo.http_client.new_default_http_client')
 
         client_mock = self.client_patcher.start()
         client_mock.side_effect = get_http_client
@@ -32,7 +33,8 @@ class TrackTests(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/track')
     def test_get_status(self):
         carrier_token = 'usps'
-        tracking = shippo.Track.get_status(carrier_token, self.usps_tracking_no)
+        tracking = shippo.Track.get_status(
+            carrier_token, self.usps_tracking_no)
         self.assertTrue(tracking)
         self.assertTrue('tracking_status' in tracking)
         self.assertTrue('tracking_history' in tracking)

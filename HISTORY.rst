@@ -1,5 +1,14 @@
 Release History
 ---------------
+2.0.0rc1 (2017-03-29)
++++++++++++++++++++
+
+**Behavioural Changes**
+
+- Drop support for Python < 3.5
+- Drop `async` and `sync` parameters in favour of `asynchronous`
+- Move configurations to `shippo.config`
+
 1.5.1 (2017-04-10)
 +++++++++++++++++++
 

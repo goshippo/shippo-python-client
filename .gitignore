@@ -6,6 +6,8 @@
 *.egg
 .eggs/
 *.class
+.venv
+.vscode
 
 # Unit test / coverage reports
 .tox/

@@ -5,8 +5,7 @@ import platform
 import socket
 import ssl
 import time
-import urllib
-import urlparse
+import urllib.parse
 import warnings
 import shippo
 
@@ -24,33 +23,33 @@ def _encode_datetime(dttime):
 
 
 def _api_encode(data):
-    for key, value in data.iteritems():
-        key = util.utf8(key)
+    for key, value in list(data.items()):
+        key = key
         if value is None:
             continue
         elif hasattr(value, 'shippo_id'):
             yield (key, value.shippo_id)
         elif isinstance(value, list) or isinstance(value, tuple):
             for subvalue in value:
-                yield ("%s[]" % (key,), util.utf8(subvalue))
+                yield ("%s[]" % (key,), subvalue)
         elif isinstance(value, dict):
             subdict = dict(('%s[%s]' % (key, subkey), subvalue) for
-                           subkey, subvalue in value.iteritems())
+                           subkey, subvalue in list(value.items()))
             for subkey, subvalue in _api_encode(subdict):
                 yield (subkey, subvalue)
         elif isinstance(value, datetime.datetime):
             yield (key, _encode_datetime(value))
         else:
-            yield (key, util.utf8(value))
+            yield (key, value)
 
 
 def _build_api_url(url, query):
-    scheme, netloc, path, base_query, fragment = urlparse.urlsplit(url)
+    scheme, netloc, path, base_query, fragment = urllib.parse.urlsplit(url)
 
     if base_query:
         query = '%s&%s' % (base_query, query)
 
-    return urlparse.urlunsplit((scheme, netloc, path, query, fragment))
+    return urllib.parse.urlunsplit((scheme, netloc, path, query, fragment))
 
 
 class APIRequestor(object):
@@ -60,13 +59,17 @@ class APIRequestor(object):
     def __init__(self, key=None, client=None):
         self.api_key = key
 
-        from shippo import verify_ssl_certs
+        from shippo.config import verify_ssl_certs
 
         self._client = client or http_client.new_default_http_client(
             verify_ssl_certs=verify_ssl_certs)
 
     def request(self, method, url, params=None):
-        self._check_ssl_cert()
+        self._check_ssl_cert()\
+
+        if params is not None and isinstance(params, dict):
+            params = {('async' if k == 'asynchronous' else k): v for k, v in params.items()}
+
         rbody, rcode, my_api_key = self.request_raw(
             method.lower(), url, params)
 
@@ -79,8 +82,6 @@ class APIRequestor(object):
             raise error.InvalidRequestError(rbody, rcode, resp)
         elif rcode == 401:
             raise error.AuthenticationError(rbody, rcode, resp)
-        elif rcode == 402:
-            raise error.CardError(rbody, rcode, resp)
         else:
             raise error.APIError(rbody, rcode, resp)
 
@@ -88,18 +89,18 @@ class APIRequestor(object):
         """
         Mechanism for issuing an API call
         """
-        from shippo import api_version
+        from shippo.config import api_version
 
         if self.api_key:
             my_api_key = self.api_key
         else:
-            from shippo import api_key
+            from shippo.config import api_key
             my_api_key = api_key
 
         if my_api_key is None:
             raise error.AuthenticationError(
                 'No API key provided. (HINT: set your API key using '
-                '"shippo.api_key = <API-KEY>"). You can generate API keys '
+                '"shippo.api_key = shippo_test_d90f00698a0a8def0495fddb4212bb08051469d3"). You can generate API keys '
                 'from the Shippo web interface.  See https://goshippo.com/api '
                 'for details, or email support@goshippo.comom if you have any '
                 'questions.')
@@ -108,11 +109,12 @@ class APIRequestor(object):
         if my_api_key.startswith('oauth.'):
             token_type = 'Bearer'
 
-        abs_url = '%s%s' % (shippo.api_base, url)
+        abs_url = '%s%s' % (shippo.config.api_base, url)
 
         if method == 'get' or method == 'delete':
             if params:
-                encoded_params = urllib.urlencode(list(_api_encode(params or {})))
+                encoded_params = urllib.parse.urlencode(
+                    list(_api_encode(params or {})))
                 abs_url = _build_api_url(abs_url, encoded_params)
             post_data = None
         elif method == 'post' or method == 'put':
@@ -134,7 +136,7 @@ class APIRequestor(object):
                            ['uname', lambda: ' '.join(platform.uname())]]:
             try:
                 val = func()
-            except Exception, e:
+            except Exception as e:
                 val = "!! %s" % (e,)
             ua[attr] = val
 
@@ -181,15 +183,15 @@ class APIRequestor(object):
         the certificate before sending potentially sensitive data on the wire.
         This approach raises the bar for an attacker significantly."""
 
-        from shippo import verify_ssl_certs
+        from shippo.config import verify_ssl_certs
 
         if verify_ssl_certs and not self._CERTIFICATE_VERIFIED:
-            uri = urlparse.urlparse(shippo.api_base)
+            uri = urllib.parse.urlparse(shippo.config.api_base)
             try:
                 certificate = ssl.get_server_certificate(
                     (uri.hostname, uri.port or 443))
                 der_cert = ssl.PEM_cert_to_DER_cert(certificate)
-            except socket.error, e:
+            except socket.error as e:
                 raise error.APIConnectionError(e)
             except TypeError:
                 # The Google App Engine development server blocks the C socket

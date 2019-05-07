@@ -30,7 +30,8 @@ class AddressError(ShippoError):
 
     def __init__(self, message, param, code, http_body=None,
                  http_status=None, json_body=None):
-        super(AddressError, self).__init__(message, http_body, http_status, json_body)
+        super(AddressError, self).__init__(
+            message, http_body, http_status, json_body)
         self.param = param
         self.code = code
 

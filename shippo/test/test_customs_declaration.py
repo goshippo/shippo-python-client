@@ -44,7 +44,8 @@ class CustomsDeclarationTests(ShippoTestCase):
         customs_item = shippo.CustomsItem.create(**DUMMY_CUSTOMS_ITEM)
         customs_declaration_parameters = DUMMY_CUSTOMS_DECLARATION.copy()
         customs_declaration_parameters["items"][0] = customs_item.object_id
-        CustomsDeclaration = shippo.CustomsDeclaration.create(**customs_declaration_parameters)
+        CustomsDeclaration = shippo.CustomsDeclaration.create(
+            **customs_declaration_parameters)
         self.assertEqual(CustomsDeclaration.object_state, 'VALID')
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/customs-declaration')
@@ -52,9 +53,11 @@ class CustomsDeclarationTests(ShippoTestCase):
         customs_item = shippo.CustomsItem.create(**DUMMY_CUSTOMS_ITEM)
         customs_declaration_parameters = DUMMY_CUSTOMS_DECLARATION.copy()
         customs_declaration_parameters["items"][0] = customs_item.object_id
-        CustomsDeclaration = shippo.CustomsDeclaration.create(**customs_declaration_parameters)
+        CustomsDeclaration = shippo.CustomsDeclaration.create(
+            **customs_declaration_parameters)
         # Test Retrieving Object
-        retrieve = shippo.CustomsDeclaration.retrieve(CustomsDeclaration.object_id)
+        retrieve = shippo.CustomsDeclaration.retrieve(
+            CustomsDeclaration.object_id)
         self.assertItemsEqual(CustomsDeclaration, retrieve)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/customs-declaration')
@@ -75,6 +78,7 @@ class CustomsDeclarationTests(ShippoTestCase):
         pagesize = 1
         customs_declaration_list = shippo.CustomsDeclaration.all(size=pagesize)
         self.assertEqual(len(customs_declaration_list.results), pagesize)
+
 
 if __name__ == '__main__':
     unittest2.main()
