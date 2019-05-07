@@ -9,6 +9,22 @@ Print a shipping label in 10 mins using our default USPS and DHL Express account
 
 You will first need to [register for a Shippo account](https://goshippo.com/) to use our API. It's free to sign up, free to use the API. Only pay to print a live label, test labels are free.
 
+### Migrating to V2
+
+#### Configuration
+
+Configurable variables previously available in the main module (ex: `shippo.api_key`) have been moved to the `shippo.config` module.
+
+```python
+
+import shippo
+
+shippo.config.api_key = "<API-KEY>"
+shippo.config.api_version = "2017-03-29"
+shippo.config.verify_ssl_certs = True
+shippo.config.rates_req_timeout = 30.0
+```
+
 ### How do I get set up?
 
 #### To install from the source file:
@@ -54,7 +70,7 @@ sudo easy_install mock
 ```python
 
 import shippo
-shippo.config.api_key = "shippo_test_d90f00698a0a8def0495fddb4212bb08051469d3"
+shippo.config.api_key = "<API-KEY>"
 
 address1 = shippo.Address.create(
     name='John Smith',
