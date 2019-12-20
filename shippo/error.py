@@ -10,7 +10,7 @@ class ShippoError(Exception):
                 http_body = http_body.decode('utf-8')
             except:
                 http_body = ('<Could not decode body as utf-8. '
-                             'Please report to support@goshippo.comom>')
+                             'Please report to support@goshippo.com>')
 
         self.http_body = http_body
 

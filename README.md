@@ -20,7 +20,7 @@ Configurable variables previously available in the main module (ex: `shippo.api_
 import shippo
 
 shippo.config.api_key = "<API-KEY>"
-shippo.config.api_version = "2017-03-29"
+shippo.config.api_version = "2018-02-08"
 shippo.config.verify_ssl_certs = True
 shippo.config.rates_req_timeout = 30.0
 ```
