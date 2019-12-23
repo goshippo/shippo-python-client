@@ -68,10 +68,10 @@ rates = shipment.rates
 
 # filter rates by max. transit time, then select cheapest
 eligible_rate = (
-    rate for rate in rates if rate['days'] <= MAX_TRANSIT_TIME_DAYS)
+    rate for rate in rates if rate['estimated_days'] <= MAX_TRANSIT_TIME_DAYS)
 rate = min(eligible_rate, key=lambda x: float(x['amount']))
 print("Picked service %s %s for %s %s with est. transit time of %s days" %
-      (rate['provider'], rate['servicelevel']['name'], rate['currency'], rate['amount'], rate['days']))
+      (rate['provider'], rate['servicelevel']['name'], rate['currency'], rate['amount'], rate['estimated_days']))
 
 # Purchase the desired rate. asynchronous=False indicates that the function will wait until the
 # carrier returns a shipping label before it returns
