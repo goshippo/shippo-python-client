@@ -25,7 +25,7 @@ def verify(hostname, certificate):
                        "connect to a server that has a revoked "
                        "SSL certificate, which means we cannot "
                        "securely send data to that server. "
-                       "Please email support@goshippo.comom if you "
+                       "Please email support@goshippo.com if you "
                        "need help connecting to the correct API "
                        "server.")
     return True

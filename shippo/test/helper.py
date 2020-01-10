@@ -346,7 +346,7 @@ class ShippoTestCase(TestCase):
         shippo.config.api_key = os.environ.get(
             'SHIPPO_API_KEY', '51895b669caa45038110fd4074e61e0d')
         shippo.config.api_version = os.environ.get(
-            'SHIPPO_API_VERSION', '2017-03-29')
+            'SHIPPO_API_VERSION', '2018-02-08')
 
     def tearDown(self):
         super(ShippoTestCase, self).tearDown()

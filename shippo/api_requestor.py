@@ -100,9 +100,9 @@ class APIRequestor(object):
         if my_api_key is None:
             raise error.AuthenticationError(
                 'No API key provided. (HINT: set your API key using '
-                '"shippo.api_key = shippo_test_d90f00698a0a8def0495fddb4212bb08051469d3"). You can generate API keys '
+                '"shippo.config.api_key = shippo_test_d90f00698a0a8def0495fddb4212bb08051469d3"). You can generate API keys '
                 'from the Shippo web interface.  See https://goshippo.com/api '
-                'for details, or email support@goshippo.comom if you have any '
+                'for details, or email support@goshippo.com if you have any '
                 'questions.')
 
         token_type = 'ShippoToken'
@@ -122,7 +122,7 @@ class APIRequestor(object):
         else:
             raise error.APIConnectionError(
                 'Unrecognized HTTP method %r.  This may indicate a bug in the '
-                'Shippo bindings.  Please contact support@goshippo.com.com for '
+                'Shippo bindings.  Please contact support@goshippo.com for '
                 'assistance.' % (method,))
 
         ua = {

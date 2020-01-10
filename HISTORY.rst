@@ -1,6 +1,13 @@
 Release History
 ---------------
-2.0.0rc1 (2017-03-29)
+
+2.0.0 (2020-01-10)
+
+**Behavioural Changes**
+
+- Update default API version to 2018-02-08. For more information on versioning and upgrading your version, please refer to https://goshippo.com/docs/versioning
+
+2.0.0rc1 (2019-05-06)
 +++++++++++++++++++
 
 **Behavioural Changes**
