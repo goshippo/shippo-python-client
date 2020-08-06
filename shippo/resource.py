@@ -364,6 +364,65 @@ class CarrierAccount(CreateableAPIResource, ListableAPIResource, FetchableAPIRes
     def class_url(cls):
         return "v1/carrier_accounts/"
 
+class Webhook(CreateableAPIResource,UpdateableAPIResource,ListableAPIResource):
+    """
+    retrieve, update and delete webhooks for a Shippo account programmatically. The same functionality is already exposed in the Shippo dashboard at https://app.goshippo.com/api/.
+    """
+
+    @classmethod
+    def list_webhooks(cls, api_key=None, **params):
+        return super(Webhook, cls).all(api_key, **params)
+
+    def create_new(cls, api_key=None, **params):
+        """Create a Webhook to push events from Shippo (i.e tracking,transations)
+
+        Arguments:
+            **params
+                url (str) -- url of your webhook (make sure it is not behind basic auth.
+                                  endpoint must return 200 when it receives a POST  
+                event (str) -- any valid webhook event as listed here https://goshippo.com/docs/webhooks.
+                is_test (str) -- set the webhook object to test or live mode
+        Keyword Arguments:
+            api_key (str) -- an api key, if not specified here it will default to the key
+                             set in your environment var or by shippo.api_key = "..."
+
+        Returns:
+            (ShippoObject) -- The server response
+        """
+
+        return super(Webhook, cls).create(api_key, **params)
+
+    def update(cls, api_key=None, **params):
+        """
+            Update webhook's url, is_test, and/or event
+        """
+        return super(Webhook, cls).update(api_key, **params)
+
+    @classmethod
+    def delete(cls, object_id, api_key=None):
+        """ Remove webhook
+
+        Arguments:
+            object_id (str) -- object_id of webhook
+        Keyword Arguments:
+            api_key (str) -- an api key, if not specified here it will default to the key
+                             set in your environment var or by shippo.api_key = "..."
+
+        Returns:
+            (ShippoObject) -- The server response
+        """
+        object_id = object_id
+        extn = urllib.parse.quote_plus(object_id)
+        requestor = api_requestor.APIRequestor(api_key)
+        url = cls.class_url() + extn 
+        response = requestor.request_raw('delete', url)
+        return convert_to_shippo_object(response, api_key)
+
+    @classmethod
+    def class_url(cls):
+        cls_name = cls.class_name()
+        return "v1/%ss/" % (cls_name,)
+
 
 class Track(CreateableAPIResource):
     """
