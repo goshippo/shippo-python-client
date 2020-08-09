@@ -224,6 +224,7 @@ class UpdateableAPIResource(APIResource):
 
     @classmethod
     def update(cls, object_id, api_key=None, **params):
+        import pdb; pdb.set_trace()
         object_id = object_id
         extn = urllib.parse.quote_plus(object_id)
         requestor = api_requestor.APIRequestor(api_key)
