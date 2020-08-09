@@ -231,6 +231,15 @@ class UpdateableAPIResource(APIResource):
         response, api_key = requestor.request('put', url, params)
         return convert_to_shippo_object(response, api_key)
 
+    @classmethod
+    def remove(cls, object_id, api_key=None):
+        object_id = object_id
+        extn = urllib.parse.quote_plus(object_id)
+        requestor = api_requestor.APIRequestor(api_key)
+        url = cls.class_url() + extn
+        response, api_key = requestor.request('delete', url)
+        return convert_to_shippo_object(response, api_key)
+
 
 # ---- API objects ----
 
@@ -364,16 +373,25 @@ class CarrierAccount(CreateableAPIResource, ListableAPIResource, FetchableAPIRes
     def class_url(cls):
         return "v1/carrier_accounts/"
 
-class Webhook(CreateableAPIResource,UpdateableAPIResource,ListableAPIResource):
+class Webhook(CreateableAPIResource, ListableAPIResource, FetchableAPIResource, UpdateableAPIResource):
     """
     retrieve, update and delete webhooks for a Shippo account programmatically. The same functionality is already exposed in the Shippo dashboard at https://app.goshippo.com/api/.
+
+    To add both a webhook and track a url at the same see the shippo.Track.create function.
     """
 
     @classmethod
+    def class_url(cls):
+        cls_name = cls.class_name()
+        return "v1/%ss/" % (cls_name,)
+
+    @classmethod
     def list_webhooks(cls, api_key=None, **params):
+        """List all the webhooks associated with the account"""
         return super(Webhook, cls).all(api_key, **params)
 
-    def create_new(cls, api_key=None, **params):
+    @classmethod
+    def create(cls, api_key=None, **params):
         """Create a Webhook to push events from Shippo (i.e tracking,transations)
 
         Arguments:
@@ -391,15 +409,16 @@ class Webhook(CreateableAPIResource,UpdateableAPIResource,ListableAPIResource):
         """
 
         return super(Webhook, cls).create(api_key, **params)
-
-    def update(cls, api_key=None, **params):
+    
+    @classmethod
+    def update_webhook(cls, api_key=None, **params):
         """
             Update webhook's url, is_test, and/or event
         """
         return super(Webhook, cls).update(api_key, **params)
 
     @classmethod
-    def delete(cls, object_id, api_key=None):
+    def delete(cls, api_key=None, **params):
         """ Remove webhook
 
         Arguments:
@@ -411,17 +430,9 @@ class Webhook(CreateableAPIResource,UpdateableAPIResource,ListableAPIResource):
         Returns:
             (ShippoObject) -- The server response
         """
-        object_id = object_id
-        extn = urllib.parse.quote_plus(object_id)
-        requestor = api_requestor.APIRequestor(api_key)
-        url = cls.class_url() + extn 
-        response = requestor.request_raw('delete', url)
-        return convert_to_shippo_object(response, api_key)
+        return super(Webhook, cls).remove(api_key, **params))
 
-    @classmethod
-    def class_url(cls):
-        cls_name = cls.class_name()
-        return "v1/%ss/" % (cls_name,)
+
 
 
 class Track(CreateableAPIResource):
