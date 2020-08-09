@@ -232,7 +232,7 @@ class UpdateableAPIResource(APIResource):
         return convert_to_shippo_object(response, api_key)
 
     @classmethod
-    def remove(cls, object_id, api_key=None):
+    def remove(cls, object_id, api_key=None, **params):
         object_id = object_id
         extn = urllib.parse.quote_plus(object_id)
         requestor = api_requestor.APIRequestor(api_key)
