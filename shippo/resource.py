@@ -411,11 +411,11 @@ class Webhook(CreateableAPIResource, ListableAPIResource, FetchableAPIResource, 
         return super(Webhook, cls).create(api_key, **params)
     
     @classmethod
-    def update_webhook(cls, api_key=None, **params):
+    def update_webhook(object_id, api_key=None, **params):
         """
             Update webhook's url, is_test, and/or event
         """
-        return super(Webhook, cls).update(api_key, **params)
+        return super(Webhook, cls, object_id).update(api_key, **params)
 
     @classmethod
     def delete(cls, api_key=None, **params):
