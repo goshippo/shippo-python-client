@@ -430,7 +430,7 @@ class Webhook(CreateableAPIResource, ListableAPIResource, FetchableAPIResource, 
         Returns:
             (ShippoObject) -- The server response
         """
-        return super(Webhook, cls).remove(api_key, **params))
+        return super(Webhook, cls).remove(api_key, **params)
 
 
 
