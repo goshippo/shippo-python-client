@@ -23,12 +23,6 @@ carrier_token = 'usps'
 tracking = shippo.Track.get_status(carrier_token, tracking_number)
 print(tracking)
 
-
-# Create a webhook endpoint (FYI-basic auth not supported) 
-# For a full list of Webhook Event Types see https://goshippo.com/docs/webhooks/
-
-
-
 # Create a webhook endpoint (FYI-basic auth not supported) 
 # For a full list of Webhook Event Types see https://goshippo.com/docs/webhooks/
 new_webhook_response = shippo.Webhook.create(url='https://exampledomain.com',event='all') 
