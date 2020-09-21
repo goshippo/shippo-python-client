@@ -160,13 +160,11 @@ class APIRequestor(object):
 
     def interpret_response(self, rbody, rcode):
         try:
-            if hasattr(rbody, 'decode'):
+            if hasattr(rbody, 'decode') and rbody != '':
                 rbody = rbody.decode('utf-8')
-                if rbody == '':
-                    rbody = '{"msg": "empty_response"}'
                 resp = util.json.loads(rbody)
             else:
-                return "empty response"
+                return '{"msg": "empty_response"}'
         except Exception:
             raise error.APIError(
                 "Invalid response body from API: %s "
