@@ -23,7 +23,24 @@ carrier_token = 'usps'
 tracking = shippo.Track.get_status(carrier_token, tracking_number)
 print(tracking)
 
-# Registering a tracking webhook
+# Create a webhook endpoint (FYI-basic auth not supported) 
+# For a full list of Webhook Event Types see https://goshippo.com/docs/webhooks/
+new_webhook_response = shippo.Webhook.create(url='https://exampledomain.com',event='all') 
+print(new_webhook_response)
+
+# list webhook(s)
+webhook_list = shippo.Webhook.list_webhooks()
+print(webhook_list)
+
+# remove all webhooks
+for webhook in webhook_list['results']:
+    print("about to delete webhook {}".format(webhook['object_id']))
+    webhook_remove = shippo.Webhook.delete(object_id=webhook['object_id'])
+    # print empty 204 status
+    print(webhook_remove)
+
+
+# Registering a tracking number for webhook
 webhook_response = shippo.Track.create(
     carrier=carrier_token,
     tracking_number=tracking_number,

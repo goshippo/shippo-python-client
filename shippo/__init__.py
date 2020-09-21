@@ -11,4 +11,5 @@ from shippo.resource import (
     Shipment,
     Track,
     Transaction,
+    Webhook,
 )
