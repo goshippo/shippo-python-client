@@ -164,7 +164,7 @@ class APIRequestor(object):
                 rbody = rbody.decode('utf-8')
                 if rbody == '':
                     rbody = '{"msg": "empty_response"}'
-                resp = util.json.loads(rbody)                
+            resp = util.json.loads(rbody)                
         except Exception:
             raise error.APIError(
                 "Invalid response body from API: %s "
