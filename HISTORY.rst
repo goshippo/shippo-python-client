@@ -1,6 +1,16 @@
 Release History
 ---------------
 
+2.0.1 (2020-9-21)
+
+**Improvements**
+
+- Add Webhook Class
+- Add multi-piece shipment & webhook examples
+
+Release History
+---------------
+
 2.0.0 (2020-01-10)
 
 **Behavioural Changes**
