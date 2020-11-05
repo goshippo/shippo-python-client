@@ -14,9 +14,20 @@ class TrackTests(ShippoTestCase):
     usps_tracking_no = '9205590164917337534322'
 
     def setUp(self):
+        """
+        Sets the http post.
+
+        Args:
+            self: (todo): write your description
+        """
         super(TrackTests, self).setUp()
 
         def get_http_client(*args, **kwargs):
+            """
+            Return the http client.
+
+            Args:
+            """
             return self.request_client(*args, **kwargs)
 
         self.client_patcher = patch(
@@ -26,12 +37,24 @@ class TrackTests(ShippoTestCase):
         client_mock.side_effect = get_http_client
 
     def tearDown(self):
+        """
+        Stop the client.
+
+        Args:
+            self: (todo): write your description
+        """
         super(TrackTests, self).tearDown()
 
         self.client_patcher.stop()
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/track')
     def test_get_status(self):
+        """
+        Get the status of the tracking.
+
+        Args:
+            self: (todo): write your description
+        """
         carrier_token = 'usps'
         tracking = shippo.Track.get_status(
             carrier_token, self.usps_tracking_no)
@@ -41,6 +64,12 @@ class TrackTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/track')
     def test_invalid_get_status(self):
+        """
+        Check that the status of a test.
+
+        Args:
+            self: (todo): write your description
+        """
         self.assertRaises(
             shippo.error.InvalidRequestError,
             shippo.Track.get_status,
@@ -56,6 +85,12 @@ class TrackTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/track')
     def test_create(self):
+        """
+        Creates the create
+
+        Args:
+            self: (todo): write your description
+        """
         tracking = shippo.Track.create(
             carrier='usps',
             tracking_number=self.usps_tracking_no,
@@ -67,6 +102,12 @@ class TrackTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/track')
     def test_invalid_create(self):
+        """
+        Create a new test on the given invalidator.
+
+        Args:
+            self: (todo): write your description
+        """
         self.assertRaises(
             shippo.error.InvalidRequestError,
             shippo.Track.create,

@@ -8,6 +8,12 @@ import unittest2
 class APIRequestorTests(TestCase):
 
     def test_oauth_token_auth(self):
+        """
+        Perform an oauth2 access token.
+
+        Args:
+            self: (todo): write your description
+        """
         mock_client = Mock()
         mock_client.name = 'mock_client'
         mock_client.request.return_value = ('{"status": "ok"}', 200)
@@ -26,6 +32,12 @@ class APIRequestorTests(TestCase):
         )
 
     def test_shippo_token_auth(self):
+        """
+        Perform an http authentication token.
+
+        Args:
+            self: (todo): write your description
+        """
         mock_client = Mock()
         mock_client.name = 'mock_client'
         mock_client.request.return_value = ('{"status": "ok"}', 200)

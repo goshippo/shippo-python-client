@@ -11,6 +11,13 @@ warnings.filterwarnings('always', category=DeprecationWarning, module='shippo')
 
 
 def convert_to_shippo_object(resp, api_key):
+    """
+    Convert shippoobject to shippoobject
+
+    Args:
+        resp: (array): write your description
+        api_key: (str): write your description
+    """
     if isinstance(resp, list):
         return [convert_to_shippo_object(i, api_key) for i in resp]
     elif isinstance(resp, dict) and not isinstance(resp, ShippoObject):
@@ -23,6 +30,15 @@ def convert_to_shippo_object(resp, api_key):
 class ShippoObject(dict):
 
     def __init__(self, id=None, api_key=None, **params):
+        """
+        Initialize the object.
+
+        Args:
+            self: (todo): write your description
+            id: (str): write your description
+            api_key: (str): write your description
+            params: (dict): write your description
+        """
         super(ShippoObject, self).__init__()
 
         self._unsaved_values = set()
@@ -37,12 +53,27 @@ class ShippoObject(dict):
             self['object_id'] = id
 
     def __setattr__(self, k, v):
+        """
+        Set the given attribute of a given object.
+
+        Args:
+            self: (todo): write your description
+            k: (todo): write your description
+            v: (todo): write your description
+        """
         if k[0] == '_' or k in self.__dict__:
             return super(ShippoObject, self).__setattr__(k, v)
         else:
             self[k] = v
 
     def __getattr__(self, k):
+        """
+        Return the value of a given attribute.
+
+        Args:
+            self: (todo): write your description
+            k: (str): write your description
+        """
         if k[0] == '_':
             raise AttributeError(k)
 
@@ -52,6 +83,14 @@ class ShippoObject(dict):
             raise AttributeError(*err.args)
 
     def __setitem__(self, k, v):
+        """
+        Set the value.
+
+        Args:
+            self: (todo): write your description
+            k: (todo): write your description
+            v: (todo): write your description
+        """
         if v == "":
             raise ValueError(
                 "You cannot set %s to an empty string. "
@@ -68,6 +107,13 @@ class ShippoObject(dict):
         self._unsaved_values.add(k)
 
     def __getitem__(self, k):
+        """
+        Return a single item from the cache.
+
+        Args:
+            self: (todo): write your description
+            k: (todo): write your description
+        """
         try:
             return super(ShippoObject, self).__getitem__(k)
         except KeyError as err:
@@ -83,17 +129,41 @@ class ShippoObject(dict):
                 raise err
 
     def __delitem__(self, k):
+        """
+        Remove an item from k.
+
+        Args:
+            self: (todo): write your description
+            k: (todo): write your description
+        """
         raise TypeError(
             "You cannot delete attributes on a ShippoObject. "
             "To unset a property, set it to None.")
 
     @classmethod
     def construct_from(cls, values, api_key):
+        """
+        Create an instance from a dictionary.
+
+        Args:
+            cls: (todo): write your description
+            values: (dict): write your description
+            api_key: (str): write your description
+        """
         instance = cls(values.get('object_id'), api_key)
         instance.refresh_from(values, api_key)
         return instance
 
     def refresh_from(self, values, api_key=None, partial=False):
+        """
+        Refresh the object from the api.
+
+        Args:
+            self: (todo): write your description
+            values: (dict): write your description
+            api_key: (str): write your description
+            partial: (bool): write your description
+        """
         self.api_key = api_key or getattr(values, 'api_key', None)
 
         # Wipe old state before setting new.
@@ -115,6 +185,15 @@ class ShippoObject(dict):
         self._previous_metadata = values.get('metadata')
 
     def request(self, method, url, params=None):
+        """
+        Make a request.
+
+        Args:
+            self: (todo): write your description
+            method: (str): write your description
+            url: (str): write your description
+            params: (dict): write your description
+        """
         if params is None:
             params = self._retrieve_params
 
@@ -124,6 +203,12 @@ class ShippoObject(dict):
         return convert_to_shippo_object(response, api_key)
 
     def __repr__(self):
+        """
+        Return a human - readable representation of this object.
+
+        Args:
+            self: (dict): write your description
+        """
         ident_parts = [type(self).__name__]
 
         if isinstance(self.get('object'), str):
@@ -141,21 +226,45 @@ class ShippoObject(dict):
             return unicode_repr
 
     def __str__(self):
+        """
+        Return a human - readable string representation.
+
+        Args:
+            self: (todo): write your description
+        """
         return util.json.dumps(self, sort_keys=True, indent=2)
 
     @property
     def shippo_id(self):
+        """
+        Returns the shippo id for this shippo.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.id
 
 
 class APIResource(ShippoObject):
 
     def refresh(self):
+        """
+        Refresh the current instance.
+
+        Args:
+            self: (todo): write your description
+        """
         self.refresh_from(self.request('get', self.instance_url()))
         return self
 
     @classmethod
     def class_name(cls):
+        """
+        Return the name of the class.
+
+        Args:
+            cls: (todo): write your description
+        """
         if cls == APIResource:
             raise NotImplementedError(
                 'APIResource is an abstract class.  You should perform '
@@ -164,10 +273,22 @@ class APIResource(ShippoObject):
 
     @classmethod
     def class_url(cls):
+        """
+        Generate class.
+
+        Args:
+            cls: (todo): write your description
+        """
         cls_name = cls.class_name()
         return "/v1/%ss" % (cls_name,)
 
     def instance_url(self):
+        """
+        Generate the url for this object.
+
+        Args:
+            self: (todo): write your description
+        """
         object_id = self.get('object_id')
         if not object_id:
             raise error.InvalidRequestError(
@@ -183,6 +304,14 @@ class CreateableAPIResource(APIResource):
 
     @classmethod
     def create(cls, api_key=None, **params):
+        """
+        Create a new payment.
+
+        Args:
+            cls: (todo): write your description
+            api_key: (str): write your description
+            params: (dict): write your description
+        """
         requestor = api_requestor.APIRequestor(api_key)
         url = cls.class_url()
         response, api_key = requestor.request('post', url, params)
@@ -212,6 +341,14 @@ class FetchableAPIResource(APIResource):
 
     @classmethod
     def retrieve(cls, object_id, api_key=None):
+        """
+        Retrieve a single refund.
+
+        Args:
+            cls: (todo): write your description
+            object_id: (str): write your description
+            api_key: (str): write your description
+        """
         object_id = object_id
         extn = urllib.parse.quote_plus(object_id)
         requestor = api_requestor.APIRequestor(api_key)
@@ -224,6 +361,15 @@ class UpdateableAPIResource(APIResource):
 
     @classmethod
     def update(cls, object_id, api_key=None, **params):
+        """
+        Update an existing payment.
+
+        Args:
+            cls: (todo): write your description
+            object_id: (str): write your description
+            api_key: (str): write your description
+            params: (list): write your description
+        """
         object_id = object_id
         extn = urllib.parse.quote_plus(object_id)
         requestor = api_requestor.APIRequestor(api_key)
@@ -233,6 +379,15 @@ class UpdateableAPIResource(APIResource):
 
     @classmethod
     def remove(cls, object_id, api_key=None, **params):
+        """
+        This method deletes a single object
+
+        Args:
+            cls: (todo): write your description
+            object_id: (str): write your description
+            api_key: (str): write your description
+            params: (dict): write your description
+        """
         object_id = object_id
         extn = urllib.parse.quote_plus(object_id)
         requestor = api_requestor.APIRequestor(api_key)
@@ -247,6 +402,14 @@ class Address(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
 
     @classmethod
     def validate(cls, object_id, api_key=None):
+        """
+        Validate an object.
+
+        Args:
+            cls: (todo): write your description
+            object_id: (str): write your description
+            api_key: (str): write your description
+        """
         extn = urllib.parse.quote_plus(object_id)
         url = cls.class_url() + extn + '/validate'
         requestor = api_requestor.APIRequestor(api_key)
@@ -255,6 +418,12 @@ class Address(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
 
     @classmethod
     def class_url(cls):
+        """
+        Generate class.
+
+        Args:
+            cls: (todo): write your description
+        """
         cls_name = cls.class_name()
         return "v1/%ses/" % (cls_name,)
 
@@ -263,6 +432,12 @@ class CustomsItem(CreateableAPIResource, ListableAPIResource, FetchableAPIResour
 
     @classmethod
     def class_url(cls):
+        """
+        Return the url of the class.
+
+        Args:
+            cls: (todo): write your description
+        """
         return "v1/customs/items/"
 
 
@@ -270,6 +445,12 @@ class CustomsDeclaration(CreateableAPIResource, ListableAPIResource, FetchableAP
 
     @classmethod
     def class_url(cls):
+        """
+        Return the url of the class.
+
+        Args:
+            cls: (todo): write your description
+        """
         return "v1/customs/declarations/"
 
 
@@ -277,6 +458,12 @@ class Parcel(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
 
     @classmethod
     def class_url(cls):
+        """
+        Generate class.
+
+        Args:
+            cls: (todo): write your description
+        """
         cls_name = cls.class_name()
         return "v1/%ss/" % (cls_name,)
 
@@ -289,6 +476,12 @@ class Manifest(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
 
     @classmethod
     def class_url(cls):
+        """
+        Generate class.
+
+        Args:
+            cls: (todo): write your description
+        """
         cls_name = cls.class_name()
         return "v1/%ss/" % (cls_name,)
 
@@ -300,6 +493,12 @@ class Refund(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
 
     @classmethod
     def class_url(cls):
+        """
+        Generate class.
+
+        Args:
+            cls: (todo): write your description
+        """
         cls_name = cls.class_name()
         return "v1/%ss/" % (cls_name,)
 
@@ -330,6 +529,12 @@ class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
 
     @classmethod
     def class_url(cls):
+        """
+        Generate class.
+
+        Args:
+            cls: (todo): write your description
+        """
         cls_name = cls.class_name()
         return "v1/%ss/" % (cls_name,)
 
@@ -351,6 +556,12 @@ class Transaction(CreateableAPIResource, ListableAPIResource, FetchableAPIResour
 
     @classmethod
     def class_url(cls):
+        """
+        Generate class.
+
+        Args:
+            cls: (todo): write your description
+        """
         cls_name = cls.class_name()
         return "v1/%ss/" % (cls_name,)
 
@@ -363,6 +574,12 @@ class Rate(ListableAPIResource, FetchableAPIResource):
 
     @classmethod
     def class_url(cls):
+        """
+        Generate class.
+
+        Args:
+            cls: (todo): write your description
+        """
         cls_name = cls.class_name()
         return "v1/%ss/" % (cls_name,)
 
@@ -371,6 +588,12 @@ class CarrierAccount(CreateableAPIResource, ListableAPIResource, FetchableAPIRes
 
     @classmethod
     def class_url(cls):
+        """
+        Return the url of the class.
+
+        Args:
+            cls: (todo): write your description
+        """
         return "v1/carrier_accounts/"
 
 class Webhook(CreateableAPIResource, ListableAPIResource, FetchableAPIResource, UpdateableAPIResource):
@@ -382,6 +605,12 @@ class Webhook(CreateableAPIResource, ListableAPIResource, FetchableAPIResource, 
 
     @classmethod
     def class_url(cls):
+        """
+        Generate class.
+
+        Args:
+            cls: (todo): write your description
+        """
         cls_name = cls.class_name()
         return "v1/%ss/" % (cls_name,)
 
@@ -492,6 +721,12 @@ class Track(CreateableAPIResource):
 
     @classmethod
     def class_url(cls):
+        """
+        Generate class.
+
+        Args:
+            cls: (todo): write your description
+        """
         cls_name = cls.class_name()
         return "v1/%ss/" % (cls_name,)
 
@@ -606,5 +841,11 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
 
     @classmethod
     def class_url(cls):
+        """
+        Generate class.
+
+        Args:
+            cls: (todo): write your description
+        """
         cls_name = cls.class_name()
         return "v1/%ses/" % (cls_name,)

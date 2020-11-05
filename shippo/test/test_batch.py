@@ -20,9 +20,20 @@ class BatchTests(ShippoTestCase):
     request_client = shippo.http_client.RequestsClient
 
     def setUp(self):
+        """
+        Sets the proxy.
+
+        Args:
+            self: (todo): write your description
+        """
         super(BatchTests, self).setUp()
 
         def get_http_client(*args, **kwargs):
+            """
+            Return the http client.
+
+            Args:
+            """
             return self.request_client(*args, **kwargs)
 
         self.client_patcher = patch(
@@ -32,18 +43,36 @@ class BatchTests(ShippoTestCase):
         client_mock.side_effect = get_http_client
 
     def tearDown(self):
+        """
+        Stop the client.
+
+        Args:
+            self: (todo): write your description
+        """
         super(BatchTests, self).tearDown()
 
         self.client_patcher.stop()
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_create(self):
+        """
+        Creates a batch.
+
+        Args:
+            self: (todo): write your description
+        """
         BATCH = DUMMY_BATCH.copy()
         batch = shippo.Batch.create(**BATCH)
         self.assertEqual(batch.status, 'VALIDATING')
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_invalid_create(self):
+        """
+        Create a test todo.
+
+        Args:
+            self: (todo): write your description
+        """
         self.assertRaises(shippo.error.InvalidRequestError,
                           shippo.Batch.create)
         INVALID = INVALID_BATCH.copy()
@@ -55,6 +84,12 @@ class BatchTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_retrieve(self):
+        """
+        Retrieves the batch.
+
+        Args:
+            self: (todo): write your description
+        """
         BATCH = DUMMY_BATCH.copy()
         batch = shippo.Batch.create(**BATCH)
         retrieve = shippo.Batch.retrieve(batch.object_id)
@@ -70,11 +105,23 @@ class BatchTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_invalid_retrieve(self):
+        """
+        Check if the test is valid.
+
+        Args:
+            self: (todo): write your description
+        """
         self.assertRaises(shippo.error.APIError,
                           shippo.Batch.retrieve, 'EXAMPLE_OF_INVALID_ID')
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_add(self):
+        """
+        Adds a test to the batch.
+
+        Args:
+            self: (todo): write your description
+        """
         BATCH = DUMMY_BATCH.copy()
         batch = shippo.Batch.create(**BATCH)
         # Leave enough time for the batch to be processed
@@ -91,6 +138,12 @@ class BatchTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_invalid_add(self):
+        """
+        Validate the test status.
+
+        Args:
+            self: (todo): write your description
+        """
         BATCH = DUMMY_BATCH.copy()
         batch = shippo.Batch.create(**BATCH)
         self.assertEqual(batch.status, 'VALIDATING')
@@ -104,6 +157,12 @@ class BatchTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_remove(self):
+        """
+        Removes a batch of items from the batch.
+
+        Args:
+            self: (todo): write your description
+        """
         BATCH = DUMMY_BATCH.copy()
         batch = shippo.Batch.create(**BATCH)
         # Leave enough time for the batch to be processed
@@ -125,6 +184,12 @@ class BatchTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_invalid_remove(self):
+        """
+        Respond to see https : class : class.
+
+        Args:
+            self: (todo): write your description
+        """
         BATCH = DUMMY_BATCH.copy()
         batch = shippo.Batch.create(**BATCH)
         self.assertEqual(batch.status, 'VALIDATING')
@@ -141,6 +206,12 @@ class BatchTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_purchase(self):
+        """
+        Test if the batch is still running.
+
+        Args:
+            self: (todo): write your description
+        """
         BATCH = DUMMY_BATCH.copy()
         batch = shippo.Batch.create(**BATCH)
         while batch.status == 'VALIDATING':
@@ -150,6 +221,12 @@ class BatchTests(ShippoTestCase):
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_invalid_purchase(self):
+        """
+        Check if the test is valid.
+
+        Args:
+            self: (todo): write your description
+        """
         self.assertRaises(
             shippo.error.APIError,
             shippo.Batch.purchase,

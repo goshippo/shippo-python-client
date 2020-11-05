@@ -279,6 +279,13 @@ INVALID_BATCH = {
 
 
 def create_mock_shipment(asynchronous=False, api_key=None):
+    """
+    Create a shakement
+
+    Args:
+        asynchronous: (str): write your description
+        api_key: (str): write your description
+    """
     to_address = shippo.Address.create(api_key=api_key, **TO_ADDRESS)
     from_address = shippo.Address.create(api_key=api_key, **FROM_ADDRESS)
     parcel = shippo.Parcel.create(api_key=api_key, **DUMMY_PARCEL)
@@ -292,6 +299,12 @@ def create_mock_shipment(asynchronous=False, api_key=None):
 
 
 def create_mock_manifest(transaction=None):
+    """
+    Creates a manifest.
+
+    Args:
+        transaction: (todo): write your description
+    """
     if not transaction:
         transaction = create_mock_transaction()
     rate = shippo.Rate.retrieve(transaction.rate)
@@ -304,6 +317,12 @@ def create_mock_manifest(transaction=None):
 
 
 def create_mock_transaction(asynchronous=False):
+    """
+    Creates a transaction.
+
+    Args:
+        asynchronous: (todo): write your description
+    """
     shipment = create_mock_shipment(asynchronous)
     rates = shipment.rates
     usps_rate = list(
@@ -316,6 +335,11 @@ def create_mock_transaction(asynchronous=False):
 
 
 def create_mock_international_shipment():
+    """
+    Creates a shake
+
+    Args:
+    """
     SHIPMENT = create_mock_shipment()
     customs_item = shippo.CustomsItem.create(**DUMMY_CUSTOMS_ITEM)
     customs_declaration_parameters = DUMMY_CUSTOMS_DECLARATION.copy()
@@ -331,6 +355,12 @@ class ShippoTestCase(TestCase):
     RESTORE_ATTRIBUTES = ('api_version', 'api_key')
 
     def setUp(self):
+        """
+        Sets the wsgi environment.
+
+        Args:
+            self: (todo): write your description
+        """
         super(ShippoTestCase, self).setUp()
 
         self._shippo_original_attributes = {}
@@ -349,6 +379,12 @@ class ShippoTestCase(TestCase):
             'SHIPPO_API_VERSION', '2018-02-08')
 
     def tearDown(self):
+        """
+        Tear down all attributes to the same.
+
+        Args:
+            self: (todo): write your description
+        """
         super(ShippoTestCase, self).tearDown()
 
         for attr in self.RESTORE_ATTRIBUTES:
@@ -357,6 +393,15 @@ class ShippoTestCase(TestCase):
 
     # Python < 2.7 compatibility
     def assertRaisesRegexp(self, exception, regexp, callable, *args, **kwargs):
+        """
+        Asserts that the given regular expression matches the given regular expression.
+
+        Args:
+            self: (todo): write your description
+            exception: (todo): write your description
+            regexp: (todo): write your description
+            callable: (todo): write your description
+        """
         try:
             callable(*args, **kwargs)
         except exception as err:
@@ -377,6 +422,12 @@ class ShippoUnitTestCase(ShippoTestCase):
     REQUEST_LIBRARIES = ['urlfetch', 'requests']
 
     def setUp(self):
+        """
+        Sets the library.
+
+        Args:
+            self: (todo): write your description
+        """
         super(ShippoUnitTestCase, self).setUp()
 
         self.request_patchers = {}
@@ -388,6 +439,12 @@ class ShippoUnitTestCase(ShippoTestCase):
             self.request_patchers[lib] = patcher
 
     def tearDown(self):
+        """
+        Tear down the request.
+
+        Args:
+            self: (todo): write your description
+        """
         super(ShippoUnitTestCase, self).tearDown()
 
         for patcher in list(self.request_patchers.values()):
@@ -397,6 +454,12 @@ class ShippoUnitTestCase(ShippoTestCase):
 class ShippoApiTestCase(ShippoTestCase):
 
     def setUp(self):
+        """
+        This decorator for this class.
+
+        Args:
+            self: (todo): write your description
+        """
         super(ShippoApiTestCase, self).setUp()
 
         self.requestor_patcher = patch('shippo.api_requestor.APIRequestor')
@@ -404,11 +467,24 @@ class ShippoApiTestCase(ShippoTestCase):
         self.requestor_mock = requestor_class_mock.return_value
 
     def tearDown(self):
+        """
+        Tear down the request.
+
+        Args:
+            self: (todo): write your description
+        """
         super(ShippoApiTestCase, self).tearDown()
 
         self.requestor_patcher.stop()
 
     def mock_response(self, res):
+        """
+        Return a request.
+
+        Args:
+            self: (todo): write your description
+            res: (todo): write your description
+        """
         self.requestor_mock.request = Mock(return_value=(res, 'reskey'))
 
 
