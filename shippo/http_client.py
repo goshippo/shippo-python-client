@@ -41,6 +41,11 @@ except ImportError:
 
 
 def new_default_http_client(*args, **kwargs):
+    """
+    Create a new http client.
+
+    Args:
+    """
     if urlfetch:
         impl = UrlFetchClient
     elif requests:
@@ -51,9 +56,26 @@ def new_default_http_client(*args, **kwargs):
 class HTTPClient(object):
 
     def __init__(self, verify_ssl_certs=True):
+        """
+        Initialize the ssl certificate.
+
+        Args:
+            self: (todo): write your description
+            verify_ssl_certs: (bool): write your description
+        """
         self._verify_ssl_certs = verify_ssl_certs
 
     def request(self, method, url, headers, post_data=None):
+        """
+        Make a request.
+
+        Args:
+            self: (todo): write your description
+            method: (str): write your description
+            url: (str): write your description
+            headers: (dict): write your description
+            post_data: (str): write your description
+        """
         raise NotImplementedError(
             'HTTPClient subclasses must implement `request`')
 
@@ -62,6 +84,16 @@ class RequestsClient(HTTPClient):
     name = 'requests'
 
     def request(self, method, url, headers, post_data=None):
+        """
+        Make a http request.
+
+        Args:
+            self: (todo): write your description
+            method: (str): write your description
+            url: (str): write your description
+            headers: (dict): write your description
+            post_data: (str): write your description
+        """
         kwargs = {}
 
         if not self._verify_ssl_certs:
@@ -97,6 +129,13 @@ class RequestsClient(HTTPClient):
         return content, status_code
 
     def _handle_request_error(self, e):
+        """
+        Handles an error.
+
+        Args:
+            self: (todo): write your description
+            e: (todo): write your description
+        """
         if isinstance(e, requests.exceptions.RequestException):
             msg = ("Unexpected error communicating with Shippo.  "
                    "If this problem persists, let us know at "
@@ -120,6 +159,16 @@ class UrlFetchClient(HTTPClient):
     name = 'urlfetch'
 
     def request(self, method, url, headers, post_data=None):
+        """
+        Make an http request.
+
+        Args:
+            self: (todo): write your description
+            method: (str): write your description
+            url: (str): write your description
+            headers: (dict): write your description
+            post_data: (str): write your description
+        """
         try:
             result = urlfetch.fetch(
                 url=url,
@@ -140,6 +189,14 @@ class UrlFetchClient(HTTPClient):
         return result.content, result.status_code
 
     def _handle_request_error(self, e, url):
+        """
+        Handle a request error.
+
+        Args:
+            self: (todo): write your description
+            e: (todo): write your description
+            url: (str): write your description
+        """
         if isinstance(e, urlfetch.InvalidURLError):
             msg = ("The Shippo library attempted to fetch an "
                    "invalid URL (%r). This is likely due to a bug "

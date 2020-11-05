@@ -14,6 +14,12 @@ from shippo.version import VERSION
 
 
 def _encode_datetime(dttime):
+    """
+    Encode a datetime. datetime.
+
+    Args:
+        dttime: (todo): write your description
+    """
     if dttime.tzinfo and dttime.tzinfo.utcoffset(dttime) is not None:
         utc_timestamp = calendar.timegm(dttime.utctimetuple())
     else:
@@ -23,6 +29,12 @@ def _encode_datetime(dttime):
 
 
 def _api_encode(data):
+    """
+    Yields a json - compatible list of data.
+
+    Args:
+        data: (dict): write your description
+    """
     for key, value in list(data.items()):
         key = key
         if value is None:
@@ -44,6 +56,13 @@ def _api_encode(data):
 
 
 def _build_api_url(url, query):
+    """
+    Build the url for a given url.
+
+    Args:
+        url: (str): write your description
+        query: (str): write your description
+    """
     scheme, netloc, path, base_query, fragment = urllib.parse.urlsplit(url)
 
     if base_query:
@@ -57,6 +76,14 @@ class APIRequestor(object):
     _CERTIFICATE_VERIFIED = False
 
     def __init__(self, key=None, client=None):
+        """
+        Initialize a new : paramiko api.
+
+        Args:
+            self: (todo): write your description
+            key: (str): write your description
+            client: (todo): write your description
+        """
         self.api_key = key
 
         from shippo.config import verify_ssl_certs
@@ -65,6 +92,15 @@ class APIRequestor(object):
             verify_ssl_certs=verify_ssl_certs)
 
     def request(self, method, url, params=None):
+        """
+        Make a http request.
+
+        Args:
+            self: (todo): write your description
+            method: (str): write your description
+            url: (str): write your description
+            params: (dict): write your description
+        """
         self._check_ssl_cert()\
 
         if params is not None and isinstance(params, dict):
@@ -77,6 +113,15 @@ class APIRequestor(object):
         return resp, my_api_key
 
     def handle_api_error(self, rbody, rcode, resp):
+        """
+        Handle an exception.
+
+        Args:
+            self: (todo): write your description
+            rbody: (str): write your description
+            rcode: (int): write your description
+            resp: (todo): write your description
+        """
 
         if rcode in [400, 404]:
             raise error.InvalidRequestError(rbody, rcode, resp)
@@ -159,6 +204,14 @@ class APIRequestor(object):
         return rbody, rcode, my_api_key
 
     def interpret_response(self, rbody, rcode):
+        """
+        Decodes a http response.
+
+        Args:
+            self: (todo): write your description
+            rbody: (todo): write your description
+            rcode: (str): write your description
+        """
         try:
             if hasattr(rbody, 'decode'):
                 rbody = rbody.decode('utf-8')
