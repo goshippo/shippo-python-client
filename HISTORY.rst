@@ -1,6 +1,16 @@
 Release History
 ---------------
 
+2.0.2 (2020-11-05)
+
+**Dependency Version Bumps**
+
+- Allow simplejson version to be higher (3.17.2)
+- Allow requests version to be higher (2.24.0)
+
+Release History
+---------------
+
 2.0.1 (2020-9-21)
 
 **Improvements**
