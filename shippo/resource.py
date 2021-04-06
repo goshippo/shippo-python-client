@@ -373,6 +373,7 @@ class CarrierAccount(CreateableAPIResource, ListableAPIResource, FetchableAPIRes
     def class_url(cls):
         return "v1/carrier_accounts/"
 
+
 class Webhook(CreateableAPIResource, ListableAPIResource, FetchableAPIResource, UpdateableAPIResource):
     """
     retrieve, update and delete webhooks for a Shippo account programmatically. The same functionality is already exposed in the Shippo dashboard at https://app.goshippo.com/api/.
@@ -431,7 +432,6 @@ class Webhook(CreateableAPIResource, ListableAPIResource, FetchableAPIResource, 
             (ShippoObject) -- The server response
         """
         return super(Webhook, cls).remove(object_id,api_key, **params)
-
 
 
 class Track(CreateableAPIResource):
