@@ -608,3 +608,25 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
     def class_url(cls):
         cls_name = cls.class_name()
         return "v1/%ses/" % (cls_name,)
+
+
+class Order(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
+    """
+    Beta functionality, but useful for tracking a given order, label information, etc.
+    """
+
+    @classmethod
+    def class_url(cls):
+        cls_name = cls.class_name()
+        return "%ss/" % (cls_name,)
+
+
+class LineItem(ListableAPIResource, FetchableAPIResource):
+    """
+    Currently this is a nested item inside an Order object.
+    """
+
+    @classmethod
+    def class_url(cls):
+        cls_name = cls.class_name()
+        return "%ss/" % (cls_name,)
