@@ -20,7 +20,7 @@ setup(
     packages=['shippo', 'shippo.test', 'shippo.test.integration'],
     package_data={'shippo': ['../VERSION']},
     install_requires=[
-        'requests >= 2.21.0, <= 2.24.0',
+        'requests >= 2.21.0, <= 2.26.0',
         'simplejson >= 3.16.0, <= 3.17.2',
     ],
     test_suite='shippo.test.all',
