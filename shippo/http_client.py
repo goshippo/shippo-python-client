@@ -50,8 +50,14 @@ def new_default_http_client(*args, **kwargs):
 
 class HTTPClient(object):
 
-    def __init__(self, verify_ssl_certs=True):
+    def __init__(self, verify_ssl_certs, timeout_in_seconds):
+        if timeout_in_seconds is None:
+            raise ValueError("`timeout_in_seconds` cannot be None")
+        if verify_ssl_certs is None:
+            raise ValueError("`verify_ssl_certs` cannot be None")
+
         self._verify_ssl_certs = verify_ssl_certs
+        self._timeout_in_seconds = timeout_in_seconds
 
     def request(self, method, url, headers, post_data=None):
         raise NotImplementedError(
@@ -60,6 +66,14 @@ class HTTPClient(object):
 
 class RequestsClient(HTTPClient):
     name = 'requests'
+
+    DEFAULT_TIMEOUT = 80
+
+    def __init__(self, verify_ssl_certs=True,
+                 timeout_in_seconds=None):
+        timeout = timeout_in_seconds or self.DEFAULT_TIMEOUT
+        super().__init__(verify_ssl_certs, timeout)
+
 
     def request(self, method, url, headers, post_data=None):
         kwargs = {}
@@ -73,7 +87,7 @@ class RequestsClient(HTTPClient):
                                           url,
                                           headers=headers,
                                           data=post_data,
-                                          timeout=80,
+                                          timeout=self._timeout_in_seconds,
                                           **kwargs)
             except NotImplementedError as e:
                 raise TypeError(
@@ -119,6 +133,15 @@ class RequestsClient(HTTPClient):
 class UrlFetchClient(HTTPClient):
     name = 'urlfetch'
 
+    # GAE requests time out after 60 seconds, so make sure we leave
+    # some time for the application to handle a slow Shippo
+    DEFAULT_TIMEOUT = 55
+
+    def __init__(self, verify_ssl_certs=True,
+                 timeout_in_seconds=None):
+        timeout = timeout_in_seconds or self.DEFAULT_TIMEOUT
+        super().__init__(verify_ssl_certs, timeout)
+
     def request(self, method, url, headers, post_data=None):
         try:
             result = urlfetch.fetch(
@@ -129,9 +152,7 @@ class UrlFetchClient(HTTPClient):
                 # However, that's ok because the CA bundle they use recognizes
                 # api.goshippo.com.
                 validate_certificate=self._verify_ssl_certs,
-                # GAE requests time out after 60 seconds, so make sure we leave
-                # some time for the application to handle a slow Shippo
-                deadline=55,
+                deadline=self._timeout_in_seconds,
                 payload=post_data
             )
         except urlfetch.Error as e:
