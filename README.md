@@ -55,16 +55,6 @@ Run the test with the following command:
 python setup.py test --test-suite=shippo
 ```
 
-#### Dependencies:
-
-##### requests & mock
-
-```
-#!shell
-sudo easy_install requests
-sudo easy_install mock
-```
-
 #### Using the API:
 
 ```python

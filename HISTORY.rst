@@ -1,6 +1,16 @@
 Release History
 ---------------
 
+2.1.0 (2022-01-10)
+
+**New features**
+
+- Added support for Pickup and Order Objects
+- Converted testing to CircleCi
+
+Release History
+---------------
+
 2.0.2 (2020-11-05)
 
 **Dependency Version Bumps**

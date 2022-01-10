@@ -9,7 +9,7 @@ recipient address and parcel information that we need to ship.
 shippo.config.api_key = "<API-KEY>"
 
 # Example address_from object dict
-# The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
+# The complete reference for the address object is available here: https://goshippo.com/docs/reference#addresses
 address_from = {
     "name": "Shippo Team",
     "street1": "965 Mission St",
@@ -22,7 +22,7 @@ address_from = {
 }
 
 # Example address_to object dict
-# The complete refence for the address object is available here: https://goshippo.com/docs/reference#addresses
+# The complete reference for the address object is available here: https://goshippo.com/docs/reference#addresses
 
 address_to = {
     "name": "Shippo Friend",

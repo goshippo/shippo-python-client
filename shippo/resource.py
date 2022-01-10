@@ -273,12 +273,34 @@ class CustomsDeclaration(CreateableAPIResource, ListableAPIResource, FetchableAP
         return "v1/customs/declarations/"
 
 
+class Order(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
+    """
+    An Order allows you group line items for a shipment.
+    """
+
+    @classmethod
+    def class_url(cls):
+        cls_name = cls.class_name()
+        return "%ss/" % (cls_name,)
+
+
 class Parcel(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
 
     @classmethod
     def class_url(cls):
         cls_name = cls.class_name()
         return "v1/%ss/" % (cls_name,)
+
+
+class Pickup(CreateableAPIResource):
+    """
+    A Pickup allows you to schedule pickups with USPS and DHL Express for eligible shipments that you have already created.
+    """
+
+    @classmethod
+    def class_url(cls):
+        cls_name = cls.class_name()
+        return "%ss/" % (cls_name,)
 
 
 class Manifest(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
