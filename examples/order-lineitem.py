@@ -7,7 +7,7 @@ In this example, we are creating (and consuming) an order object with lineitem(s
 """
 
 # Replace <API-KEY> with your key
-shippo.config.api_key = "shippo_test_cf1b6d0655e59fc6316880580765066038ef20d8"
+shippo.config.api_key = "<API-KEY>"
 
 # Example address_from object dict
 # The complete reference for the address object is available here: https://goshippo.com/docs/reference#addresses
