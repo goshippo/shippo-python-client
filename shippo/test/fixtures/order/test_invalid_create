@@ -1,0 +1,61 @@
+interactions:
+- request:
+    body: '{}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '2'
+      Content-Type:
+      - application/json
+      Shippo-API-Version:
+      - '2018-02-08'
+      User-Agent:
+      - Shippo/v1 PythonBindings/2.0.2
+      X-Shippo-Client-User-Agent:
+      - '{"bindings_version": "2.0.2", "lang": "python", "publisher": "shippo", "httplib":
+        "requests", "lang_version": "3.7.9", "platform": "Darwin-21.2.0-x86_64-i386-64bit",
+        "uname": "Darwin Mac-mini.local 21.2.0 Darwin Kernel Version
+        21.2.0: Sun Nov 28 20:28:54 PST 2021; root:xnu-8019.61.5~1/RELEASE_X86_64
+        x86_64 i386"}'
+    method: POST
+    uri: https://api.goshippo.com/orders/
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA6pWKshJTE5NiU8sUbJSiFYKycgsVkjLTM1JUQAyilILSzOLUlP0lGJ1FJRK8uMT
+        U1KKUouLCSotT81MzyiJL83LJGwsRC1+ZbUAAAAA//8DADERpouoAAAA
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 10 Jan 2022 17:18:42 GMT
+      Transfer-Encoding:
+      - chunked
+      allow:
+      - OPTIONS
+      content-encoding:
+      - gzip
+      content-language:
+      - en-us
+      p3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      server:
+      - istio-envoy
+      set-cookie:
+      - tracker_sessionid=f7b4524436b842528dcd5b97a348a906; Domain=.goshippo.com;
+        Path=/
+      vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      x-envoy-upstream-service-time:
+      - '19'
+    status:
+      code: 400
+      message: Bad Request
+version: 1

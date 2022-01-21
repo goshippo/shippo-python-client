@@ -1,4 +1,5 @@
 import shippo
+from datetime import datetime, timedelta
 
 """
 In this tutorial we have an order with a sender address,
@@ -18,15 +19,14 @@ shippo.config.api_key = "<API-KEY>"
 address_from = {
     "company": "",
     "street_no": "",
-    "name": "Mr. Hippo",
-    "street1": "215 Clayton St.",
-    "street2": "",
-    "city": "San Francisco",
+    "name": "Shippo Friend",
+    "street1": "1092 Indian Summer Ct",
+    "city": "San Jose",
     "state": "CA",
-    "zip": "94117",
+    "zip": "95122",
     "country": "US",
-    "phone": "+15553419393",
-    "email": "support@goshippo.com",
+    "phone": "+1 555 341 9393",
+    "email": "support@goshippo.com"
 }
 
 # Example address_to object dict
@@ -53,7 +53,7 @@ parcel = {
     "height": "5",
     "distance_unit": "in",
     "weight": "2",
-    "mass_unit": "lb",
+    "mass_unit": "lb"
 }
 
 # Example CustomsItems object.
@@ -66,7 +66,7 @@ customs_item = {
     "value_amount": "20",
     "value_currency": "USD",
     "origin_country": "US",
-    "tariff_number": "",
+    "tariff_number": ""
 }
 
 # Creating the CustomsDeclaration
@@ -91,25 +91,55 @@ shipment_international = shippo.Shipment.create(
     customs_declaration=customs_declaration.object_id,
     asynchronous=False)
 
-# Get the first rate in the rates results for demo purposes.
+# Get the first usps or dhl express rate.
 # The details on the returned object are here: https://goshippo.com/docs/reference#rates
-rate_international = shipment_international.rates[0]
+filtered_rates = []
+for rate in shipment_international.rates:
+    if rate.provider.lower() == "usps" or rate.provider.lower() == "dhl_express":
+        filtered_rates.append(rate)
+    # return strtolower($rate['provider']) == 'usps' Or strtolower($rate['provider']) == 'dhl_express';
+
+rate_international = filtered_rates[0]
+selected_rate_carrier_account = rate_international.carrier_account
 
 # Purchase the desired rate.
 # The complete information about purchasing the label: https://goshippo.com/docs/reference#transaction-create
 transaction_international = shippo.Transaction.create(
     rate=rate_international.object_id, asynchronous=False)
 
-# print label_url and tracking_number
-if transaction_international.status == "SUCCESS":
-    print("Purchased label with tracking number %s" %
-          transaction_international.tracking_number)
-    print("The label can be downloaded at %s" %
-          transaction_international.label_url)
-else:
+if transaction_international.status != "SUCCESS":
     print("Failed purchasing the label due to:")
     for message in transaction_international.messages:
         print("- %s" % message['text'])
+
+# $pickupTimeStart = date('Y-m-d H:i:s', time());
+# $pickupTimeEnd = date('Y-m-d H:i:s', time() + 60*60*24);
+pickupTimeStart = datetime.now() + timedelta(hours=1)
+pickupTimeEnd = pickupTimeStart + timedelta(days=1)
+
+# Schedule the pickup
+# Only 1 pickup can be scheduled in a day
+try:
+    pickup = shippo.Pickup.create(
+        carrier_account= selected_rate_carrier_account,
+        location= {
+            "building_location_type" : "Knock on Door",
+            "address" : address_from,
+        },
+        transactions= [transaction_international.object_id],
+        requested_start_time= pickupTimeStart.isoformat() + "Z",
+        requested_end_time= pickupTimeEnd.isoformat() + "Z",
+        is_test= False
+    )
+except shippo.error.InvalidRequestError as err:
+    print("A pickup has already been scheduled for today.")
+else:
+    if pickup.status == "SUCCESS":
+        print("Pickup has been scheduled")
+    else:
+        print("Failed scheduling a pickup:")
+        for message in pickup.messages:
+            print("- %s" % message['text'])
 
 # For more tutorials of address validation, tracking, returns, refunds, and other functionality, check out our
 # complete documentation: https://goshippo.com/docs/

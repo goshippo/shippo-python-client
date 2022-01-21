@@ -173,6 +173,24 @@ DUMMY_SHIPMENT = {
     },
     "metadata": "Customer ID 123456"
 }
+DUMMY_INTERNATIONAL_SHIPMENT = {
+    "address_from": "4f406a13253945a8bc8deb0f8266b245",
+    "address_to": "4c7185d353764d0985a6a7825aed8ffb",
+    "parcels": ["ec952343dd4843c39b42aca620471fd5"],
+    "submission_type": "PICKUP",
+    "insurance_amount": "200",
+    "insurance_currency": "USD",
+    "extra": {
+        "signature_confirmation": True,
+        "reference_1": "",
+        "reference_2": "",
+        "insurance": {
+            "amount": "200",
+            "currency": "USD"
+        }
+    },
+    "metadata": "Customer ID 123456"
+}
 INVALID_SHIPMENT = {
     "address_from": "4f406a13253945a8bc8deb0f8266b245",
     "submission_type": "PICKUP",
@@ -276,6 +294,65 @@ INVALID_BATCH = {
     "metadata": "teehee",
     "batch_shipments": []
 }
+DUMMY_PICKUP = {
+        "carrier_account": "abcdefghijklmnopqrstuvwxyz0123456789",
+        "location": {
+            "building_location_type" : "Knock on Door",
+            "address" : {
+                "name": "Laura Behrens Wu",
+                "company": "Shippo",
+                "street1": "Clayton St.",
+                "street_no": "215",
+                "street2": "",
+                "city": "San Francisco",
+                "state": "CA",
+                "zip": "94117",
+                "country": "US",
+                "phone": "+1 555 341 9393",
+                "metadata": "Customer ID 123456"
+            },
+        },
+        "transactions": [ "abcdefghijklmnopqrstuvwxyz0123456789" ],
+        "requested_start_time": "2022-01-01T00:00:00.00Z",
+        "requested_end_time": "2022-01-02T00:00:00.000Z",
+        "is_test": False
+}
+DUMMY_ORDER = {
+            "to_address": {
+                "city": "San Francisco",
+                "company": "Shippo",
+                "country": "US",
+                "email": "shippotle@goshippo.com",
+                "name": "Mr Hippo",
+                "phone": "15553419393",
+                "state": "CA",
+                "street1": "215 Clayton St.",
+                "zip": "94117"
+            },
+            "line_items": [
+                {
+                    "quantity": 1,
+                    "sku": "HM-123",
+                    "title": "Hippo Magazines",
+                    "total_price": "12.10",
+                    "currency": "USD",
+                    "weight": "0.40",
+                    "weight_unit": "lb"
+                }
+            ],
+            "placed_at": "2022-01-01T00:00:00.000Z",
+            "order_number": "#1068",
+            "order_status": "PAID",
+            "shipping_cost": "12.83",
+            "shipping_cost_currency": "USD",
+            "shipping_method": "USPS First Class Package",
+            "subtotal_price": "12.10",
+            "total_price": "24.93",
+            "total_tax": "0.00",
+            "currency": "USD",
+            "weight": "0.40",
+            "weight_unit": "lb"
+}
 
 
 def create_mock_shipment(asynchronous=False, api_key=None):
@@ -326,6 +403,16 @@ def create_mock_international_shipment():
     shipment = shippo.Shipment.create(**SHIPMENT)
     return shipment
 
+def create_mock_international_transaction(asynchronous=False):
+    shipment = create_mock_shipment(asynchronous)
+    rates = shipment.rates
+    usps_rate = list(
+        [x for x in rates if x.servicelevel.token == 'usps_priority'])[0]
+    t = DUMMY_TRANSACTION.copy()
+    t['rate'] = usps_rate.object_id
+    t['asynchronous'] = asynchronous
+    txn = shippo.Transaction.create(**t)
+    return txn, usps_rate.carrier_account
 
 class ShippoTestCase(TestCase):
     RESTORE_ATTRIBUTES = ('api_version', 'api_key')
