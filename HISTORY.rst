@@ -1,6 +1,15 @@
 Release History
 ---------------
 
+2.1.1 (2022-02-28)
+
+**Dependency Version Bumps**
+
+- Allow requests version to be higher (2.27.1)
+
+Release History
+---------------
+
 2.1.0 (2022-01-18)
 
 **New features**
