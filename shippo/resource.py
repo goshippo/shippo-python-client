@@ -395,6 +395,7 @@ class CarrierAccount(CreateableAPIResource, ListableAPIResource, FetchableAPIRes
     def class_url(cls):
         return "v1/carrier_accounts/"
 
+
 class Webhook(CreateableAPIResource, ListableAPIResource, FetchableAPIResource, UpdateableAPIResource):
     """
     retrieve, update and delete webhooks for a Shippo account programmatically. The same functionality is already exposed in the Shippo dashboard at https://app.goshippo.com/api/.
@@ -453,7 +454,6 @@ class Webhook(CreateableAPIResource, ListableAPIResource, FetchableAPIResource, 
             (ShippoObject) -- The server response
         """
         return super(Webhook, cls).remove(object_id,api_key, **params)
-
 
 
 class Track(CreateableAPIResource):
@@ -630,3 +630,25 @@ class Batch(CreateableAPIResource, FetchableAPIResource):
     def class_url(cls):
         cls_name = cls.class_name()
         return "v1/%ses/" % (cls_name,)
+
+
+class Order(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
+    """
+    Beta functionality, but useful for tracking a given order, label information, etc.
+    """
+
+    @classmethod
+    def class_url(cls):
+        cls_name = cls.class_name()
+        return "%ss/" % (cls_name,)
+
+
+class LineItem(ListableAPIResource, FetchableAPIResource):
+    """
+    Currently this is a nested item inside an Order object.
+    """
+
+    @classmethod
+    def class_url(cls):
+        cls_name = cls.class_name()
+        return "%ss/" % (cls_name,)

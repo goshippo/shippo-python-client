@@ -8,6 +8,9 @@
 *.class
 .venv
 .vscode
+.idea
+shippo/test/shippo
+venv
 
 # Unit test / coverage reports
 .tox/
