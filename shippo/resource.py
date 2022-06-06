@@ -281,7 +281,7 @@ class Order(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
     @classmethod
     def class_url(cls):
         cls_name = cls.class_name()
-        return "%ss/" % (cls_name,)
+        return "v1/%ss/" % (cls_name,)
 
 
 class Parcel(CreateableAPIResource, ListableAPIResource, FetchableAPIResource):
