@@ -23,6 +23,8 @@ shippo.config.api_key = "<API-KEY>"
 shippo.config.api_version = "2018-02-08"
 shippo.config.verify_ssl_certs = True
 shippo.config.rates_req_timeout = 30.0
+shippo.config.app_name = "Name of your Application" # Not required
+shippo.config.app_version = "Version of Application" # Not required
 ```
 
 ### How do I get set up?
