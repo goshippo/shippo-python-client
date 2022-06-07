@@ -90,6 +90,11 @@ class APIRequestor(object):
         Mechanism for issuing an API call
         """
         from shippo.config import api_version
+        from shippo.config import app_name
+        from shippo.config import app_version
+
+        if app_version == '':
+            app_version = VERSION
 
         if self.api_key:
             my_api_key = self.api_key
@@ -143,7 +148,7 @@ class APIRequestor(object):
         headers = {
             'Content-Type': 'application/json',
             'X-Shippo-Client-User-Agent': util.json.dumps(ua),
-            'User-Agent': 'Shippo/v1 PythonBindings/%s' % (VERSION, ),
+            'User-Agent': '%s/%s ShippoPythonSDK/%s' % (app_name, app_version, VERSION, ),
             'Authorization': '%s %s' % (token_type, my_api_key,)
         }
 
