@@ -4,3 +4,5 @@ api_base = 'https://api.goshippo.com/'
 api_version = '2018-02-08'
 verify_ssl_certs = True
 rates_req_timeout = 20.0
+app_name = ""
+app_version = ""
