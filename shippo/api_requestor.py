@@ -93,8 +93,12 @@ class APIRequestor(object):
         from shippo.config import app_name
         from shippo.config import app_version
 
+        # app_name and app_version can be specified in shippo-python-client/shippo/config
+        if app_name == '':
+            app_name = 'PythonApp'
+
         if app_version == '':
-            app_version = VERSION
+            app_version = '1.0'
 
         if self.api_key:
             my_api_key = self.api_key
