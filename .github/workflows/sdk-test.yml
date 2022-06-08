@@ -1,0 +1,31 @@
+name: Python SDK Test
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.5", "3.6", "3.7"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install tox
+        run: pip install tox
+      - name: Run the tests
+        env:
+          SHIPPO_API_KEY: ${{ secrets.SHIPPO_TEST_KEY }}
+        run: tox -e py
+      - name: Send a Slack notification if all tests are passing
+        shell: bash
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          message="Python SDK Test succeeded for Python ${{ matrix.python }}"
+          curl -X POST --data-urlencode "payload={\"text\": \"$message\", \"link_names\": 1}" $SLACK_WEBHOOK_URL

@@ -2,7 +2,6 @@ import urllib.parse
 import sys
 import time
 import warnings
-import shippo.config as config
 from shippo import api_requestor, error, util
 from shippo.config import rates_req_timeout
 
