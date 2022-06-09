@@ -15,7 +15,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/batches/
+    uri: https://api.goshippo.com/batches/
   response:
     body:
       string: !!binary |
@@ -53,7 +53,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/batches/
+    uri: https://api.goshippo.com/batches/
   response:
     body: {string: !!python/unicode '{"default_carrier_account": ["Invalid account
         object_id provided ''NOT_VALID''. Please list the available CarrierAccount
