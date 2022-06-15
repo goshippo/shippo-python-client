@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python: ["3.10"]
+        python: ["3.8"]
 #        python: ["3.5", "3.6", "3.7", "3.8", "3.9", "3.10"]
         environment: ["prod", "dev-qa"]
 
@@ -46,6 +46,7 @@ jobs:
           SHIPPO_API_BASE: ${{ secrets.SHIPPO_DEV_QA_API_BASE }}
         run: tox -e py
       - name: Send a Slack notification saying if tests are passing/failing for a given Python version
+        if: always()
         shell: bash
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
