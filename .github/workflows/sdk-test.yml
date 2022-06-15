@@ -32,14 +32,14 @@ jobs:
       - name: Install tox
         run: pip install tox
       - id: prod_tests
-        if: ${{ matrix.environment == "prod" }}
+        if: ${{ matrix.environment == 'prod' }}
         name: Run the tests for PROD
         env:
           SHIPPO_API_KEY: ${{ secrets.SHIPPO_PROD_TEST_KEY }}
           SHIPPO_API_BASE: ${{ secrets.SHIPPO_PROD_API_BASE }}
         run: tox -e py
       - id: dev_qa_tests
-        if: ${{ matrix.environment == "dev-qa" }}
+        if: ${{ matrix.environment == 'dev-qa' }}
         name: Run the tests for DEV-QA
         env:
           SHIPPO_API_KEY: ${{ secrets.SHIPPO_DEV_QA_TEST_KEY }}
@@ -51,7 +51,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           conclusion=""
-          if [[ ${{ matrix.environment }} == "prod" ]]; then
+          if [[ ${{ matrix.environment == 'prod' }}  ]]; then
             conclusion=${{ steps.prod_tests.conclusion }}
           else
             conclusion=${{ steps.dev_qa_tests.conclusion }}
