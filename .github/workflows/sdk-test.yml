@@ -3,11 +3,15 @@ name: Python SDK Test
 on:
   # Run the tests on every push to the master branch
   push:
-    branches: [ "master" ]
+    branches: [ "github-actions-setup" ]
 
   # Run the tests for the default branch [master] every Monday 3:00 pm UTC time (8:00 am PST)
   schedule:
     - cron: "0 15 * * 1"
+
+  # Run the tests by clicking a button in GitHub's UI
+  workflow_dispatch:
+
 
 jobs:
   build:
@@ -15,7 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python: ["3.5", "3.6", "3.7"]
+        python: ["3.10"]
+#        python: ["3.5", "3.6", "3.7", "3.8", "3.9", "3.10"]
+        environment: ["prod", "dev-qa"]
 
     steps:
       - uses: actions/checkout@v3
@@ -25,21 +31,35 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Install tox
         run: pip install tox
-      - id: tests
-        name: Run the tests
+      - id: prod_tests
+        if: ${{ matrix.environment == "prod" }}
+        name: Run the tests for PROD
         env:
-          SHIPPO_API_KEY: ${{ secrets.SHIPPO_TEST_KEY }}
+          SHIPPO_API_KEY: ${{ secrets.SHIPPO_PROD_TEST_KEY }}
+          SHIPPO_API_BASE: ${{ secrets.SHIPPO_PROD_API_BASE }}
+      - id: dev_qa_tests
+        if: ${{ matrix.environment == "dev-qa" }}
+        name: Run the tests for DEV-QA
+        env:
+          SHIPPO_API_KEY: ${{ secrets.SHIPPO_DEV_QA_TEST_KEY }}
+          SHIPPO_API_BASE: ${{ secrets.SHIPPO_DEV_QA_API_BASE }}
         run: tox -e py
       - name: Send a Slack notification saying if tests are passing/failing for a given Python version
         shell: bash
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          conclusion=${{ steps.tests.conclusion }}
-          if [[ "$conclusion" == "success" ]]; then
-            message="✅ Python SDK Test succeeded for Python ${{ matrix.python }}"
+          conclusion=""
+          if [[ ${{ matrix.environment }} == "prod" ]]; then
+            conclusion=${{ steps.prod_tests.conclusion }}
           else
-            message="❌ Python SDK Test failed for Python ${{ matrix.python }}"
+            conclusion=${{ steps.dev_qa_tests.conclusion }}
+          fi
+
+          if [[ "$conclusion" == "success" ]]; then
+            message="✅ Python SDK Test succeeded [ENV: ${{ matrix.environment }}, Python version: ${{ matrix.python }}"
+          else
+            message="❌ Python SDK Test failed [ENV: ${{ matrix.environment }}, Python version: ${{ matrix.python }}"
           fi
 
           curl -X POST --data-urlencode "payload={\"text\": \"$message\", \"link_names\": 1}" $SLACK_WEBHOOK_URL
