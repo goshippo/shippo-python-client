@@ -14,10 +14,10 @@ on:
 
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python: ["3.5", "3.6", "3.7", "3.8", "3.9", "3.10"]
         environment: ["prod", "dev-qa"]
