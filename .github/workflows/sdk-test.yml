@@ -19,8 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python: ["3.8"]
-#        python: ["3.5", "3.6", "3.7", "3.8", "3.9", "3.10"]
+        python: ["3.5", "3.6", "3.7", "3.8", "3.9", "3.10"]
         environment: ["prod", "dev-qa"]
 
     steps:
@@ -59,9 +58,9 @@ jobs:
           fi
 
           if [[ "$conclusion" == "success" ]]; then
-            message="✅ Python SDK Test succeeded [ENV: ${{ matrix.environment }}, Python version: ${{ matrix.python }}"
+            message="✅ Python SDK Test succeeded [Env: ${{ matrix.environment }}, Python version: ${{ matrix.python }}]"
           else
-            message="❌ Python SDK Test failed [ENV: ${{ matrix.environment }}, Python version: ${{ matrix.python }}"
+            message="❌ Python SDK Test failed [Env: ${{ matrix.environment }}, Python version: ${{ matrix.python }}]"
           fi
 
           curl -X POST --data-urlencode "payload={\"text\": \"$message\", \"link_names\": 1}" $SLACK_WEBHOOK_URL
