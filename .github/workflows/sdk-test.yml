@@ -37,6 +37,7 @@ jobs:
         env:
           SHIPPO_API_KEY: ${{ secrets.SHIPPO_PROD_TEST_KEY }}
           SHIPPO_API_BASE: ${{ secrets.SHIPPO_PROD_API_BASE }}
+        run: tox -e py
       - id: dev_qa_tests
         if: ${{ matrix.environment == "dev-qa" }}
         name: Run the tests for DEV-QA
