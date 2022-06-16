@@ -14,7 +14,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: GET
-    uri: https://api.goshippo.com/v1/shipments/?results=1
+    uri: https://api.goshippo.com/shipments/?results=1
   response:
     body:
       string: !!binary |
