@@ -18,7 +18,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/addresses/
+    uri: https://api.goshippo.com/addresses/
   response:
     body:
       string: !!binary |
@@ -58,7 +58,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/addresses/
+    uri: https://api.goshippo.com/addresses/
   response:
     body:
       string: !!binary |
@@ -97,7 +97,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/parcels/
+    uri: https://api.goshippo.com/parcels/
   response:
     body:
       string: !!binary |
@@ -138,7 +138,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/shipments/
+    uri: https://api.goshippo.com/shipments/
   response:
     body:
       string: !!binary |
@@ -214,7 +214,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: GET
-    uri: https://api.goshippo.com/v1/shipments/93808674a27a4f7f808d1742a4dfc273
+    uri: https://api.goshippo.com/shipments/93808674a27a4f7f808d1742a4dfc273
   response:
     body:
       string: !!binary |
@@ -291,7 +291,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: GET
-    uri: https://api.goshippo.com/v1/shipments/93808674a27a4f7f808d1742a4dfc273/rates/
+    uri: https://api.goshippo.com/shipments/93808674a27a4f7f808d1742a4dfc273/rates/
   response:
     body:
       string: !!binary |

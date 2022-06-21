@@ -18,7 +18,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/addresses/
+    uri: https://api.goshippo.com/addresses/
   response:
     body:
       string: !!binary |
@@ -59,7 +59,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/addresses/
+    uri: https://api.goshippo.com/addresses/
   response:
     body:
       string: !!binary |
@@ -98,7 +98,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/parcels/
+    uri: https://api.goshippo.com/parcels/
   response:
     body:
       string: !!binary |
@@ -138,7 +138,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/shipments/
+    uri: https://api.goshippo.com/shipments/
   response:
     body:
       string: !!binary |
@@ -226,7 +226,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/transactions/
+    uri: https://api.goshippo.com/transactions/
   response:
     body:
       string: !!binary |
@@ -267,7 +267,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: GET
-    uri: https://api.goshippo.com/v1/rates/07c2382f80314b3eb6d155b50a399e90
+    uri: https://api.goshippo.com/rates/07c2382f80314b3eb6d155b50a399e90
   response:
     body:
       string: !!binary |
@@ -306,7 +306,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: GET
-    uri: https://api.goshippo.com/v1/shipments/1ea1b4b3132c4579bdffad6de8b1ca16
+    uri: https://api.goshippo.com/shipments/1ea1b4b3132c4579bdffad6de8b1ca16
   response:
     body:
       string: !!binary |
@@ -398,7 +398,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/manifests/
+    uri: https://api.goshippo.com/manifests/
   response:
     body:
       string: !!binary |
@@ -436,7 +436,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: GET
-    uri: https://api.goshippo.com/v1/manifests/a4993d2a157f4c3faf8973b5a8912ec1
+    uri: https://api.goshippo.com/manifests/a4993d2a157f4c3faf8973b5a8912ec1
   response:
     body:
       string: !!binary |

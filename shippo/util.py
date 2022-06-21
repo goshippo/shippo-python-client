@@ -1,6 +1,13 @@
 import logging
 
+from shippo.config import vcr_logging_level
+
 logger = logging.getLogger('shippo')
+
+logging.basicConfig()
+vcr_log = logging.getLogger("vcr")
+vcr_log.setLevel(vcr_logging_level)
+
 
 __all__ = ['json']
 

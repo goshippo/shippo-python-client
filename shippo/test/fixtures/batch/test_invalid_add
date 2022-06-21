@@ -31,7 +31,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/batches/
+    uri: https://api.goshippo.com/batches/
   response:
     body:
       string: !!binary |
@@ -72,7 +72,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/addresses/
+    uri: https://api.goshippo.com/addresses/
   response:
     body:
       string: !!binary |
@@ -113,7 +113,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/addresses/
+    uri: https://api.goshippo.com/addresses/
   response:
     body:
       string: !!binary |
@@ -152,7 +152,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/parcels/
+    uri: https://api.goshippo.com/parcels/
   response:
     body:
       string: !!binary |
@@ -192,7 +192,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/shipments/
+    uri: https://api.goshippo.com/shipments/
   response:
     body:
       string: !!binary |
@@ -615,7 +615,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/batches/INVALID_OBJECT_KEY/add_shipments
+    uri: https://api.goshippo.com/batches/INVALID_OBJECT_KEY/add_shipments
   response:
     body:
       string: !!binary |
