@@ -3,7 +3,7 @@ name: Python SDK Test
 on:
   # Run the tests on every push to the master branch
   push:
-    branches: [ "github-actions-setup" ]
+    branches: [ "master" ]
 
   # Run the tests for the default branch [master] every Monday 3:00 pm UTC time (8:00 am PST)
   schedule:
@@ -19,8 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: ["3.5", "3.6", "3.7", "3.8", "3.9", "3.10"]
-        environment: ["prod", "dev-qa"]
+        python: ["3.6", "3.7", "3.8", "3.9"]
 
     steps:
       - uses: actions/checkout@v3
@@ -30,19 +29,11 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Install tox
         run: pip install tox
-      - id: prod_tests
-        if: ${{ matrix.environment == 'prod' }}
+      - id: test
         name: Run the tests for PROD
         env:
           SHIPPO_API_KEY: ${{ secrets.SHIPPO_PROD_TEST_KEY }}
           SHIPPO_API_BASE: ${{ secrets.SHIPPO_PROD_API_BASE }}
-        run: tox -e py
-      - id: dev_qa_tests
-        if: ${{ matrix.environment == 'dev-qa' }}
-        name: Run the tests for DEV-QA
-        env:
-          SHIPPO_API_KEY: ${{ secrets.SHIPPO_DEV_QA_TEST_KEY }}
-          SHIPPO_API_BASE: ${{ secrets.SHIPPO_DEV_QA_API_BASE }}
         run: tox -e py
       - name: Send a Slack notification saying if tests are passing/failing for a given Python version
         if: always()
@@ -50,17 +41,12 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          conclusion=""
-          if [[ ${{ matrix.environment == 'prod' }}  ]]; then
-            conclusion=${{ steps.prod_tests.conclusion }}
-          else
-            conclusion=${{ steps.dev_qa_tests.conclusion }}
-          fi
+          conclusion=${{ steps.test.conclusion }}
 
           if [[ "$conclusion" == "success" ]]; then
-            message="✅ Python SDK Test succeeded [Env: ${{ matrix.environment }}, Python version: ${{ matrix.python }}]"
+            message="✅ Python SDK Test succeeded [Env: PROD, Python version: ${{ matrix.python }}]"
           else
-            message="❌ Python SDK Test failed [Env: ${{ matrix.environment }}, Python version: ${{ matrix.python }}]"
+            message="❌ Python SDK Test failed [Env: PROD, Python version: ${{ matrix.python }}]"
           fi
 
           curl -X POST --data-urlencode "payload={\"text\": \"$message\", \"link_names\": 1}" $SLACK_WEBHOOK_URL
