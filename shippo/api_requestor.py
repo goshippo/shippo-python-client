@@ -59,10 +59,11 @@ class APIRequestor(object):
     def __init__(self, key=None, client=None):
         self.api_key = key
 
-        from shippo.config import verify_ssl_certs
+        from shippo.config import verify_ssl_certs, timeout_in_seconds
 
         self._client = client or http_client.new_default_http_client(
-            verify_ssl_certs=verify_ssl_certs)
+            verify_ssl_certs=verify_ssl_certs,
+            timeout_in_seconds=timeout_in_seconds)
 
     def request(self, method, url, params=None):
         self._check_ssl_cert()\
