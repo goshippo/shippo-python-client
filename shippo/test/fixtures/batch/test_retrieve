@@ -31,7 +31,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: POST
-    uri: https://api.goshippo.com/v1/batches/
+    uri: https://api.goshippo.com/batches/
   response:
     body:
       string: !!binary |
@@ -68,7 +68,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: GET
-    uri: https://api.goshippo.com/v1/batches/dcfbdcc46a6748b8bd66885ab0ef936c
+    uri: https://api.goshippo.com/batches/dcfbdcc46a6748b8bd66885ab0ef936c
   response:
     body:
       string: !!binary |
@@ -105,7 +105,7 @@ interactions:
           x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
           "bindings_version": "1.4.0"}']
     method: GET
-    uri: https://api.goshippo.com/v1/batches/dcfbdcc46a6748b8bd66885ab0ef936c?object_results=creation_succeeded
+    uri: https://api.goshippo.com/batches/dcfbdcc46a6748b8bd66885ab0ef936c?object_results=creation_succeeded
   response:
     body:
       string: !!binary |

@@ -1,6 +1,13 @@
 import logging
 
+from shippo.config import vcr_logging_level
+
 logger = logging.getLogger('shippo')
+
+logging.basicConfig()
+vcr_log = logging.getLogger("vcr")
+vcr_log.setLevel(vcr_logging_level)
+
 
 __all__ = ['json']
 
@@ -18,8 +25,7 @@ if not (json and hasattr(json, 'loads')):
                 "Shippo requires a JSON library, such as simplejson. "
                 "HINT: Try installing the "
                 "python simplejson library via 'pip install simplejson' or "
-                "'easy_install simplejson', or contact support@goshippo.com "
-                "with questions.")
+                "contact support@goshippo.com with questions.")
         else:
             raise ImportError(
                 "Shippo requires a JSON library with the same interface as "
@@ -27,5 +33,4 @@ if not (json and hasattr(json, 'loads')):
                 "library with a different interface.  Please install "
                 "the simplejson library.  HINT: Try installing the "
                 "python simplejson library via 'pip install simplejson' "
-                "or 'easy_install simplejson', or contact support@goshippo.com"
-                "with questions.")
+                "contact support@goshippo.com with questions.")

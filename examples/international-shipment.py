@@ -27,7 +27,7 @@ address_from = {
     "country": "US",
     "phone": "+15553419393",
     "email": "support@goshippo.com",
-},
+}
 
 # Example address_to object dict
 # The complete reference for the address object is available here: https://goshippo.com/docs/reference#addresses
@@ -43,7 +43,7 @@ address_to_international = {
     "phone": "+1 555 341 9393",
     "email": "support@goshippo.com",
     "metadata": "For Order Number 123"
-},
+}
 
 # parcel object dict
 # The complete reference for parcel object is here: https://goshippo.com/docs/reference#parcels

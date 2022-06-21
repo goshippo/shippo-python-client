@@ -150,11 +150,11 @@ print(added)
 # find the object_id of the shipment you want to remove, it will not be the same as the id you used to add it
 batch = shippo.Batch.retrieve(batch.object_id)
 to_remove = []
-for shipment in batch.batch_shipments.results:
+for batch_shipment in batch.batch_shipments.results:
     # the shipment object_id is stored under the field 'shipment' in batch objects
-    if shipment.object_id == shipment.shipment:
+    if shipment.object_id == batch_shipment.shipment:
         # but we used the batch object_id to remove it
-        to_remove.append(shipment.object_id)
+        to_remove.append(batch_shipment.object_id)
 # the post data here is just an array of ids
 removed = shippo.Batch.remove(batch.object_id, to_remove)
 

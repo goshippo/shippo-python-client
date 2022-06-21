@@ -23,8 +23,15 @@ shippo.config.api_key = "<API-KEY>"
 shippo.config.api_version = "2018-02-08"
 shippo.config.verify_ssl_certs = True
 shippo.config.rates_req_timeout = 30.0
-shippo.config.timeout_in_seconds = None # falls back to 80s for RequestsClient and 55s for UrlFetchClient
+shippo.config.timeout_in_seconds = None 
+# default timeout set in the above line is:
+# 80 seconds for RequestsClient
+# 55 seconds for UrlFetchClient
+shippo.config.app_name = "Name of your Application" # Not required
+shippo.config.app_version = "Version of Application" # Not required
 ```
+
+
 
 ### How do I get set up?
 
@@ -54,16 +61,6 @@ Run the test with the following command:
 ```
 #!shell
 python setup.py test --test-suite=shippo
-```
-
-#### Dependencies:
-
-##### requests & mock
-
-```
-#!shell
-sudo easy_install requests
-sudo easy_install mock
 ```
 
 #### Using the API:

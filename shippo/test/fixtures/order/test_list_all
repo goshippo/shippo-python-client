@@ -1,0 +1,73 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Shippo-API-Version:
+      - '2018-02-08'
+      User-Agent:
+      - Shippo/v1 PythonBindings/2.0.2
+      X-Shippo-Client-User-Agent:
+      - '{"bindings_version": "2.0.2", "lang": "python", "publisher": "shippo", "httplib":
+        "requests", "lang_version": "3.7.9", "platform": "Darwin-21.2.0-x86_64-i386-64bit",
+        "uname": "Darwin Mac-mini.local 21.2.0 Darwin Kernel Version
+        21.2.0: Sun Nov 28 20:28:54 PST 2021; root:xnu-8019.61.5~1/RELEASE_X86_64
+        x86_64 i386"}'
+    method: GET
+    uri: https://api.goshippo.com/orders/
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA7xU227cNhD9FUF9bHdBStSFfmqQImhR2DXgBAVaBAJFjnaZSJRKUo4dw/8eklpZ
+        0Xod10XbR565nxmeu1jBjY3PIjW27Q9RPGi4lv1oFkSDGVvrgT/v4r7+ANxWUrhnXOIiL9K6LnOW
+        E1pkNENpU2Q4LVnOm4zELrrXAnSlxq4G7WO+wygvF4OxzIZi8eWrX37y+NAyDqJivqc4QUmyQXiD
+        0VtEz3ByhtG2SIo/QoKplf6TmjK3I2fm+w/smv24681eDkO/5X3nXW1fMSHcIL7SwxBcA7Mgjurg
+        ItTBW5LlX9cZB/EC74kgRBkRlIiiqCmhuCk5pqhuaJ43tMzr3AdIU7kuhxYsuBCrR3DgNWulKyd7
+        VS30392/bGrFOp8yPtfRzx73mC/F1K2Hr/YzaKwGsJXqPbwAOMyKs+h1y25tr6Iru12sydo5nZ9c
+        2ik9U9EbzRSXhh+qsDBi/PqVf36Wg39QgnExdTYqq0PouysPtL3aSTsKWE6xdZSskWHfq5AUZ1mW
+        EkxTmvpg6JhsPT5RYlt4RI8j3nErBSgrWbuk7MAyxz2bB7Jg7GEzfgGN7ruvrukQZPb9ULFhWBP7
+        CeRuHw4ZbQlakGpUMsBtHSo4mgzjft3hm70PJ2tZW1l2M0UjFD+Ag5Y8zJyQ7TStGesjE062OITw
+        UWtQ/MBr+GGBBql2lZt034vJcnkVvZHaWL9sY6JLxj+yHazceR+I8LnL9JGlOlGplQoqaaE7pR6Q
+        k4SklBQUEYJqXKZFmeCkEKnAdZnSMLB0m/PO4YCjc7Zjn11OE4c/oiVTtpp95k18HEPA+QYnocu/
+        Ruc1HSV+zOG3iFqvDz29wI6psXELHDVUyx3P98RuKs+Ua7SDNSygldegb49MAgzXcvD3cADv/Umo
+        3p3i4rW+yyNyc9zgJMvLtCYFKQHVCFGOoSgwcMZEfUKaD2mPdfndxa8Xv/1+cUKacbZB5SYhb1Hm
+        RTBD2yQn/4E0n6iT4Sel+VnviSAqMEaJwLSoS9I0nCYAOeWoLFGW8Yb+P9IcdriW5WcFOUMo6qQx
+        roNoin5SkA8rnSXZOElu/p4ko39Bklc6/A0yXijE4T/8UyE+eK1/8fyhnpHh2W0lIHPZYwWeqV9U
+        5aHBY/U9Nhx09hRcPc631tindaJhrYH79/dfAAAA//8DAOp+MWbxCQAA
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 10 Jan 2022 17:18:43 GMT
+      Transfer-Encoding:
+      - chunked
+      allow:
+      - OPTIONS
+      content-encoding:
+      - gzip
+      content-language:
+      - en-us
+      p3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      server:
+      - istio-envoy
+      set-cookie:
+      - tracker_sessionid=09684e9663cc4ba3829b3f7c915b3ea9; Domain=.goshippo.com;
+        Path=/
+      vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      x-envoy-upstream-service-time:
+      - '113'
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -1,6 +1,34 @@
 Release History
 ---------------
 
+**Order and User Agent Additions**
+
+- Include Order and LineItem object (#69) 
+- Change user-agent format
+
+Release History
+---------------
+
+2.1.2 (2022-02-28)
+2.1.1 (2022-02-28) [--removed](https://pypi.org/manage/project/shippo/history/) 
+
+**Dependency Version Bumps**
+
+- Allow requests version to be higher (2.27.1)
+
+Release History
+---------------
+
+2.1.0 (2022-01-18)
+
+**New features**
+
+- Added support for Pickup and Order Objects
+- Converted testing to CircleCi
+
+Release History
+---------------
+
 2.0.2 (2020-11-05)
 
 **Dependency Version Bumps**
