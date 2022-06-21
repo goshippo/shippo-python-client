@@ -1,6 +1,14 @@
 Release History
 ---------------
 
+**Order and User Agent Additions**
+
+- Include Order and LineItem object (#69) 
+- Change user-agent format
+
+Release History
+---------------
+
 2.1.2 (2022-02-28)
 2.1.1 (2022-02-28) [--removed](https://pypi.org/manage/project/shippo/history/) 
 
