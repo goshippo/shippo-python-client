@@ -11,6 +11,7 @@
 .idea
 shippo/test/shippo
 venv
+.python-version
 
 # Unit test / coverage reports
 .tox/
