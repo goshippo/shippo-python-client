@@ -2,6 +2,7 @@ import datetime
 import os
 import re
 import shippo
+from shippo.config import config
 import vcr
 
 from mock import patch, Mock
@@ -423,24 +424,21 @@ class ShippoTestCase(TestCase):
         self._shippo_original_attributes = {}
 
         for attr in self.RESTORE_ATTRIBUTES:
-            self._shippo_original_attributes[attr] = getattr(
-                shippo.config, attr)
-
+            self._shippo_original_attributes[attr] = getattr(config, attr)
         api_base = os.environ.get('SHIPPO_API_BASE')
         if api_base:
-            shippo.config.api_base = api_base
+            config.api_base = api_base
 
-        shippo.config.api_key = os.environ.get(
-            'SHIPPO_API_KEY', '51895b669caa45038110fd4074e61e0d')
-        shippo.config.api_version = os.environ.get(
-            'SHIPPO_API_VERSION', '2018-02-08')
+        config.api_key = os.environ.get('SHIPPO_API_KEY', '51895b669caa45038110fd4074e61e0d')
+        config.api_version = os.environ.get('SHIPPO_API_VERSION', '2018-02-08')
+        config.app_name = os.environ.get('SHIPPO_API_KEY', 'MyAwesomeApp')
+        config.app_version = os.environ.get('APP_VERSION', '1.0.0')
 
     def tearDown(self):
         super(ShippoTestCase, self).tearDown()
 
         for attr in self.RESTORE_ATTRIBUTES:
-            setattr(shippo.config, attr,
-                    self._shippo_original_attributes[attr])
+            setattr(config, attr, self._shippo_original_attributes[attr])
 
     # Python < 2.7 compatibility
     def assertRaisesRegexp(self, exception, regexp, callable, *args, **kwargs):

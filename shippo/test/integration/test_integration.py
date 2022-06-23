@@ -4,6 +4,7 @@ import unittest2
 from mock import patch
 
 import shippo
+from shippo.config import config
 from shippo.test.helper import (
     create_mock_shipment,
     DUMMY_ADDRESS,
@@ -33,13 +34,13 @@ class FunctionalTests(ShippoTestCase):
         self.client_patcher.stop()
 
     def test_dns_failure(self):
-        api_base = shippo.config.api_base
+        api_base = config.api_base
         try:
-            shippo.config.api_base = 'https://my-invalid-domain.ireallywontresolve/v1'
+            config.api_base = 'https://my-invalid-domain.ireallywontresolve/v1'
             self.assertRaises(shippo.error.APIConnectionError,
                               shippo.Address.create)
         finally:
-            shippo.config.api_base = api_base
+            config.api_base = api_base
 
     def test_run(self):
         try:

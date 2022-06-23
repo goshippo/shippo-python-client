@@ -26,6 +26,10 @@ class APIConnectionError(ShippoError):
     pass
 
 
+class ConfigurationError(ShippoError):
+    pass
+
+
 class AddressError(ShippoError):
 
     def __init__(self, message, param, code, http_body=None,
