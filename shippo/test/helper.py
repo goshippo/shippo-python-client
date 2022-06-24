@@ -431,7 +431,7 @@ class ShippoTestCase(TestCase):
 
         config.api_key = os.environ.get('SHIPPO_API_KEY', '51895b669caa45038110fd4074e61e0d')
         config.api_version = os.environ.get('SHIPPO_API_VERSION', '2018-02-08')
-        config.app_name = os.environ.get('SHIPPO_API_KEY', 'MyAwesomeApp')
+        config.app_name = os.environ.get('APP_NAME', 'MyAwesomeApp')
         config.app_version = os.environ.get('APP_VERSION', '1.0.0')
 
     def tearDown(self):

@@ -56,6 +56,13 @@ e.g. on OSX:
 
 `export SHIPPO_API_KEY="<MY-API-KEY>"`
 
+Optionally, set your `APP_NAME` and `APP_VERSION` as environment variables, e.g.:
+
+```
+export APP_NAME=MyAwesomeApp
+export APP_VERSION=1.0.0
+```
+
 Run the test with the following command:
 
 ```

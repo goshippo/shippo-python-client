@@ -107,16 +107,6 @@ class APIRequestor(object):
         else:
             my_api_key = config.api_key
 
-        if not config.app_name:
-            msg = 'APP_NAME must be provided. Please provide it as an environment variable, e.g. APP_NAME=MyAwesomeApp'
-            logging.warning(msg)
-            raise ConfigurationError(msg)
-
-        if not config.app_version:
-            msg = 'APP_VERSION must be provided. Please provide it as an environment variable, e.g. APP_VERSION=1.0.0'
-            logging.warning(msg)
-            raise ConfigurationError(msg)
-
         if my_api_key is None:
             raise error.AuthenticationError(
                 'No API key provided. (HINT: set your API key using '
