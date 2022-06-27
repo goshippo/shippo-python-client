@@ -3,7 +3,7 @@ import sys
 import time
 import warnings
 from shippo import api_requestor, error, util
-from shippo.config import rates_req_timeout
+from shippo.config import config
 
 
 warnings.filterwarnings('always', category=DeprecationWarning, module='shippo')
@@ -337,7 +337,7 @@ class Shipment(CreateableAPIResource, ListableAPIResource, FetchableAPIResource)
             Given a valid shipment object_id, all possible rates are calculated and returned.
         """
         if not asynchronous:
-            timeout = time.time() + rates_req_timeout
+            timeout = time.time() + config.rates_req_timeout
             while cls.retrieve(object_id, api_key=api_key).status in ("QUEUED", "WAITING") and time.time() < timeout:
                 continue
 

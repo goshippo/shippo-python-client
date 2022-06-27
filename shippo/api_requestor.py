@@ -1,15 +1,16 @@
 import calendar
 import datetime
+import logging
 import os
-import platform
 import socket
 import ssl
 import time
 import urllib.parse
 import warnings
-import shippo
-
+import sys
 from shippo import error, http_client, util, certificate_blacklist
+from shippo.config import config, Configuration
+from shippo.error import ConfigurationError
 from shippo.version import VERSION
 
 
@@ -59,11 +60,9 @@ class APIRequestor(object):
     def __init__(self, key=None, client=None):
         self.api_key = key
 
-        from shippo.config import verify_ssl_certs, timeout_in_seconds
-
         self._client = client or http_client.new_default_http_client(
-            verify_ssl_certs=verify_ssl_certs,
-            timeout_in_seconds=timeout_in_seconds)
+            verify_ssl_certs=config.verify_ssl_certs,
+            timeout_in_seconds=config.timeout_in_seconds)
 
     def request(self, method, url, params=None):
         self._check_ssl_cert()\
@@ -86,26 +85,27 @@ class APIRequestor(object):
         else:
             raise error.APIError(rbody, rcode, resp)
 
+    @staticmethod
+    def get_python_version() -> str:
+        return sys.version.split(' ')[0]
+
+    @staticmethod
+    def get_shippo_user_agent_header(configuration: Configuration) -> str:
+        key_value_pairs = []
+        key_value_pairs.append('/'.join([configuration.app_name, configuration.app_version]))
+        key_value_pairs.append('/'.join([configuration.sdk_name, configuration.sdk_version]))
+        key_value_pairs.append('/'.join([configuration.language, APIRequestor.get_python_version()]))
+        return ' '.join(key_value_pairs)
+
     def request_raw(self, method, url, params=None):
         """
         Mechanism for issuing an API call
         """
-        from shippo.config import api_version
-        from shippo.config import app_name
-        from shippo.config import app_version
-
-        # app_name and app_version can be specified in shippo-python-client/shippo/config
-        if app_name == '':
-            app_name = 'PythonApp'
-
-        if app_version == '':
-            app_version = '1.0'
 
         if self.api_key:
             my_api_key = self.api_key
         else:
-            from shippo.config import api_key
-            my_api_key = api_key
+            my_api_key = config.api_key
 
         if my_api_key is None:
             raise error.AuthenticationError(
@@ -119,7 +119,7 @@ class APIRequestor(object):
         if my_api_key.startswith('oauth.'):
             token_type = 'Bearer'
 
-        abs_url = '%s%s' % (shippo.config.api_base, url)
+        abs_url = '%s%s' % (config.api_base, url)
 
         if method == 'get' or method == 'delete':
             if params:
@@ -135,30 +135,15 @@ class APIRequestor(object):
                 'Shippo bindings.  Please contact support@goshippo.com for '
                 'assistance.' % (method,))
 
-        ua = {
-            'bindings_version': VERSION,
-            'lang': 'python',
-            'publisher': 'shippo',
-            'httplib': self._client.name,
-        }
-        for attr, func in [['lang_version', platform.python_version],
-                           ['platform', platform.platform],
-                           ['uname', lambda: ' '.join(platform.uname())]]:
-            try:
-                val = func()
-            except Exception as e:
-                val = "!! %s" % (e,)
-            ua[attr] = val
+        shippo_user_agent = APIRequestor.get_shippo_user_agent_header(config)
 
         headers = {
             'Content-Type': 'application/json',
-            'X-Shippo-Client-User-Agent': util.json.dumps(ua),
-            'User-Agent': '%s/%s ShippoPythonSDK/%s' % (app_name, app_version, VERSION, ),
-            'Authorization': '%s %s' % (token_type, my_api_key,)
+            'X-Shippo-Client-User-Agent': shippo_user_agent,
+            'User-Agent': '%s/%s ShippoPythonSDK/%s' % (config.app_name, config.app_version, config.sdk_version, ),
+            'Authorization': '%s %s' % (token_type, my_api_key,),
+            'Shippo-API-Version': config.api_version
         }
-
-        if api_version is not None:
-            headers['Shippo-API-Version'] = api_version
 
         rbody, rcode = self._client.request(
             method, abs_url, headers, post_data)
@@ -195,10 +180,8 @@ class APIRequestor(object):
         the certificate before sending potentially sensitive data on the wire.
         This approach raises the bar for an attacker significantly."""
 
-        from shippo.config import verify_ssl_certs
-
-        if verify_ssl_certs and not self._CERTIFICATE_VERIFIED:
-            uri = urllib.parse.urlparse(shippo.config.api_base)
+        if config.verify_ssl_certs and not self._CERTIFICATE_VERIFIED:
+            uri = urllib.parse.urlparse(config.api_base)
             try:
                 certificate = ssl.get_server_certificate(
                     (uri.hostname, uri.port or 443))
