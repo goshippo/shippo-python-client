@@ -498,5 +498,6 @@ class ShippoApiTestCase(ShippoTestCase):
 
 
 shippo_vcr = vcr.VCR(
-    filter_headers=['Authorization']
+    filter_headers=['Authorization'],
+    record_mode=config.vcr_record_mode
 )
