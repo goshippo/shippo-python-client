@@ -13,7 +13,7 @@ jobs:
         # Primary container image where all commands run
 
         docker:
-            - image: circleci/python:3.5.7  # primary container for the build job
+            - image: circleci/python:3.6.5  # primary container for the build job
               auth:
                   username: mydockerhub-user
                   password: $DOCKERHUB_PASSWORD
