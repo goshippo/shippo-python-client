@@ -20,7 +20,14 @@ class Configuration:
         self.verify_ssl_certs = True
         self.timeout_in_seconds: Optional[float] = None
         self.rates_req_timeout = float(os.environ.get('RATES_REQ_TIMEOUT', 20.0))
+
+        # SETTINGS BELOW APPLY ONLY TO TESTS
+
+        # Controls how much information is logged to stdout
         self.vcr_logging_level = os.environ.get('VCR_LOGGING_LEVEL', 'ERROR')
+
+        # Switch to 'all' for re-recording all cassettes (to be used in CI so that all tests are run without mocks)
+        self.vcr_record_mode = os.environ.get('VCR_RECORD_MODE', 'once')
 
 
 config = Configuration()
