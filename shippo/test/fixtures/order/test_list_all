@@ -17,9 +17,8 @@ interactions:
       X-Shippo-Client-User-Agent:
       - '{"bindings_version": "2.0.2", "lang": "python", "publisher": "shippo", "httplib":
         "requests", "lang_version": "3.7.9", "platform": "Darwin-21.2.0-x86_64-i386-64bit",
-        "uname": "Darwin Mac-mini.local 21.2.0 Darwin Kernel Version
-        21.2.0: Sun Nov 28 20:28:54 PST 2021; root:xnu-8019.61.5~1/RELEASE_X86_64
-        x86_64 i386"}'
+        "uname": "Darwin Mac-mini.local 21.2.0 Darwin Kernel Version 21.2.0: Sun Nov
+        28 20:28:54 PST 2021; root:xnu-8019.61.5~1/RELEASE_X86_64 x86_64 i386"}'
     method: GET
     uri: https://api.goshippo.com/orders/
   response:
@@ -67,6 +66,223 @@ interactions:
       - Accept-Language, Host, Cookie, Accept-Encoding
       x-envoy-upstream-service-time:
       - '113'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Shippo-API-Version:
+      - '2018-02-08'
+      User-Agent:
+      - MyAwesomeApp/1.0.0 ShippoPythonSDK/2.1.3
+      X-Shippo-Client-User-Agent:
+      - MyAwesomeApp/1.0.0 ShippoPythonSDK/2.1.3 Python/3.9.13
+    method: GET
+    uri: https://api.goshippo.com/orders/
+  response:
+    body:
+      string: !!binary |
+        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
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 72a8875c6cc444fe-TXL
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 14 Jul 2022 07:26:12 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - tracker_sessionid=319525febe6746c69d8c5ff3006b956d; Domain=.goshippo.com;
+        Path=/
+      - __cf_bm=7JBz7HbLYrAC5PRMyr4LYs7NZ1LsShXgnCCuob6Yy3o-1657783572-0-AZs5Y0IB3h1DE21ymHVA2Q7gLDwG0ky1mgdFtRZGTMYROVoosczHsgkf+8H0rOCnsNF3fFeFWhzQBUZSJ7aZTLM=;
+        path=/; expires=Thu, 14-Jul-22 07:56:12 GMT; domain=.goshippo.com; HttpOnly;
+        Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      allow:
+      - OPTIONS
+      alt-svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+      content-encoding:
+      - gzip
+      content-language:
+      - en-us
+      p3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      set-cookie:
+      - tracker_sessionid=319525febe6746c69d8c5ff3006b956d; Domain=.goshippo.com;
+        Path=/
+      - __cf_bm=7JBz7HbLYrAC5PRMyr4LYs7NZ1LsShXgnCCuob6Yy3o-1657783572-0-AZs5Y0IB3h1DE21ymHVA2Q7gLDwG0ky1mgdFtRZGTMYROVoosczHsgkf+8H0rOCnsNF3fFeFWhzQBUZSJ7aZTLM=;
+        path=/; expires=Thu, 14-Jul-22 07:56:12 GMT; domain=.goshippo.com; HttpOnly;
+        Secure; SameSite=None
+      vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      x-envoy-upstream-service-time:
+      - '520'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Shippo-API-Version:
+      - '2018-02-08'
+      User-Agent:
+      - MyAwesomeApp/1.0.0 ShippoPythonSDK/2.1.3
+      X-Shippo-Client-User-Agent:
+      - MyAwesomeApp/1.0.0 ShippoPythonSDK/2.1.3 Python/3.9.13
+    method: GET
+    uri: https://api.goshippo.com/orders/
+  response:
+    body:
+      string: !!binary |
+        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
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 72a8f02ecb5faca9-TXL
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 14 Jul 2022 08:37:46 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - tracker_sessionid=4e0609bbd311457ca37bb4d5da6ae360; Domain=.goshippo.com;
+        Path=/
+      - __cf_bm=x6lS9DR53AW2GTOwXI.W0kTDeMVOdUbSn7s0J32wbuk-1657787866-0-AfsovR6aMzpYpLSz0B9AQo5wjJAY7hBOQ3gFLg7oc5noaRkoIAcy3maWug9bsj6pMqKwAi5qeUCjXUrylX3cNBc=;
+        path=/; expires=Thu, 14-Jul-22 09:07:46 GMT; domain=.goshippo.com; HttpOnly;
+        Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      allow:
+      - OPTIONS
+      alt-svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+      content-encoding:
+      - gzip
+      content-language:
+      - en-us
+      p3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      set-cookie:
+      - tracker_sessionid=4e0609bbd311457ca37bb4d5da6ae360; Domain=.goshippo.com;
+        Path=/
+      - __cf_bm=x6lS9DR53AW2GTOwXI.W0kTDeMVOdUbSn7s0J32wbuk-1657787866-0-AfsovR6aMzpYpLSz0B9AQo5wjJAY7hBOQ3gFLg7oc5noaRkoIAcy3maWug9bsj6pMqKwAi5qeUCjXUrylX3cNBc=;
+        path=/; expires=Thu, 14-Jul-22 09:07:46 GMT; domain=.goshippo.com; HttpOnly;
+        Secure; SameSite=None
+      vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      x-envoy-upstream-service-time:
+      - '546'
     status:
       code: 200
       message: OK

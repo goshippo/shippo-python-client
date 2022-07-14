@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+import time
+from typing import List, Optional
+
+import pytest
 import unittest2
 
 from mock import patch
@@ -14,6 +18,24 @@ from shippo.test.helper import (
 from shippo.test.helper import shippo_vcr
 
 BATCH_ADD_SIZE = 4
+
+
+def retrieve_batch_with_delay(batch_id: str, params: Optional[dict] = None) -> List[shippo.Batch]:
+    # Leave enough time for the batch to be processed
+    RETRY_LIMIT = 15  # retry 60 times before giving up
+    RETRY_SLEEP = 0.5
+    tries = 0
+    results = []
+
+    while len(results) <= 0 and tries < RETRY_LIMIT:
+        time.sleep(RETRY_SLEEP)
+        if params is not None:
+            retrieve = shippo.Batch.retrieve(batch_id, **params)
+        else:
+            retrieve = shippo.Batch.retrieve(batch_id)
+        results = retrieve['batch_shipments']['results']
+        tries += 1
+    return results
 
 
 class BatchTests(ShippoTestCase):
@@ -59,14 +81,8 @@ class BatchTests(ShippoTestCase):
         batch = shippo.Batch.create(**BATCH)
         retrieve = shippo.Batch.retrieve(batch.object_id)
         self.assertItemsEqual(batch, retrieve)
-        # Leave enough time for the batch to be processed
-        retrieve = shippo.Batch.retrieve(
-            batch.object_id,
-            **{
-                'object_results': 'creation_succeeded'
-            }
-        )
-        self.assertGreater(len(retrieve['batch_shipments']['results']), 0)
+        results = retrieve_batch_with_delay(batch_id=batch.object_id, params={'object_results': 'creation_succeeded'})
+        self.assertGreater(len(results), 0)
 
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_invalid_retrieve(self):
@@ -76,11 +92,11 @@ class BatchTests(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_add(self):
         BATCH = DUMMY_BATCH.copy()
-        batch = shippo.Batch.create(**BATCH)
-        # Leave enough time for the batch to be processed
-        retrieve = shippo.Batch.retrieve(batch.object_id)
-        batch_size = len(retrieve.batch_shipments.results)
+        batch = shippo.Batch.create(**BATCH, asynchronous=False)
         self.assertEqual(batch.status, 'VALIDATING')
+        results = retrieve_batch_with_delay(batch_id=batch.object_id)
+
+        batch_size = len(results)
         addon = []
         for i in range(BATCH_ADD_SIZE):
             mock_shipment = create_mock_shipment()
@@ -106,10 +122,9 @@ class BatchTests(ShippoTestCase):
     def test_remove(self):
         BATCH = DUMMY_BATCH.copy()
         batch = shippo.Batch.create(**BATCH)
-        # Leave enough time for the batch to be processed
-        retrieve = shippo.Batch.retrieve(batch.object_id)
-        batch_size = len(retrieve.batch_shipments.results)
         self.assertEqual(batch.status, 'VALIDATING')
+        results = retrieve_batch_with_delay(batch_id=batch.object_id)
+        batch_size = len(results)
         addon = []
         for i in range(BATCH_ADD_SIZE):
             mock_shipment = create_mock_shipment()
@@ -142,7 +157,7 @@ class BatchTests(ShippoTestCase):
     @shippo_vcr.use_cassette(cassette_library_dir='shippo/test/fixtures/batch')
     def test_purchase(self):
         BATCH = DUMMY_BATCH.copy()
-        batch = shippo.Batch.create(**BATCH)
+        batch = shippo.Batch.create(**BATCH, asynchronous=False)
         while batch.status == 'VALIDATING':
             batch = shippo.Batch.retrieve(batch.object_id)
         purchase = shippo.Batch.purchase(batch.object_id)

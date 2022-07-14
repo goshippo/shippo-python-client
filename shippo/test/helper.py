@@ -65,9 +65,12 @@ INVALID_PARCEL = {
     "metadata": "Customer ID 123456"
 }
 DUMMY_MANIFEST = {
-    "provider": "USPS",
+    "carrier_account": "c6840b9427134781bcda1d3c8b9bca53",
     "shipment_date": "2017-03-31T17:37:59.817Z",
-    "address_from": "28828839a2b04e208ac2aa4945fbca9a"
+    "address_from": "91f59174533e4b6499fc8fe44c09ee2c",
+    "transactions": [
+        "c121ebcfd9dd485d94833ccbc41ac288"
+    ]
 }
 INVALID_MANIFEST = {
     "provider": "RANDOM_INVALID_PROVIDER",
@@ -216,7 +219,7 @@ INVALID_TRANSACTION = {
     "metadata": "Customer ID 123456"
 }
 DUMMY_BATCH = {
-    "default_carrier_account": "e68e95b95e33431a87bdecdd2b891c2b",
+    "default_carrier_account": "c6840b9427134781bcda1d3c8b9bca53",
     "default_servicelevel_token": "usps_priority",
     "label_filetype": "PDF_4x6",
     "metadata": "BATCH #170",
@@ -376,6 +379,9 @@ def create_mock_manifest(transaction=None):
     shipment = shippo.Shipment.retrieve(rate.shipment)
     MANIFEST = DUMMY_MANIFEST.copy()
     MANIFEST['address_from'] = shipment.address_from
+    MANIFEST['shipment_date'] = shipment['shipment_date']
+    MANIFEST['carrier_account'] = rate['carrier_account']
+    MANIFEST['transactions'] = [transaction['object_id']]
     MANIFEST['async'] = False
     manifest = shippo.Manifest.create(**MANIFEST)
     return manifest
