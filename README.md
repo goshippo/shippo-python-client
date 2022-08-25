@@ -90,7 +90,7 @@ address1 = shippo.Address.create(
     metadata='Customer ID 123456'
 )
 
-print 'Success with Address 1 : %r' % (address1, )
+print('Success with Address 1 : %r' % (address1, ))
 
 ```
 
