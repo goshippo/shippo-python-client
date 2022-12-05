@@ -84,7 +84,7 @@ class ClientTestBase():
             self.assertEqual(200, code)
             self.assertEqual('{"status": "ok"}', body)
 
-            self.check_call(self.request_mock, meth, abs_url,
+            self.check_call(meth, abs_url,
                             data, headers)
 
     def test_custom_timeout(self):
@@ -95,7 +95,7 @@ class ClientTestBase():
         abs_url = self.valid_url
         data = ''
         headers = {'my-header': 'header val'}
-        self.mock_response(self.request_mock, '{"status": "ok"}', 200)
+        self.mock_response('{"status": "ok"}', 200)
 
         body, code = client.request(method, abs_url, headers, data)
 
