@@ -1,5 +1,13 @@
 # Shippo API Python wrapper
 
+---
+
+:warning: **We do not actively maintain these libraries** <br>
+However, you can use them as a starting point and update them for your needs and future changes to our APIs.<br>
+You can use our [Open API Specification](https://docs.goshippo.com/shippoapi/public-api/) to build your own library using tools like the [OpenAPI Generator](https://openapi-generator.tech/) and [Swagger Codegen](https://swagger.io/tools/swagger-codegen/).
+
+---
+
 [![PyPI version](https://badge.fury.io/py/shippo.svg)](https://badge.fury.io/py/shippo)
 [![Build Status](https://travis-ci.org/goshippo/shippo-python-client.svg?branch=helper-merge-steveByerly-fork-2)](https://travis-ci.org/goshippo/shippo-python-client)
 
