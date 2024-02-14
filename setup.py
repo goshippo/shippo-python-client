@@ -19,7 +19,7 @@ setup(
     package_data={'shippo': ['../VERSION']},
     install_requires=[
         'chardet',
-        'requests',
+        'requests >= 2.31.0',
         'simplejson >= 3.16.0, <= 3.17.2',
     ],
     test_suite='shippo.test.all',
