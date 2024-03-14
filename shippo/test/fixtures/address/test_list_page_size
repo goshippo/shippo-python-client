@@ -2,17 +2,24 @@ interactions:
 - request:
     body: null
     headers:
-      Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate']
-      Connection: [keep-alive]
-      Content-Type: [application/json]
-      Shippo-API-Version: ['2017-03-29']
-      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
-      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin guozhen-shippo-mbp.local 16.4.0 Darwin Kernel
-          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
-          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
-          "bindings_version": "1.4.0"}']
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Shippo-API-Version:
+      - '2017-03-29'
+      User-Agent:
+      - Shippo/v1 PythonBindings/1.4.0
+      X-Shippo-Client-User-Agent:
+      - '{"lang": "python", "publisher": "shippo", "httplib": "requests", "uname":
+        "Darwin guozhen-shippo-mbp.local 16.4.0 Darwin Kernel Version 16.4.0: Thu
+        Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64 x86_64 i386",
+        "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit", "bindings_version":
+        "1.4.0"}'
     method: GET
     uri: https://api.goshippo.com/addresses/?results=1
   response:
@@ -29,14 +36,183 @@ interactions:
         3mLuwmfeuiCZRlHaz41/BXXs36+75EqKjh8ENI7jaEqzKIscAg3j9Ws/vAv0lpcgDGf1ePYNGIZn
         xLqOVhvZgCJXnwkNI7zH/gK0uwCjLKD9vwGnKJDtjQMAAA==
     headers:
-      allow: [OPTIONS]
-      connection: [keep-alive]
-      content-encoding: [gzip]
-      content-length: ['547']
-      content-type: [application/json]
-      date: ['Mon, 10 Apr 2017 21:02:21 GMT']
-      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
-      server: [nginx/1.8.0]
-      vary: ['Host, Cookie, Accept-Encoding']
-    status: {code: 200, message: OK}
+      allow:
+      - OPTIONS
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-length:
+      - '547'
+      content-type:
+      - application/json
+      date:
+      - Mon, 10 Apr 2017 21:02:21 GMT
+      p3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      server:
+      - nginx/1.8.0
+      vary:
+      - Host, Cookie, Accept-Encoding
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Shippo-API-Version:
+      - '2018-02-08'
+      User-Agent:
+      - MyAwesomeApp/1.0.0 ShippoPythonSDK/2.1.3
+      X-Shippo-Client-User-Agent:
+      - MyAwesomeApp/1.0.0 ShippoPythonSDK/2.1.3 Python/3.9.13
+    method: GET
+    uri: https://api.goshippo.com/addresses/?results=1
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RS227TQBD9lZUfeCKOr7EdqYIQVKltlCISQIBQtLanybbrXbOXtKXqvzNrO7gI
+        IVmyduacMzNn5skT8GC8OfEOxrTz6ZS2bFLDcfKT+vrA2lbiw69kM6V1rUBr0NM3+Lfc6LPwVUv3
+        cBZ5r4nXKjgyaTVKCcs5RgYUBr4/ebK8hcrsKgXUQO3qRUEUTYJsEibbIJtHyTzO/VmYfnNiA9q2
+        9f/RhR9ms5do1gHTOi6SuCrSmzpPwhxoOcuqPCniqCzyoAgdgekdTtRyMICUG8o1YPRIOcN6TIrd
+        2PqTA3eZF8gGfcDBh9G0tKpyQt6mM4wseqfI515QKlezQiMd5pRcS0POpRW1S5rHtksOHu9AqZ5l
+        huVsD0CGJKGaaFs2zKA1pJKW10SgWAnkxun55AMHqoFUB6juMKYIPFRIZEfUKEu3p25KTZggBoW1
+        UQDmjz5nAgiyhuySmUciaAO+9/zjebRb3gtQrrdbemfLHYj9273sT8bdi+vesRxiRa2i5B0cFGDV
+        L7b3o2mpeBxtc8G+k52QLhxkRV7kWf+N2fCfHFmuFl+31+ur1eXq6nJFNlt/hEcOPj7j07PCsbri
+        izU5/7hYLy82y+seR7uz8JYL9/zFWvfIkjjO+76tMKqjftq4AJdiz4zttjtcPkd//460Byk60SAI
+        0zSNk7CIi9jRoaGMn5rCW8MVsBqEYZSP9AYMxUuiXVtWG9mAIhfvSRjFSTrrD0Wb04Ximn4DAAD/
+        /wMA+VizpNcDAAA=
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 72a885214fc344f8-TXL
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 14 Jul 2022 07:24:40 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - tracker_sessionid=0e85be6c41584a6d8f574d394051b6eb; Domain=.goshippo.com;
+        Path=/
+      - __cf_bm=twrN69Vvpf3TgvrmzkCAvvqEIk0ewTKhzeqO4LjuSgc-1657783480-0-AeFrRpeglk2KUogpZYVsIyb5IVrwGMCSHHN/iSXkRZD/X7+5aFqGzY40IyKGx9CRMQvhQ6k/ah/d6H+XnoGT8dE=;
+        path=/; expires=Thu, 14-Jul-22 07:54:40 GMT; domain=.goshippo.com; HttpOnly;
+        Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      allow:
+      - OPTIONS
+      alt-svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+      content-encoding:
+      - gzip
+      content-language:
+      - en-us
+      p3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      set-cookie:
+      - tracker_sessionid=0e85be6c41584a6d8f574d394051b6eb; Domain=.goshippo.com;
+        Path=/
+      - __cf_bm=twrN69Vvpf3TgvrmzkCAvvqEIk0ewTKhzeqO4LjuSgc-1657783480-0-AeFrRpeglk2KUogpZYVsIyb5IVrwGMCSHHN/iSXkRZD/X7+5aFqGzY40IyKGx9CRMQvhQ6k/ah/d6H+XnoGT8dE=;
+        path=/; expires=Thu, 14-Jul-22 07:54:40 GMT; domain=.goshippo.com; HttpOnly;
+        Secure; SameSite=None
+      vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      x-envoy-upstream-service-time:
+      - '38'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Shippo-API-Version:
+      - '2018-02-08'
+      User-Agent:
+      - MyAwesomeApp/1.0.0 ShippoPythonSDK/2.1.3
+      X-Shippo-Client-User-Agent:
+      - MyAwesomeApp/1.0.0 ShippoPythonSDK/2.1.3 Python/3.9.13
+    method: GET
+    uri: https://api.goshippo.com/addresses/?results=1
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA3RS227TQBD9lZUfeCKOr4kTqYIQVKltlCISQIBQtLYn8bbrXbOXtKHqvzNrO7gI
+        IVmyZuacMzNn58kT8Gi8OfEqY5r5eEwbNirhOPpJfV2xppEY+IWsx7QsFWgNevwG/5YbfRG+augB
+        LiLvNfEaBUcmrUYpYTnHTI/CxPcnT+Z3UJhdoYAaKF2/KIiiUTAdhck2yObxZB5O/SxIvzmxHm2b
+        8v/ozI+T7CWatcA8jWk4o9N8MguSArIswpgGeb6f5ElY7h2B6R1u1HAwgJQ95Rowe6ScYT8mxW4Y
+        /cmB28oLZI0+4OL9alpaVTghb9MaRhadU+RzJyiV61mgkQ5zLq6lIZfSitIVzalpi73HO1CqY5n+
+        cbYVkL5IqCba5jUzaA0ppOUlESiWA9k7PZ984EA1kKKC4h5zisBjgUR2RI08d+/UbqkJE8SgsDYK
+        wPzR50wAQVZfXTJzIoLW4HvPP54Hu+WDAOVmu6P3Nt+BOLw9yO5k3L246R3LIVbUKkreQaUAu36x
+        nR91Q8VpsM0lu0l2Qrp0MJ1ls2zafUM1/KdGlqvF1+3t+mZ1vbq5XpHN1h/gkYMPYXwOC1yrbb5Y
+        k8uPi/XyarO87XC0PQtvuXDhL9a4YJrEcdbNbYVRLfXTxiW4FAdmbPu6/eVz9PfvTFNJ0YoGQZim
+        aZyEs3gWOzrUlPHzUHhr+ASsBGEY5QO9BkPxkmg7ltVG1qDI1XsSRnGSTrpD0eZ8ofhMvwEAAP//
+        AwAhp8vB1wMAAA==
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 72a8ee154c2b267d-TXL
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 14 Jul 2022 08:36:19 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - tracker_sessionid=a54de9a33faa461684adbfaac0b9ab27; Domain=.goshippo.com;
+        Path=/
+      - __cf_bm=EfzT6nKE1EEgzRFCoTMsOUGkECmYzYNnQhoSHb_xZaM-1657787779-0-AZMZ9F8yocreOuxUnqzd/vs3uj7uEAaiVabMB879PbBZDFj6fzZOHVzTldFBCOPHEG/j3TV+mx4UM+7fPsPXykY=;
+        path=/; expires=Thu, 14-Jul-22 09:06:19 GMT; domain=.goshippo.com; HttpOnly;
+        Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      allow:
+      - OPTIONS
+      alt-svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+      content-encoding:
+      - gzip
+      content-language:
+      - en-us
+      p3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      set-cookie:
+      - tracker_sessionid=a54de9a33faa461684adbfaac0b9ab27; Domain=.goshippo.com;
+        Path=/
+      - __cf_bm=EfzT6nKE1EEgzRFCoTMsOUGkECmYzYNnQhoSHb_xZaM-1657787779-0-AZMZ9F8yocreOuxUnqzd/vs3uj7uEAaiVabMB879PbBZDFj6fzZOHVzTldFBCOPHEG/j3TV+mx4UM+7fPsPXykY=;
+        path=/; expires=Thu, 14-Jul-22 09:06:19 GMT; domain=.goshippo.com; HttpOnly;
+        Secure; SameSite=None
+      vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      x-envoy-upstream-service-time:
+      - '53'
+    status:
+      code: 200
+      message: OK
 version: 1

@@ -1,9 +1,9 @@
 interactions:
 - request:
-    body: !!python/unicode '{"batch_shipments": [{"shipment": {"address_from": {"city":
-      "San Francisco", "state": "CA", "name": "Mr Hippo", "zip": "94103", "country":
-      "US", "street1": "965 Mission St", "street2": "Ste 201", "email": "mrhippo@goshippo.com",
-      "phone": "4151234567"}, "parcel": {"weight": "2", "distance_unit": "in", "mass_unit":
+    body: '{"batch_shipments": [{"shipment": {"address_from": {"city": "San Francisco",
+      "state": "CA", "name": "Mr Hippo", "zip": "94103", "country": "US", "street1":
+      "965 Mission St", "street2": "Ste 201", "email": "mrhippo@goshippo.com", "phone":
+      "4151234567"}, "parcel": {"weight": "2", "distance_unit": "in", "mass_unit":
       "oz", "height": "5", "width": "5", "length": "5"}, "address_to": {"city": "New
       York", "state": "NY", "name": "Mrs Hippo", "zip": "10007", "country": "US",
       "street1": "Broadway 1", "company": "", "street2": "", "phone": "4151234567",
@@ -18,18 +18,26 @@ interactions:
       "usps_priority", "default_carrier_account": "79f8ad5ea5de436fa6167ba39380cbe9",
       "metadata": "BATCH #170"}'
     headers:
-      Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate']
-      Connection: [keep-alive]
-      Content-Length: ['1295']
-      Content-Type: [application/json]
-      Shippo-API-Version: ['2017-03-29']
-      User-Agent: [Shippo/v1 PythonBindings/1.4.0]
-      X-Shippo-Client-User-Agent: ['{"lang": "python", "publisher": "shippo", "httplib":
-          "requests", "uname": "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel
-          Version 16.4.0: Thu Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64
-          x86_64 i386", "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit",
-          "bindings_version": "1.4.0"}']
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1295'
+      Content-Type:
+      - application/json
+      Shippo-API-Version:
+      - '2017-03-29'
+      User-Agent:
+      - Shippo/v1 PythonBindings/1.4.0
+      X-Shippo-Client-User-Agent:
+      - '{"lang": "python", "publisher": "shippo", "httplib": "requests", "uname":
+        "Darwin Thiagos-MacBook-Pro.local 16.4.0 Darwin Kernel Version 16.4.0: Thu
+        Dec 22 22:53:21 PST 2016; root:xnu-3789.41.3~3/RELEASE_X86_64 x86_64 i386",
+        "lang_version": "2.7.10", "platform": "Darwin-16.4.0-x86_64-i386-64bit", "bindings_version":
+        "1.4.0"}'
     method: POST
     uri: https://api.goshippo.com/batches/
   response:
@@ -43,14 +51,207 @@ interactions:
         aYNrobogfxSDtl0lCK9v+1NEJ3kXaW9YDRZL6xlDrLrkQu+jwaFd7qB2fyFU84f6q8n++Dxv5PcO
         X26GkDpEAgAA
     headers:
-      allow: [OPTIONS]
-      connection: [keep-alive]
-      content-encoding: [gzip]
-      content-length: ['351']
-      content-type: [application/json]
-      date: ['Thu, 30 Mar 2017 18:39:49 GMT']
-      p3p: [CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"]
-      server: [nginx/1.8.0]
-      vary: ['Host, Cookie, Accept-Encoding']
-    status: {code: 201, message: CREATED}
+      allow:
+      - OPTIONS
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      content-length:
+      - '351'
+      content-type:
+      - application/json
+      date:
+      - Thu, 30 Mar 2017 18:39:49 GMT
+      p3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      server:
+      - nginx/1.8.0
+      vary:
+      - Host, Cookie, Accept-Encoding
+    status:
+      code: 201
+      message: CREATED
+- request:
+    body: '{"default_carrier_account": "c6840b9427134781bcda1d3c8b9bca53", "default_servicelevel_token":
+      "usps_priority", "label_filetype": "PDF_4x6", "metadata": "BATCH #170", "batch_shipments":
+      [{"shipment": {"address_from": {"name": "Mr Hippo", "street1": "965 Mission
+      St", "street2": "Ste 201", "city": "San Francisco", "state": "CA", "zip": "94103",
+      "country": "US", "phone": "4151234567"}, "address_to": {"name": "Mrs Hippo",
+      "company": "", "street1": "Broadway 1", "street2": "", "city": "New York", "state":
+      "NY", "zip": "10007", "country": "US", "phone": "4151234567"}, "parcels": [{"length":
+      "5", "width": "5", "height": "5", "distance_unit": "in", "weight": "2", "mass_unit":
+      "oz"}]}}, {"shipment": {"address_from": {"name": "Mr Hippo", "street1": "1092
+      Indian Summer Ct", "city": "San Jose", "state": "CA", "zip": "95122", "country":
+      "US", "phone": "4151234567"}, "address_to": {"name": "Mrs Hippo", "company":
+      "", "street1": "Broadway 1", "street2": "", "city": "New York", "state": "NY",
+      "zip": "10007", "country": "US", "phone": "4151234567"}, "parcels": [{"length":
+      "5", "width": "5", "height": "5", "distance_unit": "in", "weight": "2", "mass_unit":
+      "oz"}]}}]}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1166'
+      Content-Type:
+      - application/json
+      Shippo-API-Version:
+      - '2018-02-08'
+      User-Agent:
+      - MyAwesomeApp/1.0.0 ShippoPythonSDK/2.1.3
+      X-Shippo-Client-User-Agent:
+      - MyAwesomeApp/1.0.0 ShippoPythonSDK/2.1.3 Python/3.9.13
+    method: POST
+    uri: https://api.goshippo.com/batches/
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA4yRS08CMRSF/woZt2LmUezAStSoJMa4IC40ZnLb3oFiaSd9IITw321RFBcm7qbn
+        fPf29Mw2M2yB3DdSZKNeVhIcEFEKbMuWEMqB8qJltBYUWwICs9PeYcC8a7RpZgFvgTWoZxcz4+ay
+        68wZN8tEOg8+uMQ8je8n1+Pp5OH2aAO3CB4/783Lsp/TfkGmOR2Vg1FenVWkfj6iQyf+Qy/RQwQh
+        cZfj6dVd76SgeXLioyCoeC1YK9E2wLkJ2ieQn9ckZ0NS0qIitC4YF1CIitdsyDgMquNxh3YlOSpc
+        oWq8eUOdNgTXuaaz0ljpNwlXwKLfSoV+02FCHq9vGrI+TyYDz+dNKmuJ2qeGttkhTB59jev0qYNS
+        8dRZXEmzL/JLsehilCS8vO5+KvqRt1kXLJ+Dw8YFzhHFvrm0+9toIYY7qPt/IY3+Q/21ZPf9vGDV
+        PkMUPLoUuQXlcPcBAAD//wMAvplEElYCAAA=
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 72a885af4e94453a-TXL
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 14 Jul 2022 07:25:03 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - tracker_sessionid=d6d6ee6c785e4680a6553305945d50e3; Domain=.goshippo.com;
+        Path=/
+      - __cf_bm=ZLNRDtyK94om8WuUnzJez5pRLD_4LZIQ2JVRE5r_8fQ-1657783503-0-Abza3E2CosAs2gpumvKJyqJq3OvQG2ldnTejoEhYM5X6YuNsPYljSgAjh7LOWNaxs+BfZfk4TEDiDhwEIZpmfME=;
+        path=/; expires=Thu, 14-Jul-22 07:55:03 GMT; domain=.goshippo.com; HttpOnly;
+        Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      allow:
+      - OPTIONS
+      alt-svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+      content-encoding:
+      - gzip
+      content-language:
+      - en-us
+      p3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      set-cookie:
+      - tracker_sessionid=d6d6ee6c785e4680a6553305945d50e3; Domain=.goshippo.com;
+        Path=/
+      - __cf_bm=ZLNRDtyK94om8WuUnzJez5pRLD_4LZIQ2JVRE5r_8fQ-1657783503-0-Abza3E2CosAs2gpumvKJyqJq3OvQG2ldnTejoEhYM5X6YuNsPYljSgAjh7LOWNaxs+BfZfk4TEDiDhwEIZpmfME=;
+        path=/; expires=Thu, 14-Jul-22 07:55:03 GMT; domain=.goshippo.com; HttpOnly;
+        Secure; SameSite=None
+      vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      x-envoy-upstream-service-time:
+      - '37'
+    status:
+      code: 201
+      message: Created
+- request:
+    body: '{"default_carrier_account": "c6840b9427134781bcda1d3c8b9bca53", "default_servicelevel_token":
+      "usps_priority", "label_filetype": "PDF_4x6", "metadata": "BATCH #170", "batch_shipments":
+      [{"shipment": {"address_from": {"name": "Mr Hippo", "street1": "965 Mission
+      St", "street2": "Ste 201", "city": "San Francisco", "state": "CA", "zip": "94103",
+      "country": "US", "phone": "4151234567"}, "address_to": {"name": "Mrs Hippo",
+      "company": "", "street1": "Broadway 1", "street2": "", "city": "New York", "state":
+      "NY", "zip": "10007", "country": "US", "phone": "4151234567"}, "parcels": [{"length":
+      "5", "width": "5", "height": "5", "distance_unit": "in", "weight": "2", "mass_unit":
+      "oz"}]}}, {"shipment": {"address_from": {"name": "Mr Hippo", "street1": "1092
+      Indian Summer Ct", "city": "San Jose", "state": "CA", "zip": "95122", "country":
+      "US", "phone": "4151234567"}, "address_to": {"name": "Mrs Hippo", "company":
+      "", "street1": "Broadway 1", "street2": "", "city": "New York", "state": "NY",
+      "zip": "10007", "country": "US", "phone": "4151234567"}, "parcels": [{"length":
+      "5", "width": "5", "height": "5", "distance_unit": "in", "weight": "2", "mass_unit":
+      "oz"}]}}]}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1166'
+      Content-Type:
+      - application/json
+      Shippo-API-Version:
+      - '2018-02-08'
+      User-Agent:
+      - MyAwesomeApp/1.0.0 ShippoPythonSDK/2.1.3
+      X-Shippo-Client-User-Agent:
+      - MyAwesomeApp/1.0.0 ShippoPythonSDK/2.1.3 Python/3.9.13
+    method: POST
+    uri: https://api.goshippo.com/batches/
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA4yRW08CMRCF/wpZX4V074UnUaKSGOMD8UFjNtPuLBTKdtMLQgj/3e0qFx9MfGvP
+        fDNzeroPFFsit4Uog1EviKIsL/OUp4TRBCpKQ0hygiyPWUoZJ8F179igPmvUvmcJK8cKrOc3c2UW
+        omnUgKu1J40F64xnXsdP08l4Nn1+uJjANYLF770kivok74fJjNBRnI2SaEAi+nZBu6b8D71GCy0I
+        nrsdz+4ee1dh3vkusQIn27WgtUBdAOfK1daDPKMJYcMkysM4yWnIeAlhGXPKhoxDGl+2G9QbwVHi
+        BmVh1QprP8GZxhSNFkoLu/O4BNbWKyHR7hr0yMvkvki2mS8ysHxR+LDWWFuf0D44miFtvcatP9ZO
+        yvbWaNwI1QX5o2g0rRUvvH8czhGd5X3QOM0XYLAwjnPEskvOzz4VKmjNHdXuL4Sq/1B/DTmcnue0
+        7Dy0gkXjLVcgDR6+AAAA//8DAMl+uSlWAgAA
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 72a8eea20e764541-TXL
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 14 Jul 2022 08:36:42 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - tracker_sessionid=b32e618ea1d6431782d1860bece96613; Domain=.goshippo.com;
+        Path=/
+      - __cf_bm=45DekhU3lSp7eq1IlGm5MfQS.8zZxYduVOo7EOnXq48-1657787802-0-AegNmdi4O/LN34pgFcYeEdh7B0piQclEcb6M2guQT44tu5KX29Fz5QalH/Sc5SBJ36JwvRwY2Ur0NWZek7K2AdU=;
+        path=/; expires=Thu, 14-Jul-22 09:06:42 GMT; domain=.goshippo.com; HttpOnly;
+        Secure; SameSite=None
+      Transfer-Encoding:
+      - chunked
+      allow:
+      - OPTIONS
+      alt-svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+      content-encoding:
+      - gzip
+      content-language:
+      - en-us
+      p3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      set-cookie:
+      - tracker_sessionid=b32e618ea1d6431782d1860bece96613; Domain=.goshippo.com;
+        Path=/
+      - __cf_bm=45DekhU3lSp7eq1IlGm5MfQS.8zZxYduVOo7EOnXq48-1657787802-0-AegNmdi4O/LN34pgFcYeEdh7B0piQclEcb6M2guQT44tu5KX29Fz5QalH/Sc5SBJ36JwvRwY2Ur0NWZek7K2AdU=;
+        path=/; expires=Thu, 14-Jul-22 09:06:42 GMT; domain=.goshippo.com; HttpOnly;
+        Secure; SameSite=None
+      vary:
+      - Accept-Language, Host, Cookie, Accept-Encoding
+      x-envoy-upstream-service-time:
+      - '38'
+    status:
+      code: 201
+      message: Created
 version: 1
